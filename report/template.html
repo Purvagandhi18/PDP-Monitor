@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ product_name }} — PDP Report {{ date }}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:#f5f5f3;color:#1a1a1a;font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
+
+/* ── Layout ─────────────────────────────────────── */
+.page{max-width:1000px;margin:0 auto;padding:36px 24px 80px}
+
+/* ── Report header ──────────────────────────────── */
+.rh{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:20px;border-bottom:2px solid #1a1a1a;margin-bottom:28px}
+.rh h1{font-size:20px;font-weight:800;letter-spacing:0}
+.rh p{font-size:13px;color:#777;margin-top:3px}
+.rh-right{text-align:right;font-size:12px;color:#aaa;line-height:1.8}
+
+/* ── Status colours ─────────────────────────────── */
+.healthy  {color:#1a7a4a}
+.attention{color:#c17d00}
+.critical {color:#c0392b}
+.bg-healthy  {background:#e6f4ed;color:#1a7a4a}
+.bg-attention{background:#fef3e2;color:#c17d00}
+.bg-critical {background:#fdecea;color:#c0392b}
+
+/* ── Overall hero ───────────────────────────────── */
+.hero-bar{background:#fff;border:1px solid #e5e5e2;border-radius:14px;padding:22px 28px;
+  display:flex;align-items:center;gap:20px;margin-bottom:24px}
+.big-score{font-size:48px;font-weight:800;line-height:1;letter-spacing:-1px}
+.hero-meta .lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#aaa}
+.hero-meta .name{font-size:17px;font-weight:700;margin-top:2px}
+.badge{padding:5px 16px;border-radius:99px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+
+/* ── URL switcher ───────────────────────────────── */
+.url-switcher{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.url-pill{padding:7px 16px;border-radius:99px;font-size:12px;font-weight:600;
+  border:1.5px solid #e5e5e2;background:#fff;cursor:pointer;color:#888;
+  transition:all .15s;white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis}
+.url-pill:hover{border-color:#888;color:#1a1a1a}
+.url-pill.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.up-score{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800}
+
+/* ── Card ───────────────────────────────────────── */
+.card{background:#fff;border:1px solid #e5e5e2;border-radius:14px;margin-bottom:16px;overflow:hidden}
+.pdp-block{display:none}.pdp-block.active{display:block}
+
+/* ── Card header row (URL + score) ─────────────── */
+.card-hdr{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid #e5e5e2;background:#fff;gap:12px}
+.card-url{font-size:12.5px;font-weight:700;color:#1a1a1a;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;text-decoration:none}
+.card-url:hover{text-decoration:underline;color:#1a1a1a}
+.card-hdr-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.card-score{font-size:20px;font-weight:800;line-height:1}
+
+/* ── Hygiene sub-tabs ───────────────────────────── */
+.h-sub-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px}
+.h-sub{padding:6px 14px;border-radius:99px;font-size:12px;font-weight:700;
+  border:1.5px solid #e5e5e2;background:#fafaf8;cursor:pointer;color:#888;
+  display:flex;align-items:center;gap:6px;transition:all .15s}
+.h-sub:hover{border-color:#aaa;color:#444}
+.h-sub.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.h-sub.active .fi-src{background:rgba(255,255,255,.15);color:#fff}
+.h-panel{display:none}.h-panel.active{display:block}
+
+/* ── Tab nav ────────────────────────────────────── */
+.tab-nav{display:flex;border-bottom:1px solid #e5e5e2;overflow-x:auto;background:#fafaf8}
+.tab-btn{padding:13px 18px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;
+  white-space:nowrap;color:#999;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;
+  display:flex;align-items:center;gap:7px}
+.tab-btn:hover{color:#1a1a1a}
+.tab-btn.active{color:#1a1a1a;border-bottom-color:#1a1a1a}
+.ts{font-size:11px;font-weight:800;padding:2px 7px;border-radius:99px;line-height:1.5}
+.tab-panel{display:none;padding:24px}.tab-panel.active{display:block}
+
+/* ── Score boxes row ────────────────────────────── */
+.score-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.sc{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;padding:14px 16px}
+.sc.total{border:2px solid #d1d5db;background:#fff}
+.sc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:#aaa;margin-bottom:5px}
+.sc-val{font-size:26px;font-weight:800;line-height:1}
+.sc-val .dn{font-size:13px;font-weight:400;color:#bbb}
+.bar-t{height:4px;border-radius:4px;background:#ebebeb;margin-top:8px}
+.bar-f{height:4px;border-radius:4px}
+.bar-f.healthy{background:#1a7a4a}.bar-f.attention{background:#c17d00}.bar-f.critical{background:#c0392b}
+
+/* ── Summary score grid ─────────────────────────── */
+.sum-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:22px}
+.sum-cell{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;padding:14px 10px;text-align:center}
+.sum-cell.dark{background:#1a1a1a;border-color:#1a1a1a}
+.sum-cell-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#aaa;margin-bottom:6px}
+.sum-cell.dark .sum-cell-lbl{color:#888}
+.sum-cell-val{font-size:22px;font-weight:800}
+.sum-cell.dark .sum-cell-val{color:#fff}
+
+/* ── Flag items (hygiene unified) ───────────────── */
+.flag-section-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#aaa;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+.flag-section-lbl:first-child{margin-top:0}
+.fcnt{padding:2px 7px;border-radius:99px;font-size:10px;font-weight:700}
+.fcnt.critical{background:#fdecea;color:#c0392b}
+.fcnt.attention{background:#fef3e2;color:#c17d00}
+.fcnt.healthy{background:#e6f4ed;color:#1a7a4a}
+
+.fi{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;
+  margin-bottom:6px;transition:opacity .25s}
+.fi.fi-flagged{background:#fff5f5;border:1px solid #fecaca}
+.fi.fi-warning{background:#fffbeb;border:1px solid #fde68a}
+.fi.fi-ok{background:#eef8f3;border:1px solid #bbf7d0}
+.fi.dismissed{opacity:.3}
+.fi label{display:flex;align-items:flex-start;gap:10px;flex:1;cursor:pointer}
+.fi-cb{width:16px;height:16px;border-radius:4px;cursor:pointer;flex-shrink:0;margin-top:2px;accent-color:#1a7a4a}
+.fi-ico{font-size:13px;flex-shrink:0;margin-top:2px}
+.fi-body{flex:1}
+.fi-text{font-size:13px;font-weight:700;color:#1a1a1a;line-height:1.4}
+.fi-reason{font-size:12px;color:#666;margin-top:3px;line-height:1.5}
+.fi-src{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;
+  border-radius:99px;margin-top:5px;text-transform:uppercase;letter-spacing:.5px}
+.fi-src.claims{background:#ede9fe;color:#5b21b6}
+.fi-src.brand{background:#dbeafe;color:#1e40af}
+.fi-src.spell{background:#fce7f3;color:#9d174d}
+
+/* ── Subscore expandable rows ───────────────────── */
+.ssr-list{display:flex;flex-direction:column;gap:8px}
+.ssr{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;
+  padding:14px 16px;cursor:pointer;transition:border-color .15s}
+.ssr:hover{border-color:#ccc}
+.ssr-top{display:flex;justify-content:space-between;align-items:center}
+.ssr-name{font-size:13px;font-weight:700}
+.ssr-score{font-size:18px;font-weight:800}
+.ssr-score .dn{font-size:11px;font-weight:400;color:#bbb}
+.ssr-detail{display:none;margin-top:12px;padding-top:12px;border-top:1px solid #ebebeb}
+.ssr.open .ssr-detail{display:block}
+.ssr-obs{font-size:13px;color:#555;margin-bottom:8px;line-height:1.6}
+.ssr-sug{font-size:13px;font-weight:600;color:#1a1a1a;background:#fef8e7;
+  border-radius:6px;padding:8px 12px;display:flex;gap:8px;align-items:flex-start}
+.ssr-sug::before{content:"💡";flex-shrink:0}
+.ssr-dismiss{display:flex;align-items:center;gap:6px;margin-top:8px;
+  font-size:11.5px;color:#888;cursor:pointer}
+.ssr-dismiss input{accent-color:#1a7a4a}
+.ssr-dismiss.resolved{color:#1a7a4a;font-weight:600}
+
+/* ── Narrative banner ───────────────────────────── */
+.nar-banner{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:10px;
+  padding:16px 20px;margin-bottom:20px;display:flex;gap:28px;flex-wrap:wrap}
+.nb-item strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;color:#818cf8;margin-bottom:3px}
+.nb-item span{font-size:14px;font-weight:700;color:#e0e7ff}
+
+/* ── Persona matrix table ───────────────────────── */
+.pm-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.pm-table th{text-align:left;padding:9px 12px;background:#fafaf8;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#888;
+  border-bottom:2px solid #e5e5e2}
+.pm-table td{padding:10px 12px;border-bottom:1px solid #f0f0ee;vertical-align:top}
+.pm-table tr:last-child td{border-bottom:none}
+.pm-persona{font-weight:700;font-size:13px;white-space:nowrap}
+.pm-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.pm-list li{font-size:12.5px;line-height:1.5;padding-left:16px;position:relative}
+.pm-right li::before{content:"✓";position:absolute;left:0;color:#1a7a4a;font-weight:700}
+.pm-miss li::before{content:"✗";position:absolute;left:0;color:#c0392b;font-weight:700}
+
+/* ── Collapsible scraped data blocks ────────────── */
+.scraped-block{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;margin-top:16px}
+.scraped-block summary{
+  padding:13px 16px;font-size:12px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.8px;color:#888;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;
+  user-select:none}
+.scraped-block summary::after{content:"▾";font-size:12px;color:#bbb;transition:transform .2s}
+.scraped-block[open] summary::after{content:"▴"}
+.scraped-body{padding:0 16px 16px}
+
+/* ── Copy rows inside scraped blocks ────────────── */
+.copy-row{padding:8px 0;border-bottom:1px solid #f0f0ee;font-size:13px}
+.copy-row:last-child{border-bottom:none}
+.copy-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
+  color:#aaa;display:block;margin-bottom:3px}
+.copy-hero{font-size:17px;font-weight:800;color:#1a1a1a;line-height:1.4}
+.chip-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{background:#f0f0ee;border-radius:99px;padding:4px 12px;font-size:12px;color:#444;font-weight:500}
+.chip.cta{background:#1a1a1a;color:#fff;font-weight:700}
+.body-item{font-size:12.5px;color:#555;padding:6px 10px;background:#f5f5f3;
+  border-radius:5px;border-left:3px solid #e5e5e2;margin-bottom:5px;line-height:1.6}
+
+/* ── Text layer insights ────────────────────────── */
+.ti-list{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.ti{padding:10px 14px;border-radius:8px;display:flex;gap:10px;align-items:flex-start}
+.ti.critical{background:#fff5f5;border:1px solid #fecaca}
+.ti.warning {background:#fffbeb;border:1px solid #fde68a}
+.ti.ok      {background:#eef8f3;border:1px solid #bbf7d0}
+.ti-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;
+  white-space:nowrap;flex-shrink:0;margin-top:2px}
+.ti.critical .ti-badge{background:#fdecea;color:#c0392b}
+.ti.warning  .ti-badge{background:#fef3e2;color:#c17d00}
+.ti.ok       .ti-badge{background:#e6f4ed;color:#1a7a4a}
+.ti-body{flex:1}
+.ti-finding{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:3px}
+.ti-detail{font-size:12px;color:#666;line-height:1.6}
+.ti-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:#aaa;margin-bottom:3px}
+.ti.dismissed{opacity:.3}
+
+/* ── Image grid ─────────────────────────────────── */
+.img-sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
+  color:#aaa;margin:14px 0 6px;padding-top:14px;border-top:1px solid #f0f0ee}
+.img-sec:first-child .img-sec-lbl{border-top:none;padding-top:0;margin-top:0}
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.img-card{border-radius:8px;overflow:hidden;border:1px solid #e5e5e2;background:#fafaf8}
+.img-card img{width:100%;display:block;object-fit:cover;max-height:130px}
+.img-lbl{padding:5px 8px;font-size:10.5px;font-weight:500;color:#777;border-top:1px solid #f0f0ee}
+
+/* ── Review grid ────────────────────────────────── */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-top:12px}
+.rv-card{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;padding:14px;
+  display:flex;flex-direction:column;gap:5px}
+.rv-head{display:flex;justify-content:space-between;align-items:center}
+.rv-stars{font-size:13px;font-weight:700;color:#c17d00}
+.rv-date{font-size:11px;color:#aaa}
+.rv-author{font-size:12px;font-weight:700;color:#444}
+.rv-title{font-size:13px;font-weight:700;color:#1a1a1a}
+.rv-text{font-size:12.5px;color:#555;line-height:1.6}
+.rv-img{width:100%;border-radius:6px;margin-top:6px;object-fit:cover;max-height:120px}
+
+/* ── RCA ────────────────────────────────────────── */
+.rca-wrap{margin-top:20px}
+.rca-hdr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#c17d00;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.rca-hdr::before{content:"⚡"}
+.rca-item{background:#fffbf0;border:1px solid #f0d080;border-radius:10px;
+  padding:14px 16px;margin-bottom:8px}
+.rca-item:last-child{margin-bottom:0}
+.rca-culprit{font-size:14px;font-weight:800;margin-bottom:4px;display:flex;
+  align-items:center;gap:8px;flex-wrap:wrap}
+.rca-evidence{font-size:12.5px;color:#666;margin-bottom:8px;font-style:italic;line-height:1.6}
+.rca-fix{font-size:13px;font-weight:600;color:#1a1a1a;background:#fff;
+  border-radius:6px;padding:9px 12px;border-left:3px solid #c17d00;line-height:1.6}
+
+/* ── Section label ──────────────────────────────── */
+.sec-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#ccc;margin:22px 0 10px;padding-top:18px;border-top:1px solid #f0f0ee}
+.sec-lbl:first-child{border-top:none;margin-top:0;padding-top:0}
+
+/* ── Ok message ─────────────────────────────────── */
+.ok-msg{background:#eef8f3;border:1px solid #a7f3d0;border-radius:8px;padding:12px 14px;
+  font-size:13px;color:#1a7a4a;font-weight:600}
+.ok-msg::before{content:"✓  "}
+
+@media(max-width:640px){
+  .score-row,.sum-grid{grid-template-columns:repeat(2,1fr)}
+  .big-score{font-size:44px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+{# ── Report header ── #}
+<div class="rh">
+  <div>
+    <h1>{{ product_name }} — PDP Audit</h1>
+    <p>Daily health check across content, visuals, narrative and reviews</p>
+  </div>
+  <div class="rh-right">{{ date }}<br>{{ results|length }} URL{% if results|length != 1 %}s{% endif %}</div>
+</div>
+
+{# ── Overall hero score ── #}
+<div class="hero-bar">
+  <div class="big-score {{ avg_status }}" id="product-avg-score">{{ avg_score }}</div>
+  <div class="hero-meta">
+    <div class="lbl">Product Health Score</div>
+    <div class="name">{{ product_name }}</div>
+  </div>
+  <div class="badge bg-{{ avg_status }}" id="product-avg-badge" style="margin-left:auto">{{ avg_status | upper }}</div>
+</div>
+
+{# ── URL pills ── #}
+{% if results|length > 1 %}
+<div class="url-switcher">
+  {% for result in results %}
+  <button class="url-pill{% if loop.first %} active{% endif %}" onclick="switchUrl({{ loop.index }},this)"
+    title="{{ result.url }}">
+    URL {{ loop.index }}: {{ result.url | replace('https://','') | truncate(50, true, '…') }}
+    <span class="up-score bg-{{ result.overall_score | score_class }}">{{ result.overall_score }}</span>
+  </button>
+  {% endfor %}
+</div>
+{% endif %}
+
+{# ══════════════════════════════════════════════════ #}
+{# PDP BLOCKS                                         #}
+{# ══════════════════════════════════════════════════ #}
+{% for result in results %}
+{% set pdp = scrape_map.get(result.url) %}
+{% set uid = loop.index %}
+{% set nm  = narrative_map.get(result.url, {}) %}
+
+<div class="pdp-block{% if loop.first %} active{% endif %}" id="pdp-{{ uid }}"
+  data-ad-base="{{ result.ad_alignment.overall }}"
+  data-reviews-base="{{ result.reviews.overall }}"
+  data-pn-base="{{ result.persona_narrative.overall }}"
+  data-copy-base="{{ result.copy_health.overall }}"
+  data-vis-base="{{ result.visual_design.overall }}">
+<div class="card">
+
+  {# Card header — URL + live score #}
+  <div class="card-hdr">
+    <a class="card-url" href="{{ result.url }}" target="_blank">{{ result.url }}</a>
+    <div class="card-hdr-right">
+      <span class="card-score {{ result.overall_score | score_class }}" id="{{ uid }}-pdp-score">{{ result.overall_score }}</span>
+      <span class="badge bg-{{ result.overall_score | score_class }}" id="{{ uid }}-pdp-badge">{{ result.status | upper }}</span>
+    </div>
+  </div>
+
+  <div class="tab-nav" id="tnav-{{ uid }}">
+    <button class="tab-btn active" onclick="switchTab('{{ uid }}','summary',this)">Summary</button>
+    <button class="tab-btn" onclick="switchTab('{{ uid }}','hygiene',this)">
+      Hygiene Check <span class="ts {{ result.copy_health.overall | score_class }}" id="{{ uid }}-tab-hygiene-score">{{ result.copy_health.overall }}</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('{{ uid }}','narrative',this)">
+      Narrative × Persona <span class="ts {{ result.persona_narrative.overall | score_class }}" id="{{ uid }}-tab-pn-score">{{ result.persona_narrative.overall }}</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('{{ uid }}','visual',this)">
+      Visual Layer <span class="ts {{ result.visual_design.overall | score_class }}" id="{{ uid }}-tab-vis-score">{{ result.visual_design.overall }}</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('{{ uid }}','copy',this)">
+      Text Layer <span class="ts {{ result.copy_health.overall | score_class }}" id="{{ uid }}-tab-copy-score">{{ result.copy_health.overall }}</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('{{ uid }}','reviews',this)">
+      Reviews &amp; Ratings <span class="ts {{ result.reviews.overall | score_class }}" id="{{ uid }}-tab-rev-score">{{ result.reviews.overall }}</span>
+    </button>
+  </div>
+
+  {# ── SUMMARY ── #}
+  <div class="tab-panel active" id="{{ uid }}-summary">
+    <div class="sum-grid">
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Hygiene</div>
+        <div class="sum-cell-val {{ result.copy_health.overall | score_class }}" id="{{ uid }}-sum-hygiene">{{ result.copy_health.overall }}</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Narrative</div>
+        <div class="sum-cell-val {{ result.persona_narrative.overall | score_class }}" id="{{ uid }}-sum-pn">{{ result.persona_narrative.overall }}</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Visual</div>
+        <div class="sum-cell-val {{ result.visual_design.overall | score_class }}" id="{{ uid }}-sum-visual">{{ result.visual_design.overall }}</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Reviews</div>
+        <div class="sum-cell-val {{ result.reviews.overall | score_class }}" id="{{ uid }}-sum-reviews">{{ result.reviews.overall }}</div>
+      </div>
+      <div class="sum-cell dark">
+        <div class="sum-cell-lbl">Overall</div>
+        <div class="sum-cell-val" id="{{ uid }}-sum-overall">{{ result.overall_score }}</div>
+      </div>
+    </div>
+
+    {% if result.rca %}
+    <div class="rca-wrap">
+      <div class="rca-hdr">Root Cause Analysis — {{ result.rca|length }} issue{% if result.rca|length != 1 %}s{% endif %}</div>
+      {% for item in result.rca %}
+      <div class="rca-item">
+        <div class="rca-culprit">
+          {{ item.culprit_score }}
+          <span class="badge bg-{{ item.score_value | score_class }}" style="font-size:11px">{{ item.score_value }}</span>
+        </div>
+        <div class="rca-evidence">{{ item.evidence }}</div>
+        <div class="rca-fix">{{ item.fix }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="ok-msg" style="margin-top:8px">All scores above threshold — no root cause analysis needed.</div>
+    {% endif %}
+  </div>
+
+  {# ── HYGIENE CHECK ── #}
+  <div class="tab-panel" id="{{ uid }}-hygiene">
+
+    <div class="score-row"
+      data-uid="{{ uid }}"
+      data-claims-base="{{ result.copy_health.claims_alignment.score }}"
+      data-brand-base="{{ result.copy_health.brand_guidelines.score }}"
+      data-spell-base="{{ result.copy_health.spell_grammar.score }}"
+      data-overall-base="{{ result.copy_health.overall }}">
+      <div class="sc">
+        <div class="sc-lbl">Claims</div>
+        <div class="sc-val {{ result.copy_health.claims_alignment.score | score_class }}" id="{{ uid }}-sc-claims">
+          {{ result.copy_health.claims_alignment.score }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.copy_health.claims_alignment.score | score_class }}"
+          id="{{ uid }}-bar-claims" style="width:{{ result.copy_health.claims_alignment.score | score_bar }}%"></div></div>
+      </div>
+      <div class="sc">
+        <div class="sc-lbl">Brand Guidelines</div>
+        <div class="sc-val {{ result.copy_health.brand_guidelines.score | score_class }}" id="{{ uid }}-sc-brand">
+          {{ result.copy_health.brand_guidelines.score }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.copy_health.brand_guidelines.score | score_class }}"
+          id="{{ uid }}-bar-brand" style="width:{{ result.copy_health.brand_guidelines.score | score_bar }}%"></div></div>
+      </div>
+      <div class="sc">
+        <div class="sc-lbl">Spell & Grammar</div>
+        <div class="sc-val {{ result.copy_health.spell_grammar.score | score_class }}" id="{{ uid }}-sc-spell">
+          {{ result.copy_health.spell_grammar.score }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.copy_health.spell_grammar.score | score_class }}"
+          id="{{ uid }}-bar-spell" style="width:{{ result.copy_health.spell_grammar.score | score_bar }}%"></div></div>
+      </div>
+      <div class="sc total">
+        <div class="sc-lbl">Overall Hygiene</div>
+        <div class="sc-val {{ result.copy_health.overall | score_class }}" id="{{ uid }}-sc-overall">
+          {{ result.copy_health.overall }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.copy_health.overall | score_class }}"
+          id="{{ uid }}-bar-overall" style="width:{{ result.copy_health.overall | score_bar }}%"></div></div>
+      </div>
+    </div>
+
+    {# Hygiene sub-tab pills #}
+    {% set rc  = result.copy_health.claims_flags | selectattr('status','eq','flagged') | list %}
+    {% set wc  = result.copy_health.claims_flags | selectattr('status','eq','warning') | list %}
+    {% set okc = result.copy_health.claims_flags | selectattr('status','eq','ok')      | list %}
+    {% set claims_issues = rc|length + wc|length %}
+    {% set brand_issues  = result.copy_health.brand_flags|length %}
+    {% set spell_issues  = result.copy_health.flagged_errors|length %}
+
+    <div class="h-sub-nav">
+      <button class="h-sub active" onclick="switchHygieneSub('{{ uid }}','claims',this)">
+        Claims
+        {% if claims_issues %}<span class="fi-src claims">{{ claims_issues }} issue{% if claims_issues != 1 %}s{% endif %}</span>{% endif %}
+        {% if okc %}<span class="fi-src" style="background:#e6f4ed;color:#1a7a4a">{{ okc|length }} ok</span>{% endif %}
+      </button>
+      <button class="h-sub" onclick="switchHygieneSub('{{ uid }}','brand',this)">
+        Brand Guidelines
+        {% if brand_issues %}<span class="fi-src brand">{{ brand_issues }} issue{% if brand_issues != 1 %}s{% endif %}</span>{% endif %}
+      </button>
+      <button class="h-sub" onclick="switchHygieneSub('{{ uid }}','spell',this)">
+        Spell Check
+        {% if spell_issues %}<span class="fi-src spell">{{ spell_issues }} error{% if spell_issues != 1 %}s{% endif %}</span>{% endif %}
+      </button>
+    </div>
+
+    {# ── Claims panel ── #}
+    <div id="{{ uid }}-hygiene-claims" class="h-panel active">
+      {% if rc %}
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">{{ rc|length }}</span></div>
+      {% for flag in rc %}
+      <div class="fi fi-flagged" data-uid="{{ uid }}" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'{{ uid }}','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"{{ flag.text }}"</span>
+          <span class="fi-reason">{{ flag.reason }}</span>
+        </span></label>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% if wc %}
+      <div class="flag-section-lbl">⚠️ Warnings <span class="fcnt attention">{{ wc|length }}</span></div>
+      {% for flag in wc %}
+      <div class="fi fi-warning" data-uid="{{ uid }}" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'{{ uid }}','claims')">
+        <span class="fi-ico">⚠️</span>
+        <span class="fi-body">
+          <span class="fi-text">"{{ flag.text }}"</span>
+          <span class="fi-reason">{{ flag.reason }}</span>
+        </span></label>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% if okc %}
+      <div class="flag-section-lbl">✅ Verified <span class="fcnt healthy">{{ okc|length }}</span></div>
+      {% for flag in okc %}
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"{{ flag.text }}"</span>
+          <span class="fi-reason">{{ flag.reason }}</span>
+        </span>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% if not rc and not wc and not okc %}
+      <div class="ok-msg">No claims issues found.</div>
+      {% endif %}
+    </div>
+
+    {# ── Brand Guidelines panel ── #}
+    <div id="{{ uid }}-hygiene-brand" class="h-panel">
+      {% if result.copy_health.brand_flags %}
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">{{ result.copy_health.brand_flags|length }}</span></div>
+      {% for f in result.copy_health.brand_flags %}
+      <div class="fi fi-flagged" data-uid="{{ uid }}" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'{{ uid }}','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">{{ f }}</span>
+        </span></label>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="ok-msg">No brand guideline violations found.</div>
+      {% endif %}
+    </div>
+
+    {# ── Spell & Grammar panel ── #}
+    <div id="{{ uid }}-hygiene-spell" class="h-panel">
+      {% if result.copy_health.flagged_errors %}
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">{{ result.copy_health.flagged_errors|length }}</span></div>
+      {% for e in result.copy_health.flagged_errors %}
+      <div class="fi fi-flagged" data-uid="{{ uid }}" data-cat="spell">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'{{ uid }}','spell')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">{{ e }}</span>
+        </span></label>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="ok-msg">No spelling or grammar errors found.</div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  {# ── NARRATIVE × PERSONA ── #}
+  <div class="tab-panel" id="{{ uid }}-narrative">
+
+    <div class="nar-banner">
+      <div class="nb-item">
+        <strong>Configured Narrative</strong>
+        <span>{{ nm.get('narrative') or result.persona_narrative.configured_narrative or '—' }}</span>
+      </div>
+      <div class="nb-item">
+        <strong>Target Persona</strong>
+        <span>{{ nm.get('persona') or result.persona_narrative.configured_persona or '—' }}</span>
+      </div>
+      <div class="nb-item">
+        <strong>Source</strong>
+        <span>{{ nm.get('signal','config.yaml') }}</span>
+      </div>
+    </div>
+
+    {# Overall + sub-scores #}
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="{{ uid }}" data-tab="pn" data-base="{{ result.persona_narrative.overall }}">
+      <div class="sc total">
+        <div class="sc-lbl">Narrative Execution Score</div>
+        <div class="sc-val {{ result.persona_narrative.overall | score_class }}" id="{{ uid }}-sc-pn">
+          {{ result.persona_narrative.overall }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.persona_narrative.overall | score_class }}"
+          id="{{ uid }}-bar-pn" style="width:{{ result.persona_narrative.overall | score_bar }}%"></div></div>
+      </div>
+    </div>
+
+    <div class="ssr-list" style="margin-top:16px">
+      {% for key, sub, wt in [
+        ('hero',     result.persona_narrative.hero_banner,       0.20),
+        ('carousel', result.persona_narrative.carousel_flow,     0.25),
+        ('banner',   result.persona_narrative.banner_alignment,  0.15),
+        ('arc',      result.persona_narrative.page_narrative_arc,0.25),
+        ('cta',      result.persona_narrative.cta_language,      0.15)
+      ] %}
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="{{ key }}" data-sub-base="{{ sub.score }}"
+        data-weight="{{ wt }}" data-tab-ref="pn">
+        <div class="ssr-top">
+          <div class="ssr-name">{{ sub.name }}</div>
+          <div class="ssr-score {{ sub.score | score_class }}" id="{{ uid }}-ssr-pn-{{ key }}">{{ sub.score }}<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f {{ sub.score | score_class }}"
+          style="width:{{ sub.score | score_bar }}%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">{{ sub.observation }}</div>
+          {% if sub.suggestion %}
+          <div class="ssr-sug">{{ sub.suggestion }}</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'{{ uid }}','pn')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {# Persona matrix #}
+    {% if result.persona_narrative.persona_matrix %}
+    <div class="sec-lbl">Persona Matrix — what's working vs what's missing</div>
+    <table class="pm-table">
+      <thead>
+        <tr>
+          <th style="width:120px">Persona</th>
+          <th>Doing Right ✓</th>
+          <th>Missing ✗</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in result.persona_narrative.persona_matrix %}
+        <tr>
+          <td><span class="pm-persona">{{ row.persona }}</span></td>
+          <td>
+            <ul class="pm-list pm-right">
+              {% for item in row.doing_right %}<li>{{ item }}</li>{% endfor %}
+              {% if not row.doing_right %}<li style="color:#aaa;font-style:italic">Nothing identified</li>{% endif %}
+            </ul>
+          </td>
+          <td>
+            <ul class="pm-list pm-miss">
+              {% for item in row.missing %}<li>{{ item }}</li>{% endfor %}
+              {% if not row.missing %}<li style="color:#1a7a4a;font-style:italic">Nothing missing</li>{% endif %}
+            </ul>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if result.persona_narrative.flagged_issues %}
+    <div class="sec-lbl">Flagged Issues</div>
+    {% for f in result.persona_narrative.flagged_issues %}
+    <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">{{ f }}</span></span>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+  </div>
+
+  {# ── VISUAL LAYER ── #}
+  <div class="tab-panel" id="{{ uid }}-visual">
+
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="{{ uid }}" data-tab="vis" data-base="{{ result.visual_design.overall }}">
+      <div class="sc total">
+        <div class="sc-lbl">Overall Visual Score</div>
+        <div class="sc-val {{ result.visual_design.overall | score_class }}" id="{{ uid }}-sc-vis">
+          {{ result.visual_design.overall }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.visual_design.overall | score_class }}"
+          id="{{ uid }}-bar-vis" style="width:{{ result.visual_design.overall | score_bar }}%"></div></div>
+      </div>
+    </div>
+
+    {# Images collapsible #}
+    {% if pdp and pdp.zeus_sourced and pdp.zeus_images %}
+    <details class="scraped-block" open>
+      <summary>Images from Zeus CMS ({{ pdp.zeus_images|length }} total)
+        <span style="font-size:10px;color:#1a7a4a;font-weight:700;margin-left:8px">● Zeus CDN</span>
+      </summary>
+      <div class="scraped-body">
+        {% set positions = pdp.zeus_images | map(attribute='position') | unique | list %}
+        {% for pos in positions %}
+        {% set pos_imgs = pdp.zeus_images | selectattr('position','eq',pos) | list %}
+        {% if pos_imgs | selectattr('local_path') | list %}
+        <div class="img-sec">
+          <div class="img-sec-lbl">{{ pos | replace('_',' ') }} ({{ pos_imgs|length }})</div>
+          <div class="img-grid">
+            {% for img in pos_imgs %}{% if img.local_path %}
+            <div class="img-card">
+              <img src="file://{{ img.local_path }}" alt="{{ img.label }}" loading="lazy">
+              <div class="img-lbl">{{ img.label or img.widget_id }}</div>
+            </div>
+            {% endif %}{% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </details>
+    {% elif pdp and pdp.carousels %}
+    <details class="scraped-block" open>
+      <summary>Screenshots ({{ pdp.carousels|length }} slides + {{ pdp.banners|length }} banners)</summary>
+      <div class="scraped-body">
+        <div class="img-grid">
+          {% for slide in pdp.carousels %}{% if slide.screenshot_path %}
+          <div class="img-card">
+            <img src="file://{{ slide.screenshot_path }}" alt="Slide {{ slide.index }}" loading="lazy">
+            <div class="img-lbl">Slide {{ slide.index }}{% if slide.copy %}: {{ slide.copy[:35] }}{% endif %}</div>
+          </div>
+          {% endif %}{% endfor %}
+        </div>
+      </div>
+    </details>
+    {% endif %}
+
+    {# Visual sub-scores #}
+    <div class="sec-lbl">Visual Scores — click to expand</div>
+    <div class="ssr-list">
+      {% for key, sub, wt in [
+        ('human',      result.visual_design.human_presence,        0.20),
+        ('proof',      result.visual_design.proof_prominence,      0.20),
+        ('ingredient', result.visual_design.ingredient_imagery,    0.15),
+        ('before',     result.visual_design.before_after,          0.15),
+        ('lifestyle',  result.visual_design.lifestyle_shots,       0.15),
+        ('hierarchy',  result.visual_design.visual_hierarchy_brand,0.15)
+      ] %}
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="{{ key }}" data-sub-base="{{ sub.score }}"
+        data-weight="{{ wt }}" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">{{ sub.name }}</div>
+          <div class="ssr-score {{ sub.score | score_class }}" id="{{ uid }}-ssr-vis-{{ key }}">{{ sub.score }}<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f {{ sub.score | score_class }}"
+          style="width:{{ sub.score | score_bar }}%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">{{ sub.observation }}</div>
+          {% if sub.suggestion %}
+          <div class="ssr-sug">{{ sub.suggestion }}</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'{{ uid }}','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if result.visual_design.flagged_issues %}
+    <div class="sec-lbl">Flagged Issues</div>
+    {% for f in result.visual_design.flagged_issues %}
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">{{ f }}</span></span>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+  </div>
+
+  {# ── COPY LAYER ── #}
+  <div class="tab-panel" id="{{ uid }}-copy">
+
+    {# Copy insight score — updates as you dismiss items #}
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="{{ uid }}" data-tab="copy" data-base="{{ result.copy_health.overall }}">
+      <div class="sc total">
+        <div class="sc-lbl">Copy Insight Score</div>
+        <div class="sc-val {{ result.copy_health.overall | score_class }}" id="{{ uid }}-sc-copy">
+          {{ result.copy_health.overall }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.copy_health.overall | score_class }}"
+          id="{{ uid }}-bar-copy" style="width:{{ result.copy_health.overall | score_bar }}%"></div></div>
+      </div>
+    </div>
+
+    {# Text layer insights — the actual analysis #}
+    {% if result.copy_health.text_insights %}
+    {% set crit_insights = result.copy_health.text_insights | selectattr('severity','eq','critical') | list %}
+    {% set warn_insights = result.copy_health.text_insights | selectattr('severity','eq','warning') | list %}
+    {% set ok_insights   = result.copy_health.text_insights | selectattr('severity','eq','ok')       | list %}
+
+    {% if crit_insights %}
+    <div class="flag-section-lbl" style="margin-top:16px">❌ Critical Findings
+      <span class="fcnt critical">{{ crit_insights|length }}</span></div>
+    <div class="ti-list">
+      {% for t in crit_insights %}
+      <div class="ti critical" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'{{ uid }}','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">{{ t.category }}</span>
+            <div class="ti-body">
+              <div class="ti-finding">{{ t.finding }}</div>
+              <div class="ti-detail">{{ t.detail }}</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if warn_insights %}
+    <div class="flag-section-lbl">⚠️ Warnings
+      <span class="fcnt attention">{{ warn_insights|length }}</span></div>
+    <div class="ti-list">
+      {% for t in warn_insights %}
+      <div class="ti warning" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'{{ uid }}','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">{{ t.category }}</span>
+            <div class="ti-body">
+              <div class="ti-finding">{{ t.finding }}</div>
+              <div class="ti-detail">{{ t.detail }}</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if ok_insights %}
+    <div class="flag-section-lbl">✅ Strengths
+      <span class="fcnt healthy">{{ ok_insights|length }}</span></div>
+    <div class="ti-list">
+      {% for t in ok_insights %}
+      <div class="ti ok">
+        <span class="ti-badge">{{ t.category }}</span>
+        <div class="ti-body">
+          <div class="ti-finding">{{ t.finding }}</div>
+          <div class="ti-detail">{{ t.detail }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% else %}
+    <p style="font-size:13px;color:#aaa;margin-bottom:16px">No text insights available for this run.</p>
+    {% endif %}
+
+    {# All scraped copy — collapsible #}
+    {% if pdp %}
+    <details class="scraped-block" style="margin-top:20px">
+      <summary>All scraped copy — headline · subheads · CTAs · body</summary>
+      <div class="scraped-body">
+
+        {% if pdp.headline %}
+        <div class="copy-row">
+          <span class="copy-lbl">Headline</span>
+          <div class="copy-hero">{{ pdp.headline }}</div>
+        </div>
+        {% endif %}
+
+        {% if pdp.meta_title %}
+        <div class="copy-row">
+          <span class="copy-lbl">Meta Title</span>{{ pdp.meta_title }}
+        </div>
+        {% endif %}
+
+        {% if pdp.meta_description %}
+        <div class="copy-row">
+          <span class="copy-lbl">Meta Description</span>{{ pdp.meta_description }}
+        </div>
+        {% endif %}
+
+        {% if pdp.cta_texts %}
+        <div class="copy-row">
+          <span class="copy-lbl">CTAs</span>
+          <div class="chip-wrap">
+            {% for cta in pdp.cta_texts %}<span class="chip cta">{{ cta }}</span>{% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if pdp.subheads %}
+        <div class="copy-row">
+          <span class="copy-lbl">Subheads ({{ pdp.subheads|length }})</span>
+          <div class="chip-wrap">
+            {% for s in pdp.subheads %}<span class="chip">{{ s }}</span>{% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if pdp.body_copy %}
+        <div class="copy-row">
+          <span class="copy-lbl">Body Copy ({{ pdp.body_copy|length }} blocks)</span>
+          <div style="margin-top:6px">
+            {% for block in pdp.body_copy[:10] %}
+            <div class="body-item">{{ block }}</div>
+            {% endfor %}
+            {% if pdp.body_copy|length > 10 %}
+            <details style="margin-top:4px">
+              <summary style="font-size:11.5px;color:#aaa;cursor:pointer;padding:4px 8px">
+                + {{ pdp.body_copy|length - 10 }} more blocks
+              </summary>
+              {% for block in pdp.body_copy[10:] %}
+              <div class="body-item">{{ block }}</div>
+              {% endfor %}
+            </details>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </details>
+    {% endif %}
+
+  </div>
+
+  {# ── REVIEWS ── #}
+  <div class="tab-panel" id="{{ uid }}-reviews">
+
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="{{ uid }}" data-tab="rev" data-base="{{ result.reviews.overall }}">
+      <div class="sc total">
+        <div class="sc-lbl">Reviews Score</div>
+        <div class="sc-val {{ result.reviews.overall | score_class }}" id="{{ uid }}-sc-rev">
+          {{ result.reviews.overall }}<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f {{ result.reviews.overall | score_class }}"
+          id="{{ uid }}-bar-rev" style="width:{{ result.reviews.overall | score_bar }}%"></div></div>
+      </div>
+    </div>
+
+    <div class="ssr-list" style="margin-top:16px">
+      {% for key, sub, wt in [
+        ('freshness', result.reviews.freshness,            0.25),
+        ('rating',    result.reviews.rating_distribution,  0.25),
+        ('theme',     result.reviews.theme_alignment,      0.25),
+        ('negative',  result.reviews.negative_handling,    0.25)
+      ] %}
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="{{ key }}" data-sub-base="{{ sub.score }}"
+        data-weight="{{ wt }}" data-tab-ref="rev">
+        <div class="ssr-top">
+          <div class="ssr-name">{{ sub.name }}</div>
+          <div class="ssr-score {{ sub.score | score_class }}" id="{{ uid }}-ssr-rev-{{ key }}">{{ sub.score }}<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f {{ sub.score | score_class }}"
+          style="width:{{ sub.score | score_bar }}%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">{{ sub.observation }}</div>
+          {% if sub.suggestion %}
+          <div class="ssr-sug">{{ sub.suggestion }}</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'{{ uid }}','rev')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if pdp and pdp.reviews %}
+    <details class="scraped-block" style="margin-top:16px" open>
+      <summary>Customer Reviews from Zeus ({{ pdp.reviews|length }})</summary>
+      <div class="scraped-body">
+        <div class="review-grid">
+          {% for r in pdp.reviews %}
+          <div class="rv-card">
+            <div class="rv-head">
+              <div class="rv-stars">{% if r.rating %}★ {{ r.rating }}{% else %}—{% endif %}</div>
+              <div class="rv-date">{{ r.date or '' }}</div>
+            </div>
+            {% if r.author %}<div class="rv-author">{{ r.author }}</div>{% endif %}
+            {% if r.title %}<div class="rv-title">{{ r.title }}</div>{% endif %}
+            <div class="rv-text">{{ r.text[:400] }}{% if r.text|length > 400 %}…{% endif %}</div>
+            {% if r.image_url %}
+            <img class="rv-img" src="{{ r.image_url }}" alt="review image" loading="lazy">
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </details>
+    {% endif %}
+
+    {% if result.reviews.flagged_issues %}
+    <div class="sec-lbl">Flagged Issues</div>
+    {% for f in result.reviews.flagged_issues %}
+    <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">{{ f }}</span></span>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+  </div>
+
+</div>{# /card #}
+</div>{# /pdp-block #}
+{% endfor %}
+
+</div>{# /page #}
+<script>
+/* ═══════════════════════════════════════════════════
+   SHARED HELPERS
+═══════════════════════════════════════════════════ */
+function cls(v) { return v >= 8 ? 'healthy' : v >= 6.5 ? 'attention' : 'critical'; }
+function fmt(v) { return (+v).toFixed(1); }
+function pct(v) { return Math.round(v * 10) + '%'; }
+function setScore(id, v) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var base = el.className.replace(/\s*(healthy|attention|critical)\s*/g,' ').trim();
+  el.className = base + ' ' + cls(v);
+  el.innerHTML = fmt(v) + '<span class="dn">/10</span>';
+}
+function setBar(id, v) {
+  var el = document.getElementById(id);
+  if (el) { el.className = 'bar-f ' + cls(v); el.style.width = pct(v); }
+}
+function getNum(id) {
+  var el = document.getElementById(id);
+  return el ? (parseFloat(el.textContent) || 0) : null;
+}
+
+/* ═══════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════ */
+function switchUrl(idx, btn) {
+  document.querySelectorAll('.url-pill').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.pdp-block').forEach(function(b){b.classList.remove('active')});
+  if (btn) btn.classList.add('active');
+  var block = document.getElementById('pdp-' + idx);
+  if (block) block.classList.add('active');
+}
+function switchTab(uid, tab, btn) {
+  var nav = document.getElementById('tnav-' + uid);
+  if (nav) nav.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  if (btn) btn.classList.add('active');
+  var block = document.getElementById('pdp-' + uid);
+  if (block) block.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+  var panel = document.getElementById(uid + '-' + tab);
+  if (panel) panel.classList.add('active');
+}
+function toggleSsr(row) { row.classList.toggle('open'); }
+
+/* ── Hygiene sub-tab switcher ── */
+function switchHygieneSub(uid, sub, btn) {
+  var pdpBlock = document.getElementById('pdp-' + uid);
+  if (!pdpBlock) return;
+  pdpBlock.querySelectorAll('.h-sub').forEach(function(b){b.classList.remove('active')});
+  if (btn) btn.classList.add('active');
+  ['claims','brand','spell'].forEach(function(s) {
+    var p = document.getElementById(uid + '-hygiene-' + s);
+    if (p) p.style.display = (s === sub) ? 'block' : 'none';
+  });
+}
+
+/* ═══════════════════════════════════════════════════
+   HYGIENE — flag dismiss → recalc claims/brand/spell → overall → propagate
+═══════════════════════════════════════════════════ */
+function dismissFlag(cb, uid, cat) {
+  cb.closest('.fi').classList.toggle('dismissed', cb.checked);
+  recalcHygiene(uid);
+}
+function recalcHygiene(uid) {
+  var row = document.querySelector('.score-row[data-uid="' + uid + '"]');
+  if (!row) return;
+  var base = {
+    claims: parseFloat(row.getAttribute('data-claims-base')),
+    brand:  parseFloat(row.getAttribute('data-brand-base')),
+    spell:  parseFloat(row.getAttribute('data-spell-base'))
+  };
+  var pdp = document.getElementById('pdp-' + uid);
+  var scores = {};
+  ['claims','brand','spell'].forEach(function(cat) {
+    var all  = pdp.querySelectorAll('.fi[data-cat="' + cat + '"]');
+    var gone = pdp.querySelectorAll('.fi[data-cat="' + cat + '"].dismissed').length;
+    scores[cat] = all.length ? Math.min(10, base[cat] + gone*(10-base[cat])/all.length) : base[cat];
+    setScore(uid+'-sc-'+cat,  scores[cat]);
+    setBar(  uid+'-bar-'+cat, scores[cat]);
+  });
+  var overall = Math.round((scores.claims*0.4 + scores.brand*0.3 + scores.spell*0.3)*10)/10;
+  setScore(uid+'-sc-overall',  overall);
+  setBar(  uid+'-bar-overall', overall);
+  updateTabBadge(uid, 'hygiene', overall);
+  updateSummaryCell(uid, 'hygiene', overall);
+  recalcPDPOverall(uid);
+}
+
+/* ═══════════════════════════════════════════════════
+   SSR SUGGESTION DISMISS → sub-score → tab overall → PDP overall
+   Narrative, Visual, Reviews ssr rows
+═══════════════════════════════════════════════════ */
+function dismissSsrSug(evt, label, uid, tab) {
+  evt.stopPropagation();
+  var cb  = label.querySelector('input');
+  var det = label.closest('.ssr-detail');
+  var sug = det ? det.querySelector('.ssr-sug') : null;
+  if (cb.checked) {
+    if (sug) { sug.style.opacity='0.35'; sug.style.textDecoration='line-through'; }
+    label.classList.add('resolved');
+    label.lastChild.textContent = ' Marked as resolved — untick to restore';
+  } else {
+    if (sug) { sug.style.opacity='1'; sug.style.textDecoration='none'; }
+    label.classList.remove('resolved');
+    label.lastChild.textContent = ' Mark suggestion as resolved / not applicable';
+  }
+  /* bump the specific sub-score by 1.5 (hard cap 10) */
+  var ssr  = label.closest('.ssr');
+  var base = parseFloat(ssr.getAttribute('data-sub-base') || '0');
+  var newSub = cb.checked ? 10 : base;  // resolved = this dimension is fixed → 10
+  ssr.setAttribute('data-current-sub', newSub);
+  var ssrScEl = ssr.querySelector('.ssr-score');
+  if (ssrScEl) {
+    ssrScEl.className = 'ssr-score ' + cls(newSub);
+    ssrScEl.innerHTML = fmt(newSub) + '<span class="dn">/10</span>';
+  }
+  recalcTabFromSsrs(uid, tab);
+}
+
+/* Recalculate tab overall from its ssr weighted sub-scores + flag bonus */
+function recalcTabFromSsrs(uid, tab) {
+  var panelMap = {pn:'narrative', vis:'visual', rev:'reviews'};
+  var panel = document.getElementById(uid + '-' + (panelMap[tab] || tab));
+  if (!panel) return;
+  var weighted = 0;
+  panel.querySelectorAll('.ssr[data-weight]').forEach(function(s) {
+    var w  = parseFloat(s.getAttribute('data-weight') || '0');
+    var sc = parseFloat(s.getAttribute('data-current-sub') || s.getAttribute('data-sub-base') || '0');
+    weighted += sc * w;
+  });
+  /* flag-dismissal bonus (up to +1.0 on top) */
+  var pdp  = document.getElementById('pdp-' + uid);
+  var allF = pdp ? pdp.querySelectorAll('.fi[data-tab="'+tab+'"]') : [];
+  var disF = pdp ? pdp.querySelectorAll('.fi[data-tab="'+tab+'"].dismissed') : [];
+  var flagBonus = allF.length ? (disF.length / allF.length) * 1.0 : 0;
+  var s = Math.min(10, weighted + flagBonus);
+  setScore(uid+'-sc-'+tab,  s);
+  setBar(  uid+'-bar-'+tab, s);
+  updateTabBadge(uid, tab, s);
+  updateSummaryCell(uid, tab, s);
+  recalcPDPOverall(uid);
+}
+
+/* Flag dismiss for pn / vis / rev / copy tabs */
+function dismissTabFlag(cb, uid, tab) {
+  var container = cb.closest('.fi') || cb.closest('.ti');
+  if (container) container.classList.toggle('dismissed', cb.checked);
+  var panelMap = {pn:'narrative', vis:'visual', rev:'reviews'};
+  var pname = panelMap[tab];
+  var hasSSR = pname && document.getElementById(uid+'-'+pname) &&
+               document.getElementById(uid+'-'+pname).querySelector('.ssr[data-weight]');
+  if (hasSSR) {
+    recalcTabFromSsrs(uid, tab);
+  } else {
+    /* copy tab: simple bump on base score */
+    var pdp = document.getElementById('pdp-' + uid);
+    var scoreRow = pdp ? pdp.querySelector('.score-row[data-tab="'+tab+'"]') : null;
+    if (!scoreRow) return;
+    var base  = parseFloat(scoreRow.getAttribute('data-base'));
+    var isSel = '.ti[data-tab="copy"]';
+    var all  = pdp.querySelectorAll(isSel);
+    var gone = pdp.querySelectorAll(isSel+'.dismissed').length;
+    var s = all.length ? Math.min(10, base + gone*(10-base)/all.length) : base;
+    setScore(uid+'-sc-copy',  s);
+    setBar(  uid+'-bar-copy', s);
+    updateTabBadge(uid, 'copy', s);
+    recalcPDPOverall(uid);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   PDP OVERALL — weighted: rev×0.15 + pn×0.30 + copy×0.15 + vis×0.30 + ad×0.10
+═══════════════════════════════════════════════════ */
+function recalcPDPOverall(uid) {
+  var pdp = document.getElementById('pdp-' + uid);
+  if (!pdp) return;
+  function live(scId, attr) {
+    var v = getNum(scId);
+    return v !== null ? v : parseFloat(pdp.getAttribute(attr) || '0');
+  }
+  var rev  = live(uid+'-sc-rev',     'data-reviews-base');
+  var pn   = live(uid+'-sc-pn',      'data-pn-base');
+  var copy = live(uid+'-sc-overall', 'data-copy-base');
+  var vis  = live(uid+'-sc-vis',     'data-vis-base');
+  var ad   = parseFloat(pdp.getAttribute('data-ad-base') || '0');
+  var overall = Math.round((rev*0.15 + pn*0.30 + copy*0.15 + vis*0.30 + ad*0.10) * 100) / 100;
+  /* card header */
+  var pdpScEl = document.getElementById(uid+'-pdp-score');
+  var pdpBgEl = document.getElementById(uid+'-pdp-badge');
+  if (pdpScEl) { pdpScEl.className = 'card-score '+cls(overall); pdpScEl.textContent = overall.toFixed(2); }
+  if (pdpBgEl) { pdpBgEl.className = 'badge bg-'+cls(overall);   pdpBgEl.textContent = cls(overall).toUpperCase(); }
+  /* URL pill score */
+  var pillSc = document.getElementById(uid+'-pill-score');
+  if (pillSc) { pillSc.className = 'up-score bg-'+cls(overall); pillSc.textContent = fmt(overall); }
+  /* summary overall cell */
+  var sumOv = document.getElementById(uid+'-sum-overall');
+  if (sumOv) { sumOv.textContent = overall.toFixed(2); }
+  recalcProductOverall();
+}
+
+/* ═══════════════════════════════════════════════════
+   PRODUCT OVERALL — average of all PDP overall scores
+═══════════════════════════════════════════════════ */
+function recalcProductOverall() {
+  var total = 0, count = 0;
+  document.querySelectorAll('.pdp-block').forEach(function(b) {
+    var uid = b.id.replace('pdp-','');
+    var el  = document.getElementById(uid+'-pdp-score');
+    if (el) { total += parseFloat(el.textContent) || 0; count++; }
+  });
+  if (!count) return;
+  var avg = total / count;
+  var heroSc = document.getElementById('product-avg-score');
+  var heroBg = document.getElementById('product-avg-badge');
+  if (heroSc) { heroSc.className = 'big-score '+cls(avg); heroSc.textContent = fmt(avg); }
+  if (heroBg) { heroBg.className = 'badge bg-'+cls(avg);  heroBg.textContent = cls(avg).toUpperCase(); }
+}
+
+/* ═══════════════════════════════════════════════════
+   HELPERS — update tab badge + summary cell
+═══════════════════════════════════════════════════ */
+function updateTabBadge(uid, tab, score) {
+  var map = {hygiene:'hygiene', pn:'pn', vis:'vis', rev:'rev', copy:'copy'};
+  var el  = document.getElementById(uid+'-tab-'+(map[tab]||tab)+'-score');
+  if (el) { el.className = 'ts '+cls(score); el.textContent = fmt(score); }
+}
+function updateSummaryCell(uid, tab, score) {
+  var cellMap = {hygiene:'hygiene', pn:'pn', vis:'visual', rev:'reviews'};
+  var cid = cellMap[tab];
+  if (!cid) return;
+  var el = document.getElementById(uid+'-sum-'+cid);
+  if (el) { el.className = 'sum-cell-val '+cls(score); el.textContent = fmt(score); }
+}
+</script>
+</body>
+</html>

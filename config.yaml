@@ -1,0 +1,98 @@
+products:
+  - name: "Shilajit Gummies"
+    personas:
+      - "Tejas"
+      - "Aakash"
+      - "Fitness Buyer"
+    narratives:
+      - "Product First"
+      - "Daily Energy"
+      - "Zero Added Sugar"
+      - "Pure & Natural / Ingredients"
+      - "Summer"
+    urls:
+      - url: "https://manmatters.com/dp/shilajit-gummies/2024397"
+        narrative: "Product First"
+        persona: "Tejas"
+      - url: "https://manmatters.com/dp/2024503"
+        narrative: "Daily Energy"
+        persona: "Tejas"
+    pdfs:
+      persona: "inputs/pdfs/persona.pdf"
+      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+      product_brief: "inputs/pdfs/product_brief.docx"
+      narrative: "inputs/pdfs/narrative.pdf"   # optional — add when available
+
+scraper:
+  reviews_limit: 50
+  screenshot_width: 1440
+  screenshot_height: 900
+  # Text content (headline, subheads, body copy, CTAs) is extracted by Claude
+  # from a structured element dump — no selectors needed here.
+  #
+  # Review selectors are tried in priority order inside text_scraper.py.
+  # Add a site-specific override here if the multi-selector fallback misses reviews.
+  review_item_override: ""     # e.g. ".my-custom-review-class" — leave empty to use defaults
+  review_text_override: ""
+
+google_sheets:
+  sheet_id: "1FhU5tkfTREdeVlMjyIdqhyaTIdeBoSZczQ2rTd2B-KI"
+
+  ads_tab:
+    name: "PWDD"                   # Product wise, date wise ad performance
+    header_row: 43                 # Ads section header is at row 43
+    top_n: 30
+    filter_cell: "A2"              # Product dropdown cell
+    # Columns exactly as they appear in row 43:
+    # Ads | Spends | NCs | CAC | AOV | ROAS | Prepaid % | CTR |
+    # CPC | CPM | Hook Rate | ATC % | Conv. % | Ranking
+    # V1 uses: Conv. % + ATC %
+
+  url_tab:
+    name: "URL"                    # Product wise PDP performance
+    header_row: 4                  # URL section header is at row 4
+    filter_cell: "A2"              # Product dropdown cell
+    # Columns exactly as they appear in row 4:
+    # URL | Spends | NCs | CAC | AOV | ROAS | Prepaid % | CTR |
+    # CPC | CPM | ATC % | Conv. % | Spends % | NCs %
+    # V1 uses: Conv. % + ATC %
+
+scoring:
+  target_score: 8.0
+  weights:
+    reviews: 0.15
+    persona_narrative: 0.30
+    copy_health: 0.15
+    visual_design: 0.30
+    ad_pdp_alignment: 0.10
+  persona_narrative_weights:
+    hero_banner: 0.20
+    carousel_flow: 0.25
+    banner_alignment: 0.15
+    page_narrative_arc: 0.25
+    cta_language: 0.15
+  visual_design_weights:
+    human_presence: 0.20
+    proof_prominence: 0.20
+    ingredient_imagery: 0.15
+    before_after: 0.15
+    lifestyle_shots: 0.15
+    visual_hierarchy_brand: 0.15
+  rca_threshold: 8.0
+  bands:
+    healthy: 8.0
+    attention: 6.5
+    # below 6.5 = critical
+
+zeus:
+  # When ZEUS_API_URL + ZEUS_API_KEY are set in .env, fetches live data and
+  # refreshes the cache before each run. Leave blank to use pre-fetched cache.
+  cache_dir: "outputs/zeus_cache"
+  # Max images per position group sent to Claude Vision (keeps prompt cost low)
+  max_hero_images: 9
+  max_banner_images: 3    # per banner position
+  max_carousel_images: 4  # per carousel widget
+
+report:
+  output_dir: "outputs/reports"
+  screenshots_dir: "outputs/screenshots"
