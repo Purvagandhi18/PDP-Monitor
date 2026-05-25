@@ -141,9 +141,26 @@ def _get_structured_dump(page: Page) -> str:
                                     'dialog','alertdialog','complementary']);
         const SKIP_TAGS  = new Set(['NAV','HEADER','FOOTER','ASIDE',
                                     'SCRIPT','STYLE','NOSCRIPT','IFRAME']);
-        const SKIP_CLASS_RE = /cookie|modal|overlay|popup|drawer|sidebar|
-                               breadcrumb|cart-|toast|banner-strip|
-                               recently-viewed|upsell|cross-sell/xi;
+        const SKIP_CLASS_RE = /cookie|modal|overlay|popup|drawer|sidebar|breadcrumb|cart-|toast|banner-strip|recently-viewed|upsell|cross-sell|wallet|pincode|delivery|shipping-info|check-delivery|installment|payment-option|category-nav|categories-nav|nav-menu|product-discount-tag|affiliate-card/i;
+
+        // Text-pattern noise filter — drop lines whose text matches these
+        // regardless of class. Catches site-specific noise (prices, delivery
+        // estimates, wallet promos, category nav blobs) without hardcoding selectors.
+        function isNoisyText(text) {
+            // Price-only: ₹799, ₹999, "20% off", "Incl of all taxes"
+            if (/^[₹$€£]?\d[\d\s,\.]*(%?\s*off)?$/.test(text)) return true;
+            if (/incl\.?\s*(of\s+)?all\s+tax/i.test(text)) return true;
+            // Delivery / logistics noise
+            if (/get\s+by\s+\d|order\s+now.*get\s+by|estimated\s+delivery|deliver(y|ed)\s+by/i.test(text)) return true;
+            if (/ships?\s+(in|within|by)|free\s+delivery|cod\s+available/i.test(text)) return true;
+            // Wallet / payment noise
+            if (/mm\s+wallet|save\s+upto|download\s+app|cards?\s+accepted|extra\s+cost|emi\s+available/i.test(text)) return true;
+            // Category nav blob — long text concatenated from nav links
+            if (/hair\s+regrowth|beard\s+growth|health\s*&\s*fitness/i.test(text) && text.length > 40) return true;
+            // Pincode / delivery check widgets
+            if (/enter\s+pincode|check\s+delivery|available\s+at/i.test(text)) return true;
+            return false;
+        }
 
         function shouldSkip(el) {
             if (SKIP_TAGS.has(el.tagName)) return true;
@@ -170,6 +187,7 @@ def _get_structured_dump(page: Page) -> str:
             if (shouldSkip(el)) return;
             const text = (el.innerText || '').trim().replace(/\\s+/g, ' ');
             if (!text || text.length < 4 || text.length > 500) return;
+            if (isNoisyText(text)) return;
             const key = el.tagName + '|' + text;
             if (seen.has(key)) return;
             seen.add(key);
@@ -182,6 +200,7 @@ def _get_structured_dump(page: Page) -> str:
             if (shouldSkip(el)) return;
             const text = (el.innerText || '').trim().replace(/\\s+/g, ' ');
             if (!text || text.length < 12 || text.length > 500) return;
+            if (isNoisyText(text)) return;
             // Skip pure containers (text = parent text → just nesting duplication)
             const parent = el.parentElement;
             if (parent && (parent.innerText || '').trim() === text) return;
