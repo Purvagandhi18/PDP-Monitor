@@ -126,15 +126,48 @@ def _get_structured_dump(page: Page) -> str:
     """
     Extract a structured element dump from the page.
     Returns lines like: [h1] Product Name, [h2] Section Title, [p] Body text...
-    Deduplicates and caps at 250 lines to keep Claude prompt cost low.
+    Deduplicates and caps at 400 lines to keep Claude prompt cost low.
+
+    Excludes nav, header, footer, cookie banners, and modals so Claude
+    only sees real PDP content — critical for React/dynamic PDPs where
+    nav elements outnumber product copy in the early DOM.
     """
     raw = page.evaluate("""() => {
         const lines = [];
         const seen = new Set();
 
-        // High-signal semantic elements — always collect
+        // Elements whose subtree we always skip
+        const SKIP_ROLES = new Set(['navigation','banner','contentinfo',
+                                    'dialog','alertdialog','complementary']);
+        const SKIP_TAGS  = new Set(['NAV','HEADER','FOOTER','ASIDE',
+                                    'SCRIPT','STYLE','NOSCRIPT','IFRAME']);
+        const SKIP_CLASS_RE = /cookie|modal|overlay|popup|drawer|sidebar|
+                               breadcrumb|cart-|toast|banner-strip|
+                               recently-viewed|upsell|cross-sell/xi;
+
+        function shouldSkip(el) {
+            if (SKIP_TAGS.has(el.tagName)) return true;
+            const role = el.getAttribute('role') || '';
+            if (SKIP_ROLES.has(role)) return true;
+            const cls = (el.className || '').toString();
+            if (SKIP_CLASS_RE.test(cls)) return true;
+            // Walk up — if any ancestor is a skip zone, skip this too
+            let p = el.parentElement;
+            while (p) {
+                if (SKIP_TAGS.has(p.tagName)) return true;
+                const pr = p.getAttribute('role') || '';
+                if (SKIP_ROLES.has(pr)) return true;
+                const pc = (p.className || '').toString();
+                if (SKIP_CLASS_RE.test(pc)) return true;
+                p = p.parentElement;
+            }
+            return false;
+        }
+
+        // High-signal semantic elements — always collect (after skip check)
         const semantic = ['h1','h2','h3','h4','button'];
         document.querySelectorAll(semantic.join(',')).forEach(el => {
+            if (shouldSkip(el)) return;
             const text = (el.innerText || '').trim().replace(/\\s+/g, ' ');
             if (!text || text.length < 4 || text.length > 500) return;
             const key = el.tagName + '|' + text;
@@ -143,13 +176,13 @@ def _get_structured_dump(page: Page) -> str:
             lines.push('[' + el.tagName.toLowerCase() + '] ' + text);
         });
 
-        // Content elements — only collect direct/meaningful text
+        // Content elements — only standalone meaningful text
         const content = ['p','li','span','div'];
         document.querySelectorAll(content.join(',')).forEach(el => {
+            if (shouldSkip(el)) return;
             const text = (el.innerText || '').trim().replace(/\\s+/g, ' ');
-            // Must be standalone meaningful copy (not just a container)
             if (!text || text.length < 12 || text.length > 500) return;
-            // Skip if this element's text is the same as a parent (avoid nesting duplication)
+            // Skip pure containers (text = parent text → just nesting duplication)
             const parent = el.parentElement;
             if (parent && (parent.innerText || '').trim() === text) return;
             const key = el.tagName + '|' + text;
@@ -158,7 +191,7 @@ def _get_structured_dump(page: Page) -> str:
             lines.push('[' + el.tagName.toLowerCase() + '] ' + text);
         });
 
-        return lines.slice(0, 250).join('\\n');
+        return lines.slice(0, 400).join('\\n');
     }""")
     return raw or ""
 
@@ -320,8 +353,21 @@ def scrape_text(url: str) -> PDPTextData:
 
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=30000)
-            page.wait_for_timeout(2500)
+            # Wait for the React app to hydrate and render product content.
+            # Try to find a product heading or add-to-cart button; fall back to
+            # a flat 4s wait if neither appears (handles A/B variants gracefully).
+            try:
+                page.wait_for_selector(
+                    "h1, [class*='product-title'], [class*='productTitle'], "
+                    "[class*='product-name'], button:has-text('Add to Cart'), "
+                    "button:has-text('Buy Now')",
+                    timeout=8000
+                )
+            except Exception:
+                page.wait_for_timeout(4000)
             _scroll_full_page(page)
+            # Extra settle time after scroll — lets lazy sections finish rendering
+            page.wait_for_timeout(1500)
 
             # Meta — reliable cross-site
             meta_title = ""
