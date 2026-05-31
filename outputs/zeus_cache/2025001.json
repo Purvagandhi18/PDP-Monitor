@@ -1,0 +1,1426 @@
+{
+  "page_id": "2025001",
+  "brand": "MM",
+  "page_url": "https://manmatters.com/dp/2025001",
+  "fetched_at": "2026-05-31T00:00:00Z",
+  "style": "displayOrder",
+  "image_gallery": [
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2025001/Summer-Hero_g2on83.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2025001/Summer-Hero_g2on83.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/others/5_eeqpvz.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/others/5_eeqpvz.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/2%20-%20Problem-Solution_mxuvov.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/2%20-%20Problem-Solution_mxuvov.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/3-Ingredients_jbiogs.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/3-Ingredients_jbiogs.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/8-Gummies_kaarqp.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/8-Gummies_kaarqp.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/5-Shilabsorb-2_i8qsg3.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/5-Shilabsorb-2_i8qsg3.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/6-Third-Tested_d6b1h1.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/6-Third-Tested_d6b1h1.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/others/7-Clinical%20%281%29_kldqdk.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/others/7-Clinical%20%281%29_kldqdk.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/9%20-%20Taste_i32wrz.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/9%20-%20Taste_i32wrz.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/10%20-%20Ni-Table_gedyyw.jpg?tr=w-600",
+      "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/10%20-%20Ni-Table_gedyyw.jpg?tr=w-600",
+      "videoLink": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    }
+  ],
+  "display_order": {
+    "default": [
+      "bread-crumbs",
+      "pdp-hero-slider",
+      "product-discount-tag-mobile",
+      "product-summary",
+      "product-variants",
+      "check-delivery-info",
+      "cocreation-image-carousel-1",
+      "affiliate-card",
+      "cocreation-image-carousel-3",
+      "second-banner-mobile",
+      "third-banner-mobile",
+      "cta-button-buy-options",
+      "narrative-facts-sugar",
+      "product-description-media-grid",
+      "faq-accordion-show-more",
+      "faqs",
+      "how-we-compare",
+      "cocreation-image-carousel-5",
+      "marquee-brand",
+      "cocreation-image-carousel-6",
+      "ratings-and-reviews",
+      "consumer-study-v2-stats",
+      "whats-in-the-kit",
+      "how-we-compare-v2",
+      "top-features",
+      "we-got-answers",
+      "product-contains-details",
+      "what-it-works-best-with",
+      "things-to-note",
+      "how-its-used",
+      "info-tile-card",
+      "why-choose-mm",
+      "ingredients-accordion-background",
+      "reel-slider-rcl",
+      "recently-viewed-products-slider",
+      "additional-information"
+    ],
+    "desktop_top_left": [
+      "bread-crumbs",
+      "pdp-hero-slider"
+    ],
+    "desktop_top_right": [
+      "product-discount-tag-desktop",
+      "product-summary",
+      "affiliate-card",
+      "product-variants",
+      "cocreation-image-carousel-1",
+      "check-delivery-info",
+      "wallet-discount-banner",
+      "wallet-nudge-card",
+      "installment-options",
+      "cta-button-buy-options"
+    ],
+    "desktop_bottom": [
+      "cocreation-image-carousel-3",
+      "second-banner-desktop",
+      "third-banner-desktop",
+      "why-endure-data",
+      "product-equivalence-desktop",
+      "claims-banner-desktop",
+      "claims-grid",
+      "frequently-bought-together-rcl",
+      "narrative-facts-sugar",
+      "product-description-media-grid",
+      "faq-accordion-show-more",
+      "faqs",
+      "how-we-compare",
+      "cocreation-image-carousel-5",
+      "cocreation-image-carousel-6",
+      "ratings-and-reviews",
+      "safe-and-effective-grid",
+      "consumer-study-v2-stats",
+      "whats-in-the-kit",
+      "how-we-compare-v2",
+      "top-features",
+      "we-got-answers",
+      "customer-reviews",
+      "product-contains-details",
+      "what-it-works-best-with",
+      "things-to-note",
+      "how-its-used",
+      "info-tile-card",
+      "why-choose-mm",
+      "ingredients-accordion-background",
+      "reel-slider-rcl",
+      "additional-information",
+      "recently-viewed-products-slider"
+    ]
+  },
+  "widgets": {
+    "first-banner-mobile": {
+      "type": "BANNER",
+      "id": "costBanner-mobile",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 1,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/others/Energy-Drop%20%282%29_7tdfq7.jpg?tr=w-600",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": null
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "first-banner-desktop": {
+      "type": "BANNER",
+      "id": "costBanner-desktop",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "isSupportedForDesktop": false,
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "COMPACT"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 3.65,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/others/Energy-Drop%20%284%29_7mddka.jpg?tr=w-1080,c-at_max",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": null
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "second-banner-mobile": {
+      "type": "BANNER",
+      "id": "costBanner-mobile",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 1,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/Tested-Mobile_cpshnm.jpg?tr=w-600",
+          "altText": "",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": "https://manmatters.com/habit/honest-report"
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "second-banner-desktop": {
+      "type": "BANNER",
+      "id": "costBanner-desktop",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "isSupportedForDesktop": false,
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 3.6,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/Tested-Web_en8ror.jpg?tr=w-600",
+          "altText": "",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": "https://manmatters.com/habit/honest-report"
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "third-banner-mobile": {
+      "type": "BANNER",
+      "id": "costBanner-mobile",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 1,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/others/Factory_etmji4.jpg?tr=w-600",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": "https://www.youtube.com/watch?v=WDHltnD5Wjo&t=107s"
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "third-banner-desktop": {
+      "type": "BANNER",
+      "id": "costBanner-desktop",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "isSupportedForDesktop": false,
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 3.59,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/others/Factory%20%281%29_dwov89.jpg?tr=w-1800",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": "https://www.youtube.com/watch?v=WDHltnD5Wjo&t=107s"
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "four-banner-mobile": {
+      "type": "BANNER",
+      "id": "costBanner-mobile",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 1,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/PROVEN%20mobile_3f2jn7.jpg?tr=w-600",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": null
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "four-banner-desktop": {
+      "type": "BANNER",
+      "id": "costBanner-desktop",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 3.65,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/PROVEN_fx952f.jpg?tr=w-600",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": null
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "fifth-banner-mobile": {
+      "type": "BANNER",
+      "id": "costBanner-mobile",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 1,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/others/5%20-%20mobile_lvxmd9.png?tr=w-600",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": null
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "fifth-banner-desktop": {
+      "type": "BANNER",
+      "id": "costBanner-desktop",
+      "containsProducts": false,
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "MINUTE",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "label": ""
+      },
+      "widgetData": {
+        "aspectRatio": 3.65,
+        "media": {
+          "mediaType": "image",
+          "source": "https://i.mscwlns.co/media/misc/others/5%20-%20desktop_hedzqx.png?tr=w-600",
+          "altText": "cost breakdown of foodpharmer whey protein",
+          "loading": "lazy"
+        },
+        "slug": null,
+        "cta": {
+          "actions": [
+            {
+              "actionName": "SPA_LINK",
+              "params": {
+                "link": null
+              }
+            }
+          ]
+        },
+        "products": []
+      }
+    },
+    "marquee-brand": {
+      "type": "MARQUEE_WITH_SCROLL",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "NONE",
+          "bottom": "NONE"
+        },
+        "desktopFullWidth": true
+      },
+      "header": {
+        "subtitle": "",
+        "textAlign": "center"
+      },
+      "widgetData": {
+        "showBorder": false,
+        "marqueeBackground": "",
+        "marqueeTagBackground": "",
+        "imageWidth": 120,
+        "imageHeight": 120,
+        "marqueeTags": [
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/1%20%2857%29_c3jbva.jpg?tr=w-600"
+            },
+            "text": ""
+          },
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/2%20%2848%29_inj0b0.jpg?tr=w-600"
+            },
+            "text": ""
+          },
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/3%20%2849%29_d9i2fx.jpg?tr=w-600"
+            },
+            "text": ""
+          },
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/4%20%2845%29_haq7th.jpg?tr=w-600"
+            },
+            "text": ""
+          },
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/5%20%2834%29_2hst1j.jpg?tr=w-600"
+            },
+            "text": ""
+          }
+        ]
+      }
+    },
+    "marquee-brand-desktop": {
+      "type": "MARQUEE_WITH_SCROLL",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "NONE",
+          "bottom": "NONE"
+        },
+        "desktopFullWidth": true
+      },
+      "header": {
+        "subtitle": "",
+        "textAlign": "center"
+      },
+      "widgetData": {
+        "showBorder": false,
+        "marqueeBackground": "",
+        "marqueeTagBackground": "",
+        "imageWidth": 200,
+        "imageHeight": 200,
+        "infinite": true,
+        "marqueeTags": [
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/others/1%20%286%29%20%283%29_ck5n9f.jpg?tr=w-600"
+            },
+            "text": ""
+          },
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/others/2%20%284%29%20%283%29_3j9bde.jpg?tr=w-600"
+            },
+            "text": ""
+          },
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/others/3%20%284%29%20%283%29_5v08q2.jpg?tr=w-600"
+            },
+            "text": ""
+          },
+          {
+            "showBorder": false,
+            "image": {
+              "url": "https://i.mscwlns.co/media/misc/others/4%20%284%29%20%283%29_gla16x.jpg?tr=w-600"
+            },
+            "text": ""
+          }
+        ]
+      }
+    },
+    "cocreation-image-carousel-1": {
+      "type": "REELS_SLIDER",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "NONE",
+          "bottom": "NONE"
+        },
+        "desktopFullWidth": true
+      },
+      "header": {
+        "title": "",
+        "subtileType": "",
+        "desktopTextAlign": ""
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "slidesToShow": 2,
+          "slidesToShowDesktop": 5,
+          "aspectRatio": 1,
+          "peekVariant": "MEDIUM"
+        },
+        "variant": "circular",
+        "items": [
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/69ce2cce298382d452c369ff/main.mp4",
+              "videoTitle": "",
+              "altText": ""
+            }
+          },
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/69ce2cce1763b418bf127427/main.mp4",
+              "videoTitle": "",
+              "altText": ""
+            }
+          },
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/69ce2cce298382d452c36a02/main.mp4",
+              "videoTitle": "",
+              "altText": ""
+            }
+          },
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/69ce2cce089517f6f4dbf9bc/main.mp4",
+              "videoTitle": "",
+              "altText": ""
+            }
+          },
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/69ce2cce1763b418bf127429/main.mp4",
+              "videoTitle": "",
+              "altText": ""
+            }
+          }
+        ]
+      }
+    },
+    "cocreation-image-carousel-2": {
+      "type": "MEDIA_WITH_PROGRESS_SLIDER",
+      "id": "media-progress-slider-1",
+      "widgetData": {
+        "items": [
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/T1_loluex.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2025033/3%20%289%29_ji3edk.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2025033/2%20%2810%29_cywylx.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/1%20%2860%29_2w3gwy.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/1%20%2860%29_2w3gwy.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          }
+        ],
+        "aspectRatio": 0.7,
+        "carouselConfig": {
+          "showArrows": true,
+          "showDots": true,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 3,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "autoplay": true,
+          "autoplaySpeed": 5000
+        }
+      },
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "REGULAR",
+          "bottom": "REGULAR"
+        }
+      },
+      "header": {
+        "textAlign": "center",
+        "desktioTextAlign": "center",
+        "title": "Designed for Modern Indian Men",
+        "subtitle": "Clinically Tested Creatine Monohydrate"
+      }
+    },
+    "progress-slider": {
+      "type": "MEDIA_WITH_PROGRESS_SLIDER",
+      "id": "media-progress-slider-1",
+      "widgetData": {
+        "items": [
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/1%20%2858%29_8k5kas.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/2%20%2849%29_1n4zra.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/3%20%2850%29_f5l39p.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/4%20%2846%29_470ayr.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/5%20%2835%29_9w0vra.jpg?tr=w-600",
+              "altText": "Slide Image",
+              "aspectRatio": 1
+            },
+            "animationText": ""
+          }
+        ],
+        "aspectRatio": 0.7,
+        "carouselConfig": {
+          "showArrows": true,
+          "showDots": true,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 3,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "autoplay": true,
+          "autoplaySpeed": 5000
+        }
+      },
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "REGULAR",
+          "bottom": "REGULAR"
+        }
+      },
+      "header": {
+        "textAlign": "center",
+        "desktioTextAlign": "center",
+        "title": "",
+        "subtitle": ""
+      }
+    },
+    "progress-slider-1": {
+      "type": "MEDIA_WITH_PROGRESS_SLIDER",
+      "id": "media-progress-slider-1",
+      "widgetData": {
+        "items": [
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2025039/SP_Web_412x114_m0cudl.jpg?tr=w-1080",
+              "altText": "Slide Image",
+              "aspectRatio": 3.61
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2025039/SP_Web_412x114_m0cudl.jpg?tr=w-1080,c-at_max",
+              "altText": "Slide Image",
+              "aspectRatio": 3.61
+            },
+            "animationText": ""
+          },
+          {
+            "cardTitle": "",
+            "cardDescription": "",
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2025039/SP_Web_412x114_m0cudl.jpg?tr=w-1080,c-at_max",
+              "altText": "Slide Image",
+              "aspectRatio": 3.61
+            },
+            "animationText": ""
+          }
+        ],
+        "aspectRatio": 3.61,
+        "carouselConfig": {
+          "showArrows": true,
+          "showDots": true,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 1,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "autoplay": true,
+          "autoplaySpeed": 5000
+        }
+      },
+      "layout": {
+        "type": "FLUID",
+        "isSupportedForDesktop": false,
+        "verticalSpacing": {
+          "top": "REGULAR",
+          "bottom": "REGULAR"
+        }
+      },
+      "header": {
+        "textAlign": "center",
+        "desktioTextAlign": "center",
+        "title": "",
+        "subtitle": ""
+      }
+    },
+    "cocreation-image-carousel-4": {
+      "type": "MEDIA_SLIDER",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "MINUTE"
+        }
+      },
+      "header": {
+        "subtitle": "",
+        "subtileType": "PRIMARY",
+        "desktopTextAlign": "center"
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "aspectRatio": 2.52,
+          "showArrows": true,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "autoplay": true,
+          "autoplaySpeed": 5000,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 3,
+          "showPeek": true,
+          "showDots": false
+        },
+        "showBorder": false,
+        "items": [
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/1%20%2859%29_50p03k.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/2%20%2850%29_6f5sg7.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          }
+        ]
+      }
+    },
+    "cocreation-image-carousel-3": {
+      "type": "MEDIA_SLIDER",
+      "layout": {
+        "type": "FLUID",
+        "isSupportedForDesktop": false,
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "COMPACT"
+        }
+      },
+      "header": {
+        "subtitle": "",
+        "subtileType": "SECONDARY",
+        "title": "",
+        "desktopTextAlign": "center",
+        "textAlign": "center"
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "aspectRatio": 1,
+          "showArrows": true,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "autoplay": true,
+          "autoplaySpeed": 5000,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 4,
+          "showPeek": true,
+          "showDots": true
+        },
+        "showBorder": false,
+        "items": [
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/shilajit_bewa1z.gif?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/ashwagandha_8jzv6u.gif?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/black-muesli_eoqtnu.gif?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/chicory-root_6cqwo8.gif?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          }
+        ]
+      }
+    },
+    "cocreation-image-carousel-5": {
+      "type": "MEDIA_SLIDER",
+      "layout": {
+        "type": "FLUID",
+        "isSupportedForDesktop": false,
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "COMPACT"
+        }
+      },
+      "header": {
+        "subtitle": "",
+        "subtileType": "SECONDARY",
+        "title": "",
+        "desktopTextAlign": "center",
+        "textAlign": "center"
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "aspectRatio": 1,
+          "showArrows": true,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "autoplay": true,
+          "autoplaySpeed": 5000,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 4,
+          "showPeek": true,
+          "showDots": true
+        },
+        "showBorder": false,
+        "items": [
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/card1_kcojhp.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/card2_k4vhc8.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/card3_a60yhl.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/card4_641qm0.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/card5_dwqfr4.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          }
+        ]
+      }
+    },
+    "cocreation-image-carousel-6": {
+      "type": "MEDIA_SLIDER",
+      "layout": {
+        "type": "FLUID",
+        "isSupportedForDesktop": false,
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "COMPACT"
+        }
+      },
+      "header": {
+        "subtitle": "",
+        "subtileType": "SECONDARY",
+        "title": "What Customers Have To Say",
+        "desktopTextAlign": "center",
+        "textAlign": "center"
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "aspectRatio": 1,
+          "showArrows": true,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "autoplay": true,
+          "autoplaySpeed": 5000,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 4,
+          "showPeek": true,
+          "showDots": true
+        },
+        "showBorder": false,
+        "items": [
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/T1%20%281%29_gwt2r0.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/T2%20%282%29_bqpnz4.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/T3%20%281%29_13py70.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/T4_xlfm3a.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/T5_2lodik.jpg?tr=w-600",
+              "altText": "",
+              "loading": "lazy"
+            }
+          }
+        ]
+      }
+    },
+    "ingredients-slider": {
+      "type": "MEDIA_WITH_PILLS_SLIDER",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "COMPACT"
+        }
+      },
+      "id": "media-pills-slider-1",
+      "header": {
+        "textAlign": "center",
+        "title": "",
+        "desktioTextAlign": "center"
+      },
+      "widgetData": {
+        "carouselConfig": {
+          "aspectRatio": 1,
+          "showArrows": true,
+          "showDots": true,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 3,
+          "slidesToScroll": 1,
+          "infinite": true
+        },
+        "items": [
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/1%20%2860%29_gbyrnn.jpg?tr=w-600",
+              "aspectRatio": 1,
+              "altText": ""
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/2%20%2851%29_8ub5cz.jpg?tr=w-600",
+              "aspectRatio": 1,
+              "altText": ""
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/pdp_rcl/2024503/4%20%2847%29_440we7.jpg?tr=w-600",
+              "aspectRatio": 1,
+              "altText": ""
+            }
+          }
+        ]
+      }
+    }
+  },
+  "reviews": {
+    "topReviews": [
+      {
+        "id": "#1",
+        "rating": 5,
+        "author": "Rudra",
+        "title": "great quality and transparent",
+        "body": "Loved that they include a lab test with every box. Don't have to worry about qualty and purity anymore",
+        "dateCreated": "2026-05-29",
+        "originalProduct": {
+          "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Shilajit%20Gummies-Artboard%201%20copy%202_gznruu.jpg?tr=w-600",
+          "name": "Shilajit Gummies 60N",
+          "slug": "shilajit-gummies",
+          "fullUrl": "https://manmatters.com/dp/shilajit-gummies/2024396"
+        },
+        "reply": "",
+        "images": [
+          {
+            "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Screenshot%202025-05-06%20at%204.27.43%E2%80%AFPM_5b08fz.png?tr=w-600",
+            "altText": "reviewImage",
+            "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Screenshot%202025-05-06%20at%204.27.43%E2%80%AFPM_5b08fz.png?tr=w-600"
+          }
+        ]
+      },
+      {
+        "id": "#3",
+        "rating": 5,
+        "author": "Prakash",
+        "title": "Incredible results plus great quality",
+        "body": "Used it everyday for 3 months nd i can actually see difference in energy levels. Plus har dabbe ka lab test aap website pe check kar sakthe ho toh sahi",
+        "dateCreated": "2026-05-25",
+        "originalProduct": {
+          "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Shilajit%20Gummies-Artboard%201%20copy%202_gznruu.jpg?tr=w-600",
+          "name": "Shilajit Gummies 60N",
+          "slug": "shilajit-gummies",
+          "fullUrl": "https://manmatters.com/dp/shilajit-gummies/2024396"
+        },
+        "reply": "",
+        "images": [
+          {
+            "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Screenshot%202025-05-06%20at%204.33.59%E2%80%AFPM_i0kl93.png?tr=w-600",
+            "altText": "reviewImage",
+            "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Screenshot%202025-05-06%20at%204.33.59%E2%80%AFPM_i0kl93.png?tr=w-600"
+          }
+        ]
+      },
+      {
+        "id": "#4",
+        "rating": 5,
+        "author": "Hitesh",
+        "title": "Very tasty. use for 3 months",
+        "body": "Could never consume shilajit coz of its bad taste. I tried these gummies for 3 months. Taste amazing. I can also see improvement in my Body. Recommend to all! but be consistent for 3 months\n",
+        "dateCreated": "2026-05-23",
+        "originalProduct": {
+          "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Shilajit%20Gummies-Artboard%201%20copy%202_gznruu.jpg?tr=w-600",
+          "name": "Shilajit Gummies 60N",
+          "slug": "shilajit-gummies",
+          "fullUrl": "https://manmatters.com/dp/shilajit-gummies/2024396"
+        },
+        "reply": "",
+        "images": [
+          {
+            "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2024396/IMG_3604_dgdte2.jpg?tr=w-600",
+            "altText": "reviewImage",
+            "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024396/IMG_3604_dgdte2.jpg?tr=w-600"
+          }
+        ]
+      },
+      {
+        "id": "#2",
+        "rating": 5,
+        "author": "Rashid",
+        "title": "Great",
+        "body": "You can actually test for product lab report website mein. Aur taste bhi ekdam badhiyan bhai. Kahi pe bhi carry kar sakthe ho ",
+        "dateCreated": "2026-05-20",
+        "originalProduct": {
+          "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Shilajit%20Gummies-Artboard%201%20copy%202_gznruu.jpg?tr=w-600",
+          "name": "Shilajit Gummies 60N",
+          "slug": "shilajit-gummies",
+          "fullUrl": "https://manmatters.com/dp/shilajit-gummies/2024396"
+        },
+        "reply": "",
+        "images": [
+          {
+            "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Screenshot%202025-05-06%20at%205.02.43%E2%80%AFPM_amd59l.png?tr=w-600",
+            "altText": "reviewImage",
+            "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Screenshot%202025-05-06%20at%205.02.43%E2%80%AFPM_amd59l.png?tr=w-600"
+          }
+        ]
+      },
+      {
+        "id": "#5",
+        "rating": 5,
+        "author": "Rannvijay",
+        "title": "Definitely Go for it",
+        "body": "I was skeptical about this product at first, but after using it daily, I see a noticeable difference in my energy. You have to use it for 3 months though no matters what",
+        "dateCreated": "2026-05-19",
+        "originalProduct": {
+          "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/2024397/Shilajit%20Gummies-Artboard%201%20copy%202_gznruu.jpg?tr=w-600",
+          "name": "Shilajit Gummies 60N",
+          "slug": "shilajit-gummies",
+          "fullUrl": "https://manmatters.com/dp/shilajit-gummies/2024396"
+        },
+        "reply": "",
+        "images": [
+          {
+            "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2024396/IMG_3617_kwy9b8.jpg?tr=w-600",
+            "altText": "reviewImage",
+            "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2024396/IMG_3617_kwy9b8.jpg?tr=w-600"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -4,5 +4,5 @@ __pycache__/
 .env
 outputs/screenshots/
 outputs/reports/
-outputs/zeus_cache/
+# outputs/zeus_cache/ — tracked in git so cache is available on fresh clone
 .DS_Store
