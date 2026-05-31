@@ -154,9 +154,76 @@ def _load_cache(page_id: str) -> Optional[dict]:
 
 def _save_cache(page_id: str, data: dict):
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    data["fetched_at"] = datetime.utcnow().isoformat()
+    data["fetched_at"] = datetime.utcnow().isoformat() + "Z"
     _cache_path(page_id).write_text(json.dumps(data, indent=2))
     log.info(f"Zeus cache saved: {page_id}")
+
+
+def _cache_is_stale(page_id: str, max_age_hours: int = 24) -> bool:
+    """Return True if the cache file doesn't exist or is older than max_age_hours."""
+    path = _cache_path(page_id)
+    if not path.exists():
+        return True
+    try:
+        data = json.loads(path.read_text())
+        fetched_str = data.get("fetched_at", "")
+        if not fetched_str:
+            return True
+        # Parse ISO timestamp
+        fetched_str = fetched_str.rstrip("Z")
+        fetched = datetime.fromisoformat(fetched_str)
+        age_hours = (datetime.utcnow() - fetched).total_seconds() / 3600
+        return age_hours > max_age_hours
+    except Exception:
+        return True
+
+
+def _is_staging_url(mcp_url: str) -> bool:
+    return "stg-" in mcp_url or "staging" in mcp_url or "stg." in mcp_url
+
+
+def _kai_sync(page_id: str, url: str) -> Optional[dict]:
+    """
+    Fetch live PDP data from the KAI MCP server and write to cache.
+
+    Staging guard: if MOSAIC_MCP_URL points to the staging server AND
+    a cache already exists, we skip overwriting — staging data is test data
+    (wrong products, wrong reviews). Only production MCP overwrites existing cache.
+    Missing cache is always populated regardless of staging/prod.
+
+    Returns the new/existing cache dict, or None if unavailable.
+    """
+    from utils.config_loader import get_env
+    from tools.kai_client import build_zeus_cache, DEFAULT_MCP_URL
+
+    mcp_url = get_env("MOSAIC_MCP_URL", required=False, default=DEFAULT_MCP_URL)
+    is_staging = _is_staging_url(mcp_url)
+    cache_exists = _cache_path(page_id).exists()
+
+    if is_staging and cache_exists:
+        log.info(
+            f"KAI sync skipped for {page_id}: staging MCP + cache already exists. "
+            f"Set MOSAIC_MCP_URL to production endpoint to enable live sync."
+        )
+        return None
+
+    if is_staging:
+        log.warning(
+            f"KAI syncing {page_id} from STAGING MCP — review dates may be test data. "
+            f"Set MOSAIC_MCP_URL to production endpoint for accurate reviews."
+        )
+
+    try:
+        cache = build_zeus_cache(url, page_id)
+        if cache:
+            _save_cache(page_id, cache)
+            log.info(f"KAI sync complete for {page_id} (staging={is_staging})")
+            return cache
+        else:
+            log.warning(f"KAI sync returned no data for {page_id}")
+    except Exception as e:
+        log.warning(f"KAI sync failed for {page_id}: {e} — falling back to existing cache")
+    return None
 
 
 # ── Live API fetch (optional) ──────────────────────────────────────────────────
@@ -267,18 +334,32 @@ def _extract_widgets(mapping: dict) -> dict:
 def get_zeus_reviews(url: str):
     """
     Return review list from Zeus cache for a PDP URL.
-    Returns list of dicts: {rating, author, title, body, dateCreated, image_url}
-    Returns [] if no Zeus review data is cached.
+
+    Always attempts KAI sync first (refreshes cache if stale >24h or missing).
+    Falls back to existing cache if KAI is unavailable.
+    Returns [] only if no data is available at all.
     """
     from scraper.models import Review
     page_id = _page_id_from_url(url)
     if not page_id:
+        log.warning(f"Zeus reviews: could not extract page_id from {url}")
         return []
-    # Load cache first so manually-curated reviews (dates, ratings) are always used.
-    # Live fetch is a fallback only — it may return image data without a "reviews" key.
-    data = _load_cache(page_id) or _fetch_live(page_id)
+
+    # KAI sync: refresh cache if stale or missing
+    if _cache_is_stale(page_id):
+        log.info(f"Zeus cache stale/missing for {page_id} — syncing via KAI")
+        data = _kai_sync(page_id, url)
+    else:
+        data = None
+
+    # Load from cache (either just-synced or existing)
     if not data:
+        data = _load_cache(page_id) or _fetch_live(page_id)
+
+    if not data:
+        log.warning(f"Zeus reviews: no data available for {page_id}")
         return []
+
     raw_reviews = data.get("reviews", {}).get("topReviews", [])
     reviews = []
     for r in raw_reviews:
@@ -292,7 +373,12 @@ def get_zeus_reviews(url: str):
             title=r.get("title", ""),
             image_url=img_url,
         ))
-    log.info(f"Zeus reviews: {len(reviews)} for page {page_id}")
+
+    dates_present = sum(1 for rev in reviews if rev.date)
+    log.info(
+        f"Zeus reviews: {len(reviews)} for page {page_id} "
+        f"({dates_present}/{len(reviews)} with dateCreated)"
+    )
     return reviews
 
 
@@ -309,8 +395,17 @@ def get_zeus_images(url: str) -> List[ZeusImage]:
         log.warning(f"Zeus: could not extract page_id from URL: {url}")
         return []
 
-    # Cache first (manual curation preserved), live API as fallback
-    data = _load_cache(page_id) or _fetch_live(page_id)
+    # KAI sync: refresh cache if stale or missing (runs on every pipeline call)
+    if _cache_is_stale(page_id):
+        log.info(f"Zeus cache stale/missing for {page_id} — syncing via KAI")
+        data = _kai_sync(page_id, url)
+    else:
+        data = None
+
+    # Load from cache (just-synced or existing) — fall back to live API last
+    if not data:
+        data = _load_cache(page_id) or _fetch_live(page_id)
+
     if not data:
         log.info(f"Zeus: no data for page {page_id} — Playwright will handle visuals")
         return []
