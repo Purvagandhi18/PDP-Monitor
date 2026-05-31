@@ -340,12 +340,17 @@ def enrich_with_visuals(pdp_data: PDPTextData) -> PDPTextData:
             if z.local_path  # only include successfully downloaded images
         ]
 
-        # Populate reviews from Zeus if not already scraped
-        if not pdp_data.reviews:
-            zeus_reviews = get_zeus_reviews(url)
-            if zeus_reviews:
-                pdp_data.reviews = zeus_reviews
-                log.info(f"Zeus reviews: {len(zeus_reviews)} loaded")
+        # Always load reviews from Zeus — Zeus has real dateCreated values.
+        # Playwright-scraped reviews have no reliable dates so we always replace them.
+        zeus_reviews = get_zeus_reviews(url)
+        if zeus_reviews:
+            pdp_data.reviews = zeus_reviews
+            dates_present = sum(1 for r in zeus_reviews if r.date)
+            log.info(f"Zeus reviews: {len(zeus_reviews)} loaded ({dates_present} with dateCreated) — replaced Playwright reviews")
+        elif pdp_data.reviews:
+            log.warning(f"Zeus reviews unavailable — keeping {len(pdp_data.reviews)} Playwright-scraped reviews (dates may be missing)")
+        else:
+            log.warning(f"No reviews from Zeus or Playwright for {url}")
 
         log.info(
             f"Zeus visuals done → {len(pdp_data.zeus_images)} total | "
