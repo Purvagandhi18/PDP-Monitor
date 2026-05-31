@@ -117,3 +117,8 @@ class PDPAnalysisResult(BaseModel):
     overall_score: float
     status: str              # "healthy" | "attention" | "critical"
     rca: List[RCAItem] = []  # populated if overall < 8
+
+    # Regression tracking (populated by RegressionAgent after scoring)
+    delta: Optional[float] = None           # current - previous overall (None = first run)
+    delta_scores: dict = {}                 # per-dimension deltas {"reviews": -0.3, ...}
+    regression_flag: bool = False           # True if overall dropped > 0.5 points

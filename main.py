@@ -21,6 +21,8 @@ from scraper import scrape_all_urls, enrich_with_visuals, pull_sheets_data
 from scraper.zeus_connector import clear_url_images
 from analyser import analyse_all
 from report import build_report
+from tools.storage_tool import save_run, load_previous_run
+from agents.regression_agent import detect_regression
 from utils.config_loader import load_config
 from utils.logger import get_logger
 
@@ -114,19 +116,44 @@ def run_product(product_cfg: dict):
         log.error("Analysis returned no results")
         return None
 
+    # ── Step 6: Save run snapshot ──────────────────────────────
+    run_file = save_run(name, results)
+
+    # ── Step 7: Regression detection ──────────────────────────
+    previous_run = load_previous_run(name, before_run_id=run_file.stem)
+    alerts, improvements = detect_regression(results, previous_run)
+
+    # ── Summary log ───────────────────────────────────────────
     for r in results:
+        delta_str = f" ({r.delta:+.1f})" if r.delta is not None else " (first run)"
+        reg_str   = " 🔴 REGRESSION" if r.regression_flag else ""
         log.info(f"      {r.url}")
         log.info(f"        Reviews:      {r.reviews.overall:.1f}")
         log.info(f"        P×N:          {r.persona_narrative.overall:.1f}")
         log.info(f"        Copy Health:  {r.copy_health.overall:.1f}")
         log.info(f"        Visual:       {r.visual_design.overall:.1f}")
         log.info(f"        Ad Alignment: {r.ad_alignment.overall:.1f}")
-        log.info(f"        ── OVERALL:   {r.overall_score:.1f} [{r.status.upper()}]")
+        log.info(f"        ── OVERALL:   {r.overall_score:.1f}{delta_str} [{r.status.upper()}]{reg_str}")
         if r.rca:
             log.info(f"        ── RCA:       {len(r.rca)} items")
 
+    if alerts:
+        log.warning(f"")
+        log.warning(f"  ⚠️  {len(alerts)} regression(s) detected:")
+        for a in alerts:
+            log.warning(f"     • {a.url}")
+            log.warning(f"       {a.previous_score:.1f} → {a.current_score:.1f} ({a.delta:+.2f})")
+            log.warning(f"       {a.likely_cause}")
+
+    if improvements:
+        log.info(f"")
+        log.info(f"  📈 {len(improvements)} improvement(s):")
+        for i in improvements:
+            log.info(f"     • {i.url}  {i.previous_score:.1f} → {i.current_score:.1f} ({i.delta:+.2f})")
+
     # ── Build report ───────────────────────────────────────────
-    report_path = build_report(results, sheets, name, pdp_list=enriched)
+    report_path = build_report(results, sheets, name, pdp_list=enriched,
+                               regression_alerts=alerts)
     log.info(f"")
     log.info(f"  ✅ Report saved → {report_path}")
     log.info(f"{'━'*60}")

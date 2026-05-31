@@ -250,6 +250,24 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
   font-size:13px;color:#1a7a4a;font-weight:600}
 .ok-msg::before{content:"✓  "}
 
+/* ── Delta / regression badges ──────────────────── */
+.delta{font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.delta.up  {background:#e6f4ed;color:#1a7a4a}
+.delta.down{background:#fdecea;color:#c0392b}
+.delta.flat{background:#f0f0ee;color:#888}
+.delta.first{background:#f0f0ee;color:#aaa;font-weight:600}
+
+/* ── Regression banner ───────────────────────────── */
+.reg-banner{background:#fdecea;border:1px solid #fca5a5;border-radius:10px;
+  padding:14px 18px;margin-bottom:20px;display:flex;align-items:flex-start;gap:12px}
+.reg-banner-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.reg-banner-body{flex:1}
+.reg-banner-title{font-size:13px;font-weight:800;color:#c0392b;margin-bottom:6px}
+.reg-item{font-size:12.5px;color:#7f1d1d;margin-bottom:5px;line-height:1.5}
+.reg-item strong{font-weight:700}
+.reg-item .reg-delta{font-weight:700;color:#c0392b}
+.reg-cause{font-size:11.5px;color:#991b1b;margin-left:12px;margin-top:2px;font-style:italic}
+
 @media(max-width:640px){
   .score-row,.sum-grid{grid-template-columns:repeat(2,1fr)}
   .big-score{font-size:44px}
@@ -278,14 +296,38 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
   <div class="badge bg-{{ avg_status }}" id="product-avg-badge" style="margin-left:auto">{{ avg_status | upper }}</div>
 </div>
 
+{# ── Regression banner ── #}
+{% if regression_alerts %}
+<div class="reg-banner">
+  <div class="reg-banner-icon">📉</div>
+  <div class="reg-banner-body">
+    <div class="reg-banner-title">{{ regression_alerts|length }} Regression{% if regression_alerts|length != 1 %}s{% endif %} Detected This Run</div>
+    {% for a in regression_alerts %}
+    <div class="reg-item">
+      <strong>{{ a.url | replace('https://manmatters.com','') }}</strong>
+      — <span class="reg-delta">{{ "%.1f"|format(a.previous_score) }} → {{ "%.1f"|format(a.current_score) }} ({{ "%+.1f"|format(a.delta) }})</span>
+      <div class="reg-cause">{{ a.likely_cause }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
 {# ── URL pills ── #}
 {% if results|length > 1 %}
 <div class="url-switcher">
   {% for result in results %}
+  {% if result.delta is not none %}
+    {% if result.delta < -0.5 %}{% set dc = "down" %}{% set ds = result.delta | round(1) %}
+    {% elif result.delta > 0.5 %}{% set dc = "up" %}{% set ds = result.delta | round(1) %}
+    {% else %}{% set dc = "flat" %}{% set ds = result.delta | round(1) %}{% endif %}
+  {% else %}{% set dc = "first" %}{% set ds = "" %}{% endif %}
   <button class="url-pill{% if loop.first %} active{% endif %}" onclick="switchUrl({{ loop.index }},this)"
     title="{{ result.url }}">
-    URL {{ loop.index }}: {{ result.url | replace('https://','') | truncate(50, true, '…') }}
+    URL {{ loop.index }}: {{ result.url | replace('https://','') | truncate(40, true, '…') }}
     <span class="up-score bg-{{ result.overall_score | score_class }}">{{ result.overall_score }}</span>
+    {% if result.delta is not none %}<span class="delta {{ dc }}">{{ "%+.1f"|format(result.delta) }}</span>
+    {% else %}<span class="delta first">new</span>{% endif %}
   </button>
   {% endfor %}
 </div>
@@ -307,10 +349,21 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
   data-vis-base="{{ result.visual_design.overall }}">
 <div class="card">
 
-  {# Card header — URL + live score #}
+  {# Card header — URL + live score + delta #}
   <div class="card-hdr">
     <a class="card-url" href="{{ result.url }}" target="_blank">{{ result.url }}</a>
     <div class="card-hdr-right">
+      {% if result.delta is not none %}
+        {% if result.delta < -0.5 %}
+          <span class="delta down">{{ "%+.1f"|format(result.delta) }}</span>
+        {% elif result.delta > 0.5 %}
+          <span class="delta up">{{ "%+.1f"|format(result.delta) }}</span>
+        {% else %}
+          <span class="delta flat">{{ "%+.1f"|format(result.delta) }}</span>
+        {% endif %}
+      {% else %}
+        <span class="delta first">first run</span>
+      {% endif %}
       <span class="card-score {{ result.overall_score | score_class }}" id="{{ uid }}-pdp-score">{{ result.overall_score }}</span>
       <span class="badge bg-{{ result.overall_score | score_class }}" id="{{ uid }}-pdp-badge">{{ result.status | upper }}</span>
     </div>

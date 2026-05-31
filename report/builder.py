@@ -87,7 +87,8 @@ def build_report(
     results: List[PDPAnalysisResult],
     sheets: SheetsData,
     product_name: str,
-    pdp_list: Optional[List[PDPTextData]] = None
+    pdp_list: Optional[List[PDPTextData]] = None,
+    regression_alerts: Optional[list] = None,
 ) -> str:
     """
     Build HTML report from analysis results.
@@ -127,6 +128,8 @@ def build_report(
             else:
                 narrative_map[pdp.url] = _detect_narrative(pdp)
 
+    regression_count = len(regression_alerts) if regression_alerts else 0
+
     html = template.render(
         product_name=product_name,
         date=date_str,
@@ -139,6 +142,8 @@ def build_report(
         narrative_map=narrative_map,
         score_class=_score_class,
         score_bar=_score_bar,
+        regression_alerts=regression_alerts or [],
+        regression_count=regression_count,
     )
 
     filename = f"{product_name.lower().replace(' ', '_')}_{datetime.now().strftime('%Y%m%d')}.html"
