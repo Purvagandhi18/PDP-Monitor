@@ -33,6 +33,8 @@ class ZeusImage(BaseModel):
     index: int = 0                     # position within widget (0-based)
     label: str = ""                    # human-readable label from Zeus data
     local_path: Optional[str] = None  # local path after download for Claude Vision
+    # Normalised type classification used by visual scorer and report
+    image_type: str = ""               # hero | banner | carousel | section | testimonial | comparison
 
 
 class PDPTextData(BaseModel):

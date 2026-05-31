@@ -19,7 +19,7 @@ import json
 import re
 import requests
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Set
 from datetime import datetime
 
 from scraper.models import ZeusImage
@@ -38,6 +38,94 @@ SKIP_TYPES = {"REELS_SLIDER"}
 
 # Boost for desktop variants — prefer desktop images over mobile
 DESKTOP_PREFERRED = ("-desktop", "-web", "_desktop", "_web")
+
+# ── Recursive image extraction constants ──────────────────────────────────────
+
+# Field names that are known to carry image URLs or nested image structures
+IMAGE_BEARING_FIELDS: Set[str] = {
+    "image", "imageUrl", "image_url", "desktopImage", "mobileImage",
+    "bannerImage", "media", "assets", "slides", "carouselItems",
+    "heroImages", "original", "url", "source", "src", "images",
+    "thumbnail", "thumbnailUrl", "coverImage", "backgroundImage",
+}
+
+# Known CDN domains for URL validation
+IMAGE_CDN_DOMAINS = ("mscwlns.co", "cloudfront.net", "imgix.net",
+                     "cloudinary.com", "imagekit.io", "cdn.")
+
+# Image file extensions
+IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg", ".avif")
+
+
+def _looks_like_image_url(val: str) -> bool:
+    """Return True if the string looks like an image CDN URL."""
+    if not isinstance(val, str) or len(val) < 15:
+        return False
+    lower = val.lower()
+    if not lower.startswith("http"):
+        return False
+    # Skip videos
+    if any(ext in lower for ext in (".mp4", ".webm", ".mov", "video.")):
+        return False
+    # Known image extension in path (before query string)
+    path = lower.split("?")[0]
+    if any(path.endswith(ext) for ext in IMAGE_EXTENSIONS):
+        return True
+    # Known CDN domain — treat as image even without extension (CDN transforms)
+    if any(cdn in lower for cdn in IMAGE_CDN_DOMAINS):
+        return True
+    return False
+
+
+def _recursive_find_images(
+    obj,
+    found: List[str],
+    visited: Optional[Set[int]] = None,
+    depth: int = 0,
+) -> None:
+    """
+    Recursively walk a Zeus widget/section dict and collect all image URLs.
+
+    Strategy:
+    - Strings: include if looks like image URL
+    - Dicts: check known image-bearing field names; always recurse into nested dicts/lists
+    - Lists: recurse into every item
+
+    visited tracks object ids to prevent cycles.
+    depth cap prevents runaway recursion on pathological structures.
+    """
+    if depth > 12:
+        return
+    if visited is None:
+        visited = set()
+
+    obj_id = id(obj)
+    if obj_id in visited:
+        return
+    visited.add(obj_id)
+
+    if isinstance(obj, str):
+        if _looks_like_image_url(obj) and obj not in found:
+            found.append(obj)
+
+    elif isinstance(obj, list):
+        for item in obj:
+            _recursive_find_images(item, found, visited, depth + 1)
+
+    elif isinstance(obj, dict):
+        for key, val in obj.items():
+            if val is None:
+                continue
+            if key in IMAGE_BEARING_FIELDS:
+                # This field is known to carry images — recurse with priority
+                _recursive_find_images(val, found, visited, depth + 1)
+            elif isinstance(val, (dict, list)):
+                # Always recurse into nested structures regardless of key name
+                _recursive_find_images(val, found, visited, depth + 1)
+            elif isinstance(val, str) and _looks_like_image_url(val):
+                # Catch image URLs stored under arbitrary keys
+                if val not in found:
+                    found.append(val)
 
 
 def _page_id_from_url(url: str) -> Optional[str]:
@@ -211,51 +299,82 @@ def get_zeus_reviews(url: str):
 def get_zeus_images(url: str) -> List[ZeusImage]:
     """
     Given a PDP URL, return all visual assets in desktop page order.
-    Falls back to empty list if no Zeus data is available (Playwright takes over).
+
+    Returns a structured extraction error log entry (not empty list) if Zeus
+    data exists but no images could be found, so callers can distinguish
+    "no Zeus data" from "Zeus data present but image extraction failed".
     """
     page_id = _page_id_from_url(url)
     if not page_id:
-        log.debug(f"Could not extract page_id from URL: {url}")
+        log.warning(f"Zeus: could not extract page_id from URL: {url}")
         return []
 
-    # Try live API first, then cache
-    data = _fetch_live(page_id) or _load_cache(page_id)
+    # Cache first (manual curation preserved), live API as fallback
+    data = _load_cache(page_id) or _fetch_live(page_id)
     if not data:
-        log.info(f"No Zeus data for {page_id} — Playwright will handle visuals")
+        log.info(f"Zeus: no data for page {page_id} — Playwright will handle visuals")
         return []
 
     style = data.get("style", "sections")
+    log.info(f"Zeus: extracting images for page {page_id} (style={style})")
+
     if style == "displayOrder":
-        return _extract_display_order_images(data)
+        images = _extract_display_order_images(data)
     else:
-        return _extract_sections_images(data)
+        images = _extract_sections_images(data)
+
+    if not images:
+        log.error(
+            f"Zeus extraction error: page {page_id} (style={style}) — "
+            f"no visual assets found despite cache existing. "
+            f"Cache keys present: {list(data.keys())}. "
+            f"widgets count: {len(data.get('widgets', {}))}. "
+            f"sections_images count: {len(data.get('sections_images', {}))}. "
+            f"image_gallery count: {len(data.get('image_gallery', []))}."
+        )
+    else:
+        log.info(f"Zeus extracted {len(images)} images for {page_id}")
+
+    return images
 
 
 # ── Extraction: displayOrder style (new PDPs) ──────────────────────────────────
 
 def _extract_display_order_images(data: dict) -> List[ZeusImage]:
+    """
+    Extract images from displayOrder-style Zeus cache.
+
+    Two passes per widget:
+    1. Read pre-flattened images[] array (fast path for well-formed cache)
+    2. Recursively search raw widget data for any image-bearing fields
+       (catches images in non-standard / UNKNOWN widget structures)
+    """
     images: List[ZeusImage] = []
+    seen_urls: Set[str] = set()
     do = data.get("display_order") or {}
     widgets = data.get("widgets") or {}
 
-    # Hero gallery always comes first (maps to pdp-hero-slider)
-    for i, item in enumerate(data.get("image_gallery", [])):
-        url = item.get("original") or item.get("url", "")
-        if url and _is_image(url):
+    def _add(url: str, position: str, widget_id: str, wtype: str,
+             idx: int, label: str):
+        if url and _is_image(url) and url not in seen_urls:
+            seen_urls.add(url)
+            itype = _position_to_image_type(position)
             images.append(ZeusImage(
-                url=url,
-                position="hero",
-                widget_id="pdp-hero-slider",
-                widget_type="IMAGE_GALLERY",
-                index=i,
-                label=item.get("label", f"hero_{i+1}"),
+                url=url, position=position, widget_id=widget_id,
+                widget_type=wtype, index=idx, label=label, image_type=itype,
             ))
 
-    # Walk desktop bottom order (richest content)
-    desktop_order = do.get("desktop_bottom", do.get("default", []))
-    seen_widget_ids = set()
+    # Hero gallery always first
+    for i, item in enumerate(data.get("image_gallery", [])):
+        url = item.get("original") or item.get("url", "")
+        _add(url, "hero", "pdp-hero-slider", "IMAGE_GALLERY", i,
+             item.get("label", f"hero_{i+1}"))
 
-    for widget_id in desktop_order:
+    # Walk desktop bottom order (richest content), fall back to default
+    desktop_order = do.get("desktop_bottom", do.get("default", []))
+    seen_widget_ids: Set[str] = set()
+
+    for display_pos, widget_id in enumerate(desktop_order):
         if widget_id in seen_widget_ids:
             continue
         seen_widget_ids.add(widget_id)
@@ -263,68 +382,116 @@ def _extract_display_order_images(data: dict) -> List[ZeusImage]:
         widget = widgets.get(widget_id)
         if not widget:
             continue
-
         wtype = widget.get("type", "")
         if wtype in SKIP_TYPES:
             continue
 
         position = _widget_position(widget_id, wtype)
-        for i, img_url in enumerate(widget.get("images", [])):
-            if img_url and _is_image(img_url):
-                images.append(ZeusImage(
-                    url=img_url,
-                    position=position,
-                    widget_id=widget_id,
-                    widget_type=wtype,
-                    index=i,
-                    label=widget.get("title", "") or f"{widget_id}_{i+1}",
-                ))
 
-    log.info(f"Zeus extracted {len(images)} images for displayOrder PDP")
+        # Pass 1: pre-flattened images list (fast)
+        pre_flat = widget.get("images", [])
+        for i, img_url in enumerate(pre_flat):
+            _add(img_url, position, widget_id, wtype, i,
+                 widget.get("title", "") or f"{widget_id}_{i+1}")
+
+        # Pass 2: recursive search through full widget data
+        # (catches UNKNOWN widgets and non-standard field names)
+        recursive_found: List[str] = []
+        _recursive_find_images(widget, recursive_found)
+        for i, img_url in enumerate(recursive_found):
+            _add(img_url, position, widget_id, wtype,
+                 len(pre_flat) + i, f"{widget_id}_recursive_{i+1}")
+
+    if not images:
+        log.warning("displayOrder extraction: no images found in any widget")
+    else:
+        log.debug(f"displayOrder extraction: {len(images)} unique images across "
+                  f"{len(seen_widget_ids)} widgets")
     return images
 
 
 # ── Extraction: sections style (older PDPs) ────────────────────────────────────
 
 def _extract_sections_images(data: dict) -> List[ZeusImage]:
+    """
+    Extract images from sections-style Zeus cache.
+
+    Two passes per section:
+    1. Read pre-extracted sections_images lists (fast path)
+    2. Recursively search raw section data if present (catches unlisted sections)
+    """
     images: List[ZeusImage] = []
+    seen_urls: Set[str] = set()
+
+    def _add(url: str, position: str, widget_id: str, wtype: str,
+             idx: int, label: str):
+        if url and _is_image(url) and url not in seen_urls:
+            seen_urls.add(url)
+            itype = _position_to_image_type(position)
+            images.append(ZeusImage(
+                url=url, position=position, widget_id=widget_id,
+                widget_type=wtype, index=idx, label=label, image_type=itype,
+            ))
 
     # Hero gallery
     for i, item in enumerate(data.get("image_gallery", [])):
         url = item.get("original") or item.get("url", "")
-        if url and _is_image(url):
-            images.append(ZeusImage(
-                url=url,
-                position="hero",
-                widget_id="imageGallery",
-                widget_type="IMAGE_GALLERY",
-                index=i,
-                label=item.get("label", f"hero_{i+1}"),
-            ))
+        _add(url, "hero", "imageGallery", "IMAGE_GALLERY", i,
+             item.get("label", f"hero_{i+1}"))
 
-    # Section images (clinical proof, how it works, ingredients, etc.)
+    # Section images — walk in sections_order so we follow page layout
     section_images = data.get("sections_images") or {}
+    sections_raw = data.get("sections_raw") or {}   # raw section data if present
     section_order = data.get("sections_order") or list(section_images.keys())
 
     for section_key in section_order:
-        urls = section_images.get(section_key, [])
         position = _section_position(section_key)
-        for i, url in enumerate(urls):
-            if url and _is_image(url):
-                images.append(ZeusImage(
-                    url=url,
-                    position=position,
-                    widget_id=section_key,
-                    widget_type="SECTION",
-                    index=i,
-                    label=f"{section_key}_{i+1}",
-                ))
 
-    log.info(f"Zeus extracted {len(images)} images for sections PDP")
+        # Pass 1: pre-extracted URL list
+        pre_urls = section_images.get(section_key, [])
+        for i, url in enumerate(pre_urls):
+            _add(url, position, section_key, "SECTION", i, f"{section_key}_{i+1}")
+
+        # Pass 2: recursive search in raw section data if available
+        raw_section = sections_raw.get(section_key)
+        if raw_section:
+            recursive_found: List[str] = []
+            _recursive_find_images(raw_section, recursive_found)
+            for i, url in enumerate(recursive_found):
+                _add(url, position, section_key, "SECTION",
+                     len(pre_urls) + i, f"{section_key}_recursive_{i+1}")
+
+    if not images:
+        log.warning("sections extraction: no images found — "
+                    f"sections_order has {len(section_order)} keys, "
+                    f"sections_images has {len(section_images)} populated")
+    else:
+        log.debug(f"sections extraction: {len(images)} unique images from "
+                  f"{len(section_images)} section image lists")
     return images
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
+
+def _position_to_image_type(position: str) -> str:
+    """Map semantic position to normalised image_type for the visual scorer."""
+    mapping = {
+        "hero":          "hero",
+        "banner_1":      "banner",
+        "banner_2":      "banner",
+        "banner_3":      "banner",
+        "banner":        "banner",
+        "testimonials":  "testimonial",
+        "ingredients":   "carousel",
+        "benefits":      "carousel",
+        "social_proof":  "banner",
+        "comparison":    "comparison",
+        "clinical_proof":"section",
+        "how_it_works":  "section",
+        "content":       "section",
+    }
+    return mapping.get(position, "section")
+
 
 def _is_image(url: str) -> bool:
     """Skip videos. GIFs are OK (Claude Vision can analyse them as stills)."""

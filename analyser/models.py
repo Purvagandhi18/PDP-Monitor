@@ -16,6 +16,10 @@ class ReviewsScore(BaseModel):
     theme_alignment: SubScore
     negative_handling: SubScore
     flagged_issues: List[str] = []
+    # Set to "incomplete_data" when review dates are all missing/unparseable.
+    # Downstream: freshness score is unreliable; do not penalise silently.
+    score_status: Optional[str] = None      # None | "incomplete_data"
+    freshness_warning: Optional[str] = None # human-readable warning when score_status set
 
 
 class PersonaMatrixRow(BaseModel):
@@ -35,6 +39,10 @@ class PersonaNarrativeScore(BaseModel):
     cta_language: SubScore
     flagged_issues: List[str] = []
     persona_matrix: List[PersonaMatrixRow] = []  # per-persona doing right vs missing
+    # Audit trail — what was actually used when scoring this URL
+    persona_used: str = ""           # persona name sent to Claude
+    narrative_used: str = ""         # narrative label sent to Claude
+    pain_points_checked: List[str] = []  # top concerns used in the prompt
 
 
 class ClaimFlag(BaseModel):

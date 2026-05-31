@@ -1,4 +1,5 @@
 import anthropic
+from typing import List
 from analyser.models import PersonaNarrativeScore, PersonaMatrixRow, SubScore
 from analyser.claude_client import call_claude
 from ingester.models import IngestedContext
@@ -8,6 +9,60 @@ from utils.logger import get_logger
 
 log = get_logger("persona_narrative_scorer")
 config = load_config()
+
+
+# ── URL-level persona/narrative resolver ──────────────────────────────────────
+
+def _resolve_url_context(
+    url: str,
+    configured_narrative: str,
+    configured_persona: str,
+    context: IngestedContext,
+) -> dict:
+    """
+    Resolve what persona pain points and narrative pillars to use
+    for THIS specific URL. Never falls back to product-level defaults silently.
+
+    Returns:
+        persona_name       - the persona assigned to this URL
+        pain_points        - top concerns for this persona
+        narrative_label    - the narrative name for this URL
+        narrative_pillars  - pillars relevant to this narrative
+        narrative_core     - one-line story arc
+    """
+    # Persona resolution
+    persona_name = (configured_persona or context.persona.name).strip()
+    pain_points = list(context.persona.top_concerns)  # all from PDF
+
+    # Narrative resolution — use configured label; filter pillars if possible
+    narrative_label = (configured_narrative or context.narrative.core_story).strip()
+    all_pillars = list(context.narrative.pillars)
+
+    # Try to filter pillars to those that match the configured narrative keyword
+    # e.g. "Summer" → keep pillars containing "summer", "season", "heat", etc.
+    nav_lower = narrative_label.lower()
+    filtered_pillars = [
+        p for p in all_pillars
+        if any(word in p.lower() for word in nav_lower.split())
+    ]
+    narrative_pillars = filtered_pillars if filtered_pillars else all_pillars
+
+    log.info(
+        f"P×N context resolved for {url}:\n"
+        f"  persona_used    = {persona_name}\n"
+        f"  narrative_used  = {narrative_label}\n"
+        f"  pain_points     = {pain_points[:3]}\n"
+        f"  pillars (total={len(all_pillars)}, filtered={len(narrative_pillars)}): "
+        f"{narrative_pillars[:3]}"
+    )
+
+    return {
+        "persona_name":      persona_name,
+        "pain_points":       pain_points,
+        "narrative_label":   narrative_label,
+        "narrative_pillars": narrative_pillars,
+        "narrative_core":    context.narrative.core_story,
+    }
 
 SYSTEM = """You are a brand strategist and conversion copywriter auditing a health/wellness PDP.
 You will be given:
@@ -72,11 +127,18 @@ def score_persona_narrative(
 ) -> PersonaNarrativeScore:
     log.info(f"Scoring persona × narrative for {pdp.url}")
 
-    # Get all personas from config
+    # ── Resolve URL-level context — never share across URLs ───────────────────
+    url_ctx = _resolve_url_context(
+        pdp.url, configured_narrative, configured_persona, context
+    )
+    persona_name      = url_ctx["persona_name"]
+    pain_points       = url_ctx["pain_points"]
+    narrative_label   = url_ctx["narrative_label"]
+    narrative_pillars = url_ctx["narrative_pillars"]
+
+    # All product personas for the persona matrix
     product_cfg = _get_product_cfg(pdp.url)
-    all_personas = product_cfg.get("personas", [
-        context.persona.name
-    ]) if product_cfg else [context.persona.name]
+    all_personas = product_cfg.get("personas", [persona_name]) if product_cfg else [persona_name]
 
     carousel_summary = ""
     if pdp.carousels:
@@ -88,32 +150,34 @@ def score_persona_narrative(
         banners = "\n".join([f"  Banner ({b.location}): {b.copy[:200]}" for b in pdp.banners])
         banner_summary = f"\nBANNERS:\n{banners}"
 
-    persona_desc = "\n".join([
-        f"  - {p}" for p in all_personas
-    ])
+    persona_desc = "\n".join([f"  - {p}" for p in all_personas])
 
-    prompt = f"""CONFIGURED NARRATIVE FOR THIS URL: {configured_narrative or context.narrative.core_story}
-TARGET PERSONA: {configured_persona or context.persona.name}
+    # ── Build URL-specific prompt ─────────────────────────────────────────────
+    # Only the assigned narrative and persona context are injected here.
+    # Other URLs' narratives/personas are deliberately excluded.
+    prompt = f"""URL BEING SCORED: {pdp.url}
 
-ALL PRODUCT PERSONAS (generate persona_matrix for each):
-{persona_desc}
+━━ SCORING CONTEXT (specific to THIS URL only) ━━
+ASSIGNED NARRATIVE: {narrative_label}
+ASSIGNED PERSONA:   {persona_name}
 
-NARRATIVE DETAILS:
-  Core story: {context.narrative.core_story}
-  Emotional arc: {context.narrative.emotional_arc}
-  Pillars: {', '.join(context.narrative.pillars)}
+NARRATIVE PILLARS FOR "{narrative_label}":
+{chr(10).join(f"  • {p}" for p in narrative_pillars)}
 
-PRIMARY PERSONA PROFILE ({context.persona.name}):
-  Top concerns: {', '.join(context.persona.top_concerns)}
-  Motivations: {', '.join(context.persona.motivations)}
-  Objections: {', '.join(context.persona.objections)}
-  Language cues: {', '.join(context.persona.language_cues)}
+PERSONA PAIN POINTS FOR "{persona_name}":
+{chr(10).join(f"  • {p}" for p in pain_points[:5])}
+
+PERSONA MOTIVATIONS: {', '.join(context.persona.motivations[:4])}
+PERSONA OBJECTIONS:  {', '.join(context.persona.objections[:4])}
+PERSONA LANGUAGE CUES: {', '.join(context.persona.language_cues[:6])}
 
 BRAND VOICE:
-  Dos: {', '.join(context.brand_voice.dos[:5])}
+  Dos:    {', '.join(context.brand_voice.dos[:5])}
   Don'ts: {', '.join(context.brand_voice.donts[:5])}
 
---- PDP CONTENT ---
+NARRATIVE EMOTIONAL ARC: {context.narrative.emotional_arc}
+
+━━ PDP CONTENT ━━
 HEADLINE: {pdp.headline or 'NOT FOUND'}
 SUBHEADS: {' | '.join(pdp.subheads[:12]) or 'NONE'}
 BODY COPY (first 2500 chars): {' '.join(pdp.body_copy)[:2500]}
@@ -121,9 +185,14 @@ CTAs: {' | '.join(pdp.cta_texts) or 'NONE'}
 {carousel_summary}
 {banner_summary}
 
-Score all 5 dimensions for the configured narrative execution.
-Generate persona_matrix for ALL {len(all_personas)} personas listed above.
-Be sharp — quote exact copy lines that work or fail."""
+━━ INSTRUCTIONS ━━
+Score this PDP ONLY against the "{narrative_label}" narrative and the "{persona_name}" persona above.
+Do NOT apply other narratives or personas — this URL has one assigned context.
+
+ALL PRODUCT PERSONAS for persona_matrix (generate a row for each):
+{persona_desc}
+
+Be specific — quote exact copy lines that work or fail for this narrative."""
 
     data = call_claude(client, SYSTEM, prompt)
 
@@ -138,6 +207,12 @@ Be sharp — quote exact copy lines that work or fail."""
         for row in raw_matrix if row.get("persona")
     ]
 
+    log.info(
+        f"P×N scored: {pdp.url} | "
+        f"persona={persona_name} | narrative={narrative_label} | "
+        f"overall={data.get('overall', '?')}"
+    )
+
     return PersonaNarrativeScore(
         overall=data["overall"],
         configured_narrative=configured_narrative,
@@ -148,7 +223,11 @@ Be sharp — quote exact copy lines that work or fail."""
         page_narrative_arc=SubScore(name="Page Narrative Arc", **data["page_narrative_arc"]),
         cta_language=SubScore(name="CTA Language", **data["cta_language"]),
         flagged_issues=data.get("flagged_issues", []),
-        persona_matrix=persona_matrix
+        persona_matrix=persona_matrix,
+        # Audit trail — what was actually used for this URL
+        persona_used=persona_name,
+        narrative_used=narrative_label,
+        pain_points_checked=pain_points[:5],
     )
 
 
