@@ -159,8 +159,12 @@ def _save_cache(page_id: str, data: dict):
     log.info(f"Zeus cache saved: {page_id}")
 
 
-def _cache_is_stale(page_id: str, max_age_hours: int = 24) -> bool:
-    """Return True if the cache file doesn't exist or is older than max_age_hours."""
+def _cache_is_stale(page_id: str) -> bool:
+    """
+    Return True if the cache file doesn't exist or is older than
+    zeus.cache_max_age_minutes from config.yaml (default 5 min).
+    """
+    max_age_minutes = config.get("zeus", {}).get("cache_max_age_minutes", 5)
     path = _cache_path(page_id)
     if not path.exists():
         return True
@@ -169,11 +173,10 @@ def _cache_is_stale(page_id: str, max_age_hours: int = 24) -> bool:
         fetched_str = data.get("fetched_at", "")
         if not fetched_str:
             return True
-        # Parse ISO timestamp
-        fetched_str = fetched_str.rstrip("Z")
-        fetched = datetime.fromisoformat(fetched_str)
-        age_hours = (datetime.utcnow() - fetched).total_seconds() / 3600
-        return age_hours > max_age_hours
+        fetched = datetime.fromisoformat(fetched_str.rstrip("Z"))
+        age_minutes = (datetime.utcnow() - fetched).total_seconds() / 60
+        log.debug(f"Cache age for {page_id}: {age_minutes:.1f} min (max={max_age_minutes})")
+        return age_minutes > max_age_minutes
     except Exception:
         return True
 

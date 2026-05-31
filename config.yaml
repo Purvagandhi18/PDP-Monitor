@@ -17,6 +17,9 @@ products:
       - url: "https://manmatters.com/dp/2024503"
         narrative: "Daily Energy"
         persona: "Tejas"
+      - url: "https://manmatters.com/dp/2025001"
+        narrative: "Summer"
+        persona: "Tejas"
     pdfs:
       persona: "inputs/pdfs/persona.pdf"
       brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
@@ -88,6 +91,7 @@ zeus:
   # When ZEUS_API_URL + ZEUS_API_KEY are set in .env, fetches live data and
   # refreshes the cache before each run. Leave blank to use pre-fetched cache.
   cache_dir: "outputs/zeus_cache"
+  cache_max_age_minutes: 5   # KAI re-syncs if cache is older than this
   # Max images per position group sent to Claude Vision (keeps prompt cost low)
   max_hero_images: 9
   max_banner_images: 3    # per banner position
