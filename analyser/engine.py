@@ -123,12 +123,28 @@ def analyse_all(
     sheets: SheetsData,
     url_meta: dict = None
 ) -> List[PDPAnalysisResult]:
-    """Analyse all PDPs for a product."""
+    """Analyse all PDPs for a product. Retries once on transient API errors."""
+    import time
     results = []
     for pdp in pdp_list:
-        try:
-            cfg = (url_meta or {}).get(pdp.url)
-            results.append(analyse_pdp(pdp, context, sheets, url_cfg=cfg))
-        except Exception as e:
-            log.error(f"Analysis failed for {pdp.url}: {e}")
+        cfg = (url_meta or {}).get(pdp.url)
+        last_error = None
+        for attempt in range(1, 3):  # up to 2 attempts
+            try:
+                results.append(analyse_pdp(pdp, context, sheets, url_cfg=cfg))
+                last_error = None
+                break
+            except Exception as e:
+                last_error = e
+                is_transient = any(
+                    kw in str(e).lower()
+                    for kw in ("timeout", "connection", "timed out", "network", "overloaded")
+                )
+                if is_transient and attempt < 2:
+                    log.warning(f"Transient error on attempt {attempt} for {pdp.url}: {e} — retrying in 15s")
+                    time.sleep(15)
+                else:
+                    break
+        if last_error:
+            log.error(f"Analysis failed for {pdp.url} after {attempt} attempt(s): {last_error}")
     return results

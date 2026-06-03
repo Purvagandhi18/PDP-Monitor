@@ -10,7 +10,11 @@ log = get_logger("claude_client")
 
 
 def get_client() -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=get_env("ANTHROPIC_API_KEY"))
+    return anthropic.Anthropic(
+        api_key=get_env("ANTHROPIC_API_KEY"),
+        timeout=180.0,   # 3 min — vision calls with 12 images can take 90s+
+        max_retries=2,   # auto-retry on transient network errors
+    )
 
 
 def call_claude(client: anthropic.Anthropic, system: str, user: str) -> dict:
