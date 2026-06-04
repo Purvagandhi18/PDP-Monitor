@@ -28,6 +28,26 @@ products:
       product_brief:     "inputs/pdfs/shilajit_gummies/product_brief.docx"
       narrative:         "inputs/pdfs/shilajit_gummies/narrative.pdf"
 
+  # ── Hair Gummies ──────────────────────────────────────────────────────────
+  - name: "Hair Gummies"
+    personas:
+      - "S2 ICP"      # Seen ad, on the fence — primary block: chemical fear
+      - "S3 ICP"      # Researched, compared MM vs competitors — block: trust
+    narratives:
+      - "Problem Solution"       # Hairfall → nutrition gap → Hair Gummies fix
+      - "Safety and Science"     # Minoxidil safety, clinical proof, mechanism
+      - "Hair Loss Stage Education"  # S2 self-identification, urgency
+      - "Myth Busting"           # Oils and shampoos don't work
+    urls:
+      - url: "https://manmatters.co/habit/landing/pdp/141464"
+        narrative: "Problem Solution"
+        persona: "S2 ICP"
+    pdfs:
+      persona:          "inputs/pdfs/hair_gummies/persona.pdf"
+      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+      product_brief:    "inputs/pdfs/hair_gummies/product_brief.pdf"
+      narrative:        "inputs/pdfs/hair_gummies/narrative.pdf"
+
   # ── ADD A NEW PRODUCT BELOW ───────────────────────────────────────────────
   # Copy this block and fill in the fields. Each product gets its own:
   #   - inputs/pdfs/{product_folder}/ with persona.pdf, product_brief.docx, narrative.pdf
