@@ -1,0 +1,20 @@
+{
+  "run_id": "shilajit_gummies_run_20260603_105326",
+  "run_date": "2026-06-03",
+  "run_ts": "2026-06-03T10:53:26.671355",
+  "product_name": "Shilajit Gummies",
+  "pdps": [
+    {
+      "url": "https://manmatters.com/dp/shilajit-gummies/2024397",
+      "overall_score": 5.82,
+      "status": "critical",
+      "scores": {
+        "reviews": 5.2,
+        "persona_narrative": 5.8,
+        "copy_health": 6.3,
+        "visual_design": 6.2,
+        "ad_alignment": 5.0
+      }
+    }
+  ]
+}

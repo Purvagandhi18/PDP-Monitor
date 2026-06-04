@@ -39,7 +39,7 @@ products:
       - "Hair Loss Stage Education"  # S2 self-identification, urgency
       - "Myth Busting"           # Oils and shampoos don't work
     urls:
-      - url: "https://manmatters.co/habit/landing/pdp/141464"
+      - url: "https://manmatters.com/habit/landing/pdp/141464"
         narrative: "Problem Solution"
         persona: "S2 ICP"
     pdfs:

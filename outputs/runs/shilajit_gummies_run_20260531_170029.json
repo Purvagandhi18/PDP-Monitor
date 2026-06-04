@@ -1,0 +1,32 @@
+{
+  "run_id": "shilajit_gummies_run_20260531_170029",
+  "run_date": "2026-05-31",
+  "run_ts": "2026-05-31T17:00:29.434361",
+  "product_name": "Shilajit Gummies",
+  "pdps": [
+    {
+      "url": "https://manmatters.com/dp/shilajit-gummies/2024397",
+      "overall_score": 5.51,
+      "status": "critical",
+      "scores": {
+        "reviews": 4.2,
+        "persona_narrative": 5.8,
+        "copy_health": 6.0,
+        "visual_design": 5.8,
+        "ad_alignment": 5.0
+      }
+    },
+    {
+      "url": "https://manmatters.com/dp/2024503",
+      "overall_score": 5.9,
+      "status": "critical",
+      "scores": {
+        "reviews": 4.2,
+        "persona_narrative": 5.8,
+        "copy_health": 5.8,
+        "visual_design": 7.2,
+        "ad_alignment": 5.0
+      }
+    }
+  ]
+}

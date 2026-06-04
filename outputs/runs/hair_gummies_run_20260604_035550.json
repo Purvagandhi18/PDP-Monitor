@@ -1,0 +1,20 @@
+{
+  "run_id": "hair_gummies_run_20260604_035550",
+  "run_date": "2026-06-04",
+  "run_ts": "2026-06-04T03:55:50.951377",
+  "product_name": "Hair Gummies",
+  "pdps": [
+    {
+      "url": "https://manmatters.com/habit/landing/pdp/141464",
+      "overall_score": 5.88,
+      "status": "critical",
+      "scores": {
+        "reviews": 5.2,
+        "persona_narrative": 6.2,
+        "copy_health": 5.9,
+        "visual_design": 6.2,
+        "ad_alignment": 5.0
+      }
+    }
+  ]
+}
