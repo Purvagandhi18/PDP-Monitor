@@ -1,5 +1,8 @@
 import json
+import hashlib
 import anthropic
+from pathlib import Path
+from typing import Optional
 from ingester.models import (
     PersonaProfile, NarrativePillars,
     BrandVoice, ProductBrief, IngestedContext
@@ -9,6 +12,54 @@ from utils.config_loader import get_env
 from utils.logger import get_logger
 
 log = get_logger("extractor")
+
+# Ingested context is cached in outputs/ingest_cache/{product_slug}.json
+# Cache is invalidated automatically when any PDF file changes (md5 fingerprint).
+_INGEST_CACHE_DIR = Path("outputs/ingest_cache")
+
+
+def _product_slug(name: str) -> str:
+    import re
+    return re.sub(r"[^\w]", "_", name.lower()).strip("_")
+
+
+def _pdf_fingerprint(pdf_paths: dict) -> str:
+    """MD5 of the combined contents of all PDFs — changes when any file is updated."""
+    h = hashlib.md5()
+    for key in sorted(pdf_paths.keys()):
+        path = Path(pdf_paths[key])
+        if path.exists():
+            h.update(path.read_bytes())
+    return h.hexdigest()
+
+
+def _load_ingest_cache(product_name: str, fingerprint: str) -> Optional[IngestedContext]:
+    """Return cached IngestedContext if it exists and fingerprint matches."""
+    cache_file = _INGEST_CACHE_DIR / f"{_product_slug(product_name)}.json"
+    if not cache_file.exists():
+        return None
+    try:
+        data = json.loads(cache_file.read_text())
+        if data.get("fingerprint") != fingerprint:
+            log.info(f"Ingest cache invalid for '{product_name}' — PDFs changed, re-ingesting")
+            return None
+        log.info(f"Ingest cache hit for '{product_name}' — skipping Claude extraction")
+        return IngestedContext(**data["context"])
+    except Exception as e:
+        log.warning(f"Ingest cache read failed: {e} — re-ingesting")
+        return None
+
+
+def _save_ingest_cache(product_name: str, fingerprint: str, context: IngestedContext):
+    _INGEST_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    cache_file = _INGEST_CACHE_DIR / f"{_product_slug(product_name)}.json"
+    payload = {
+        "fingerprint": fingerprint,
+        "product_name": product_name,
+        "context": context.model_dump(),
+    }
+    cache_file.write_text(json.dumps(payload, indent=2))
+    log.info(f"Ingest cache saved for '{product_name}'  →  {cache_file.name}")
 
 
 def _call_claude(client: anthropic.Anthropic, system: str, user: str) -> dict:
@@ -127,8 +178,19 @@ def ingest(product_config: dict) -> IngestedContext:
     """
     client = anthropic.Anthropic(api_key=get_env("ANTHROPIC_API_KEY"))
 
-    log.info(f"Starting ingestion for: {product_config['name']}")
-    raw_texts = load_all_pdfs(product_config["pdfs"])
+    product_name = product_config["name"]
+    pdf_paths    = product_config["pdfs"]
+
+    log.info(f"Starting ingestion for: {product_name}")
+
+    # ── Cache check — skip Claude if PDFs haven't changed ────────────────────
+    fingerprint = _pdf_fingerprint(pdf_paths)
+    cached = _load_ingest_cache(product_name, fingerprint)
+    if cached:
+        return cached
+
+    # ── Full extraction via Claude ────────────────────────────────────────────
+    raw_texts = load_all_pdfs(pdf_paths)
 
     persona   = extract_persona(client, raw_texts["persona"])
     narrative = extract_narrative(client, raw_texts["narrative"])
@@ -140,8 +202,9 @@ def ingest(product_config: dict) -> IngestedContext:
         narrative=narrative,
         brand_voice=voice,
         product_brief=brief,
-        product_name=product_config["name"]
+        product_name=product_name,
     )
 
+    _save_ingest_cache(product_name, fingerprint, context)
     log.info(f"Ingestion complete for: {context.product_name}")
     return context
