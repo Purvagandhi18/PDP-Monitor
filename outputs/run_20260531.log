@@ -1,0 +1,1021 @@
+2026-05-31 20:27:25,460  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 20:27:25,460  INFO      main  →  
+2026-05-31 20:27:25,460  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 20:27:25,460  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 20:27:25,460  INFO      main  →    URLs: 2
+2026-05-31 20:27:25,460  INFO      main  →    Time: 20:27:25
+2026-05-31 20:27:25,460  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 20:27:25,460  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 20:27:25,490  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 20:27:25,490  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 20:27:27,325  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 20:27:27,325  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 20:27:27,786  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 20:27:27,786  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 20:27:27,897  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 20:27:27,898  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 20:27:28,762  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 20:27:28,762  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 20:27:28,762  INFO      extractor  →  Extracting persona profile...
+2026-05-31 20:27:40,481  INFO      extractor  →  Persona extracted → Tejas | Concerns: 3
+2026-05-31 20:27:40,481  INFO      extractor  →  Extracting narrative pillars...
+2026-05-31 20:27:46,259  INFO      extractor  →  Narrative extracted → 3 pillars, 3 claims
+2026-05-31 20:27:46,260  INFO      extractor  →  Extracting brand voice guidelines...
+2026-05-31 20:27:50,900  INFO      extractor  →  Brand voice extracted → tone: ['clinical', 'premium', 'simple', 'confident', 'consistent']
+2026-05-31 20:27:50,900  INFO      extractor  →  Extracting product brief...
+2026-05-31 20:27:58,453  INFO      extractor  →  Product brief extracted → Man Matters Shilajit Gummies
+2026-05-31 20:27:58,454  INFO      extractor  →  Ingestion complete for: Shilajit Gummies
+2026-05-31 20:27:58,455  INFO      main  →        ✓ Persona: Tejas
+2026-05-31 20:27:58,455  INFO      main  →        ✓ Concerns: 3
+2026-05-31 20:27:58,455  INFO      main  →        ✓ Pillars: 3
+2026-05-31 20:27:58,455  INFO      main  →  [2/5] Scraping PDPs...
+2026-05-31 20:27:58,455  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:28:07,231  INFO      text_scraper  →  Structured dump: 212 lines
+2026-05-31 20:28:07,241  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 20:28:07,241  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 20:28:07,319  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 20:28:07,365  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 20:28:32,830  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 37 blocks | CTAs: 2 | reviews: 5
+2026-05-31 20:28:32,831  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2024503
+2026-05-31 20:28:40,596  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 20:28:40,607  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 20:28:40,607  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 20:28:40,685  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 20:28:40,749  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 20:28:58,929  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 29 blocks | CTAs: 2 | reviews: 5
+2026-05-31 20:28:58,929  INFO      main  →        ✓ Scraped 2 URLs
+2026-05-31 20:28:58,930  INFO      main  →  [3/5] Scraping visuals...
+2026-05-31 20:28:58,941  INFO      zeus_connector  →  Cleared 19 old image(s) for slug 'https___manmatters_com_dp_shilajit_gummies_2024397'
+2026-05-31 20:28:58,943  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-21T00:00:00Z)
+2026-05-31 20:28:58,945  INFO      zeus_connector  →  Zeus extracted 19 images for sections PDP
+2026-05-31 20:28:58,945  INFO      visual_scraper  →  Zeus mode: 19 images found — skipping Playwright
+2026-05-31 20:29:04,111  INFO      zeus_connector  →  Zeus images downloaded: 19/19
+2026-05-31 20:29:04,115  INFO      visual_scraper  →  Zeus visuals done → 19 total | 8 hero slides | 11 content images
+2026-05-31 20:29:04,115  INFO      main  →        ✓ https://manmatters.com/dp/shilajit-gummies/2024397 → 8 slides, 11 banners
+2026-05-31 20:29:04,127  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2024503'
+2026-05-31 20:29:04,128  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-21T00:00:00Z)
+2026-05-31 20:29:04,129  INFO      zeus_connector  →  Zeus extracted 26 images for displayOrder PDP
+2026-05-31 20:29:04,129  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-05-31 20:29:09,713  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-05-31 20:29:09,721  INFO      visual_scraper  →  Zeus visuals done → 26 total | 9 hero slides | 17 content images
+2026-05-31 20:29:09,722  INFO      main  →        ✓ https://manmatters.com/dp/2024503 → 9 slides, 17 banners
+2026-05-31 20:29:09,722  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-05-31 20:29:09,722  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Shilajit Gummies
+2026-05-31 20:29:11,991  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-05-31 20:29:11,998  INFO      main  →  [5/5] Analysing...
+2026-05-31 20:29:11,998  INFO      engine  →  ============================================================
+2026-05-31 20:29:11,999  INFO      engine  →  Analysing: https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:29:11,999  INFO      engine  →  ============================================================
+2026-05-31 20:29:12,008  INFO      engine  →  1/5 Reviews...
+2026-05-31 20:29:12,008  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/shilajit-gummies/2024397 (5 reviews)
+2026-05-31 20:29:28,687  INFO      engine  →      → 4.2/10
+2026-05-31 20:29:28,688  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 20:29:28,688  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:30:17,738  INFO      engine  →      → 5.2/10
+2026-05-31 20:30:17,739  INFO      engine  →  3/5 Copy Health...
+2026-05-31 20:30:17,740  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:31:41,887  INFO      engine  →      → 6.4/10
+2026-05-31 20:31:41,888  INFO      engine  →  4/5 Visual Design...
+2026-05-31 20:31:41,888  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:31:41,889  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 20:32:18,372  INFO      engine  →      → 5.8/10
+2026-05-31 20:32:18,373  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 20:32:18,373  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:32:18,373  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 20:32:18,373  INFO      engine  →      → 5.0/10
+2026-05-31 20:32:18,374  INFO      engine  →  OVERALL: 5.4/10 → CRITICAL
+2026-05-31 20:32:18,375  INFO      engine  →  Generating RCA...
+2026-05-31 20:32:18,375  INFO      rca  →  Score 5.4 < 8.0 — generating RCA
+2026-05-31 20:32:42,116  INFO      rca  →  Generated 6 RCA items
+2026-05-31 20:32:42,118  INFO      engine  →  RCA: 6 items
+2026-05-31 20:32:42,119  INFO      engine  →  ============================================================
+2026-05-31 20:32:42,119  INFO      engine  →  Analysing: https://manmatters.com/dp/2024503
+2026-05-31 20:32:42,119  INFO      engine  →  ============================================================
+2026-05-31 20:32:42,142  INFO      engine  →  1/5 Reviews...
+2026-05-31 20:32:42,142  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2024503 (5 reviews)
+2026-05-31 20:32:57,791  INFO      engine  →      → 4.2/10
+2026-05-31 20:32:57,793  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 20:32:57,794  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2024503
+2026-05-31 20:33:49,268  INFO      engine  →      → 5.8/10
+2026-05-31 20:33:49,269  INFO      engine  →  3/5 Copy Health...
+2026-05-31 20:33:49,270  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2024503
+2026-05-31 20:35:03,104  INFO      engine  →      → 6.2/10
+2026-05-31 20:35:03,105  INFO      engine  →  4/5 Visual Design...
+2026-05-31 20:35:03,106  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2024503
+2026-05-31 20:35:03,108  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 20:35:37,542  INFO      engine  →      → 7.2/10
+2026-05-31 20:35:37,543  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 20:35:37,543  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2024503
+2026-05-31 20:35:37,544  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 20:35:37,544  INFO      engine  →      → 5.0/10
+2026-05-31 20:35:37,546  INFO      engine  →  OVERALL: 6.0/10 → CRITICAL
+2026-05-31 20:35:37,547  INFO      engine  →  Generating RCA...
+2026-05-31 20:35:37,547  INFO      rca  →  Score 6.0 < 8.0 — generating RCA
+2026-05-31 20:36:06,918  INFO      rca  →  Generated 6 RCA items
+2026-05-31 20:36:06,919  INFO      engine  →  RCA: 6 items
+2026-05-31 20:36:06,926  INFO      storage_tool  →  Run snapshot saved → outputs/runs/shilajit_gummies_run_20260531_150606.json
+2026-05-31 20:36:06,929  INFO      storage_tool  →  No previous run found before current run
+2026-05-31 20:36:06,929  INFO      regression_agent  →  No previous run — skipping regression detection
+2026-05-31 20:36:06,930  INFO      main  →        https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:36:06,930  INFO      main  →          Reviews:      4.2
+2026-05-31 20:36:06,930  INFO      main  →          P×N:          5.2
+2026-05-31 20:36:06,930  INFO      main  →          Copy Health:  6.4
+2026-05-31 20:36:06,930  INFO      main  →          Visual:       5.8
+2026-05-31 20:36:06,930  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 20:36:06,930  INFO      main  →          ── OVERALL:   5.4 (first run) [CRITICAL]
+2026-05-31 20:36:06,930  INFO      main  →          ── RCA:       6 items
+2026-05-31 20:36:06,930  INFO      main  →        https://manmatters.com/dp/2024503
+2026-05-31 20:36:06,930  INFO      main  →          Reviews:      4.2
+2026-05-31 20:36:06,930  INFO      main  →          P×N:          5.8
+2026-05-31 20:36:06,930  INFO      main  →          Copy Health:  6.2
+2026-05-31 20:36:06,930  INFO      main  →          Visual:       7.2
+2026-05-31 20:36:06,930  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 20:36:06,930  INFO      main  →          ── OVERALL:   6.0 (first run) [CRITICAL]
+2026-05-31 20:36:06,930  INFO      main  →          ── RCA:       6 items
+2026-05-31 20:36:07,028  INFO      report_builder  →  Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 20:36:07,028  INFO      main  →  
+2026-05-31 20:36:07,028  INFO      main  →    ✅ Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 20:36:07,028  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 20:36:07,028  INFO      main  →  
+2026-05-31 20:36:07,028  INFO      main  →  Done. 1/1 reports generated.
+2026-05-31 20:36:07,028  INFO      main  →    → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 20:48:12,193  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 20:48:12,193  INFO      main  →  
+2026-05-31 20:48:12,193  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 20:48:12,194  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 20:48:12,194  INFO      main  →    URLs: 3
+2026-05-31 20:48:12,194  INFO      main  →    Time: 20:48:12
+2026-05-31 20:48:12,194  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 20:48:12,194  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 20:48:12,215  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 20:48:12,215  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 20:48:14,162  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 20:48:14,162  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 20:48:14,643  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 20:48:14,643  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 20:48:14,767  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 20:48:14,767  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 20:48:15,702  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 20:48:15,702  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 20:48:15,702  INFO      extractor  →  Extracting persona profile...
+2026-05-31 20:48:27,410  INFO      extractor  →  Persona extracted → Tejas | Concerns: 3
+2026-05-31 20:48:27,410  INFO      extractor  →  Extracting narrative pillars...
+2026-05-31 20:48:33,934  INFO      extractor  →  Narrative extracted → 3 pillars, 4 claims
+2026-05-31 20:48:33,934  INFO      extractor  →  Extracting brand voice guidelines...
+2026-05-31 20:48:38,745  INFO      extractor  →  Brand voice extracted → tone: ['clinical', 'premium', 'simple', 'confident', 'supportive']
+2026-05-31 20:48:38,747  INFO      extractor  →  Extracting product brief...
+2026-05-31 20:48:46,703  INFO      extractor  →  Product brief extracted → Man Matters Shilajit Gummies
+2026-05-31 20:48:46,705  INFO      extractor  →  Ingestion complete for: Shilajit Gummies
+2026-05-31 20:48:46,706  INFO      main  →        ✓ Persona: Tejas
+2026-05-31 20:48:46,706  INFO      main  →        ✓ Concerns: 3
+2026-05-31 20:48:46,706  INFO      main  →        ✓ Pillars: 3
+2026-05-31 20:48:46,706  INFO      main  →  [2/5] Scraping PDPs...
+2026-05-31 20:48:46,707  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:48:54,535  INFO      text_scraper  →  Structured dump: 212 lines
+2026-05-31 20:48:54,543  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 20:48:54,543  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 20:48:54,618  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 20:48:54,649  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 20:49:11,042  INFO      text_scraper  →  Done → headline: ✓ | subheads: 7 | body: 34 blocks | CTAs: 2 | reviews: 5
+2026-05-31 20:49:11,043  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2024503
+2026-05-31 20:49:18,518  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 20:49:18,527  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 20:49:18,527  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 20:49:18,604  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 20:49:18,642  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 20:49:36,363  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 26 blocks | CTAs: 2 | reviews: 5
+2026-05-31 20:49:36,363  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2025001
+2026-05-31 20:49:43,106  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 20:49:43,116  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 20:49:43,116  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 20:49:43,200  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 20:49:43,225  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 20:49:54,120  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 23 blocks | CTAs: 2 | reviews: 5
+2026-05-31 20:49:54,121  INFO      main  →        ✓ Scraped 3 URLs
+2026-05-31 20:49:54,121  INFO      main  →  [3/5] Scraping visuals...
+2026-05-31 20:49:54,134  INFO      zeus_connector  →  Cleared 19 old image(s) for slug 'https___manmatters_com_dp_shilajit_gummies_2024397'
+2026-05-31 20:49:54,137  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-21T00:00:00Z)
+2026-05-31 20:49:54,137  INFO      zeus_connector  →  Zeus extracted 19 images for sections PDP
+2026-05-31 20:49:54,137  INFO      visual_scraper  →  Zeus mode: 19 images found — skipping Playwright
+2026-05-31 20:49:55,731  INFO      zeus_connector  →  Zeus images downloaded: 19/19
+2026-05-31 20:49:55,735  INFO      visual_scraper  →  Zeus visuals done → 19 total | 8 hero slides | 11 content images
+2026-05-31 20:49:55,735  INFO      main  →        ✓ https://manmatters.com/dp/shilajit-gummies/2024397 → 8 slides, 11 banners
+2026-05-31 20:49:55,747  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2024503'
+2026-05-31 20:49:55,749  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-21T00:00:00Z)
+2026-05-31 20:49:55,749  INFO      zeus_connector  →  Zeus extracted 26 images for displayOrder PDP
+2026-05-31 20:49:55,749  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-05-31 20:49:57,769  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-05-31 20:49:57,772  INFO      visual_scraper  →  Zeus visuals done → 26 total | 9 hero slides | 17 content images
+2026-05-31 20:49:57,772  INFO      main  →        ✓ https://manmatters.com/dp/2024503 → 9 slides, 17 banners
+2026-05-31 20:49:57,776  INFO      zeus_connector  →  No Zeus data for 2025001 — Playwright will handle visuals
+2026-05-31 20:49:57,776  INFO      visual_scraper  →  Playwright fallback → https://manmatters.com/dp/2025001
+2026-05-31 20:50:02,693  INFO      visual_scraper  →  Carousel matched: .slider → 11 slides using 'div, li'
+2026-05-31 20:50:02,698  INFO      visual_scraper  →  Carousel 1: 11 slides found
+2026-05-31 20:50:03,583  INFO      visual_scraper  →  Visuals done → 2 carousel slides | 0 banners | screenshots: 2
+2026-05-31 20:50:03,584  INFO      main  →        ✓ https://manmatters.com/dp/2025001 → 2 slides, 0 banners
+2026-05-31 20:50:03,584  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-05-31 20:50:03,584  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Shilajit Gummies
+2026-05-31 20:50:04,789  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-05-31 20:50:04,793  INFO      main  →  [5/5] Analysing...
+2026-05-31 20:50:04,794  INFO      engine  →  ============================================================
+2026-05-31 20:50:04,794  INFO      engine  →  Analysing: https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:50:04,794  INFO      engine  →  ============================================================
+2026-05-31 20:50:04,803  INFO      engine  →  1/5 Reviews...
+2026-05-31 20:50:04,803  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/shilajit-gummies/2024397 (5 reviews)
+2026-05-31 20:50:22,482  INFO      engine  →      → 4.2/10
+2026-05-31 20:50:22,483  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 20:50:22,483  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:51:05,189  INFO      engine  →      → 5.2/10
+2026-05-31 20:51:05,191  INFO      engine  →  3/5 Copy Health...
+2026-05-31 20:51:05,191  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:52:22,493  INFO      engine  →      → 6.3/10
+2026-05-31 20:52:22,497  INFO      engine  →  4/5 Visual Design...
+2026-05-31 20:52:22,497  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:52:22,498  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 20:52:55,987  INFO      engine  →      → 5.8/10
+2026-05-31 20:52:55,988  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 20:52:55,988  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:52:55,989  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 20:52:55,989  INFO      engine  →      → 5.0/10
+2026-05-31 20:52:55,989  INFO      engine  →  OVERALL: 5.4/10 → CRITICAL
+2026-05-31 20:52:55,990  INFO      engine  →  Generating RCA...
+2026-05-31 20:52:55,990  INFO      rca  →  Score 5.4 < 8.0 — generating RCA
+2026-05-31 20:53:16,542  INFO      rca  →  Generated 6 RCA items
+2026-05-31 20:53:16,543  INFO      engine  →  RCA: 6 items
+2026-05-31 20:53:16,543  INFO      engine  →  ============================================================
+2026-05-31 20:53:16,544  INFO      engine  →  Analysing: https://manmatters.com/dp/2024503
+2026-05-31 20:53:16,544  INFO      engine  →  ============================================================
+2026-05-31 20:53:16,555  INFO      engine  →  1/5 Reviews...
+2026-05-31 20:53:16,555  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2024503 (5 reviews)
+2026-05-31 20:53:32,852  INFO      engine  →      → 4.2/10
+2026-05-31 20:53:32,853  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 20:53:32,853  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2024503
+2026-05-31 20:54:24,729  INFO      engine  →      → 6.2/10
+2026-05-31 20:54:24,730  INFO      engine  →  3/5 Copy Health...
+2026-05-31 20:54:24,730  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2024503
+2026-05-31 20:55:37,261  INFO      engine  →      → 6.1/10
+2026-05-31 20:55:37,263  INFO      engine  →  4/5 Visual Design...
+2026-05-31 20:55:37,263  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2024503
+2026-05-31 20:55:37,264  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 20:56:10,306  INFO      engine  →      → 7.2/10
+2026-05-31 20:56:10,308  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 20:56:10,308  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2024503
+2026-05-31 20:56:10,308  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 20:56:10,309  INFO      engine  →      → 5.0/10
+2026-05-31 20:56:10,309  INFO      engine  →  OVERALL: 6.1/10 → CRITICAL
+2026-05-31 20:56:10,309  INFO      engine  →  Generating RCA...
+2026-05-31 20:56:10,309  INFO      rca  →  Score 6.1 < 8.0 — generating RCA
+2026-05-31 20:56:38,498  INFO      rca  →  Generated 6 RCA items
+2026-05-31 20:56:38,500  INFO      engine  →  RCA: 6 items
+2026-05-31 20:56:38,500  INFO      engine  →  ============================================================
+2026-05-31 20:56:38,500  INFO      engine  →  Analysing: https://manmatters.com/dp/2025001
+2026-05-31 20:56:38,500  INFO      engine  →  ============================================================
+2026-05-31 20:56:38,512  INFO      engine  →  1/5 Reviews...
+2026-05-31 20:56:38,512  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2025001 (5 reviews)
+2026-05-31 20:56:55,679  INFO      engine  →      → 4.2/10
+2026-05-31 20:56:55,680  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 20:56:55,681  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2025001
+2026-05-31 20:57:39,643  INFO      engine  →      → 4.2/10
+2026-05-31 20:57:39,644  INFO      engine  →  3/5 Copy Health...
+2026-05-31 20:57:39,645  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2025001
+2026-05-31 20:58:58,381  INFO      engine  →      → 5.7/10
+2026-05-31 20:58:58,383  INFO      engine  →  4/5 Visual Design...
+2026-05-31 20:58:58,384  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2025001
+2026-05-31 20:58:58,385  INFO      visual_scorer  →  Sending 2 images to Claude Vision (Playwright screenshots)
+2026-05-31 20:59:16,499  INFO      engine  →      → 2.1/10
+2026-05-31 20:59:16,501  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 20:59:16,501  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2025001
+2026-05-31 20:59:16,501  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 20:59:16,501  INFO      engine  →      → 5.0/10
+2026-05-31 20:59:16,502  INFO      engine  →  OVERALL: 3.9/10 → CRITICAL
+2026-05-31 20:59:16,502  INFO      engine  →  Generating RCA...
+2026-05-31 20:59:16,502  INFO      rca  →  Score 3.9 < 8.0 — generating RCA
+2026-05-31 20:59:45,392  INFO      rca  →  Generated 6 RCA items
+2026-05-31 20:59:45,394  INFO      engine  →  RCA: 6 items
+2026-05-31 20:59:45,398  INFO      storage_tool  →  Run snapshot saved → outputs/runs/shilajit_gummies_run_20260531_152945.json
+2026-05-31 20:59:45,402  INFO      storage_tool  →  Loading previous run → shilajit_gummies_run_20260531_150606.json
+2026-05-31 20:59:45,403  INFO      regression_agent  →  Comparing against previous run from 2026-05-31
+2026-05-31 20:59:45,404  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/shilajit-gummies/2024397  5.4 → 5.4 (-0.01)
+2026-05-31 20:59:45,404  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/2024503  6.0 → 6.1 (+0.10)
+2026-05-31 20:59:45,404  INFO      regression_agent  →    No previous data for https://manmatters.com/dp/2025001 — first run for this URL
+2026-05-31 20:59:45,404  INFO      main  →        https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 20:59:45,404  INFO      main  →          Reviews:      4.2
+2026-05-31 20:59:45,404  INFO      main  →          P×N:          5.2
+2026-05-31 20:59:45,404  INFO      main  →          Copy Health:  6.3
+2026-05-31 20:59:45,404  INFO      main  →          Visual:       5.8
+2026-05-31 20:59:45,404  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 20:59:45,405  INFO      main  →          ── OVERALL:   5.4 (-0.0) [CRITICAL]
+2026-05-31 20:59:45,405  INFO      main  →          ── RCA:       6 items
+2026-05-31 20:59:45,405  INFO      main  →        https://manmatters.com/dp/2024503
+2026-05-31 20:59:45,405  INFO      main  →          Reviews:      4.2
+2026-05-31 20:59:45,405  INFO      main  →          P×N:          6.2
+2026-05-31 20:59:45,405  INFO      main  →          Copy Health:  6.1
+2026-05-31 20:59:45,405  INFO      main  →          Visual:       7.2
+2026-05-31 20:59:45,405  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 20:59:45,405  INFO      main  →          ── OVERALL:   6.1 (+0.1) [CRITICAL]
+2026-05-31 20:59:45,405  INFO      main  →          ── RCA:       6 items
+2026-05-31 20:59:45,405  INFO      main  →        https://manmatters.com/dp/2025001
+2026-05-31 20:59:45,405  INFO      main  →          Reviews:      4.2
+2026-05-31 20:59:45,406  INFO      main  →          P×N:          4.2
+2026-05-31 20:59:45,406  INFO      main  →          Copy Health:  5.7
+2026-05-31 20:59:45,406  INFO      main  →          Visual:       2.1
+2026-05-31 20:59:45,406  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 20:59:45,406  INFO      main  →          ── OVERALL:   3.9 (first run) [CRITICAL]
+2026-05-31 20:59:45,406  INFO      main  →          ── RCA:       6 items
+2026-05-31 20:59:45,507  INFO      report_builder  →  Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 20:59:45,507  INFO      main  →  
+2026-05-31 20:59:45,507  INFO      main  →    ✅ Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 20:59:45,507  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 20:59:45,507  INFO      main  →  
+2026-05-31 20:59:45,507  INFO      main  →  Done. 1/1 reports generated.
+2026-05-31 20:59:45,507  INFO      main  →    → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 21:54:56,710  WARNING   reviews_scorer  →  Review date audit: 0/3 reviews have parseable dates. Raw samples: [None, None, None]
+2026-05-31 21:54:56,710  INFO      reviews_scorer  →  Review date audit: all 2/2 dates parsed OK
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/shilajit-gummies/2024397:
+  persona_used    = Tejas
+  narrative_used  = Product First
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Product format — gummies vs resin']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2024503:
+  persona_used    = Tejas
+  narrative_used  = Daily Energy
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=3): ['No added sugar — clean energy', 'Summer energy — beat the heat naturally', 'Daily ritual — consistency builds results']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Summer energy — beat the heat naturally']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/shilajit-gummies/2024397:
+  persona_used    = Tejas
+  narrative_used  = Product First
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Product format — gummies vs resin']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2024503:
+  persona_used    = Tejas
+  narrative_used  = Daily Energy
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=3): ['No added sugar — clean energy', 'Summer energy — beat the heat naturally', 'Daily ritual — consistency builds results']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Summer energy — beat the heat naturally']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/shilajit-gummies/2024397:
+  persona_used    = Tejas
+  narrative_used  = Product First
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Product format — gummies vs resin']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2024503:
+  persona_used    = Tejas
+  narrative_used  = Daily Energy
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=3): ['No added sugar — clean energy', 'Summer energy — beat the heat naturally', 'Daily ritual — consistency builds results']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Summer energy — beat the heat naturally']
+2026-05-31 21:55:02,446  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Summer energy — beat the heat naturally']
+2026-05-31 21:55:02,447  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/shilajit-gummies/2024397:
+  persona_used    = Tejas
+  narrative_used  = Product First
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Product format — gummies vs resin']
+2026-05-31 21:55:02,447  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2024503:
+  persona_used    = Tejas
+  narrative_used  = Daily Energy
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=3): ['No added sugar — clean energy', 'Summer energy — beat the heat naturally', 'Daily ritual — consistency builds results']
+2026-05-31 21:55:02,447  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['afternoon energy crash', 'mental fatigue', 'gym performance']
+  pillars (total=5, filtered=1): ['Summer energy — beat the heat naturally']
+2026-05-31 21:57:19,175  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 21:57:19,175  INFO      main  →  
+2026-05-31 21:57:19,175  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 21:57:19,175  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 21:57:19,175  INFO      main  →    URLs: 3
+2026-05-31 21:57:19,175  INFO      main  →    Time: 21:57:19
+2026-05-31 21:57:19,175  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 21:57:19,175  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 21:57:19,198  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 21:57:19,198  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 21:57:21,070  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 21:57:21,070  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 21:57:21,496  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 21:57:21,496  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 21:57:21,611  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 21:57:21,612  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 21:57:22,476  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 21:57:22,476  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 21:57:22,476  INFO      extractor  →  Extracting persona profile...
+2026-05-31 21:57:34,269  INFO      extractor  →  Persona extracted → Tejas | Concerns: 3
+2026-05-31 21:57:34,269  INFO      extractor  →  Extracting narrative pillars...
+2026-05-31 21:57:40,855  INFO      extractor  →  Narrative extracted → 3 pillars, 4 claims
+2026-05-31 21:57:40,857  INFO      extractor  →  Extracting brand voice guidelines...
+2026-05-31 21:57:45,418  INFO      extractor  →  Brand voice extracted → tone: ['clinical', 'premium', 'simple', 'confident', 'supportive']
+2026-05-31 21:57:45,418  INFO      extractor  →  Extracting product brief...
+2026-05-31 21:57:53,678  INFO      extractor  →  Product brief extracted → Man Matters Shilajit Gummies
+2026-05-31 21:57:53,679  INFO      extractor  →  Ingestion complete for: Shilajit Gummies
+2026-05-31 21:57:53,680  INFO      main  →        ✓ Persona: Tejas
+2026-05-31 21:57:53,680  INFO      main  →        ✓ Concerns: 3
+2026-05-31 21:57:53,680  INFO      main  →        ✓ Pillars: 3
+2026-05-31 21:57:53,680  INFO      main  →  [2/5] Scraping PDPs...
+2026-05-31 21:57:53,681  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 21:58:02,021  INFO      text_scraper  →  Structured dump: 212 lines
+2026-05-31 21:58:02,030  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 21:58:02,030  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 21:58:02,108  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 21:58:02,140  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 21:58:21,657  INFO      text_scraper  →  Done → headline: ✓ | subheads: 6 | body: 31 blocks | CTAs: 2 | reviews: 5
+2026-05-31 21:58:21,659  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2024503
+2026-05-31 21:58:28,956  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 21:58:28,964  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 21:58:28,964  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 21:58:29,043  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 21:58:29,072  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 21:58:39,909  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 22 blocks | CTAs: 2 | reviews: 5
+2026-05-31 21:58:39,909  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2025001
+2026-05-31 21:58:46,721  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 21:58:46,730  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 21:58:46,730  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 21:58:46,808  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 21:58:46,835  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 21:58:58,142  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 23 blocks | CTAs: 2 | reviews: 5
+2026-05-31 21:58:58,142  INFO      main  →        ✓ Scraped 3 URLs
+2026-05-31 21:58:58,143  INFO      main  →  [3/5] Scraping visuals...
+2026-05-31 21:58:58,154  INFO      zeus_connector  →  Cleared 19 old image(s) for slug 'https___manmatters_com_dp_shilajit_gummies_2024397'
+2026-05-31 21:58:58,155  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-21T00:00:00Z)
+2026-05-31 21:58:58,156  INFO      zeus_connector  →  Zeus: extracting images for page 2024397 (style=sections)
+2026-05-31 21:58:58,156  INFO      zeus_connector  →  Zeus extracted 19 images for 2024397
+2026-05-31 21:58:58,156  INFO      visual_scraper  →  Zeus mode: 19 images found — skipping Playwright
+2026-05-31 21:58:59,738  INFO      zeus_connector  →  Zeus images downloaded: 19/19
+2026-05-31 21:58:59,741  INFO      visual_scraper  →  Zeus visuals done → 19 total | 8 hero slides | 11 content images
+2026-05-31 21:58:59,741  INFO      main  →        ✓ https://manmatters.com/dp/shilajit-gummies/2024397 → 8 slides, 11 banners
+2026-05-31 21:58:59,752  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2024503'
+2026-05-31 21:58:59,753  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-21T00:00:00Z)
+2026-05-31 21:58:59,753  INFO      zeus_connector  →  Zeus: extracting images for page 2024503 (style=displayOrder)
+2026-05-31 21:58:59,755  INFO      zeus_connector  →  Zeus extracted 26 images for 2024503
+2026-05-31 21:58:59,756  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-05-31 21:59:01,912  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-05-31 21:59:01,916  INFO      visual_scraper  →  Zeus visuals done → 26 total | 9 hero slides | 17 content images
+2026-05-31 21:59:01,916  INFO      main  →        ✓ https://manmatters.com/dp/2024503 → 9 slides, 17 banners
+2026-05-31 21:59:01,922  INFO      zeus_connector  →  Cleared 2 old image(s) for slug 'https___manmatters_com_dp_2025001'
+2026-05-31 21:59:01,922  INFO      zeus_connector  →  Zeus: no data for page 2025001 — Playwright will handle visuals
+2026-05-31 21:59:01,922  INFO      visual_scraper  →  Playwright fallback → https://manmatters.com/dp/2025001
+2026-05-31 21:59:07,019  INFO      visual_scraper  →  Carousel matched: .slider → 11 slides using 'div, li'
+2026-05-31 21:59:07,024  INFO      visual_scraper  →  Carousel 1: 11 slides found
+2026-05-31 21:59:07,922  INFO      visual_scraper  →  Visuals done → 2 carousel slides | 0 banners | screenshots: 2
+2026-05-31 21:59:07,922  INFO      main  →        ✓ https://manmatters.com/dp/2025001 → 2 slides, 0 banners
+2026-05-31 21:59:07,922  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-05-31 21:59:07,922  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Shilajit Gummies
+2026-05-31 21:59:09,236  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-05-31 21:59:09,240  INFO      main  →  [5/5] Analysing...
+2026-05-31 21:59:09,240  INFO      engine  →  ============================================================
+2026-05-31 21:59:09,240  INFO      engine  →  Analysing: https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 21:59:09,240  INFO      engine  →  ============================================================
+2026-05-31 21:59:09,250  INFO      engine  →  1/5 Reviews...
+2026-05-31 21:59:09,251  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/shilajit-gummies/2024397 (5 reviews)
+2026-05-31 21:59:09,251  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 21:59:09,252  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/shilajit-gummies/2024397 — no review dates available, freshness score set to null
+2026-05-31 21:59:26,395  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 21:59:26,395  INFO      engine  →      → 4.2/10
+2026-05-31 21:59:26,396  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 21:59:26,396  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 21:59:26,396  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/shilajit-gummies/2024397:
+  persona_used    = Tejas
+  narrative_used  = Product First
+  pain_points     = ['Mid-day work exhaustion that undoes his gym efforts between 10 AM and 7 PM', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Maintaining dignity and looking good for his age, not becoming the tired peer']
+  pillars (total=3, filtered=3): ['Sustained daily energy without crashes (solving the 3 PM wall problem)', 'Clean, transparent formulation (no sugar, no junk, third-party tested)', 'Modern convenience over traditional hassle (gummy beats resin)']
+2026-05-31 22:00:05,769  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/shilajit-gummies/2024397 | persona=Tejas | narrative=Product First | overall=5.2
+2026-05-31 22:00:05,771  INFO      engine  →      → 5.2/10
+2026-05-31 22:00:05,771  INFO      engine  →  3/5 Copy Health...
+2026-05-31 22:00:05,772  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:01:24,521  INFO      engine  →      → 6.1/10
+2026-05-31 22:01:24,523  INFO      engine  →  4/5 Visual Design...
+2026-05-31 22:01:24,523  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:01:24,524  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 22:02:01,391  INFO      engine  →      → 5.8/10
+2026-05-31 22:02:01,392  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 22:02:01,392  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:02:01,392  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 22:02:01,393  INFO      engine  →      → 5.0/10
+2026-05-31 22:02:01,393  INFO      engine  →  OVERALL: 5.3/10 → CRITICAL
+2026-05-31 22:02:01,393  INFO      engine  →  Generating RCA...
+2026-05-31 22:02:01,393  INFO      rca  →  Score 5.3 < 8.0 — generating RCA
+2026-05-31 22:02:34,612  INFO      rca  →  Generated 6 RCA items
+2026-05-31 22:02:34,615  INFO      engine  →  RCA: 6 items
+2026-05-31 22:02:34,615  INFO      engine  →  ============================================================
+2026-05-31 22:02:34,615  INFO      engine  →  Analysing: https://manmatters.com/dp/2024503
+2026-05-31 22:02:34,615  INFO      engine  →  ============================================================
+2026-05-31 22:02:34,632  INFO      engine  →  1/5 Reviews...
+2026-05-31 22:02:34,632  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2024503 (5 reviews)
+2026-05-31 22:02:34,632  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 22:02:34,632  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/2024503 — no review dates available, freshness score set to null
+2026-05-31 22:02:51,559  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.com/dp/2024503
+2026-05-31 22:02:51,560  INFO      engine  →      → 4.2/10
+2026-05-31 22:02:51,560  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 22:02:51,560  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2024503
+2026-05-31 22:02:51,561  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2024503:
+  persona_used    = Tejas
+  narrative_used  = Daily Energy
+  pain_points     = ['Mid-day work exhaustion that undoes his gym efforts between 10 AM and 7 PM', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Maintaining dignity and looking good for his age, not becoming the tired peer']
+  pillars (total=3, filtered=1): ['Sustained daily energy without crashes (solving the 3 PM wall problem)']
+2026-05-31 22:03:32,806  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/2024503 | persona=Tejas | narrative=Daily Energy | overall=5.2
+2026-05-31 22:03:32,808  INFO      engine  →      → 5.2/10
+2026-05-31 22:03:32,808  INFO      engine  →  3/5 Copy Health...
+2026-05-31 22:03:32,808  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2024503
+2026-05-31 22:04:46,488  INFO      engine  →      → 6.0/10
+2026-05-31 22:04:46,490  INFO      engine  →  4/5 Visual Design...
+2026-05-31 22:04:46,490  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2024503
+2026-05-31 22:04:46,491  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 22:05:17,900  INFO      engine  →      → 7.2/10
+2026-05-31 22:05:17,902  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 22:05:17,902  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2024503
+2026-05-31 22:05:17,902  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 22:05:17,902  INFO      engine  →      → 5.0/10
+2026-05-31 22:05:17,902  INFO      engine  →  OVERALL: 5.8/10 → CRITICAL
+2026-05-31 22:05:17,903  INFO      engine  →  Generating RCA...
+2026-05-31 22:05:17,903  INFO      rca  →  Score 5.8 < 8.0 — generating RCA
+2026-05-31 22:05:39,524  INFO      rca  →  Generated 6 RCA items
+2026-05-31 22:05:39,526  INFO      engine  →  RCA: 6 items
+2026-05-31 22:05:39,526  INFO      engine  →  ============================================================
+2026-05-31 22:05:39,526  INFO      engine  →  Analysing: https://manmatters.com/dp/2025001
+2026-05-31 22:05:39,527  INFO      engine  →  ============================================================
+2026-05-31 22:05:39,539  INFO      engine  →  1/5 Reviews...
+2026-05-31 22:05:39,539  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2025001 (5 reviews)
+2026-05-31 22:05:39,539  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 22:05:39,539  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/2025001 — no review dates available, freshness score set to null
+2026-05-31 22:05:56,728  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.com/dp/2025001
+2026-05-31 22:05:56,729  INFO      engine  →      → 4.2/10
+2026-05-31 22:05:56,730  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 22:05:56,730  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2025001
+2026-05-31 22:05:56,730  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['Mid-day work exhaustion that undoes his gym efforts between 10 AM and 7 PM', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Maintaining dignity and looking good for his age, not becoming the tired peer']
+  pillars (total=3, filtered=3): ['Sustained daily energy without crashes (solving the 3 PM wall problem)', 'Clean, transparent formulation (no sugar, no junk, third-party tested)', 'Modern convenience over traditional hassle (gummy beats resin)']
+2026-05-31 22:06:35,110  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/2025001 | persona=Tejas | narrative=Summer | overall=4.2
+2026-05-31 22:06:35,112  INFO      engine  →      → 4.2/10
+2026-05-31 22:06:35,112  INFO      engine  →  3/5 Copy Health...
+2026-05-31 22:06:35,113  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2025001
+2026-05-31 22:07:49,404  INFO      engine  →      → 5.8/10
+2026-05-31 22:07:49,405  INFO      engine  →  4/5 Visual Design...
+2026-05-31 22:07:49,405  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2025001
+2026-05-31 22:07:49,405  INFO      visual_scorer  →  Sending 2 images to Claude Vision (Playwright screenshots)
+2026-05-31 22:08:07,706  INFO      engine  →      → 1.5/10
+2026-05-31 22:08:07,708  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 22:08:07,708  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2025001
+2026-05-31 22:08:07,708  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 22:08:07,709  INFO      engine  →      → 5.0/10
+2026-05-31 22:08:07,709  INFO      engine  →  OVERALL: 3.7/10 → CRITICAL
+2026-05-31 22:08:07,710  INFO      engine  →  Generating RCA...
+2026-05-31 22:08:07,710  INFO      rca  →  Score 3.7 < 8.0 — generating RCA
+2026-05-31 22:08:31,326  INFO      rca  →  Generated 6 RCA items
+2026-05-31 22:08:31,327  INFO      engine  →  RCA: 6 items
+2026-05-31 22:08:31,331  INFO      storage_tool  →  Run snapshot saved → outputs/runs/shilajit_gummies_run_20260531_163831.json
+2026-05-31 22:08:31,332  INFO      storage_tool  →  Loading previous run → shilajit_gummies_run_20260531_152945.json
+2026-05-31 22:08:31,333  INFO      regression_agent  →  Comparing against previous run from 2026-05-31
+2026-05-31 22:08:31,333  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/shilajit-gummies/2024397  5.4 → 5.3 (-0.04)
+2026-05-31 22:08:31,333  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/2024503  6.1 → 5.8 (-0.31)
+2026-05-31 22:08:31,333  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/2025001  3.9 → 3.7 (-0.17)
+2026-05-31 22:08:31,333  INFO      main  →        https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:08:31,333  INFO      main  →          Reviews:      4.2
+2026-05-31 22:08:31,333  INFO      main  →          P×N:          5.2
+2026-05-31 22:08:31,333  INFO      main  →          Copy Health:  6.1
+2026-05-31 22:08:31,333  INFO      main  →          Visual:       5.8
+2026-05-31 22:08:31,333  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 22:08:31,333  INFO      main  →          ── OVERALL:   5.3 (-0.0) [CRITICAL]
+2026-05-31 22:08:31,333  INFO      main  →          ── RCA:       6 items
+2026-05-31 22:08:31,333  INFO      main  →        https://manmatters.com/dp/2024503
+2026-05-31 22:08:31,333  INFO      main  →          Reviews:      4.2
+2026-05-31 22:08:31,334  INFO      main  →          P×N:          5.2
+2026-05-31 22:08:31,334  INFO      main  →          Copy Health:  6.0
+2026-05-31 22:08:31,334  INFO      main  →          Visual:       7.2
+2026-05-31 22:08:31,334  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 22:08:31,334  INFO      main  →          ── OVERALL:   5.8 (-0.3) [CRITICAL]
+2026-05-31 22:08:31,334  INFO      main  →          ── RCA:       6 items
+2026-05-31 22:08:31,334  INFO      main  →        https://manmatters.com/dp/2025001
+2026-05-31 22:08:31,334  INFO      main  →          Reviews:      4.2
+2026-05-31 22:08:31,334  INFO      main  →          P×N:          4.2
+2026-05-31 22:08:31,334  INFO      main  →          Copy Health:  5.8
+2026-05-31 22:08:31,334  INFO      main  →          Visual:       1.5
+2026-05-31 22:08:31,334  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 22:08:31,334  INFO      main  →          ── OVERALL:   3.7 (-0.2) [CRITICAL]
+2026-05-31 22:08:31,334  INFO      main  →          ── RCA:       6 items
+2026-05-31 22:08:31,421  INFO      report_builder  →  Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 22:08:31,421  INFO      main  →  
+2026-05-31 22:08:31,421  INFO      main  →    ✅ Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 22:08:31,421  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 22:08:31,421  INFO      main  →  
+2026-05-31 22:08:31,421  INFO      main  →  Done. 1/1 reports generated.
+2026-05-31 22:08:31,421  INFO      main  →    → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 22:17:33,732  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 22:17:33,732  INFO      zeus_connector  →  Zeus: extracting images for page 2024397 (style=sections)
+2026-05-31 22:17:33,733  INFO      zeus_connector  →  Zeus extracted 38 images for 2024397
+2026-05-31 22:17:33,733  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 22:17:33,733  INFO      zeus_connector  →  Zeus: extracting images for page 2024503 (style=displayOrder)
+2026-05-31 22:17:33,733  INFO      zeus_connector  →  Zeus extracted 26 images for 2024503
+2026-05-31 22:17:33,734  INFO      zeus_connector  →  Zeus cache hit: 2025001 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 22:17:33,734  INFO      zeus_connector  →  Zeus: extracting images for page 2025001 (style=displayOrder)
+2026-05-31 22:17:33,734  INFO      zeus_connector  →  Zeus extracted 26 images for 2025001
+2026-05-31 22:19:28,184  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 22:19:28,185  INFO      main  →  
+2026-05-31 22:19:28,185  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 22:19:28,185  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 22:19:28,185  INFO      main  →    URLs: 3
+2026-05-31 22:19:28,185  INFO      main  →    Time: 22:19:28
+2026-05-31 22:19:28,186  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 22:19:28,186  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 22:19:28,209  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 22:19:28,209  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 22:19:29,965  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 22:19:29,965  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 22:19:30,371  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 22:19:30,371  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 22:19:30,481  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 22:19:30,481  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 22:19:31,340  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 22:19:31,340  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 22:19:31,340  INFO      extractor  →  Extracting persona profile...
+2026-05-31 22:19:41,585  INFO      extractor  →  Persona extracted → Tejas | Concerns: 3
+2026-05-31 22:19:41,586  INFO      extractor  →  Extracting narrative pillars...
+2026-05-31 22:19:48,792  INFO      extractor  →  Narrative extracted → 3 pillars, 3 claims
+2026-05-31 22:19:48,793  INFO      extractor  →  Extracting brand voice guidelines...
+2026-05-31 22:19:53,080  INFO      extractor  →  Brand voice extracted → tone: ['clinical', 'premium', 'simple', 'confident', 'supportive']
+2026-05-31 22:19:53,082  INFO      extractor  →  Extracting product brief...
+2026-05-31 22:20:01,799  INFO      extractor  →  Product brief extracted → Man Matters Shilajit Gummies
+2026-05-31 22:20:01,800  INFO      extractor  →  Ingestion complete for: Shilajit Gummies
+2026-05-31 22:20:01,800  INFO      main  →        ✓ Persona: Tejas
+2026-05-31 22:20:01,800  INFO      main  →        ✓ Concerns: 3
+2026-05-31 22:20:01,800  INFO      main  →        ✓ Pillars: 3
+2026-05-31 22:20:01,801  INFO      main  →  [2/5] Scraping PDPs...
+2026-05-31 22:20:01,801  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:20:10,153  INFO      text_scraper  →  Structured dump: 212 lines
+2026-05-31 22:20:10,162  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 22:20:10,162  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 22:20:10,235  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 22:20:10,267  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 22:20:33,234  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 35 blocks | CTAs: 2 | reviews: 5
+2026-05-31 22:20:33,236  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2024503
+2026-05-31 22:20:40,705  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 22:20:40,715  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 22:20:40,715  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 22:20:40,794  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 22:20:40,839  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 22:20:58,543  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 26 blocks | CTAs: 2 | reviews: 5
+2026-05-31 22:20:58,544  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2025001
+2026-05-31 22:21:06,151  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 22:21:06,161  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 22:21:06,161  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 22:21:06,239  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 22:21:06,263  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 22:21:17,180  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 23 blocks | CTAs: 2 | reviews: 5
+2026-05-31 22:21:17,180  INFO      main  →        ✓ Scraped 3 URLs
+2026-05-31 22:21:17,180  INFO      main  →  [3/5] Scraping visuals...
+2026-05-31 22:21:17,191  INFO      zeus_connector  →  Cleared 19 old image(s) for slug 'https___manmatters_com_dp_shilajit_gummies_2024397'
+2026-05-31 22:21:17,192  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 22:21:17,192  INFO      zeus_connector  →  Zeus: extracting images for page 2024397 (style=sections)
+2026-05-31 22:21:17,194  INFO      zeus_connector  →  Zeus extracted 38 images for 2024397
+2026-05-31 22:21:17,195  INFO      visual_scraper  →  Zeus mode: 38 images found — skipping Playwright
+2026-05-31 22:21:23,053  INFO      zeus_connector  →  Zeus images downloaded: 38/38
+2026-05-31 22:21:23,058  INFO      visual_scraper  →  Zeus visuals done → 38 total | 8 hero slides | 30 content images
+2026-05-31 22:21:23,058  INFO      main  →        ✓ https://manmatters.com/dp/shilajit-gummies/2024397 → 8 slides, 30 banners
+2026-05-31 22:21:23,067  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2024503'
+2026-05-31 22:21:23,069  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 22:21:23,069  INFO      zeus_connector  →  Zeus: extracting images for page 2024503 (style=displayOrder)
+2026-05-31 22:21:23,070  INFO      zeus_connector  →  Zeus extracted 26 images for 2024503
+2026-05-31 22:21:23,070  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-05-31 22:21:25,156  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-05-31 22:21:25,160  INFO      visual_scraper  →  Zeus visuals done → 26 total | 9 hero slides | 17 content images
+2026-05-31 22:21:25,160  INFO      main  →        ✓ https://manmatters.com/dp/2024503 → 9 slides, 17 banners
+2026-05-31 22:21:25,165  INFO      zeus_connector  →  Cleared 2 old image(s) for slug 'https___manmatters_com_dp_2025001'
+2026-05-31 22:21:25,167  INFO      zeus_connector  →  Zeus cache hit: 2025001 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 22:21:25,167  INFO      zeus_connector  →  Zeus: extracting images for page 2025001 (style=displayOrder)
+2026-05-31 22:21:25,168  INFO      zeus_connector  →  Zeus extracted 26 images for 2025001
+2026-05-31 22:21:25,168  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-05-31 22:21:27,207  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-05-31 22:21:27,210  INFO      visual_scraper  →  Zeus visuals done → 26 total | 10 hero slides | 16 content images
+2026-05-31 22:21:27,210  INFO      main  →        ✓ https://manmatters.com/dp/2025001 → 10 slides, 16 banners
+2026-05-31 22:21:27,210  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-05-31 22:21:27,211  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Shilajit Gummies
+2026-05-31 22:21:28,509  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-05-31 22:21:28,515  INFO      main  →  [5/5] Analysing...
+2026-05-31 22:21:28,515  INFO      engine  →  ============================================================
+2026-05-31 22:21:28,515  INFO      engine  →  Analysing: https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:21:28,515  INFO      engine  →  ============================================================
+2026-05-31 22:21:28,524  INFO      engine  →  1/5 Reviews...
+2026-05-31 22:21:28,524  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/shilajit-gummies/2024397 (5 reviews)
+2026-05-31 22:21:28,524  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 22:21:28,526  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/shilajit-gummies/2024397 — no review dates available, freshness score set to null
+2026-05-31 22:21:44,051  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:21:44,052  INFO      engine  →      → 4.2/10
+2026-05-31 22:21:44,052  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 22:21:44,052  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:21:44,052  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/shilajit-gummies/2024397:
+  persona_used    = Tejas
+  narrative_used  = Product First
+  pain_points     = ['Work exhaustion depleting energy between gym and end of day', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Finding supplements that work with his travel-heavy lifestyle (15 days/month)']
+  pillars (total=3, filtered=3): ['Sustained daily energy without crashes (solving the 3 PM wall, not the gym)', 'Clean, transparent formulation (no added sugar, natural ingredients, third-party lab tested)', 'Modern convenience over traditional friction (gummy vs messy resin prep)']
+2026-05-31 22:22:32,585  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/shilajit-gummies/2024397 | persona=Tejas | narrative=Product First | overall=5.8
+2026-05-31 22:22:32,587  INFO      engine  →      → 5.8/10
+2026-05-31 22:22:32,587  INFO      engine  →  3/5 Copy Health...
+2026-05-31 22:22:32,587  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:23:58,359  INFO      engine  →      → 6.0/10
+2026-05-31 22:23:58,363  INFO      engine  →  4/5 Visual Design...
+2026-05-31 22:23:58,363  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:23:58,363  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 22:24:30,628  INFO      engine  →      → 5.8/10
+2026-05-31 22:24:30,629  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 22:24:30,630  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:24:30,630  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 22:24:30,630  INFO      engine  →      → 5.0/10
+2026-05-31 22:24:30,631  INFO      engine  →  OVERALL: 5.5/10 → CRITICAL
+2026-05-31 22:24:30,635  INFO      engine  →  Generating RCA...
+2026-05-31 22:24:30,635  INFO      rca  →  Score 5.5 < 8.0 — generating RCA
+2026-05-31 22:24:54,882  INFO      rca  →  Generated 6 RCA items
+2026-05-31 22:24:54,884  INFO      engine  →  RCA: 6 items
+2026-05-31 22:24:54,884  INFO      engine  →  ============================================================
+2026-05-31 22:24:54,884  INFO      engine  →  Analysing: https://manmatters.com/dp/2024503
+2026-05-31 22:24:54,884  INFO      engine  →  ============================================================
+2026-05-31 22:24:54,903  INFO      engine  →  1/5 Reviews...
+2026-05-31 22:24:54,903  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2024503 (5 reviews)
+2026-05-31 22:24:54,903  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 22:24:54,903  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/2024503 — no review dates available, freshness score set to null
+2026-05-31 22:25:10,712  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.com/dp/2024503
+2026-05-31 22:25:10,713  INFO      engine  →      → 4.2/10
+2026-05-31 22:25:10,714  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 22:25:10,715  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2024503
+2026-05-31 22:25:10,715  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2024503:
+  persona_used    = Tejas
+  narrative_used  = Daily Energy
+  pain_points     = ['Work exhaustion depleting energy between gym and end of day', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Finding supplements that work with his travel-heavy lifestyle (15 days/month)']
+  pillars (total=3, filtered=1): ['Sustained daily energy without crashes (solving the 3 PM wall, not the gym)']
+2026-05-31 22:25:48,485  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/2024503 | persona=Tejas | narrative=Daily Energy | overall=5.8
+2026-05-31 22:25:48,487  INFO      engine  →      → 5.8/10
+2026-05-31 22:25:48,487  INFO      engine  →  3/5 Copy Health...
+2026-05-31 22:25:48,487  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2024503
+2026-05-31 22:27:04,243  INFO      engine  →      → 5.8/10
+2026-05-31 22:27:04,244  INFO      engine  →  4/5 Visual Design...
+2026-05-31 22:27:04,244  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2024503
+2026-05-31 22:27:04,245  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-05-31 22:27:35,370  INFO      engine  →      → 7.2/10
+2026-05-31 22:27:35,371  INFO      engine  →  5/5 Ad Alignment...
+2026-05-31 22:27:35,371  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2024503
+2026-05-31 22:27:35,371  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-05-31 22:27:35,372  INFO      engine  →      → 5.0/10
+2026-05-31 22:27:35,372  INFO      engine  →  OVERALL: 5.9/10 → CRITICAL
+2026-05-31 22:27:35,373  INFO      engine  →  Generating RCA...
+2026-05-31 22:27:35,374  INFO      rca  →  Score 5.9 < 8.0 — generating RCA
+2026-05-31 22:28:04,454  INFO      rca  →  Generated 6 RCA items
+2026-05-31 22:28:04,455  INFO      engine  →  RCA: 6 items
+2026-05-31 22:28:04,455  INFO      engine  →  ============================================================
+2026-05-31 22:28:04,456  INFO      engine  →  Analysing: https://manmatters.com/dp/2025001
+2026-05-31 22:28:04,456  INFO      engine  →  ============================================================
+2026-05-31 22:28:04,476  INFO      engine  →  1/5 Reviews...
+2026-05-31 22:28:04,476  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2025001 (5 reviews)
+2026-05-31 22:28:04,477  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 22:28:04,477  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/2025001 — no review dates available, freshness score set to null
+2026-05-31 22:28:18,746  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.com/dp/2025001
+2026-05-31 22:28:18,747  INFO      engine  →      → 4.2/10
+2026-05-31 22:28:18,747  INFO      engine  →  2/5 Persona × Narrative...
+2026-05-31 22:28:18,747  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2025001
+2026-05-31 22:28:18,747  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['Work exhaustion depleting energy between gym and end of day', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Finding supplements that work with his travel-heavy lifestyle (15 days/month)']
+  pillars (total=3, filtered=3): ['Sustained daily energy without crashes (solving the 3 PM wall, not the gym)', 'Clean, transparent formulation (no added sugar, natural ingredients, third-party lab tested)', 'Modern convenience over traditional friction (gummy vs messy resin prep)']
+2026-05-31 22:29:06,966  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/2025001 | persona=Tejas | narrative=Summer | overall=5.8
+2026-05-31 22:29:06,968  INFO      engine  →      → 5.8/10
+2026-05-31 22:29:06,968  INFO      engine  →  3/5 Copy Health...
+2026-05-31 22:29:06,968  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2025001
+2026-05-31 22:30:29,432  ERROR     engine  →  Analysis failed for https://manmatters.com/dp/2025001: 1 validation error for SubScore
+suggestion
+  Field required [type=missing, input_value={'name': 'Claims Alignmen...pproved documentation.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-31 22:30:29,436  INFO      storage_tool  →  Run snapshot saved → outputs/runs/shilajit_gummies_run_20260531_170029.json
+2026-05-31 22:30:29,437  INFO      storage_tool  →  Loading previous run → shilajit_gummies_run_20260531_163831.json
+2026-05-31 22:30:29,438  INFO      regression_agent  →  Comparing against previous run from 2026-05-31
+2026-05-31 22:30:29,438  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/shilajit-gummies/2024397  5.3 → 5.5 (+0.17)
+2026-05-31 22:30:29,438  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/2024503  5.8 → 5.9 (+0.15)
+2026-05-31 22:30:29,438  INFO      main  →        https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 22:30:29,438  INFO      main  →          Reviews:      4.2
+2026-05-31 22:30:29,438  INFO      main  →          P×N:          5.8
+2026-05-31 22:30:29,438  INFO      main  →          Copy Health:  6.0
+2026-05-31 22:30:29,438  INFO      main  →          Visual:       5.8
+2026-05-31 22:30:29,438  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 22:30:29,438  INFO      main  →          ── OVERALL:   5.5 (+0.2) [CRITICAL]
+2026-05-31 22:30:29,438  INFO      main  →          ── RCA:       6 items
+2026-05-31 22:30:29,438  INFO      main  →        https://manmatters.com/dp/2024503
+2026-05-31 22:30:29,439  INFO      main  →          Reviews:      4.2
+2026-05-31 22:30:29,439  INFO      main  →          P×N:          5.8
+2026-05-31 22:30:29,439  INFO      main  →          Copy Health:  5.8
+2026-05-31 22:30:29,439  INFO      main  →          Visual:       7.2
+2026-05-31 22:30:29,439  INFO      main  →          Ad Alignment: 5.0
+2026-05-31 22:30:29,439  INFO      main  →          ── OVERALL:   5.9 (+0.1) [CRITICAL]
+2026-05-31 22:30:29,439  INFO      main  →          ── RCA:       6 items
+2026-05-31 22:30:29,532  INFO      report_builder  →  Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 22:30:29,532  INFO      main  →  
+2026-05-31 22:30:29,532  INFO      main  →    ✅ Report saved → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 22:30:29,532  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 22:30:29,532  INFO      main  →  
+2026-05-31 22:30:29,532  INFO      main  →  Done. 1/1 reports generated.
+2026-05-31 22:30:29,532  INFO      main  →    → outputs/reports/shilajit_gummies_20260531.html
+2026-05-31 22:43:43,142  INFO      zeus_connector  →  Zeus cache stale/missing for 2025001 — syncing via KAI
+2026-05-31 22:43:43,143  INFO      kai_client  →  KAI: fetching PDP JSON via MCP (https://stg-pdp-mcp.mosaicwellness.in) for https://manmatters.com/dp/2025001
+2026-05-31 22:43:43,347  INFO      kai_client  →  KAI: fetched https://manmatters.com/dp/2025001 — gallery=9 widgets=0 reviews=5
+2026-05-31 22:43:43,348  INFO      kai_client  →  KAI cache built for 2025001: gallery=9 widgets=0 sections_raw=18 reviews=5
+2026-05-31 22:43:43,350  INFO      zeus_connector  →  Zeus cache saved: 2025001
+2026-05-31 22:43:43,350  INFO      zeus_connector  →  KAI sync complete for 2025001
+2026-05-31 22:43:43,350  INFO      zeus_connector  →  Zeus reviews: 5 for page 2025001 (5/5 with dateCreated)
+2026-05-31 23:02:25,773  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 23:02:25,773  INFO      main  →  
+2026-05-31 23:02:25,773  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:02:25,773  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 23:02:25,773  INFO      main  →    URLs: 3
+2026-05-31 23:02:25,773  INFO      main  →    Time: 23:02:25
+2026-05-31 23:02:25,773  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:02:25,773  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 23:02:25,797  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 23:02:25,797  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 23:02:27,561  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 23:02:27,561  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 23:02:27,967  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 23:02:27,967  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 23:02:28,074  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 23:02:28,074  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 23:02:28,942  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 23:02:28,942  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 23:02:28,942  INFO      extractor  →  Extracting persona profile...
+2026-05-31 23:02:40,688  INFO      extractor  →  Persona extracted → Tejas | Concerns: 3
+2026-05-31 23:02:40,689  INFO      extractor  →  Extracting narrative pillars...
+2026-05-31 23:02:48,283  INFO      extractor  →  Narrative extracted → 3 pillars, 3 claims
+2026-05-31 23:02:48,284  INFO      extractor  →  Extracting brand voice guidelines...
+2026-05-31 23:02:53,405  INFO      extractor  →  Brand voice extracted → tone: ['clinical', 'premium', 'simple', 'confident', 'clean']
+2026-05-31 23:02:53,406  INFO      extractor  →  Extracting product brief...
+2026-05-31 23:03:00,879  INFO      extractor  →  Product brief extracted → Man Matters Shilajit Gummies
+2026-05-31 23:03:00,880  INFO      extractor  →  Ingestion complete for: Shilajit Gummies
+2026-05-31 23:03:00,880  INFO      main  →        ✓ Persona: Tejas
+2026-05-31 23:03:00,880  INFO      main  →        ✓ Concerns: 3
+2026-05-31 23:03:00,880  INFO      main  →        ✓ Pillars: 3
+2026-05-31 23:03:00,880  INFO      main  →  [2/5] Scraping PDPs...
+2026-05-31 23:03:00,881  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 23:03:09,308  INFO      text_scraper  →  Structured dump: 212 lines
+2026-05-31 23:03:09,317  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 23:03:09,317  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 23:03:09,389  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 23:03:09,415  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 23:03:31,804  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 34 blocks | CTAs: 2 | reviews: 5
+2026-05-31 23:03:31,805  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2024503
+2026-05-31 23:03:38,995  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 23:03:39,004  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 23:03:39,004  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 23:03:39,096  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 23:03:39,123  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 23:04:02,834  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 23 blocks | CTAs: 2 | reviews: 5
+2026-05-31 23:04:02,834  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2025001
+2026-05-31 23:04:09,751  INFO      text_scraper  →  Structured dump: 141 lines
+2026-05-31 23:04:09,760  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-05-31 23:04:09,760  INFO      text_scraper  →  Found 5 review elements on page
+2026-05-31 23:04:09,840  INFO      text_scraper  →  Scraped 5 reviews
+2026-05-31 23:04:09,862  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-05-31 23:04:10,408  WARNING   text_scraper  →  Claude extraction failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cbb3mvxGrB4c6Zwv4dgJc'} — returning empty structure
+2026-05-31 23:04:10,408  INFO      text_scraper  →  Done → headline: ✗ | subheads: 0 | body: 0 blocks | CTAs: 0 | reviews: 5
+2026-05-31 23:04:10,409  INFO      main  →        ✓ Scraped 3 URLs
+2026-05-31 23:04:10,409  INFO      main  →  [3/5] Scraping visuals...
+2026-05-31 23:04:10,422  INFO      zeus_connector  →  Cleared 38 old image(s) for slug 'https___manmatters_com_dp_shilajit_gummies_2024397'
+2026-05-31 23:04:10,423  INFO      zeus_connector  →  Zeus cache stale/missing for 2024397 — syncing via KAI
+2026-05-31 23:04:10,427  INFO      zeus_connector  →  KAI sync skipped for 2024397: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-05-31 23:04:10,428  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 23:04:10,428  INFO      zeus_connector  →  Zeus: extracting images for page 2024397 (style=sections)
+2026-05-31 23:04:10,429  INFO      zeus_connector  →  Zeus extracted 38 images for 2024397
+2026-05-31 23:04:10,429  INFO      visual_scraper  →  Zeus mode: 38 images found — skipping Playwright
+2026-05-31 23:04:13,767  INFO      zeus_connector  →  Zeus images downloaded: 38/38
+2026-05-31 23:04:13,770  INFO      visual_scraper  →  Zeus visuals done → 38 total | 8 hero slides | 30 content images
+2026-05-31 23:04:13,771  INFO      main  →        ✓ https://manmatters.com/dp/shilajit-gummies/2024397 → 8 slides, 30 banners
+2026-05-31 23:04:13,778  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2024503'
+2026-05-31 23:04:13,780  INFO      zeus_connector  →  Zeus cache stale/missing for 2024503 — syncing via KAI
+2026-05-31 23:04:13,780  INFO      zeus_connector  →  KAI sync skipped for 2024503: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-05-31 23:04:13,780  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 23:04:13,780  INFO      zeus_connector  →  Zeus: extracting images for page 2024503 (style=displayOrder)
+2026-05-31 23:04:13,781  INFO      zeus_connector  →  Zeus extracted 26 images for 2024503
+2026-05-31 23:04:13,781  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-05-31 23:04:15,573  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-05-31 23:04:15,575  INFO      visual_scraper  →  Zeus visuals done → 26 total | 9 hero slides | 17 content images
+2026-05-31 23:04:15,575  INFO      main  →        ✓ https://manmatters.com/dp/2024503 → 9 slides, 17 banners
+2026-05-31 23:04:15,583  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2025001'
+2026-05-31 23:04:15,584  INFO      zeus_connector  →  Zeus cache stale/missing for 2025001 — syncing via KAI
+2026-05-31 23:04:15,584  INFO      zeus_connector  →  KAI sync skipped for 2025001: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-05-31 23:04:15,585  INFO      zeus_connector  →  Zeus cache hit: 2025001 (fetched 2026-05-31T00:00:00Z)
+2026-05-31 23:04:15,585  INFO      zeus_connector  →  Zeus: extracting images for page 2025001 (style=displayOrder)
+2026-05-31 23:04:15,585  INFO      zeus_connector  →  Zeus extracted 26 images for 2025001
+2026-05-31 23:04:15,586  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-05-31 23:04:17,369  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-05-31 23:04:17,371  INFO      visual_scraper  →  Zeus visuals done → 26 total | 10 hero slides | 16 content images
+2026-05-31 23:04:17,372  INFO      main  →        ✓ https://manmatters.com/dp/2025001 → 10 slides, 16 banners
+2026-05-31 23:04:17,372  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-05-31 23:04:17,372  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Shilajit Gummies
+2026-05-31 23:04:18,701  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-05-31 23:04:18,706  INFO      main  →  [5/5] Analysing...
+2026-05-31 23:04:18,706  INFO      engine  →  ============================================================
+2026-05-31 23:04:18,707  INFO      engine  →  Analysing: https://manmatters.com/dp/shilajit-gummies/2024397
+2026-05-31 23:04:18,707  INFO      engine  →  ============================================================
+2026-05-31 23:04:18,714  INFO      engine  →  1/5 Reviews...
+2026-05-31 23:04:18,714  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/shilajit-gummies/2024397 (5 reviews)
+2026-05-31 23:04:18,714  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 23:04:18,716  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/shilajit-gummies/2024397 — no review dates available, freshness score set to null
+2026-05-31 23:04:19,066  ERROR     engine  →  Analysis failed for https://manmatters.com/dp/shilajit-gummies/2024397: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cbb3naj8S4FiZnCKNChZw'}
+2026-05-31 23:04:19,067  INFO      engine  →  ============================================================
+2026-05-31 23:04:19,067  INFO      engine  →  Analysing: https://manmatters.com/dp/2024503
+2026-05-31 23:04:19,067  INFO      engine  →  ============================================================
+2026-05-31 23:04:19,075  INFO      engine  →  1/5 Reviews...
+2026-05-31 23:04:19,075  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2024503 (5 reviews)
+2026-05-31 23:04:19,075  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 23:04:19,075  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/2024503 — no review dates available, freshness score set to null
+2026-05-31 23:04:19,734  ERROR     engine  →  Analysis failed for https://manmatters.com/dp/2024503: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cbb3ndPNeYSqGkkhd5YRe'}
+2026-05-31 23:04:19,734  INFO      engine  →  ============================================================
+2026-05-31 23:04:19,734  INFO      engine  →  Analysing: https://manmatters.com/dp/2025001
+2026-05-31 23:04:19,734  INFO      engine  →  ============================================================
+2026-05-31 23:04:19,740  INFO      engine  →  1/5 Reviews...
+2026-05-31 23:04:19,740  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2025001 (5 reviews)
+2026-05-31 23:04:19,740  WARNING   reviews_scorer  →  Review date audit: 0/5 reviews have parseable dates. Raw samples: [None, None, None, None, None]
+2026-05-31 23:04:19,740  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.com/dp/2025001 — no review dates available, freshness score set to null
+2026-05-31 23:04:20,135  ERROR     engine  →  Analysis failed for https://manmatters.com/dp/2025001: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cbb3nf64hvqSqtrvCfx42'}
+2026-05-31 23:04:20,136  ERROR     main  →  Analysis returned no results
+2026-05-31 23:04:20,136  INFO      main  →  
+2026-05-31 23:04:20,136  INFO      main  →  Done. 0/1 reports generated.
+2026-05-31 23:08:26,343  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 23:08:26,344  INFO      main  →  
+2026-05-31 23:08:26,344  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:08:26,344  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 23:08:26,344  INFO      main  →    URLs: 3
+2026-05-31 23:08:26,344  INFO      main  →    Time: 23:08:26
+2026-05-31 23:08:26,344  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:08:26,344  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 23:08:26,366  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 23:08:26,366  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 23:08:28,120  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 23:08:28,120  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 23:08:28,519  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 23:08:28,519  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 23:08:28,626  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 23:08:28,627  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 23:08:29,484  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 23:08:29,484  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 23:08:29,484  INFO      extractor  →  Extracting persona profile...
+2026-05-31 23:08:29,896  ERROR     main  →  PDF ingestion failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cbb4753E1TJbM5VtaN2Fu'}
+2026-05-31 23:08:29,897  ERROR     main  →  Check that all PDFs exist in inputs/pdfs/ and are named correctly in config.yaml
+2026-05-31 23:08:29,897  INFO      main  →  
+2026-05-31 23:08:29,897  INFO      main  →  Done. 0/1 reports generated.
+2026-05-31 23:09:28,666  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 23:09:28,667  INFO      main  →  
+2026-05-31 23:09:28,667  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:09:28,667  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 23:09:28,667  INFO      main  →    URLs: 3
+2026-05-31 23:09:28,667  INFO      main  →    Time: 23:09:28
+2026-05-31 23:09:28,667  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:09:28,667  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 23:09:28,688  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 23:09:28,688  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 23:09:30,459  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 23:09:30,459  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 23:09:30,870  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 23:09:30,871  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 23:09:30,967  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 23:09:30,967  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 23:09:31,834  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 23:09:31,834  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 23:09:31,834  INFO      extractor  →  Extracting persona profile...
+2026-05-31 23:09:32,290  ERROR     main  →  PDF ingestion failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cbb4Bfr6qZhQwBi5jCG1i'}
+2026-05-31 23:09:32,291  ERROR     main  →  Check that all PDFs exist in inputs/pdfs/ and are named correctly in config.yaml
+2026-05-31 23:09:32,291  INFO      main  →  
+2026-05-31 23:09:32,291  INFO      main  →  Done. 0/1 reports generated.
+2026-05-31 23:49:51,153  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-05-31 23:49:51,153  INFO      main  →  
+2026-05-31 23:49:51,153  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:49:51,153  INFO      main  →    Starting: Shilajit Gummies
+2026-05-31 23:49:51,153  INFO      main  →    URLs: 3
+2026-05-31 23:49:51,153  INFO      main  →    Time: 23:49:51
+2026-05-31 23:49:51,153  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-31 23:49:51,153  INFO      main  →  [1/5] Ingesting PDFs...
+2026-05-31 23:49:51,176  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-05-31 23:49:51,176  INFO      pdf_reader  →  Reading → persona.pdf
+2026-05-31 23:49:52,900  INFO      pdf_reader  →  Extracted 21,986 chars from persona.pdf
+2026-05-31 23:49:52,900  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-05-31 23:49:53,288  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-05-31 23:49:53,289  INFO      pdf_reader  →  Reading → product_brief.docx
+2026-05-31 23:49:53,382  INFO      pdf_reader  →  Extracted 3,128 chars from product_brief.docx
+2026-05-31 23:49:53,382  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-05-31 23:49:54,229  INFO      pdf_reader  →  Extracted 10,863 chars from narrative.pdf
+2026-05-31 23:49:54,229  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-05-31 23:49:54,229  INFO      extractor  →  Extracting persona profile...
+2026-05-31 23:49:54,599  ERROR     main  →  PDF ingestion failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cbb7GEKvUV3MxSUrik6TM'}
+2026-05-31 23:49:54,599  ERROR     main  →  Check that all PDFs exist in inputs/pdfs/ and are named correctly in config.yaml
+2026-05-31 23:49:54,599  INFO      main  →  
+2026-05-31 23:49:54,599  INFO      main  →  Done. 0/1 reports generated.
