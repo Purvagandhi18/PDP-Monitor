@@ -1,4 +1,6 @@
 products:
+
+  # ── Shilajit Gummies ──────────────────────────────────────────────────────
   - name: "Shilajit Gummies"
     personas:
       - "Tejas"
@@ -21,10 +23,33 @@ products:
         narrative: "Summer"
         persona: "Tejas"
     pdfs:
-      persona: "inputs/pdfs/persona.pdf"
-      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
-      product_brief: "inputs/pdfs/product_brief.docx"
-      narrative: "inputs/pdfs/narrative.pdf"   # optional — add when available
+      persona:           "inputs/pdfs/shilajit_gummies/persona.pdf"
+      brand_guidelines:  "inputs/pdfs/brand_guidelines.pdf"   # shared across all products
+      product_brief:     "inputs/pdfs/shilajit_gummies/product_brief.docx"
+      narrative:         "inputs/pdfs/shilajit_gummies/narrative.pdf"
+
+  # ── ADD A NEW PRODUCT BELOW ───────────────────────────────────────────────
+  # Copy this block and fill in the fields. Each product gets its own:
+  #   - inputs/pdfs/{product_folder}/ with persona.pdf, product_brief.docx, narrative.pdf
+  #   - URLs with assigned narrative + persona per URL
+  #
+  # Example (uncomment and edit):
+  #
+  # - name: "Minoxidil"
+  #   personas:
+  #     - "Arjun"
+  #   narratives:
+  #     - "Hair Regrowth"
+  #     - "Before After"
+  #   urls:
+  #     - url: "https://manmatters.com/dp/minoxidil/XXXXXX"
+  #       narrative: "Hair Regrowth"
+  #       persona: "Arjun"
+  #   pdfs:
+  #     persona:          "inputs/pdfs/minoxidil/persona.pdf"
+  #     brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+  #     product_brief:    "inputs/pdfs/minoxidil/product_brief.docx"
+  #     narrative:        "inputs/pdfs/minoxidil/narrative.pdf"
 
 scraper:
   reviews_limit: 50
