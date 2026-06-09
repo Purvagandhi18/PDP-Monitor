@@ -129,9 +129,19 @@ def _recursive_find_images(
 
 
 def _page_id_from_url(url: str) -> Optional[str]:
-    """Extract numeric page ID from a ManMatters PDP URL."""
+    """
+    Extract a unique cache key from a ManMatters PDP URL.
+    Includes a domain suffix when the same page ID exists on multiple domains
+    (e.g. manmatters.com vs manmatters.co → 141464 vs 141464-co).
+    """
     m = re.search(r"/(\d{6,})(?:[/?]|$)", url)
-    return m.group(1) if m else None
+    if not m:
+        return None
+    page_id = m.group(1)
+    # Append domain suffix for non-.com domains to avoid cache collisions
+    if "manmatters.co/" in url or url.rstrip("/").endswith("manmatters.co"):
+        return f"{page_id}-co"
+    return page_id
 
 
 # ── Cache helpers ──────────────────────────────────────────────────────────────

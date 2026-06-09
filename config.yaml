@@ -48,6 +48,24 @@ products:
       product_brief:    "inputs/pdfs/hair_gummies/product_brief.pdf"
       narrative:        "inputs/pdfs/hair_gummies/narrative.pdf"
 
+  # ── Hair Regrowth Kit — Stage 2 ──────────────────────────────────────────
+  - name: "Hair Regrowth Kit S2"
+    personas:
+      - "S2 ICP"   # 18-26yr student/young professional, frontal recession, preservation mindset
+    narratives:
+      - "Preservation"        # Bachao nahi ugao — stop losing what you have
+      - "Science and Safety"  # FDA-approved, 93% efficacy, doctor-backed
+      - "Before After"        # Month 1-2 shedding normal → Month 5-6 visible regrowth
+    urls:
+      - url: "https://manmatters.co/habit/landing/pdp/141464"
+        narrative: "Preservation"
+        persona: "S2 ICP"
+    pdfs:
+      persona:          "inputs/pdfs/hair_regrowth_s2/persona.pdf"
+      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+      product_brief:    "inputs/pdfs/hair_regrowth_s2/product_brief.pdf"
+      narrative:        "inputs/pdfs/hair_regrowth_s2/narrative.pdf"
+
   # ── ADD A NEW PRODUCT BELOW ───────────────────────────────────────────────
   # Copy this block and fill in the fields. Each product gets its own:
   #   - inputs/pdfs/{product_folder}/ with persona.pdf, product_brief.docx, narrative.pdf
