@@ -196,6 +196,163 @@ BANNER TEXT: {banner_copy or 'NONE'}"""
     )
 
 
+# ── Section order helpers ──────────────────────────────────────────────────────
+
+# Maps Zeus widget IDs / section keys → human-readable section names
+_WIDGET_LABELS = {
+    "pdp-hero-slider": "Hero / Product Gallery",
+    "product-summary": "Product Summary",
+    "product-variants": "Product Variants",
+    "narrative-facts-sugar": "Key Claims / No Sugar Narrative",
+    "product-description-media-grid": "Product Description",
+    "claims-banner-desktop": "Claims Banner",
+    "claims-grid": "Claims Grid",
+    "cocreation-image-carousel-3": "Ingredient Carousel",
+    "cocreation-image-carousel-5": "Benefits Carousel",
+    "cocreation-image-carousel-6": "Customer Testimonials",
+    "ratings-and-reviews": "Ratings & Reviews",
+    "how-we-compare": "How We Compare",
+    "how-we-compare-v2": "Comparison Table",
+    "top-features": "Top Features",
+    "consumer-study-v2-stats": "Consumer Study / Proof Stats",
+    "whats-in-the-kit": "What's in the Kit",
+    "safe-and-effective-grid": "Safe & Effective",
+    "things-to-note": "Things to Note",
+    "how-its-used": "How to Use",
+    "product-contains-details": "Product Contains / Ingredients",
+    "what-it-works-best-with": "Works Best With",
+    "ingredients-accordion-background": "Ingredients (Detail)",
+    "faqs": "FAQ",
+    "faq-accordion-show-more": "FAQ",
+    "we-got-answers": "We Got Answers",
+    "why-choose-mm": "Why Choose Man Matters",
+    "marquee-brand": "Brand Marquee",
+    "info-tile-card": "Info Tiles",
+    "reel-slider-rcl": "Customer Reels",
+    "customer-reviews": "Customer Reviews",
+    "additional-information": "Additional Information",
+    # Sections-style keys
+    "clinicalProof": "Clinical Proof",
+    "howItWorks": "How It Works",
+    "keyIngredients": "Key Ingredients",
+    "safeAndEffective": "Safe & Effective",
+    "howWeCompareV2": "Comparison Table",
+    "thingsToNote": "Things to Note",
+    "howItsUsed": "How to Use",
+    "whyChooseMM": "Why Choose Man Matters",
+    "whatItWorksBestWith": "Works Best With",
+    "productSwitches": "Product Variants",
+    "gifComp": "Comparison Visual",
+    "ingredients": "Ingredients",
+    "weGotAnswers": "We Got Answers",
+    "giftCallout": "Gift / Kit Callout",
+    "stories": "Customer Stories",
+    "consumerStudy": "Consumer Study",
+    "consumerStudyV2": "Consumer Study (Stats)",
+    "feelingConfusedSection": "Confused? Help Section",
+    "expertsOnFingerPrints": "Expert Endorsements",
+    "checkDeliveryDate": "Delivery Date Check",
+    "qna": "Q&A",
+    "secondaryDescription": "Product Description (Secondary)",
+    "safetyIcons": "Safety Certifications",
+    "videoSection": "Video",
+    "mmHowToUse": "How to Use (Detail)",
+    "customerJourney": "Customer Journey / Timeline",
+    "additionalInformation": "Additional Information",
+    # displayOrder extras
+    "why-endure-data": "Why Endure / Product Proof",
+    "product-equivalence-desktop": "Product Equivalence",
+    "cocreation-image-carousel-3": "Ingredients Carousel",
+    "cocreation-image-carousel-5": "Benefits Carousel",
+    "cocreation-image-carousel-6": "Customer Testimonials",
+    # growthLanding keys
+    "gl_customerReview": "What Our Men Say (Before/After)",
+    "gl_uses": "How to Use",
+    "gl_highlights": "Product Highlights",
+    "gl_caseStudy": "Case Studies",
+    "gl_treats": "What It Treats",
+    "gl_safeAndEffective": "Safe & Effective",
+    "gl_imageGallery": "Product Gallery",
+    "gl_reviewAndRating": "Ratings & Reviews",
+    "gl_kitContentData": "Kit Contents",
+    "gl_news": "Press / Media",
+    "gl_awards": "Awards & Certifications",
+    "gl_investors": "Backed By",
+    "gl_product": "Product Overview",
+    "gl_comparision": "Comparison",
+}
+
+# Widget IDs to skip (navigation, pricing, delivery — not content sections)
+_SKIP_WIDGETS = {
+    "bread-crumbs", "product-discount-tag-mobile", "product-discount-tag-desktop",
+    "check-delivery-info", "wallet-discount-banner", "wallet-nudge-card",
+    "installment-options", "cta-button-buy-options", "affiliate-card",
+    "recently-viewed-products-slider", "frequently-bought-together-rcl",
+    "first-banner-desktop", "first-banner-mobile",
+    "second-banner-desktop", "second-banner-mobile",
+    "third-banner-desktop", "third-banner-mobile",
+    "four-banner-desktop", "four-banner-mobile",
+    "marquee-brand", "reel-slider-rcl",
+}
+
+
+def _get_zeus_section_order(url: str) -> list:
+    """
+    Extract the ordered list of human-readable section names from the Zeus cache.
+    Uses display_order (displayOrder-style) or sections_order (sections-style).
+    Falls back to [] if no Zeus cache exists.
+    """
+    from scraper.zeus_connector import _page_id_from_url, _load_cache, _cache_is_stale
+
+    page_id = _page_id_from_url(url)
+    if not page_id:
+        return []
+
+    data = _load_cache(page_id)
+    if not data:
+        return []
+
+    style = data.get("style", "sections")
+    sections = []
+
+    if style == "displayOrder":
+        do = data.get("display_order") or {}
+        # Use desktop_bottom (richest) then fall back to default
+        order = do.get("desktop_bottom") or do.get("default") or []
+        for widget_id in order:
+            if widget_id in _SKIP_WIDGETS:
+                continue
+            label = _WIDGET_LABELS.get(widget_id)
+            if not label:
+                # Convert kebab-case widget ID to readable name
+                label = widget_id.replace("-", " ").replace("_", " ").title()
+                # Skip very generic names
+                if label.lower() in ("cocreation image carousel 1", "cocreation image carousel 2"):
+                    continue
+            sections.append(label)
+    else:
+        # sections-style: use sections_order
+        order = data.get("sections_order") or []
+        for key in order:
+            if key in ("order", "recentlyViewed", "frequentlyBoughtTogether"):
+                continue
+            label = _WIDGET_LABELS.get(key, key.replace("_", " ").replace("-", " ").title())
+            sections.append(label)
+        # Also add growthLanding sections if present
+        for k in data.get("sections_raw", {}):
+            if k.startswith("gl_") and k in _WIDGET_LABELS:
+                sections.append(_WIDGET_LABELS[k])
+
+    # Deduplicate while preserving order
+    seen, unique = set(), []
+    for s in sections:
+        if s not in seen:
+            seen.add(s)
+            unique.append(s)
+
+    return unique
+
+
 # ── Section Flow Analysis ──────────────────────────────────────────────────────
 
 SECTION_FLOW_SYSTEM = """You are a CRO specialist analysing the section order of a health/wellness PDP.
@@ -254,15 +411,21 @@ def score_section_flow(
     narrative arc for the configured persona and narrative.
     Returns a SectionFlowScore with reorder recommendations.
     """
-    if not pdp.subheads:
-        log.warning(f"No section headings found for {pdp.url} — skipping section flow analysis")
+    # Primary: Zeus display/section order (reliable, widget-level granularity)
+    # Fallback: Playwright-scraped H2/H3 subheads (only 3-5 on ManMatters pages)
+    zeus_order = _get_zeus_section_order(pdp.url)
+    section_list = zeus_order if len(zeus_order) >= 5 else pdp.subheads
+    source = "Zeus display order" if zeus_order and len(zeus_order) >= 5 else "Playwright H2 headings"
+
+    if not section_list:
+        log.warning(f"No section order found for {pdp.url} — skipping section flow analysis")
         return SectionFlowScore(
             score=5.0,
-            observation="No section headings extracted — cannot analyse page flow.",
-            suggestion="Ensure the scraper captures H2/H3 section headings from the PDP."
+            observation="No section order data available — cannot analyse page flow.",
+            suggestion="Check Zeus cache exists for this URL."
         )
 
-    numbered = "\n".join(f"  {i+1}. {h}" for i, h in enumerate(pdp.subheads))
+    numbered = "\n".join(f"  {i+1}. {h}" for i, h in enumerate(section_list))
 
     prompt = f"""URL: {pdp.url}
 CONFIGURED NARRATIVE: {configured_narrative or context.narrative.core_story}
@@ -270,13 +433,14 @@ TARGET PERSONA: {configured_persona or context.persona.name}
 PERSONA TOP CONCERNS: {', '.join(context.persona.top_concerns[:3])}
 PERSONA CORE MOTIVATION: {context.narrative.emotional_arc}
 
-SECTION HEADINGS IN CURRENT PAGE ORDER (top → bottom):
+SECTIONS IN CURRENT PAGE ORDER — top to bottom ({source}):
 {numbered}
 
-Analyse whether this section sequence follows the optimal narrative arc for this persona.
-Be specific — reference actual section headings from the list above."""
+Analyse whether this section sequence follows the optimal narrative arc for this persona and narrative.
+Be specific — reference actual section names from the list above.
+Each URL has a DIFFERENT configured narrative — tailor your analysis to "{configured_narrative or 'General'}"."""
 
-    log.info(f"Section flow: analysing {len(pdp.subheads)} headings for {pdp.url}")
+    log.info(f"Section flow: analysing {len(section_list)} sections ({source}) for {pdp.url}")
     data = call_claude(client, SECTION_FLOW_SYSTEM, prompt)
 
     out_of_order = [
