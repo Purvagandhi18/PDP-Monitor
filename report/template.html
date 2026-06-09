@@ -250,6 +250,30 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
   font-size:13px;color:#1a7a4a;font-weight:600}
 .ok-msg::before{content:"✓  "}
 
+/* ── Section Flow ───────────────────────────────── */
+.sf-wrap{background:#fafaf8;border:1px solid #e5e5e2;border-radius:12px;padding:20px;margin-top:10px}
+.sf-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.sf-score-badge{font-size:20px;font-weight:800;padding:6px 14px;border-radius:8px;white-space:nowrap;flex-shrink:0}
+.sf-score-badge.healthy{background:#e6f4ed;color:#1a7a4a}
+.sf-score-badge.attention{background:#fef3e2;color:#c17d00}
+.sf-score-badge.critical{background:#fdecea;color:#c0392b}
+.sf-obs{font-size:13px;color:#555;line-height:1.6;padding-top:4px}
+.sf-section{margin-bottom:16px}
+.sf-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#aaa;margin-bottom:8px}
+.sf-order-list{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:5px}
+.sf-order-item{font-size:13px;color:#444;line-height:1.5;display:flex;align-items:center;gap:8px}
+.sf-order-item.sf-ooo{color:#c17d00;font-weight:600}
+.sf-order-item.sf-redundant{color:#888;text-decoration:line-through}
+.sf-tag{font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px}
+.sf-tag-move{background:#fef3e2;color:#c17d00}
+.sf-tag-dup{background:#f0f0ee;color:#888}
+.sf-issue{background:#fff;border:1px solid #e5e5e2;border-radius:8px;padding:12px 14px;margin-bottom:8px}
+.sf-issue-title{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sf-pos{font-size:11px;font-weight:700;background:#fef3e2;color:#c17d00;padding:2px 8px;border-radius:99px}
+.sf-issue-reason{font-size:12px;color:#666;line-height:1.6}
+.sf-missing{background:#fff8ec;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin-bottom:6px}
+.sf-suggestion{background:#fef8e7;border-radius:8px;padding:12px 14px;font-size:13px;font-weight:600;color:#1a1a1a;line-height:1.6;margin-top:4px}
+
 /* ── Delta / regression badges ──────────────────── */
 .delta{font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
 .delta.up  {background:#e6f4ed;color:#1a7a4a}
@@ -780,6 +804,70 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       <span class="fi-body"><span class="fi-text">{{ f }}</span></span>
     </div>
     {% endfor %}
+    {% endif %}
+
+    {# ── Section Flow Analysis ── #}
+    {% set sf = result.visual_design.section_flow %}
+    {% if sf %}
+    <div class="sec-lbl" style="margin-top:28px">Section Flow Analysis</div>
+    <div class="sf-wrap">
+
+      {# Score + observation #}
+      <div class="sf-header">
+        <div class="sf-score-badge {{ sf.score | score_class }}">{{ sf.score }}/10</div>
+        <div class="sf-obs">{{ sf.observation }}</div>
+      </div>
+
+      {# Current order — numbered list #}
+      {% if sf.current_order %}
+      <div class="sf-section">
+        <div class="sf-lbl">Current Page Order</div>
+        <ol class="sf-order-list">
+          {% for heading in sf.current_order %}
+          {% set is_ooo = sf.out_of_order | selectattr('section','eq',heading) | list %}
+          {% set is_redundant = heading in sf.redundant_sections %}
+          <li class="sf-order-item{% if is_ooo %} sf-ooo{% elif is_redundant %} sf-redundant{% endif %}">
+            {{ heading }}
+            {% if is_ooo %}<span class="sf-tag sf-tag-move">↕ move</span>{% endif %}
+            {% if is_redundant %}<span class="sf-tag sf-tag-dup">duplicate</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+      {% endif %}
+
+      {# Out-of-order sections #}
+      {% if sf.out_of_order %}
+      <div class="sf-section">
+        <div class="sf-lbl">❌ Sections to Reorder ({{ sf.out_of_order|length }})</div>
+        {% for item in sf.out_of_order %}
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "{{ item.section }}"
+            <span class="sf-pos">position {{ item.current_position }} → {{ item.recommended_position }}</span>
+          </div>
+          <div class="sf-issue-reason">{{ item.reason }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# Missing sections #}
+      {% if sf.missing_sections %}
+      <div class="sf-section">
+        <div class="sf-lbl">⚠️ Missing Sections ({{ sf.missing_sections|length }})</div>
+        {% for s in sf.missing_sections %}
+        <div class="sf-missing">{{ s }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# Top suggestion #}
+      {% if sf.suggestion %}
+      <div class="sf-suggestion">💡 {{ sf.suggestion }}</div>
+      {% endif %}
+
+    </div>
     {% endif %}
 
   </div>

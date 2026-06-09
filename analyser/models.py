@@ -9,6 +9,23 @@ class SubScore(BaseModel):
     suggestion: str       # what to fix
 
 
+class SectionFlowIssue(BaseModel):
+    section: str          # section heading as it appears on the PDP
+    current_position: int # 1-based index in current order
+    recommended_position: int
+    reason: str           # why it should move
+
+
+class SectionFlowScore(BaseModel):
+    score: float                          # 0-10
+    current_order: List[str] = []         # section headings in current page order
+    missing_sections: List[str] = []      # sections that should exist but don't
+    out_of_order: List[SectionFlowIssue] = []  # sections in wrong position
+    redundant_sections: List[str] = []    # sections that duplicate another
+    observation: str = ""                 # overall flow assessment
+    suggestion: str = ""                  # top priority reorder action
+
+
 class ReviewsScore(BaseModel):
     overall: float
     freshness: SubScore
@@ -81,6 +98,7 @@ class VisualDesignScore(BaseModel):
     lifestyle_shots: SubScore
     visual_hierarchy_brand: SubScore
     flagged_issues: List[str] = []
+    section_flow: Optional[SectionFlowScore] = None  # section order analysis
 
 
 class AdGap(BaseModel):

@@ -75,7 +75,9 @@ def analyse_pdp(
     log.info(f"    → {copy.overall:.1f}/10")
 
     log.info("4/5 Visual Design...")
-    visual = score_visual_design(client, pdp, context)
+    visual = score_visual_design(client, pdp, context,
+                                  configured_narrative=cfg_narrative,
+                                  configured_persona=cfg_persona)
     log.info(f"    → {visual.overall:.1f}/10")
 
     log.info("5/5 Ad Alignment...")

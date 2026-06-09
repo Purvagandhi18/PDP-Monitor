@@ -1,5 +1,5 @@
 import anthropic
-from analyser.models import VisualDesignScore, SubScore
+from analyser.models import VisualDesignScore, SubScore, SectionFlowScore, SectionFlowIssue
 from analyser.claude_client import call_claude_vision, call_claude
 from ingester.models import IngestedContext
 from scraper.models import PDPTextData
@@ -56,7 +56,9 @@ Schema:
 def score_visual_design(
     client: anthropic.Anthropic,
     pdp: PDPTextData,
-    context: IngestedContext
+    context: IngestedContext,
+    configured_narrative: str = "",
+    configured_persona: str = ""
 ) -> VisualDesignScore:
     log.info(f"Scoring visual design for {pdp.url}")
 
@@ -116,6 +118,11 @@ Evaluate all 6 visual dimensions. Be precise about what you see in each image.""
 
     data = call_claude_vision(client, SYSTEM, prompt, image_paths)
 
+    # Section flow analysis — runs on text, independent of images
+    flow = score_section_flow(
+        client, pdp, context, configured_narrative, configured_persona
+    )
+
     return VisualDesignScore(
         overall=data["overall"],
         human_presence=SubScore(name="Human Presence", **data["human_presence"]),
@@ -124,7 +131,8 @@ Evaluate all 6 visual dimensions. Be precise about what you see in each image.""
         before_after=SubScore(name="Before / After", **data["before_after"]),
         lifestyle_shots=SubScore(name="Lifestyle Shots", **data["lifestyle_shots"]),
         visual_hierarchy_brand=SubScore(name="Visual Hierarchy & Brand", **data["visual_hierarchy_brand"]),
-        flagged_issues=data.get("flagged_issues", [])
+        flagged_issues=data.get("flagged_issues", []),
+        section_flow=flow,
     )
 
 
@@ -186,3 +194,115 @@ BANNER TEXT: {banner_copy or 'NONE'}"""
         visual_hierarchy_brand=SubScore(name="Visual Hierarchy & Brand", **data["visual_hierarchy_brand"]),
         flagged_issues=data.get("flagged_issues", []) + ["⚠️ Scored from text only — no screenshots available"]
     )
+
+
+# ── Section Flow Analysis ──────────────────────────────────────────────────────
+
+SECTION_FLOW_SYSTEM = """You are a CRO specialist analysing the section order of a health/wellness PDP.
+
+You will receive:
+- The configured narrative and target persona for this URL
+- The actual section headings in current page order (top → bottom)
+
+Your job: score how well the section sequence matches the optimal conversion narrative arc,
+identify what's in the wrong position, what's missing, and what's redundant.
+
+The optimal arc for a health product PDP:
+  1. Hook / Hero — product name + core claim
+  2. Problem — make the persona feel seen (pain point)
+  3. Solution — introduce the product as the answer
+  4. How It Works — mechanism / science (builds trust)
+  5. Ingredients / What's Inside — proof of quality
+  6. Social Proof — before/after, reviews, real results
+  7. Clinical / Certifications — third-party validation
+  8. How to Use — reduce friction
+  9. Comparison / Why Us — handle objections
+  10. Trust Signals — certifications, press, awards
+  11. FAQ — handle remaining objections
+  12. Final CTA — close
+
+Return ONLY valid JSON — no markdown.
+
+Schema:
+{
+  "score": <float 0-10>,
+  "observation": "<2-3 sentences: what's working and what's broken in the current flow>",
+  "current_order": ["Section Heading 1", "Section Heading 2", ...],
+  "missing_sections": ["section that should exist but is absent"],
+  "out_of_order": [
+    {
+      "section": "<heading>",
+      "current_position": <int>,
+      "recommended_position": <int>,
+      "reason": "<why it should move — reference the persona and narrative>"
+    }
+  ],
+  "redundant_sections": ["heading that duplicates another section's content"],
+  "suggestion": "<single highest-priority reorder action — specific, actionable, persona-referenced>"
+}"""
+
+
+def score_section_flow(
+    client: anthropic.Anthropic,
+    pdp: PDPTextData,
+    context: IngestedContext,
+    configured_narrative: str = "",
+    configured_persona: str = ""
+) -> SectionFlowScore:
+    """
+    Analyse the order of section headings on the PDP against the optimal
+    narrative arc for the configured persona and narrative.
+    Returns a SectionFlowScore with reorder recommendations.
+    """
+    if not pdp.subheads:
+        log.warning(f"No section headings found for {pdp.url} — skipping section flow analysis")
+        return SectionFlowScore(
+            score=5.0,
+            observation="No section headings extracted — cannot analyse page flow.",
+            suggestion="Ensure the scraper captures H2/H3 section headings from the PDP."
+        )
+
+    numbered = "\n".join(f"  {i+1}. {h}" for i, h in enumerate(pdp.subheads))
+
+    prompt = f"""URL: {pdp.url}
+CONFIGURED NARRATIVE: {configured_narrative or context.narrative.core_story}
+TARGET PERSONA: {configured_persona or context.persona.name}
+PERSONA TOP CONCERNS: {', '.join(context.persona.top_concerns[:3])}
+PERSONA CORE MOTIVATION: {context.narrative.emotional_arc}
+
+SECTION HEADINGS IN CURRENT PAGE ORDER (top → bottom):
+{numbered}
+
+Analyse whether this section sequence follows the optimal narrative arc for this persona.
+Be specific — reference actual section headings from the list above."""
+
+    log.info(f"Section flow: analysing {len(pdp.subheads)} headings for {pdp.url}")
+    data = call_claude(client, SECTION_FLOW_SYSTEM, prompt)
+
+    out_of_order = [
+        SectionFlowIssue(
+            section=item.get("section", ""),
+            current_position=item.get("current_position", 0),
+            recommended_position=item.get("recommended_position", 0),
+            reason=item.get("reason", "")
+        )
+        for item in data.get("out_of_order", [])
+        if item.get("section")
+    ]
+
+    flow = SectionFlowScore(
+        score=data.get("score", 5.0),
+        current_order=data.get("current_order", pdp.subheads),
+        missing_sections=data.get("missing_sections", []),
+        out_of_order=out_of_order,
+        redundant_sections=data.get("redundant_sections", []),
+        observation=data.get("observation", ""),
+        suggestion=data.get("suggestion", "")
+    )
+
+    log.info(
+        f"Section flow scored {flow.score}/10 — "
+        f"{len(out_of_order)} out-of-order, "
+        f"{len(flow.missing_sections)} missing"
+    )
+    return flow
