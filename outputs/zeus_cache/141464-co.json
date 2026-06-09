@@ -848,7 +848,435 @@
       "headingsFor": {
         "sections": 3
       }
-    }
+    },
+    "gl_customerReview": {
+      "title": "What our men say",
+      "subTitle": "",
+      "carousel": [
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/B_A%20copy%203_28rybg.jpg?tr=w-600",
+          "monthlyPlan": "Stage 1",
+          "title": "Experts guided me for 6 months",
+          "description": "My hairline was receding for last 2 years and was not stopping. I started using Stage 2 hair loss kit and saw results",
+          "reviewer": {
+            "name": "",
+            "verifiedImage": "https://i.mscwlns.co/media/misc/others/Vector_zuyc67.png?tr=w-48",
+            "ratingImage": "https://i.mscwlns.co/media/misc/others/Star_ks43js.png?tr=w-48",
+            "ratingValue": "4.8"
+          }
+        },
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/B_A%20copy_18o8iv.jpg?tr=w-600",
+          "monthlyPlan": "Stage 2",
+          "title": "Effective Hair Regrowth",
+          "description": "I noticed hair regrowth and baby hair in the forehead area in around 4 months. Biotin gummies are effective and easy to consume. Very satisfied!",
+          "reviewer": {
+            "name": " ",
+            "verifiedImage": "https://i.mscwlns.co/media/misc/others/Vector_zuyc67.png?tr=w-48",
+            "ratingImage": "https://i.mscwlns.co/media/misc/others/Star_ks43js.png?tr=w-48",
+            "ratingValue": "4.9"
+          }
+        },
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/B_A%20copy%202_99up29.jpg?tr=w-600",
+          "monthlyPlan": "Stage 2",
+          "title": "Prevention is better than cure",
+          "description": "I wanted to avoid genetic hair loss so started taking care of hair early. I started observing healthier hair in 3 months!",
+          "reviewer": {
+            "name": " ",
+            "verifiedImage": "https://i.mscwlns.co/media/misc/others/Vector_zuyc67.png?tr=w-48",
+            "ratingImage": "https://i.mscwlns.co/media/misc/others/Star_ks43js.png?tr=w-48",
+            "ratingValue": "5"
+          }
+        },
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/B_A_4tlm8c.jpg?tr=w-600",
+          "monthlyPlan": "Stage 2",
+          "title": "Consistent use helped me",
+          "description": "My crown area had lower hair density. I tried Man Matters and can see greater thickness and coverage in 5-6 months. Baby hair has grown in the receded area.",
+          "reviewer": {
+            "name": " ",
+            "verifiedImage": "https://i.mscwlns.co/media/misc/others/Vector_zuyc67.png?tr=w-48",
+            "ratingImage": "https://i.mscwlns.co/media/misc/others/Star_ks43js.png?tr=w-48",
+            "ratingValue": "4.5"
+          }
+        }
+      ]
+    },
+    "gl_uses": {
+      "title": "How to use",
+      "list": [
+        {
+          "title": "After any meal",
+          "subTitle": "Eat 1 gummy",
+          "icon": "https://i.mscwlns.co/media/misc/others/Vector_lvflfg.png?tr=w-600",
+          "image": "https://i.mscwlns.co/media/misc/others/Eat%201%20gummy_jqduf9.png?tr=w-600"
+        },
+        {
+          "title": "Apply Minox",
+          "subTitle": "1ml twice a day",
+          "icon": "https://i.mscwlns.co/media/misc/others/Vector_lvflfg.png?tr=w-600",
+          "image": "https://i.mscwlns.co/media/misc/others/Man%20with%20Minoxidil%20Growmax%20%282%29_ag6wux.png?tr=w-600"
+        },
+        {
+          "title": "For best results",
+          "subTitle": "Use for 4-6 months",
+          "icon": "https://i.mscwlns.co/media/misc/others/Vector_lvflfg.png?tr=w-600",
+          "image": "https://i.mscwlns.co/media/misc/others/Use%20for%203%20months_eq09ci.png?tr=w-600"
+        }
+      ]
+    },
+    "gl_highlights": {
+      "title": "Clean Products, Real Results",
+      "bgImage": "https://i.mscwlns.co/media/misc/others/Frame%201321316525%20%281%29_bp3e50.png?tr=w-600",
+      "list": [
+        {
+          "title": "100% Vegetarian",
+          "image": "https://i.mscwlns.co/media/misc/others/Layer_1_bxo9t8.png?tr=w-600"
+        },
+        {
+          "title": "100% Vegetarian",
+          "image": "https://i.mscwlns.co/media/misc/others/Layer_1%20%284%29_fqbqj7.png?tr=w-600"
+        },
+        {
+          "title": "100% Vegetarian",
+          "image": "https://i.mscwlns.co/media/misc/others/Layer_1%20%283%29_hx5dyb.png?tr=w-600"
+        },
+        {
+          "title": "100% Vegetarian",
+          "image": "https://i.mscwlns.co/media/misc/others/Layer_1_bxo9t8.png?tr=w-600"
+        },
+        {
+          "title": "100% Vegetarian",
+          "image": "https://i.mscwlns.co/media/misc/others/Layer_1%20%284%29_fqbqj7.png?tr=w-600"
+        },
+        {
+          "title": "100% Vegetarian",
+          "image": "https://i.mscwlns.co/media/misc/others/Layer_1%20%283%29_hx5dyb.png?tr=w-600"
+        }
+      ]
+    },
+    "gl_caseStudy": {
+      "title": "Clinical Study",
+      "subTitle": "",
+      "carousel": [
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/CR-522Creative-1-copy_7b3stp.png?tr=w-600",
+          "title": "94% Users saw increased hair growth",
+          "description": "As per the study of Minoxidil by Rundegren, J. in (2004) on Rapid onset of action of minoxidil 5% topical solution in a 4-month German observational study on both patients and physicians. This was published in the Journal of the American Academy of Dermatology, 50(3), Supplement, P91."
+        },
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/Slide-5%281000X1000%29_hza112.jpg?tr=w-600",
+          "title": "9 out 10 users saw 50% reduced hairfall",
+          "description": "As per independent clinic study by Mprex Healthcare Pvt Ltd where hair was test was conducted after 90 day regime of Biotin Hair Gummies."
+        }
+      ]
+    },
+    "gl_treats": {
+      "title": "Benefits",
+      "bgImage": "https://i.mscwlns.co/media/misc/others/Frame%201321316525_brfouo.png?tr=w-600",
+      "list": [
+        {
+          "title": "Helps control",
+          "subTitle": "Hair fall",
+          "icon": "https://i.mscwlns.co/media/misc/others/check%20mark_4cfl3e.png?tr=w-600",
+          "image": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/vm-cropArtboard-1-copy-2_9t9q7u.png?tr=w-600"
+        },
+        {
+          "title": "Stimulates",
+          "subTitle": "Hair Growth",
+          "icon": "https://i.mscwlns.co/media/misc/others/check%20mark_4cfl3e.png?tr=w-600",
+          "image": "https://i.mscwlns.co/media/misc/others/scalp%20health_f80uxr.png?tr=w-600"
+        },
+        {
+          "title": "Blocks",
+          "subTitle": "DHT buildup",
+          "icon": "https://i.mscwlns.co/media/misc/others/check%20mark_4cfl3e.png?tr=w-600",
+          "image": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/vm-cropArtboard-1_52zy24.png?tr=w-600"
+        },
+        {
+          "title": "Increases",
+          "subTitle": "Hair volume",
+          "icon": "https://i.mscwlns.co/media/misc/others/check%20mark_4cfl3e.png?tr=w-600",
+          "image": "https://i.mscwlns.co/media/misc/others/Hair%20volume_1y543d.png?tr=w-600"
+        }
+      ]
+    },
+    "gl_safeAndEffective": {
+      "videoUrl": "",
+      "title": "Clean Products, Real Results",
+      "text": "",
+      "link": "",
+      "usage": [
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/sugar%20free_m4twdt.png?tr=w-600",
+          "desc": "No Sugar Added"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/No%20preservatives_eykfw6.png?tr=w-600",
+          "desc": "No preservative"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/cruelty%20free_kf17su.png?tr=w-600",
+          "desc": "Cruelty-Free"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/vegan_14y2us.png?tr=w-600",
+          "desc": "Vegan"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/gluten%20free_85yh90.png?tr=w-600",
+          "desc": "Gluten Free"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/gelatin%20free_96ybp6.png?tr=w-600",
+          "desc": "Gelatin Free"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/no%20added%20flavour_f8osza.png?tr=w-600",
+          "desc": "No added colour"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/GMO%20free_95q6ce.png?tr=w-600",
+          "desc": "GMO Free"
+        },
+        {
+          "icon": "https://i.mscwlns.co/media/misc/others/safe%20to%20use_df7htf.png?tr=w-600",
+          "desc": "Safe to use"
+        }
+      ],
+      "headingLevel": 2,
+      "headingsFor": {
+        "cards": 3
+      }
+    },
+    "gl_imageGallery": [
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/Stage-2-Hair-Regrowth-Kit_3bl71i.jpg",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Carousel%20Slide%201_1ngu6r.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "",
+          "link": "",
+          "newTab": false,
+          "action": ""
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/slideSlide-1_7i5a4e.jpg?tr=w-500,c-at_max",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-2_gbtx1c.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "\ud83e\uddd1\ud83c\udffb Select your stage of hair fall ",
+          "link": "section[data-section='productVariations']",
+          "newTab": false,
+          "action": "SCROLL"
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/2023006/CR%20121-What%20to%20expect%20copy_f1tm91.jpg?tr=w-500,c-at_max",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-3_ih2lar.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "\ud83e\uddd1\ud83c\udffb Select your stage of hair fall ",
+          "link": "section[data-section='productVariations']",
+          "newTab": false,
+          "action": "SCROLL"
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/slideSlide-5_grkxo5.jpg?tr=w-500,c-at_max",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-4_gz22pi.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "",
+          "link": "",
+          "newTab": false,
+          "action": ""
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/slideSlide-4_ffji6n.jpg?tr=w-500,c-at_max",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-5_f5nknh.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "",
+          "link": "",
+          "newTab": false,
+          "action": ""
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/26166896/CR-522Creative-1_lau4f6.png?tr=w-1080,c-at_max",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-6_ky28e3.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "",
+          "link": "",
+          "newTab": false,
+          "action": ""
+        },
+        "customVideo": {
+          "mobileSource": "",
+          "desktopSource": "",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/slideSlide-2_evdk8n.jpg",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-7_euzqp8.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "\ud83e\uddd1\ud83c\udffb Select your stage of hair fall ",
+          "link": "section[data-section='productVariations']",
+          "newTab": false,
+          "action": "SCROLL"
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/Creative-1000X750_2idez2.jpg?tr=w-500,c-at_max",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-8_dsnryi.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "",
+          "link": "",
+          "newTab": false,
+          "action": ""
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      },
+      {
+        "original": "https://i.mscwlns.co/media/misc/pdp_rcl/141464/slideSlide-6_fgwv1l.jpg?tr=w-500,c-at_max",
+        "thumbnail": "https://i.mscwlns.co/media/misc/others/Slide-9_4qu7ps.jpg?tr=w-600",
+        "videoLink": "",
+        "type": "",
+        "cta": {
+          "label": "\ud83e\uddd1\ud83c\udffb Select your stage of hair fall ",
+          "link": "section[data-section='productVariations']",
+          "newTab": false,
+          "action": "SCROLL"
+        },
+        "customVideo": {
+          "mobileSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "desktopSource": "https://i.mscwlns.co/media/video/263_Square__1__PBWb2KrAi.mp4",
+          "posterImage": "https://i.mscwlns.co/media/misc/pdp_rcl/22189260/cvcxg_p3bjtmlO8.PNG?tr=w-600",
+          "autoplay": false,
+          "controls": true,
+          "loop": true,
+          "type": "video/mp4",
+          "borderRadiusDesktop": 20,
+          "borderRadiusMobile": 0,
+          "playIcon": "https://i.mscwlns.co/media/misc/landing_pages/nutrition/playbutton_cvbzsk.png",
+          "isEmbedded": true
+        }
+      }
+    ]
   },
   "reviews": {
     "topReviews": [

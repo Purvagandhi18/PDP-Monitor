@@ -551,6 +551,11 @@ def _extract_sections_images(data: dict) -> List[ZeusImage]:
     section_images = data.get("sections_images") or {}
     sections_raw = data.get("sections_raw") or {}   # raw section data if present
     section_order = data.get("sections_order") or list(section_images.keys())
+    # Always include sections_raw keys not already in section_order
+    # (catches gl_* growthLanding sections added after initial cache build)
+    section_order = list(section_order) + [
+        k for k in sections_raw if k not in section_order
+    ]
 
     for section_key in section_order:
         position = _section_position(section_key)

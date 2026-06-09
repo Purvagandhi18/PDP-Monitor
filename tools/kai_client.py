@@ -263,6 +263,19 @@ def build_zeus_cache(product_url: str, page_id: str) -> Optional[dict]:
             if imgs:
                 sections_images[k] = imgs
 
+    # Also extract growthLanding — this top-level key contains rich visual sections
+    # (customerReview/What our men say, uses/How to use, caseStudy, etc.)
+    # that are NOT inside sections{} and would otherwise be missed.
+    GROWTH_VISUAL_SECTIONS = {
+        "customerReview", "uses", "highlights", "caseStudy",
+        "treats", "safeAndEffective", "imageGallery",
+    }
+    growth_landing = pdp.get("growthLanding", {})
+    for k, v in growth_landing.items():
+        if k in GROWTH_VISUAL_SECTIONS and isinstance(v, (dict, list)):
+            sections_raw[f"gl_{k}"] = v
+            log.debug(f"KAI: added growthLanding.{k} → sections_raw.gl_{k}")
+
     cache = {
         "page_id": page_id,
         "brand": "MM",
