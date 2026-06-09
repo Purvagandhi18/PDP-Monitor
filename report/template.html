@@ -707,16 +707,16 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         {% set positions = pdp.zeus_images | map(attribute='position') | unique | list %}
         {% for pos in positions %}
         {% set pos_imgs = pdp.zeus_images | selectattr('position','eq',pos) | list %}
-        {% if pos_imgs | selectattr('local_path') | list %}
+        {% if pos_imgs %}
         <div class="img-sec">
           <div class="img-sec-lbl">{{ pos | replace('_',' ') }} ({{ pos_imgs|length }})</div>
           <div class="img-grid">
-            {% for img in pos_imgs %}{% if img.local_path %}
+            {% for img in pos_imgs %}
             <div class="img-card">
-              <img src="file://{{ img.local_path }}" alt="{{ img.label }}" loading="lazy">
+              <img src="{{ img.url }}" alt="{{ img.label }}" loading="lazy">
               <div class="img-lbl">{{ img.label or img.widget_id }}</div>
             </div>
-            {% endif %}{% endfor %}
+            {% endfor %}
           </div>
         </div>
         {% endif %}
