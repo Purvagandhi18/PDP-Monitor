@@ -267,8 +267,17 @@ def build_zeus_cache(product_url: str, page_id: str) -> Optional[dict]:
     # (customerReview/What our men say, uses/How to use, caseStudy, etc.)
     # that are NOT inside sections{} and would otherwise be missed.
     GROWTH_VISUAL_SECTIONS = {
+        # Already captured
         "customerReview", "uses", "highlights", "caseStudy",
         "treats", "safeAndEffective", "imageGallery",
+        # Previously missing
+        "reviewAndRating",  # customer before/after review photos
+        "kitContentData",   # kit product contents
+        "news",             # media mentions / press
+        "awards",           # certifications and award badges
+        "investors",        # credibility / investor logos
+        "product",          # product rating display
+        "comparision",      # comparison table images
     }
     growth_landing = pdp.get("growthLanding", {})
     for k, v in growth_landing.items():

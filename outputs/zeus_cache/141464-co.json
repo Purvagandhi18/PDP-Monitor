@@ -1276,7 +1276,337 @@
           "isEmbedded": true
         }
       }
-    ]
+    ],
+    "gl_news": {
+      "title": "In the News",
+      "subTitle": "",
+      "carousel": [
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/news-1_dvdsye.png?tr=w-200",
+          "title": "",
+          "description": "<b>Healthy Habits and Supplements for Strong Hair</b> <br>Good eating habits, a stress-free lifestyle, and nourishment through a good diet could contribute to your hair coupled with the right supplements. Man Matters is foraying into men\u2019s elective healthcare market."
+        },
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/news-2_7rsv0l.png?tr=w-200",
+          "title": "",
+          "description": "<b>Men's Wellness: Simplified </b> <br>Founded in 2020 by Revant Bhate and Dhyanesh Shah, Mosaic Wellness is a digital-first consumer health platform that runs three separate brands for men, women, and kids. Its flagship brand ManMatters offers solutions across derma, sexual health, hygiene, and nutrition."
+        },
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/news-3%20%281%29_eoc9cp.png?tr=w-200",
+          "title": "",
+          "description": "<b>Affordable & Convenient Men's Health Solutions</b><br> What we've come to realize is that the prevailing issue largely stems from the fact that a significant portion of the solutions currently available in the market tend to be somewhat inconvenient and unaffordable."
+        }
+      ]
+    },
+    "gl_investors": {
+      "title": "Our Investors",
+      "subTitle": "The driving force behind our success \u2013 our valued investors who believe in our vision and journey.",
+      "background": "https://i.mscwlns.co/media/misc/others/gradient-investors_cre48z.png?tr=w-600",
+      "images": [
+        "https://i.mscwlns.co/media/misc/others/sequoia-investor_l0mncl.png?tr=w-200",
+        "https://i.mscwlns.co/media/misc/others/Frame%201321316904_kyl1s7.png?tr=w-200",
+        "https://i.mscwlns.co/media/misc/others/matrix-investor_h467xs.png?tr=w-200",
+        "https://i.mscwlns.co/media/misc/others/angel-investors_7r5wne.png?tr=w-200"
+      ]
+    },
+    "gl_product": {
+      "name": "Biotin hair gummies",
+      "quantity": "60 pieces",
+      "price": "\u20b9849",
+      "discountedPrice": "\u20b9749",
+      "discount": "20% Off",
+      "taxText": "Incl of all taxes",
+      "reviewsRating": [
+        {
+          "text": "4.0",
+          "icon": "https://i.mscwlns.co/media/misc/others/Rating%20star_mobile_j7el1g.png?tr=w-600"
+        },
+        {
+          "text": "400 reviews",
+          "icon": "https://i.mscwlns.co/media/misc/others/reviews_FILL0_wght300_GRAD0_opsz20%201_81rgxs.png?tr=w-600"
+        },
+        {
+          "text": "80k unit sold",
+          "icon": "https://i.mscwlns.co/media/misc/others/Vector%20%281%29_az9mo3.png?tr=w-600"
+        }
+      ],
+      "offer": "https://i.mscwlns.co/media/misc/others/Offer%20bg_4vdutz.png?tr=w-600",
+      "media": [
+        {
+          "type": "image",
+          "image": "https://i.mscwlns.co/media/misc/others/Product%20image1_169uua.png?tr=w-600",
+          "video": ""
+        },
+        {
+          "type": "image",
+          "image": "https://i.mscwlns.co/media/misc/others/Product%20image1_169uua.png?tr=w-600",
+          "video": ""
+        },
+        {
+          "type": "video",
+          "image": "https://i.mscwlns.co/media/misc/pdp_rcl/1605/Screenshot%202023-06-23%20at%2012.17.33%20AM_36el22.png?tr=w-600",
+          "video": "https://video.gumlet.io/6458c9d056ecc7951d8296af/6494963a01e29f9a90e849d0/main.mp4?tr=w-500,c-at_max"
+        }
+      ]
+    },
+    "gl_awards": {
+      "title": "Certification & awards",
+      "carousel": [
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/Mask%20group_h38jix.png?tr=w-600",
+          "title": "FSSAI Approved"
+        },
+        {
+          "image": "https://i.mscwlns.co/media/misc/others/Mask%20group%20%281%29_e59cm2.png?tr=w-600",
+          "title": "GMP Approved"
+        }
+      ]
+    },
+    "gl_reviewAndRating": {
+      "title": "Ratings & Reviews",
+      "overAllRating": 4,
+      "ratingsStats": [
+        {
+          "fillerColor": "rgba(5, 163, 87, 1)",
+          "numberOfReviews": 167,
+          "rating": 5
+        },
+        {
+          "fillerColor": "rgba(5, 163, 87, 1)",
+          "numberOfReviews": 166,
+          "rating": 4
+        },
+        {
+          "fillerColor": "rgba(5, 163, 87, 1)",
+          "numberOfReviews": 149,
+          "rating": 3
+        },
+        {
+          "fillerColor": "rgba(25, 100, 171, 1)",
+          "numberOfReviews": 50,
+          "rating": 2
+        },
+        {
+          "fillerColor": "rgba(232, 102, 105, 1)",
+          "numberOfReviews": 50,
+          "rating": 1
+        }
+      ],
+      "totalNumberOfReviews": 482,
+      "topReviews": [
+        {
+          "id": "#1",
+          "rating": 5,
+          "author": "Jogesh Patel",
+          "title": "Had lost hope, Now seen growth back ",
+          "body": "Had a very big bald patch. Taking gummies, daily health booster and minox for past 1 year. Have seen tremendous results. Also started using the minoxidil tablets after being consulted by the experts. Never expected this good result, thanks man matters.",
+          "dateCreated": "2025-07-02",
+          "originalProduct": {
+            "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/26166915/Min_7rppxw.jpg?tr=w-800",
+            "name": "Stage 4 Hair Regrowth Kit (1 year+)",
+            "slug": "/dp/26166915",
+            "fullUrl": ""
+          },
+          "reply": "",
+          "images": [
+            {
+              "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2023007/Oral%20Minox_Beard_1_j9uhza.jpeg?tr=w-600",
+              "altText": "Review Image ",
+              "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2023007/Oral%20Minox_Beard_1_j9uhza.jpeg?tr=w-600"
+            }
+          ]
+        },
+        {
+          "id": "#2",
+          "rating": 5,
+          "author": "Shuvam Aggarwal",
+          "title": "Hair Come back slowly ",
+          "body": "Using the ayurvedic booster and gummies for last 5 months. showing small growth on bald areas. Also started using the oral minoxidil tablets for boosting my progress. Tracking my consistency through the coach feature, very easy to use. Recommended ",
+          "dateCreated": "2025-07-05",
+          "originalProduct": {
+            "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/26166915/Min_7rppxw.jpg?tr=w-800",
+            "name": "Stage 4 Hair Regrowth Kit (1 year+)",
+            "slug": "/dp/26166915",
+            "fullUrl": ""
+          },
+          "reply": "",
+          "images": [
+            {
+              "image": "https://i.mscwlns.co/media/misc/pdp_rcl/100423/Stage%204%20Diet_more%20than%201%20year%202_fh2mt5.jpeg?tr=w-600",
+              "altText": "reviewImage",
+              "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/100423/Stage%204%20Diet_more%20than%201%20year%202_fh2mt5.jpeg?tr=w-600"
+            },
+            {
+              "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2023007/Oral%20Minox_Beard_3_8n96ar.jpeg?tr=w-600",
+              "altText": "Review Image ",
+              "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2023007/Oral%20Minox_Beard_3_8n96ar.jpeg?tr=w-600"
+            }
+          ]
+        },
+        {
+          "id": "#3",
+          "rating": 5,
+          "author": "Harshdeep Singh ",
+          "title": "Reduced Hairfall & Hair growth back ",
+          "body": "The daily health booster is also one of kind and really helpful product. My shedding hair was reduced very much after using the anti hair fall shampoo and the lotion for 6 months straight.",
+          "dateCreated": "2025-07-08",
+          "originalProduct": {
+            "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/26166915/Min_7rppxw.jpg?tr=w-800",
+            "name": "Stage 4 Hair Regrowth Kit (1 year+)",
+            "slug": "/dp/26166915",
+            "fullUrl": ""
+          },
+          "reply": "",
+          "images": [
+            {
+              "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2023007/WhatsApp%20Image%202023-11-01%20at%2011.16.07_hgjdu8.jpeg?tr=w-600",
+              "altText": "Review Image",
+              "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2023007/WhatsApp%20Image%202023-11-01%20at%2011.16.07_hgjdu8.jpeg?tr=w-600"
+            }
+          ]
+        },
+        {
+          "id": "#4",
+          "rating": 5,
+          "author": "Sonu ",
+          "title": "Made my hair thick and strong ",
+          "body": "i have been trying to fix my hairloss problem for past 2 years, tried many serums and oils in the market but nothing worked. apart from minoxidil that im already using, started taking the ayurvedic tablets which improved my gut health issues and my overall kit started showing more visible results.",
+          "dateCreated": "2025-07-10",
+          "originalProduct": {
+            "imageUrl": "https://i.mscwlns.co/media/misc/pdp_rcl/26166915/Min_7rppxw.jpg?tr=w-800",
+            "name": "Stage 4 Hair Regrowth Kit (1 year+)",
+            "slug": "/dp/26166915",
+            "fullUrl": ""
+          },
+          "reply": "",
+          "images": [
+            {
+              "image": "https://i.mscwlns.co/media/misc/pdp_rcl/2861144/0e3e41fe-dc74-413b-9017-b9010b62cfc0_alkhii.jpg?tr=w-600",
+              "altText": "Review Image",
+              "thumbnail": "https://i.mscwlns.co/media/misc/pdp_rcl/2861144/0e3e41fe-dc74-413b-9017-b9010b62cfc0_alkhii.jpg?tr=w-600"
+            }
+          ]
+        }
+      ],
+      "videos": [
+        "https://youtu.be/S2-BGTSQbmI",
+        "https://youtu.be/gdrZyPAOvOY",
+        "https://youtu.be/u_n1JvOBh18",
+        "https://youtu.be/xEhxN73b6_4",
+        "https://youtu.be/koNAYSr3gek",
+        "https://youtu.be/KBbnnX4tqQ0"
+      ]
+    },
+    "gl_kitContentData": {
+      "title": "Whats in the kit",
+      "products": {
+        "1234": {
+          "title": "Biotin Hair Gummies",
+          "image": "https://i.mscwlns.co/media/misc/others/HG_30_1v3v24.png?tr=w-600",
+          "price": "\u20b9499",
+          "modalData": {
+            "productInfo": {
+              "title": "Biotin Hair Gummies",
+              "image": "https://i.mscwlns.co/media/misc/others/HG_30_1v3v24.png?tr=w-600",
+              "unitsSold": "800K",
+              "reviews": "2.2K",
+              "rating": "4.2",
+              "ratingIcons": {
+                "filledStar": "https://i.mscwlns.co/media/misc/others/rating_4mrjiq.png?tr=w-50",
+                "unitText": "unit solds"
+              }
+            },
+            "description": [
+              "\ud83d\udc8e Biotin Hair Gummies with biotin, zinc, and vitamins A, C & E are designed to strengthen hair",
+              "\ud83c\udf31 These ingredients work synergistically to enhance keratin structure, block DHT, and combat oxidative stress, addressing nutrition deficiencies that lead to weakened follicles."
+            ],
+            "howToUse": {
+              "title": "\ud83d\udccc How to use?",
+              "data": [
+                "\u25baThere is no specific time to take these hair gummies, we recommend fixing a particular time for them.",
+                "\u25baUse for 4-6 months for best results"
+              ]
+            }
+          }
+        },
+        "1596": {
+          "title": "Minoxidil 5% + Procapil",
+          "image": "https://i.mscwlns.co/media/misc/others/Growmax%2060_gat550.jpg?tr=w-600",
+          "price": "\u20b9699",
+          "modalData": {
+            "productInfo": {
+              "title": "Minoxidil 5% + Procapil",
+              "image": "https://i.mscwlns.co/media/misc/others/Growmax%2060_gat550.jpg?tr=w-600",
+              "unitsSold": "377K",
+              "reviews": "1.5K",
+              "rating": "4.4",
+              "ratingIcons": {
+                "filledStar": "https://i.mscwlns.co/media/misc/others/rating_4mrjiq.png?tr=w-50",
+                "unitText": "unit solds"
+              }
+            },
+            "description": [
+              "\ud83d\udc8e Minoxidil 5% + Procapil is an alcohol-free solution formulated to stimulate hair growth and block DHT.",
+              "\ud83c\udf31 Key ingredients include 5% minoxidil and 2% Procapil.",
+              "\ud83c\udf1f It works by stimulating follicles and inhibiting DHT production.",
+              "\ud83d\udd25 The solution targets the root cause of excess DHT hormones that cause follicle shrinkage. \ud83d\udcab"
+            ],
+            "howToUse": {
+              "title": "\ud83d\udccc How to use?",
+              "data": [
+                "\u25baUse 2ml per day for 30 Days. Can be used with Spray tool or Dropper",
+                "\u25baSpray: Remove cap and film. Insert spray applicator. Spray on affected scalp and spread evenly with fingertips. Use 6 pumps per day. Wash hands after use.",
+                "\u25baDropper: Open the bottle, unscrew the cap, and remove the film. Insert the dropper and take the solution as instructed. Apply to the affected scalp and spread evenly with fingertips.",
+                "\u25baApply 1 ml twice a day for effective results. Wash hands after use."
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gl_comparision": {
+      "title": "Healthy Hair? Just a Chew Away",
+      "list": [
+        {
+          "us": "us",
+          "others": "others"
+        },
+        {
+          "us": "No Sugar Added",
+          "others": "Contains Sugar"
+        },
+        {
+          "us": "Vegan",
+          "others": "Non-veg ingredients"
+        },
+        {
+          "us": "GMO Free",
+          "others": "GMO"
+        },
+        {
+          "us": "No Artificial Colours",
+          "others": "Artificial Colours"
+        },
+        {
+          "us": "No Sugar Added",
+          "others": "Contains Sugar"
+        },
+        {
+          "us": "Vegan",
+          "others": "Non-veg ingredients"
+        },
+        {
+          "us": "GMO Free",
+          "others": "GMO"
+        },
+        {
+          "us": "No Artificial Colours",
+          "others": "Artificial Colours"
+        }
+      ],
+      "tickIcon": "https://i.mscwlns.co/mosaic-wellness/image/upload/v1623908014/Man%20Matters/Hair%20Gummies%20Sugar/9_1_1.png?tr=w-150,c-at_max",
+      "crossIcon": "https://i.mscwlns.co/mosaic-wellness/image/upload/v1598394816/Man%20Matters/ACV%20Gummies/10.png?tr=w-150,c-at_max"
+    }
   },
   "reviews": {
     "topReviews": [
