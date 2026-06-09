@@ -47,7 +47,7 @@ def _latest_run_snapshot(product_name: str) -> dict:
         return json.load(f)
 
 
-def _build_summary(product_name: str, snapshot: dict) -> str:
+def _build_summary(product_name: str, snapshot: dict, pages_url: str = None) -> str:
     """Build a plain-text score summary for the email body."""
     pdps = snapshot.get("pdps", [])
     run_date = snapshot.get("run_date", datetime.utcnow().strftime("%Y-%m-%d"))
@@ -58,6 +58,8 @@ def _build_summary(product_name: str, snapshot: dict) -> str:
         f"",
         f"This is an automated weekly PDP analysis report for {product_name}.",
         f"Run date: {run_date}",
+        f"",
+        f"{'→ View full interactive report: ' + pages_url if pages_url else '→ Full report attached below.'}",
         f"",
         f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
         f"SCORES SUMMARY",
@@ -106,7 +108,17 @@ def send_report(product_name: str, recipient: str):
 
     report_path = _latest_report(product_name)
     snapshot    = _latest_run_snapshot(product_name)
-    summary     = _build_summary(product_name, snapshot)
+
+    # Publish to GitHub Pages — get live URL
+    pages_url = None
+    try:
+        from tools.publish_report import publish
+        pages_url = publish(product_name)
+        print(f"  GitHub Pages URL: {pages_url}")
+    except Exception as e:
+        print(f"  GitHub Pages publish failed: {e} — falling back to attachment")
+
+    summary = _build_summary(product_name, snapshot, pages_url=pages_url)
 
     # Build email
     msg = MIMEMultipart()
@@ -114,19 +126,17 @@ def send_report(product_name: str, recipient: str):
     msg["To"]      = recipient
     msg["Subject"] = f"PDP Monitor — {product_name} | {datetime.utcnow().strftime('%d %b %Y')}"
 
-    # Plain text body
+    # Plain text body with link
     msg.attach(MIMEText(summary, "plain"))
 
-    # HTML report as attachment (application/octet-stream forces download, not inline render)
-    with open(report_path, "rb") as f:
-        part = MIMEBase("application", "octet-stream")
-        part.set_payload(f.read())
-    encoders.encode_base64(part)
-    part.add_header(
-        "Content-Disposition",
-        f"attachment; filename={report_path.name}",
-    )
-    msg.attach(part)
+    # Attach HTML as fallback if Pages publish failed
+    if not pages_url:
+        with open(report_path, "rb") as f:
+            part = MIMEBase("application", "octet-stream")
+            part.set_payload(f.read())
+        encoders.encode_base64(part)
+        part.add_header("Content-Disposition", f"attachment; filename={report_path.name}")
+        msg.attach(part)
 
     # Send via Gmail SMTP
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
@@ -134,9 +144,8 @@ def send_report(product_name: str, recipient: str):
         server.sendmail(sender, recipient, msg.as_string())
 
     print(f"✓ Email sent to {recipient}")
-    print(f"  Product:  {product_name}")
-    print(f"  Report:   {report_path.name}")
-    print(f"  Subject:  {msg['Subject']}")
+    print(f"  Product: {product_name}")
+    print(f"  Subject: {msg['Subject']}")
 
 
 if __name__ == "__main__":
