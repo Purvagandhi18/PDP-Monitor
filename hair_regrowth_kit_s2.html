@@ -250,6 +250,30 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
   font-size:13px;color:#1a7a4a;font-weight:600}
 .ok-msg::before{content:"✓  "}
 
+/* ── Section Flow ───────────────────────────────── */
+.sf-wrap{background:#fafaf8;border:1px solid #e5e5e2;border-radius:12px;padding:20px;margin-top:10px}
+.sf-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.sf-score-badge{font-size:20px;font-weight:800;padding:6px 14px;border-radius:8px;white-space:nowrap;flex-shrink:0}
+.sf-score-badge.healthy{background:#e6f4ed;color:#1a7a4a}
+.sf-score-badge.attention{background:#fef3e2;color:#c17d00}
+.sf-score-badge.critical{background:#fdecea;color:#c0392b}
+.sf-obs{font-size:13px;color:#555;line-height:1.6;padding-top:4px}
+.sf-section{margin-bottom:16px}
+.sf-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#aaa;margin-bottom:8px}
+.sf-order-list{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:5px}
+.sf-order-item{font-size:13px;color:#444;line-height:1.5;display:flex;align-items:center;gap:8px}
+.sf-order-item.sf-ooo{color:#c17d00;font-weight:600}
+.sf-order-item.sf-redundant{color:#888;text-decoration:line-through}
+.sf-tag{font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px}
+.sf-tag-move{background:#fef3e2;color:#c17d00}
+.sf-tag-dup{background:#f0f0ee;color:#888}
+.sf-issue{background:#fff;border:1px solid #e5e5e2;border-radius:8px;padding:12px 14px;margin-bottom:8px}
+.sf-issue-title{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sf-pos{font-size:11px;font-weight:700;background:#fef3e2;color:#c17d00;padding:2px 8px;border-radius:99px}
+.sf-issue-reason{font-size:12px;color:#666;line-height:1.6}
+.sf-missing{background:#fff8ec;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin-bottom:6px}
+.sf-suggestion{background:#fef8e7;border-radius:8px;padding:12px 14px;font-size:13px;font-weight:600;color:#1a1a1a;line-height:1.6;margin-top:4px}
+
 /* ── Delta / regression badges ──────────────────── */
 .delta{font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
 .delta.up  {background:#e6f4ed;color:#1a7a4a}
@@ -288,7 +312,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 
 
 <div class="hero-bar">
-  <div class="big-score critical" id="product-avg-score">5.6</div>
+  <div class="big-score critical" id="product-avg-score">5.7</div>
   <div class="hero-meta">
     <div class="lbl">Product Health Score</div>
     <div class="name">Hair Regrowth Kit S2</div>
@@ -312,7 +336,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 
 <div class="pdp-block active" id="pdp-1"
   data-ad-base="5.0"
-  data-reviews-base="5.2"
+  data-reviews-base="5.8"
   data-pn-base="5.2"
   data-copy-base="5.8"
   data-vis-base="6.2">
@@ -324,10 +348,10 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     <div class="card-hdr-right">
       
         
-          <span class="delta flat">+0.0</span>
+          <span class="delta flat">+0.1</span>
         
       
-      <span class="card-score critical" id="1-pdp-score">5.57</span>
+      <span class="card-score critical" id="1-pdp-score">5.66</span>
       <span class="badge bg-critical" id="1-pdp-badge">CRITICAL</span>
     </div>
   </div>
@@ -347,7 +371,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       Text Layer <span class="ts critical" id="1-tab-copy-score">5.8</span>
     </button>
     <button class="tab-btn" onclick="switchTab('1','reviews',this)">
-      Reviews &amp; Ratings <span class="ts critical" id="1-tab-rev-score">5.2</span>
+      Reviews &amp; Ratings <span class="ts critical" id="1-tab-rev-score">5.8</span>
     </button>
   </div>
 
@@ -368,11 +392,11 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       </div>
       <div class="sum-cell">
         <div class="sum-cell-lbl">Reviews</div>
-        <div class="sum-cell-val critical" id="1-sum-reviews">5.2</div>
+        <div class="sum-cell-val critical" id="1-sum-reviews">5.8</div>
       </div>
       <div class="sum-cell dark">
         <div class="sum-cell-lbl">Overall</div>
-        <div class="sum-cell-val" id="1-sum-overall">5.57</div>
+        <div class="sum-cell-val" id="1-sum-overall">5.66</div>
       </div>
     </div>
 
@@ -383,10 +407,10 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       <div class="rca-item">
         <div class="rca-culprit">
           Reviews → Negative Handling
-          <span class="badge bg-critical" style="font-size:11px">2.5</span>
+          <span class="badge bg-critical" style="font-size:11px">4.0</span>
         </div>
-        <div class="rca-evidence">Zero negative or mixed reviews displayed. No brand responses visible. Top persona concerns (shedding phase confusion, dosing complexity, minoxidil side effect fears) completely unaddressed.</div>
-        <div class="rca-fix">Surface 2-3 reviews mentioning initial shedding with brand response explaining 'Shedding in weeks 2-4 is a positive sign - it means dormant follicles are activating.' Add a pinned FAQ-style review addressing minoxidil fears: 'I was worried about side effects but my dermatologist confirmed 5% topical is the gold standard with minimal absorption.' Respond to any dosing confusion reviews with clear usage protocol.</div>
+        <div class="rca-evidence">Reviews show 'Its very slow' and 'Not 100% back but maybe 60-70%' but zero brand responses visible, no 2-3 star reviews displayed, and no proactive content addressing the 38% dosing compliance issue or shedding phase confusion.</div>
+        <div class="rca-fix">Curate and display 2-3 star reviews with visible brand responses explaining: 'Shedding at weeks 3-4 is normal and indicates treatment is working. Full results require 5-6 months of consistent use.' Pin a FAQ-style response addressing dosing compliance directly above review section.</div>
       </div>
       
       <div class="rca-item">
@@ -394,26 +418,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           Persona × Narrative → Carousel Flow
           <span class="badge bg-critical" style="font-size:11px">4.0</span>
         </div>
-        <div class="rca-evidence">11 hero slides named hero_1 through hero_11 suggesting generic product shots. Body copy jumps directly to benefits ('Blocks DHT buildup', 'Increases hair volume') without acknowledging confidence crisis. No emotional hook addressing 'Papa ka tha - genetic anxiety' or Stage 3 progression fear.</div>
-        <div class="rca-fix">Restructure carousel sequence: Slides 1-2 show Stage 2 hair pattern with text 'You're here. Stage 3 is 12-18 months away without intervention.' Slides 3-4 introduce preservation protocol as 'insurance'. Slides 5-7 show month-by-month progress photos from verified S2 users (not S3/S4). Slides 8-11 show social proof specifically mentioning 'caught it at Stage 2' success stories.</div>
-      </div>
-      
-      <div class="rca-item">
-        <div class="rca-culprit">
-          Persona × Narrative → Hero / Banner
-          <span class="badge bg-critical" style="font-size:11px">4.5</span>
-        </div>
-        <div class="rca-evidence">Headline uses 'Stage 2 Hair Regrowth Kit' with 'Regrowth' language. S2 ICP's #1 concern is 'Jitne hai utne bachana chahta hoon' (save what I have). The preservation-aligned subheadline 'Helps control Hair fall' is buried below the contradictory main headline.</div>
-        <div class="rca-fix">Rewrite headline to: 'Stage 2 Hair Protection Protocol: Lock In What You Have' or 'Stop Stage 2 From Becoming Stage 3'. Move 'Controls hair fall' benefit to subheadline position. Add urgency qualifier: 'The 6-month window where intervention works best.'</div>
-      </div>
-      
-      <div class="rca-item">
-        <div class="rca-culprit">
-          Visual Design → Proof Prominence
-          <span class="badge bg-critical" style="font-size:11px">4.5</span>
-        </div>
-        <div class="rca-evidence">'5-6 month' timeline and '90 day' claims present but not prominently displayed. No clinical percentage stats visible (e.g., '87% saw reduced shedding'). '5% Minoxidil' concentration mentioned but not emphasized as clinical standard. No certification badges, dermatologist endorsements, or study references visually prominent.</div>
-        <div class="rca-fix">Create dedicated proof banner below hero: '5% Minoxidil - FDA-approved gold standard concentration' with clinical icon. Add stat callout: '93% of users saw reduced shedding in 90 days - Clinical Study 2023'. Display 'Dermatologist Formulated' badge with doctor silhouette on hero image. Add 'As recommended by 500+ dermatologists' if data supports.</div>
+        <div class="rca-evidence">11 carousel slides with generic hero_1 through hero_11 placeholders. Body copy jumps directly to product features and clinical stats without establishing emotional hook around S2 ICP's core fear: 'Abhi shuru nahi kiya toh Stage 3 tak pahunch jaoge'.</div>
+        <div class="rca-fix">Restructure carousel: Slides 1-2: 'Still catching it early? Stage 2 is your preservation window.' Slides 3-4: S2→S3 progression visual. Slides 5-6: Protocol explanation. Slides 7-11: Month-by-month user results with timeline markers showing preservation (not regrowth) success.</div>
       </div>
       
       <div class="rca-item">
@@ -421,8 +427,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           Persona × Narrative → CTA Language
           <span class="badge bg-critical" style="font-size:11px">4.0</span>
         </div>
-        <div class="rca-evidence">CTAs are generic 'Add To Cart' and 'Buy Now'. No reflection of preservation mindset or 'taking control' emotional state that matches S2 ICP's motivations around protecting their hair window.</div>
-        <div class="rca-fix">Primary CTA: 'Start My Protection Protocol' or 'Protect My Hair Today'. Secondary CTA: 'See My Personalized Plan'. Add micro-copy below CTA: 'Join 50,000+ men who caught it at Stage 2' to reinforce that acting now is the smart, common choice.</div>
+        <div class="rca-evidence">CTAs are 'Add To Cart' and 'Buy Now'—standard transactional language that ignores the Preservation narrative entirely.</div>
+        <div class="rca-fix">Replace 'Add To Cart' with 'Start Protecting My Hair' and 'Buy Now' with 'Lock In My Stage 2 Plan'. Language should mirror the commitment to preservation, not a one-time transaction.</div>
       </div>
       
       <div class="rca-item">
@@ -430,8 +436,26 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           Visual Design → Lifestyle Shots
           <span class="badge bg-critical" style="font-size:11px">4.0</span>
         </div>
-        <div class="rca-evidence">Image 7 shows only hand holding gummy with no lifestyle context. 'What does the kit do' slide shows man in blazer touching hair but posed/studio style. No images of product being used in bathroom, morning routine, college campus, or workplace matching young professional persona.</div>
-        <div class="rca-fix">Add 3 lifestyle shots: (1) Young professional applying minoxidil in modern bathroom mirror, 7:30 AM time visible on phone, (2) Gummy bottle on office desk next to laptop showing easy mid-day integration, (3) Group of friends at casual outing with one subject showing confident full hair. Ensure models match 23-28 demographic, not older.</div>
+        <div class="rca-evidence">Only lifestyle-adjacent image: Slide 7 with man in blazer touching hair. Last 3 slides are clinical anatomical diagrams (Nutrition, DHT, Lifestyle). Zero images of work/office, social settings, or dating scenarios.</div>
+        <div class="rca-fix">Replace anatomical diagrams with: (1) Professional setting—confident presentation at work, (2) Social scene—laughing with friends, (3) Morning routine integration—product on bathroom counter. Show the 'after' emotional state, not the science.</div>
+      </div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Persona × Narrative → Hero / Banner
+          <span class="badge bg-critical" style="font-size:11px">4.5</span>
+        </div>
+        <div class="rca-evidence">Headline reads 'Stage 2 Hair Regrowth Kit' while S2 ICP's core concern is 'Jitne hai utne bachana chahta hoon' (save what I have). Preservation-aligned subheads ('Helps control Hair fall', 'Blocks DHT buildup') are buried below the misaligned main headline.</div>
+        <div class="rca-fix">Rewrite headline: 'Stage 2 Hair Preservation Kit: Stop Further Loss Before It's Too Late'. Subhead: 'Protect your existing hair and prevent progression to Stage 3'. Elevate 'Blocks DHT buildup' to second-line prominence.</div>
+      </div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Visual Design → Proof Prominence
+          <span class="badge bg-critical" style="font-size:11px">4.5</span>
+        </div>
+        <div class="rca-evidence">'5% Minoxidil' in small text. '5-6 month' timeline mentioned but not emphasized. Zero clinical study percentages, no user satisfaction stats, no dermatologist endorsements or certification badges visible.</div>
+        <div class="rca-fix">Add bold callout banner: '85%+ users saw reduced hair fall in clinical trials' with large typography in contrasting color (gold on blue). Place 'Dermatologist Recommended' badge on hero image. Make '5-6 months for visible results' a standalone visual element, not inline text.</div>
       </div>
       
     </div>
@@ -488,30 +512,30 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     <div class="h-sub-nav">
       <button class="h-sub active" onclick="switchHygieneSub('1','claims',this)">
         Claims
-        <span class="fi-src claims">31 issues</span>
-        <span class="fi-src" style="background:#e6f4ed;color:#1a7a4a">4 ok</span>
+        <span class="fi-src claims">29 issues</span>
+        <span class="fi-src" style="background:#e6f4ed;color:#1a7a4a">6 ok</span>
       </button>
       <button class="h-sub" onclick="switchHygieneSub('1','brand',this)">
         Brand Guidelines
-        <span class="fi-src brand">9 issues</span>
+        <span class="fi-src brand">11 issues</span>
       </button>
       <button class="h-sub" onclick="switchHygieneSub('1','spell',this)">
         Spell Check
-        <span class="fi-src spell">10 errors</span>
+        <span class="fi-src spell">9 errors</span>
       </button>
     </div>
 
     
     <div id="1-hygiene-claims" class="h-panel active">
       
-      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">8</span></div>
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">15</span></div>
       
       <div class="fi fi-flagged" data-uid="1" data-cat="claims">
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">"Biotin Hair Gummies + Growmax with Procapil"</span>
-          <span class="fi-reason">Procapil not listed in approved ingredients. Brief lists: Minoxidil, Hair Gummies, Anti-hairfall Shampoo, Dermaroller, Cetosomal formulation.</span>
+          <span class="fi-text">"Growmax with Procapil"</span>
+          <span class="fi-reason">Procapil is not listed in approved key ingredients. Brief only mentions: Minoxidil, Hair Gummies, Anti-hairfall Shampoo, Dermaroller, Cetosomal formulation</span>
         </span></label>
       </div>
       
@@ -520,7 +544,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">❌</span>
         <span class="fi-body">
           <span class="fi-text">"Blocks DHT buildup"</span>
-          <span class="fi-reason">DHT blocking mechanism not mentioned anywhere in approved brief or ingredients.</span>
+          <span class="fi-reason">DHT blocking mechanism not mentioned anywhere in approved brief. This is a specific biological claim requiring substantiation</span>
         </span></label>
       </div>
       
@@ -528,8 +552,80 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">"After 2 Month: Reduced Hair Breakage"</span>
-          <span class="fi-reason">Brief states 'Visible hairfall reduction in 4-6 weeks' but does not mention 'breakage' specifically or 2-month milestone.</span>
+          <span class="fi-text">"After 2 Month Reduced Hair Breakage"</span>
+          <span class="fi-reason">Brief states 'Visible hairfall reduction in 4-6 weeks (S2)' - hair breakage reduction at 2 months is not an approved milestone</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"No Sugar Added"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"No preservative"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"Cruelty-Free"</span>
+          <span class="fi-reason">Certification not listed in approved brief</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"Vegan"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"Gluten Free"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"Gelatin Free"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"No added colour"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"GMO Free"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
         </span></label>
       </div>
       
@@ -538,16 +634,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">❌</span>
         <span class="fi-body">
           <span class="fi-text">"94% Users saw increased hair growth"</span>
-          <span class="fi-reason">This statistic is not present in approved proof points. Brief does not contain any percentage claims about hair growth success rates.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">❌</span>
-        <span class="fi-body">
-          <span class="fi-text">"As per the study of Minoxidil by Rundegren, J. in (2004) on Rapid onset of action of minoxidil 5%..."</span>
-          <span class="fi-reason">External study citation not listed in approved proof points. Only approved proof points reference internal results like 'Before/after crown recovery results'.</span>
+          <span class="fi-reason">This statistic is NOT in the approved brief. No percentage claims are authorized. This requires explicit approval and substantiation</span>
         </span></label>
       </div>
       
@@ -556,7 +643,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">❌</span>
         <span class="fi-body">
           <span class="fi-text">"9 out of 10 users saw 50% reduced hairfall"</span>
-          <span class="fi-reason">Specific statistic (9 out of 10, 50%) not in approved brief. Only approved stat is '41% of Stage 3 users previously consulted dermatologists' which is different.</span>
+          <span class="fi-reason">This statistic (90%, 50% reduction) is NOT in approved brief. Only approved stat is '41% of Stage 3 users previously consulted dermatologists'</span>
         </span></label>
       </div>
       
@@ -564,8 +651,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">"As per independent clinic study by Mprex Healthcare Pvt Ltd where hair was test was conducted after 90 day regime of Biotin Hair Gummies."</span>
-          <span class="fi-reason">This study and its source not mentioned in approved proof points or narrative.</span>
+          <span class="fi-text">"No Artificial Colours"</span>
+          <span class="fi-reason">Product attribute not mentioned in approved brief - requires verification</span>
         </span></label>
       </div>
       
@@ -574,20 +661,20 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">❌</span>
         <span class="fi-body">
           <span class="fi-text">"No Side Effects"</span>
-          <span class="fi-reason">Absolute claim with high regulatory risk. Not supported by brief. Minoxidil can have side effects. This claim could be considered misleading.</span>
+          <span class="fi-reason">ABSOLUTE CLAIM - This is a dangerous absolute statement not supported by brief. Medical products cannot claim 'no side effects' without extensive disclaimers</span>
         </span></label>
       </div>
       
       
       
-      <div class="flag-section-lbl">⚠️ Warnings <span class="fcnt attention">23</span></div>
+      <div class="flag-section-lbl">⚠️ Warnings <span class="fcnt attention">14</span></div>
       
       <div class="fi fi-warning" data-uid="1" data-cat="claims">
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
           <span class="fi-text">"Nourishes scalp health"</span>
-          <span class="fi-reason">Implied by 'Full-system approach' but not explicitly stated in approved claims.</span>
+          <span class="fi-reason">Implied by 'Full-system approach' but not explicitly stated as an approved claim in brief</span>
         </span></label>
       </div>
       
@@ -596,7 +683,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
           <span class="fi-text">"Increases hair volume"</span>
-          <span class="fi-reason">Related to 'Preserves existing hair density' and 'Reduces visible hair thinning' but 'increases volume' is a stronger claim not explicitly approved.</span>
+          <span class="fi-reason">Partially supported by 'Preserves existing hair density' but 'increases volume' is a stronger claim than density preservation</span>
         </span></label>
       </div>
       
@@ -604,8 +691,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"After 3 Month: Curbs Hair Fall"</span>
-          <span class="fi-reason">Brief mentions '4-6 weeks for visible hairfall reduction' for S2 but 3-month milestone not explicitly approved.</span>
+          <span class="fi-text">"After 3 Month Curbs Hair Fall"</span>
+          <span class="fi-reason">Brief mentions 4-6 weeks for S2, not 3 months. Timeline inconsistency with approved claims</span>
         </span></label>
       </div>
       
@@ -613,8 +700,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"After 4 Month: Improved hair health"</span>
-          <span class="fi-reason">Brief mentions 'baby hair on bald patches by month 4-5 (S3)' but 'improved hair health' for S2 at 4 months not explicit.</span>
+          <span class="fi-text">"After 4 Month Improved hair health"</span>
+          <span class="fi-reason">Brief mentions 'baby hair on bald patches by month 4-5' for S3, but 'improved hair health' for S2 at month 4 is not explicitly approved</span>
         </span></label>
       </div>
       
@@ -622,80 +709,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"After 6 Month: Improved hair health & density"</span>
-          <span class="fi-reason">6-month timeline implied by 'Month-by-month milestone tracking' but specific outcome not detailed in brief.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"No Sugar Added"</span>
-          <span class="fi-reason">Product attribute not mentioned in brief. May be factual but not pre-approved.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"No preservative"</span>
-          <span class="fi-reason">Product attribute not mentioned in brief. May be factual but not pre-approved.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"Cruelty-Free"</span>
-          <span class="fi-reason">Not mentioned in approved brief. Requires verification.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"Vegan"</span>
-          <span class="fi-reason">Not mentioned in approved brief. Requires verification.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"Gluten Free"</span>
-          <span class="fi-reason">Not mentioned in approved brief. Requires verification.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"Gelatin Free"</span>
-          <span class="fi-reason">Not mentioned in approved brief. Requires verification.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"No added colour"</span>
-          <span class="fi-reason">Not mentioned in approved brief. Requires verification.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"GMO Free"</span>
-          <span class="fi-reason">Not mentioned in approved brief. Requires verification.</span>
+          <span class="fi-text">"After 6 Month Improved hair health & density"</span>
+          <span class="fi-reason">Month-by-month milestone tracking is approved concept, but specific 6-month density claim not explicitly stated in brief</span>
         </span></label>
       </div>
       
@@ -704,7 +719,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
           <span class="fi-text">"Safe to use"</span>
-          <span class="fi-reason">Implied by 'Dermatologist-recommended protocol' but 'safe' as absolute claim needs substantiation.</span>
+          <span class="fi-reason">General safety claim without qualification. Brief does not make explicit safety claims</span>
         </span></label>
       </div>
       
@@ -712,8 +727,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"For best results Use for 3 months"</span>
-          <span class="fi-reason">Brief mentions 4-6 weeks and 4-5 months timelines but not specifically 3 months for best results.</span>
+          <span class="fi-text">"As per the study of Minoxidil by Rundegren, J. in (2004)..."</span>
+          <span class="fi-reason">External study citation not pre-approved in brief. While Minoxidil is an approved ingredient, specific study references need authorization</span>
         </span></label>
       </div>
       
@@ -721,8 +736,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"No Artificial Colours"</span>
-          <span class="fi-reason">Product attribute not mentioned in brief. May be factual but not pre-approved.</span>
+          <span class="fi-text">"As per independent clinic study by Mprex Healthcare Pvt Ltd..."</span>
+          <span class="fi-reason">Specific study citation not pre-approved in brief. Study references should be listed in approved proof points</span>
         </span></label>
       </div>
       
@@ -731,7 +746,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
           <span class="fi-text">"Lab Tested"</span>
-          <span class="fi-reason">Not explicitly mentioned in brief though may be implied by certifications.</span>
+          <span class="fi-reason">Not explicitly stated in brief, though FSSAI/GMP certifications may imply testing</span>
         </span></label>
       </div>
       
@@ -739,8 +754,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"Typically, visible results may take around 6 months of consistent usage."</span>
-          <span class="fi-reason">Brief states '4-6 weeks' for visible hairfall reduction (S2) and '4-5 months' for baby hair (S3). 6-month claim is conservative but not explicitly approved.</span>
+          <span class="fi-text">"Typically, visible results may take around 6 months of consistent usage"</span>
+          <span class="fi-reason">Brief states 'Visible hairfall reduction in 4-6 weeks (S2)' - this 6-month claim conflicts with approved faster timeline for S2</span>
         </span></label>
       </div>
       
@@ -748,8 +763,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"Stage 2 HairFall is when you are experiencing hairfall for over a year and have a receding hairline."</span>
-          <span class="fi-reason">Stage definition mentioned in brief context ('Stage-specific treatment protocols for S2 vs S3') but specific definition not provided in approved claims.</span>
+          <span class="fi-text">"Yes, you can continue using your preferred hair oil and other hair products alongside our kit"</span>
+          <span class="fi-reason">Compatibility claim not explicitly approved in brief - requires verification</span>
         </span></label>
       </div>
       
@@ -757,17 +772,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
-          <span class="fi-text">"Yes, you can continue using your preferred hair oil and other hair products alongside our kit."</span>
-          <span class="fi-reason">Compatibility claim not addressed in approved brief.</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-warning" data-uid="1" data-cat="claims">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
-        <span class="fi-ico">⚠️</span>
-        <span class="fi-body">
-          <span class="fi-text">"Yes, in most cases, Minoxidil can be used to maintain hair after a hair transplant."</span>
-          <span class="fi-reason">Post-transplant use not addressed in approved brief. Medical claim requires verification.</span>
+          <span class="fi-text">"Yes, in most cases, Minoxidil can be used to maintain hair after a hair transplant"</span>
+          <span class="fi-reason">Hair transplant use case not mentioned in brief. Medical advice claim requires explicit approval</span>
         </span></label>
       </div>
       
@@ -776,7 +782,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
           <span class="fi-text">"FSSAI Approved"</span>
-          <span class="fi-reason">Certification not mentioned in approved brief. May be factual but requires verification.</span>
+          <span class="fi-reason">Certification not listed in approved brief, though may be factually accurate - requires verification</span>
         </span></label>
       </div>
       
@@ -785,27 +791,43 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">⚠️</span>
         <span class="fi-body">
           <span class="fi-text">"GMP Approved"</span>
-          <span class="fi-reason">Certification not mentioned in approved brief. May be factual but requires verification.</span>
+          <span class="fi-reason">Certification not listed in approved brief, though may be factually accurate - requires verification</span>
         </span></label>
       </div>
       
       
       
-      <div class="flag-section-lbl">✅ Verified <span class="fcnt healthy">4</span></div>
+      <div class="flag-section-lbl">✅ Verified <span class="fcnt healthy">6</span></div>
       
       <div class="fi fi-ok">
         <span class="fi-ico">✅</span>
         <span class="fi-body">
-          <span class="fi-text">"Helps control Hair fall"</span>
-          <span class="fi-reason">Supported by brief: 'Stops hairfall progression' and 'Visible hairfall reduction in 4-6 weeks (S2)'</span>
+          <span class="fi-text">"Biotin Hair Gummies"</span>
+          <span class="fi-reason">Brief lists 'Hair Gummies' as approved key ingredient</span>
         </span>
       </div>
       
       <div class="fi fi-ok">
         <span class="fi-ico">✅</span>
         <span class="fi-body">
-          <span class="fi-text">"Each product in our kit is specifically formulated to target different root causes of hair fall and promote overall hair health."</span>
-          <span class="fi-reason">Supported by 'Full-system approach with shampoo, spray, gummies, roller, and doctor support'.</span>
+          <span class="fi-text">"Helps control Hair fall"</span>
+          <span class="fi-reason">Aligns with approved benefit: 'Stops hairfall progression' and 'Reduces visible hair thinning'</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Stage 2 HairFall is when you are experiencing hairfall for over a year and have a receding hairline"</span>
+          <span class="fi-reason">Aligns with 'Stage-specific treatment protocols for S2 vs S3' differentiator - educational content about staging</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Each product in our kit is specifically formulated to target different root causes of hair fall"</span>
+          <span class="fi-reason">Aligns with approved differentiator: 'Full-system approach with shampoo, spray, gummies, roller, and doctor support'</span>
         </span>
       </div>
       
@@ -813,15 +835,15 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Free doctor consultation"</span>
-          <span class="fi-reason">Directly supported: 'Free doctor consultation included' and 'Free doctor consultation with personalised treatment roadmap'.</span>
+          <span class="fi-reason">Directly matches approved claim: 'Free doctor consultation included' and 'Free doctor consultation with personalised treatment roadmap'</span>
         </span>
       </div>
       
       <div class="fi fi-ok">
         <span class="fi-ico">✅</span>
         <span class="fi-body">
-          <span class="fi-text">"Dermatologist-recommended protocol"</span>
-          <span class="fi-reason">Directly supported in approved proof points: 'Dermatologist-recommended protocol'.</span>
+          <span class="fi-text">"Stage 2 Hair Regrowth Kit"</span>
+          <span class="fi-reason">Aligns with 'Stage-specific treatment protocols for S2 vs S3' and 'Regrows hair on bald patches'</span>
         </span>
       </div>
       
@@ -832,13 +854,13 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     
     <div id="1-hygiene-brand" class="h-panel">
       
-      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">9</span></div>
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">11</span></div>
       
       <div class="fi fi-flagged" data-uid="1" data-cat="brand">
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Tone violation: 'Healthy Hair? Just a Chew Away' - Casual, playful phrasing contradicts the clinical and premium tone guidelines</span>
+          <span class="fi-text">Inconsistent terminology: 'Hair fall', 'hairfall', and 'HairFall' are used interchangeably throughout the copy—violates the guideline to 'maintain simplicity and consistency throughout all brand communications'</span>
         </span></label>
       </div>
       
@@ -846,7 +868,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Tone violation: 'Got Questions?' - Informal language undermines premium brand positioning; should be 'Frequently Asked Questions' or 'Common Questions'</span>
+          <span class="fi-text">Grammar issues undermine premium tone: 'After 2 Month Reduced Hair Breakage' should be 'After 2 Months: Reduced Hair Breakage'—inconsistent with clinical, premium voice</span>
         </span></label>
       </div>
       
@@ -854,7 +876,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Missing power words: 'clinically approved' and 'expert approved' are not used despite clinical study claims being present</span>
+          <span class="fi-text">Grammar issues undermine premium tone: 'After 3 Month Curbs Hair Fall' should be 'After 3 Months: Curbs Hair Fall'</span>
         </span></label>
       </div>
       
@@ -862,7 +884,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Missing power words: 'natural' is not used anywhere in the copy despite being a recommended power word</span>
+          <span class="fi-text">Grammar issues undermine premium tone: 'After 4 Month Improved hair health' should be 'After 4 Months: Improved Hair Health'</span>
         </span></label>
       </div>
       
@@ -870,7 +892,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Missing power words: 'confidently' is not incorporated into the messaging despite brand guideline to 'support men to live confidently'</span>
+          <span class="fi-text">Grammar issues undermine premium tone: 'After 6 Month Improved hair health & density' should be 'After 6 Months: Improved Hair Health & Density'</span>
         </span></label>
       </div>
       
@@ -878,7 +900,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Missing power words: 'superblend' is not used to describe the product formulation</span>
+          <span class="fi-text">Inconsistent capitalization: 'hair health' vs 'Hair Breakage' vs 'Hair Fall'—violates consistency guidelines</span>
         </span></label>
       </div>
       
@@ -886,7 +908,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Inconsistency issue: 'Hair fall' and 'hairfall' used interchangeably - contradicts guideline to 'maintain simplicity and consistency throughout all brand communications'</span>
+          <span class="fi-text">Missing power word opportunity: 'Safe to use' could be strengthened to 'Clinically Approved' as recommended in power words list</span>
         </span></label>
       </div>
       
@@ -894,7 +916,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Grammar inconsistency undermining premium tone: 'After 2 Month' should be 'After 2 Months' - repeated for months 3, 4, and 6</span>
+          <span class="fi-text">Missing power word opportunity: 'Lab Tested' could incorporate 'Expert Approved' for stronger brand alignment</span>
         </span></label>
       </div>
       
@@ -902,7 +924,23 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Typography hierarchy concern: Subhead 'What our men say' uses lowercase 'men' while other subheads vary in capitalization style - inconsistent with 'clean typography hierarchy' guideline</span>
+          <span class="fi-text">Underutilized power words: 'confidently', 'natural', 'superblend', 'expert approved', and 'clinically approved' from the recommended list are not used or minimally used</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Subhead 'Healthy Hair? Just a Chew Away' uses casual/playful tone that slightly deviates from the clinical, premium voice—consider 'Healthy Hair Starts with One Daily Gummy'</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Copy structure inconsistency: Some bullet points use periods/complete sentences while others are fragments—violates 'clear typography hierarchy' and 'organized' messaging guidelines</span>
         </span></label>
       </div>
       
@@ -912,7 +950,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     
     <div id="1-hygiene-spell" class="h-panel">
       
-      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">10</span></div>
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">9</span></div>
       
       <div class="fi fi-flagged" data-uid="1" data-cat="spell">
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
@@ -966,7 +1004,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">90 day regime → 90-day regime</span>
+          <span class="fi-text">Hairfall (inconsistent) → Hair fall (standardise throughout)</span>
         </span></label>
       </div>
       
@@ -974,7 +1012,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">&amp; → &</span>
+          <span class="fi-text">HairFall → Hair Fall</span>
         </span></label>
       </div>
       
@@ -982,15 +1020,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
-          <span class="fi-text">Hair fall / Hair Fall / hairfall / HairFall → hair fall (standardise)</span>
-        </span></label>
-      </div>
-      
-      <div class="fi fi-flagged" data-uid="1" data-cat="spell">
-        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
-        <span class="fi-ico">❌</span>
-        <span class="fi-body">
-          <span class="fi-text">No added colour → No added color (if American English preferred)</span>
+          <span class="fi-text">&amp; → & (or 'and')</span>
         </span></label>
       </div>
       
@@ -1041,9 +1071,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:45%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">The headline 'Stage 2 Hair Regrowth Kit' addresses the stage-specific targeting but uses 'Regrowth' language which contradicts the Preservation narrative. S2 ICP's #1 concern is 'Jitne hai utne bachana chahta hoon' (save what I have) - but the headline promises regrowth, not preservation. The subheadline 'Helps control Hair fall' is closer to preservation messaging but is buried below.</div>
+          <div class="ssr-obs">The headline 'Stage 2 Hair Regrowth Kit' acknowledges the stage but uses 'Regrowth' language which contradicts the Preservation narrative. S2 ICP's core concern is 'Jitne hai utne bachana chahta hoon' (save what I have), but the page leads with regrowth promise. The subheads mention 'Helps control Hair fall' and 'Blocks DHT buildup' which align with preservation, but these are buried below the misaligned main headline.</div>
           
-          <div class="ssr-sug">Rewrite headline to: 'Stage 2 Hair Preservation Kit: Protect What You Have Before It's Gone' - directly addressing the S2 ICP's preservation mindset and fear of progression to Stage 3.</div>
+          <div class="ssr-sug">Rewrite headline to: 'Stage 2 Hair Preservation Kit: Stop Further Loss Before It's Too Late' with subhead: 'Protect your existing hair and prevent progression to Stage 3'</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -1061,9 +1091,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:40%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">With 11 hero slides, the carousel likely covers multiple angles but the naming convention (hero_1 through hero_11) suggests generic product shots rather than a narrative arc. The emotional hook addressing 'Papa ka tha - genetic anxiety' or 'Abhi shuru nahi kiya toh Stage 3 tak pahunch jaoge' fear is not evident. The body copy jumps directly to benefits ('Blocks DHT buildup', 'Increases hair volume') without first acknowledging the confidence crisis and social anxiety the S2 ICP experiences.</div>
+          <div class="ssr-obs">11 carousel slides are present but content descriptions are generic placeholders (hero_1 through hero_11). Cannot verify if the narrative arc follows: hook → problem (fear of progression) → solution (stage-specific protocol) → proof (friend results). The body copy jumps directly to product features and clinical stats without establishing emotional connection to S2 ICP's anxiety about 'Abhi shuru nahi kiya toh Stage 3 tak pahunch jaoge'.</div>
           
-          <div class="ssr-sug">Restructure carousel: Slide 1-2 should show the S2 progression fear ('This is Stage 2 - Act now before Stage 3'), Slide 3-4 show the preservation protocol, Slide 5-7 show month-by-month milestones, Slide 8-11 show friend results/social proof from S2 users specifically.</div>
+          <div class="ssr-sug">Restructure carousel: Slide 1-2: 'Noticing more hair in the drain? Stage 2 is your last window to preserve.' Slide 3-4: Show progression visual S2→S3. Slide 5-6: Doctor-guided protocol explanation. Slide 7-11: Month-by-month preservation proof with real users.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -1081,9 +1111,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:55%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">The 'What to Expect' timeline ('After 2 Month: Reduced Hair Breakage', 'After 3 Month: Curbs Hair Fall') partially addresses the S2 ICP's pain point that 'Results take too long' by setting clear milestones. However, the copy doesn't address the shedding phase education gap - '94% Users saw increased hair growth' and 'Baal kyu jhadenge' panic isn't preemptively handled. The 'No Side Effects' claim addresses 'Fear of chemicals' but doesn't specifically reassure about minoxidil dependency ('Minoxidil se addiction hoga').</div>
+          <div class="ssr-obs">Benefits section has relevant preservation language: 'Helps control Hair fall', 'Blocks DHT buildup', 'Reduced Hair Breakage'. However, banners also push 'Increased hair volume' and 'Improved hair health & density' which shifts toward regrowth messaging. The 'What to Expect' timeline (2-6 months) is useful but doesn't address S2 ICP's core fear about shedding phase: 'Baal kyu jhadenge - unexpected shedding causing panic'.</div>
           
-          <div class="ssr-sug">Add banner explicitly addressing: 'Temporary shedding in month 1-2 is normal - it means weak hairs are making room for stronger ones. Here's what Stage 2 users experienced...' Also add 'Doctor-supervised protocol' language to reinforce safety and counter dependency fears.</div>
+          <div class="ssr-sug">Add a dedicated banner addressing shedding phase education: 'Month 1-2: You may see temporary shedding - this is normal and means weak hairs are making room for stronger ones. Here's what to expect...' Also add cost breakdown banner addressing '₹500-1K budget' concern.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -1101,9 +1131,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:50%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">The page structure moves from benefits → timeline → testimonials → usage → clinical study, but misses the emotional arc defined for Preservation narrative. There's no explicit 'visible hair loss triggers confidence crisis' acknowledgment at the start. The FAQ 'Stage 2 HairFall is when you are experiencing hairfall for over a year and have a receding hairline' is educational but clinical, not empathetic. Missing: 'we understand the fear of progression' empathy statement and 'friend results' social proof framing.</div>
+          <div class="ssr-obs">Page structure covers: Benefits → Timeline → Testimonials → Usage → Clinical Study → FAQs. However, the emotional arc for Preservation narrative (confidence crisis → understanding fear of progression → stage-appropriate protocol → visual proof) is weak. The FAQ addresses 'Stage 2 HairFall is when you are experiencing hairfall for over a year and have a receding hairline' but doesn't connect to the preservation urgency. Missing: explicit comparison of outcomes if user acts now vs. waits.</div>
           
-          <div class="ssr-sug">Restructure page to follow: 1) 'We know you're noticing it - the receding, the thinning' (empathy), 2) 'Stage 2 is your window to preserve' (urgency without panic), 3) 'Doctor-guided protocol designed for YOUR stage' (solution), 4) 'Month-by-month what S2 users see' (proof with specific S2 testimonials).</div>
+          <div class="ssr-sug">Restructure page flow: 1) Open with preservation urgency ('Stage 2 is your protection window'), 2) Address progression fear with visual, 3) Present doctor-guided protocol, 4) Show month-by-month preservation results from real S2 users, 5) Address objections (chemicals, cost, dependency) explicitly.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -1121,9 +1151,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:40%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">CTAs 'Add To Cart' and 'Buy Now' are transactional and generic. The Preservation narrative should leave S2 ICP feeling empowered to protect their hair NOW before progression. The CTA doesn't reflect the emotional state of 'taking control' or 'insurance against further loss' that resonates with this persona's motivations.</div>
+          <div class="ssr-obs">CTAs 'Add To Cart' and 'Buy Now' are generic transactional language. They don't match the emotional state the Preservation narrative should create - which is protective urgency ('save what you have now'). S2 ICP motivated by 'insurance against further loss' needs CTA that reflects commitment to protection, not just purchase.</div>
           
-          <div class="ssr-sug">Rewrite CTA to: 'Start Protecting My Hair' or 'Lock In My Stage 2 Protocol' - action-oriented language that reinforces preservation mindset and creates urgency around the stage-specific window of opportunity.</div>
+          <div class="ssr-sug">Rewrite CTAs to: 'Start Protecting My Hair' or 'Lock In My Stage 2 Protection Plan' - language that reinforces preservation mindset and creates commitment to the protocol.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -1150,13 +1180,13 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <td><span class="pm-persona">S2 ICP</span></td>
           <td>
             <ul class="pm-list pm-right">
-              <li>'Stage 2' in headline directly acknowledges their specific stage - validates they're in the right place</li><li>'Blocks DHT buildup' addresses root cause education S2 users seek</li><li>Month-by-month timeline ('After 2 Month: Reduced Hair Breakage', 'After 3 Month: Curbs Hair Fall') sets realistic expectations and addresses 'results take too long' concern</li><li>'No Side Effects', 'No Artificial Colours', 'Lab Tested' badges partially address 'Fear of chemicals' pain point</li><li>'9 out of 10 users saw 50% reduced hairfall' provides quantified proof that may resonate with preservation mindset</li><li>FAQ 'Stage 2 HairFall is when you are experiencing hairfall for over a year and have a receding hairline' helps self-identification</li><li>Multiple product format (Gummies + Growmax) suggests comprehensive approach without overwhelming chemical load</li>
+              <li>'Helps control Hair fall' and 'Blocks DHT buildup' directly address preservation desire</li><li>Stage-specific product naming ('Stage 2 Hair Regrowth Kit') at least acknowledges their current state</li><li>'After 2 Month Reduced Hair Breakage' and 'After 3 Month Curbs Hair Fall' timeline addresses 'results take too long' concern with clear milestones</li><li>'No Side Effects' claim in clean product section partially addresses chemical fear</li><li>'94% Users saw increased hair growth' and '9 out of 10 users saw 50% reduced hairfall' provide social proof</li><li>'No Sugar Added, No preservative, Cruelty-Free, Vegan, Gluten Free' safety signals help with chemical concerns</li><li>FAQ addresses what Stage 2 hairfall means - provides education</li><li>'FSSAI Approved, GMP Approved' certifications build trust</li>
               
             </ul>
           </td>
           <td>
             <ul class="pm-list pm-miss">
-              <li>No preservation-focused language ('bachana', 'protect what you have') - instead uses 'Regrowth' which is Stage 3 language</li><li>Missing explicit Stage 2→3 progression fear acknowledgment ('Abhi shuru nahi kiya toh Stage 3 tak pahunch jaoge')</li><li>No shedding phase education to prevent panic - 'Baal kyu jhadenge' concern completely unaddressed</li><li>No dosing/usage guidance beyond basic 'Eat 1 gummy' - doesn't address 38% incorrect dosing issue</li><li>Genetic anxiety ('Papa ka tha') not acknowledged or addressed in copy</li><li>No cost justification or value framing for 6-month commitment concern ('Bahut mahanga 6 months ke liye')</li><li>Minoxidil dependency fear ('Minoxidil se addiction hoga') not addressed despite FAQ mentioning Minoxidil</li><li>No 'friend results' or relatable peer testimonials - testimonial banners don't specify if from S2 users</li><li>Missing 'doctor-guided protocol' language that builds trust for preservation journey</li><li>No Hindi/Hinglish language cues that match persona's natural speech patterns ('Jitne hai utne bachana chahta hoon')</li><li>Confidence/dating/career presentability motivation not reflected in benefits copy</li>
+              <li>No language mirroring S2 ICP vocabulary: 'Jitne hai utne bachana chahta hoon', 'Baal bachao' - page uses clinical language instead of relatable Hindi phrases</li><li>Zero content on Minoxidil dependency fear ('Minox se addiction hoga') - FAQ mentions Minoxidil but doesn't address addiction objection</li><li>No shedding phase education - critical gap since 'Baal kyu jhadenge' causes panic and only 38% dose correctly per persona brief</li><li>Missing progression anxiety content - no visual or copy showing S2→S3 progression risk to trigger urgency</li><li>No explicit cost breakdown or EMI options for '₹500-1K budget' objection - 'Bahut mahanga 6 months ke liye' unaddressed</li><li>Genetic anxiety ('Papa ka tha') not acknowledged - no family history reassurance content</li><li>Missing application guidance for 'Minox baalo pe ya scalp pe?' confusion - usage section doesn't clarify</li><li>No friend/peer social proof format - persona responds to 'friend results' but testimonials don't frame as peer recommendations</li><li>Dating/career confidence restoration not explicitly mentioned despite being key motivation</li><li>Doctor-guided protocol positioning absent - no consultation or personalization messaging</li>
               
             </ul>
           </td>
@@ -1171,22 +1201,27 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     
     <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">Critical mismatch: Product named 'Regrowth Kit' but assigned Preservation narrative - creates cognitive dissonance for S2 ICP seeking to 'bachao' (save) not 'ugao' (grow)</span></span>
+      <span class="fi-body"><span class="fi-text">Critical messaging mismatch: Product titled 'Regrowth Kit' but assigned Preservation narrative - creates cognitive dissonance for S2 ICP seeking to 'bachana' (save) not regrow</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">No shedding phase education despite 38% dosing incorrectly and shedding-related panic being a key S2 pain point</span></span>
+      <span class="fi-body"><span class="fi-text">Zero explicit content addressing S2 ICP's top objections: Minoxidil addiction fear ('Minox se addiction hoga'), chemical safety concerns ('Too many chemicals'), and shedding panic ('Baal kyu jhadenge')</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">Cost objection (₹500-1K budget, 'Bahut mahanga 6 months ke liye') not addressed - no value breakdown or cost-per-day framing visible</span></span>
+      <span class="fi-body"><span class="fi-text">Missing cost justification for 6-month commitment - S2 ICP has '₹500-1K budget' concern but no value breakdown or payment options mentioned</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">Minoxidil dependency fear directly mentioned in persona objections but FAQ references Minoxidil for transplants without addressing addiction concern</span></span>
+      <span class="fi-body"><span class="fi-text">No doctor-guided protocol positioning - page mentions 'Clinical Study' but doesn't establish doctor involvement which is key trust signal for this narrative</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Shedding phase education completely absent - 38% dosing correctly stat from persona brief suggests education gap, but page doesn't address proper usage confusion</span></span>
     </div>
     
     
@@ -1970,9 +2005,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
           style="width:65%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">Multiple human figures present across slides - Stage 2 comparison slide shows 4 different men demonstrating hair loss stages, biotin slide features a smiling man with full hair, 'What does the kit do' slide shows a confident young professional touching his hair. However, the models skew slightly older/more polished than the target persona of young students or early-career professionals experiencing first-time hair loss anxiety. The emotional journey of distress to confidence isn't clearly shown.</div>
+          <div class="ssr-obs">Multiple human figures present across slides - Stage 2 comparison photos show relatable men with receding hairlines, a confident man in blazer touching his hair (slide 7), and a smiling bearded man (slide 4). However, the models appear slightly older/more polished than the target persona of young students/early-career professionals. The hero slide lacks any human presence - just product shots on blue background.</div>
           
-          <div class="ssr-sug">Replace at least one model with a relatable 20-25 year old student/young professional showing authentic concern in early slides, transitioning to relief/confidence in later slides. Show someone actually using the products in their morning routine.</div>
+          <div class="ssr-sug">Add a relatable young professional (22-28) showing early confidence concerns to the hero image. Include at least one model who visually represents the 'first-time treater with moderate emotional distress' - perhaps looking in mirror or running hand through thinning hair with subtle worry expression.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -1990,9 +2025,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:45%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">The '5-6 month' timeline and '90 day' claims are present but not prominently displayed. No clinical percentage stats visible (e.g., '87% saw reduced shedding'). The '5% Minoxidil' concentration is mentioned but not emphasized as a clinical standard. No certification badges, dermatologist endorsements, or study references are visually prominent.</div>
+          <div class="ssr-obs">Claims are present but visually buried - '5% Minoxidil' appears in small text, 'Visible results in 5-6 month' is present but not emphasized. No clinical study percentages, no user satisfaction stats, no '% of users saw improvement' type claims. The '5-6 months' timeline is mentioned but lacks visual prominence. No certifications or dermatologist endorsements visible.</div>
           
-          <div class="ssr-sug">Add a dedicated proof slide with large bold statistics like '93% reduced hair fall in 90 days' with source citation. Display dermatologist endorsement badge prominently on hero image. Make the '5% Minoxidil clinically proven' claim 2x larger with a credibility icon.</div>
+          <div class="ssr-sug">Add a bold callout banner showing '85%+ saw reduced hair fall' or similar clinical stat with large typography. Place a 'Dermatologist Recommended' badge prominently on hero. Use contrasting color (gold/white) for key stats to make them pop against the muted blue palette.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2001,38 +2036,38 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       </div>
       
       <div class="ssr" onclick="toggleSsr(this)"
-        data-sub-key="ingredient" data-sub-base="7.0"
+        data-sub-key="ingredient" data-sub-base="6.0"
         data-weight="0.15" data-tab-ref="vis">
         <div class="ssr-top">
           <div class="ssr-name">Ingredient Imagery</div>
-          <div class="ssr-score attention" id="1-ssr-vis-ingredient">7.0<span class="dn">/10</span></div>
+          <div class="ssr-score critical" id="1-ssr-vis-ingredient">6.0<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:60%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Slide 3 shows strawberries, almonds, and ingredients floating around the Hair Gummies box - decent visual appeal. Slide 5 shows the Minoxidil bottle with dropper elegantly. However, ingredients like Zinc, Biotin, Vitamin A are only listed as text without visual representation of their source or premium quality. No visual connection between natural ingredients and clinical efficacy.</div>
+          
+          <div class="ssr-sug">Create a premium ingredient hero showing biotin-rich foods, zinc sources, and Procapil molecule visualization together. Add subtle gold/premium texturing to ingredient callouts. Show the DHT-blocking mechanism visually with a simple infographic rather than just text.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="before" data-sub-base="7.0"
+        data-weight="0.15" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">Before / After</div>
+          <div class="ssr-score attention" id="1-ssr-vis-before">7.0<span class="dn">/10</span></div>
         </div>
         <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
           style="width:70%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">Hair Gummies slide (image 3) effectively shows strawberries, almonds, and botanical elements floating around the product, creating premium natural feel. Minoxidil slide (image 5) is more clinical/minimal. Key ingredients like Biotin, Zinc, Vitamin A, Procapil are listed but only strawberry has strong visual representation.</div>
+          <div class="ssr-obs">Slide 9 'What to expect?' shows a clear 3-stage timeline with crown/scalp photos at Month 3, Month 5, and Month 6 demonstrating visible progression from thinning to increased density. Photos appear authentic (user-generated style). However, these are buried at slide 9 - late in the carousel. The transformation shown focuses only on crown area, not frontal recession which is key for Stage 2 persona.</div>
           
-          <div class="ssr-sug">Add visual icons or premium macro photography for Biotin (egg yolk), Zinc (pumpkin seeds), and Procapil molecular structure. Create ingredient spotlight callouts with premium photography rather than just text lists.</div>
-          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
-            <input type="checkbox"> Mark suggestion as resolved / not applicable
-          </label>
-          
-        </div>
-      </div>
-      
-      <div class="ssr" onclick="toggleSsr(this)"
-        data-sub-key="before" data-sub-base="7.5"
-        data-weight="0.15" data-tab-ref="vis">
-        <div class="ssr-top">
-          <div class="ssr-name">Before / After</div>
-          <div class="ssr-score attention" id="1-ssr-vis-before">7.5<span class="dn">/10</span></div>
-        </div>
-        <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
-          style="width:75%"></div></div>
-        <div class="ssr-detail">
-          <div class="ssr-obs">Image 9 ('What to expect') shows a clear 3-stage progression: Month 3 (reduced thinning), Month 5 (baby hair growth), Month 6 (increased density) with real user photos showing crown area improvement. The transformation appears believable and documented. However, these are small polaroid-style images that could be larger and more impactful.</div>
-          
-          <div class="ssr-sug">Make before/after images 40% larger with side-by-side comparison format. Add measurement callouts (e.g., 'hair count increased from X to Y'). Include the user's age and stage to match persona relatability.</div>
+          <div class="ssr-sug">Move before/after content to slides 2-3 for immediate proof. Add frontal hairline transformation photos specifically addressing Stage 2 receding temples. Include side-by-side comparison format with clearer labeling and timeline markers.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2050,9 +2085,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:40%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">Image 7 shows only a hand holding a gummy - no lifestyle context. The 'What does the kit do' slide (image 7) shows a man in blazer touching hair but it's posed/studio rather than real-life context. No images show the product being used in a bathroom, morning routine, at a college campus, or workplace - contexts that match the young professional persona.</div>
+          <div class="ssr-obs">Slide 7 shows a confident man in blazer touching his hair - only lifestyle-adjacent image in entire carousel. No images showing the persona's actual life context: no work/office settings, no social situations, no dating/confidence scenarios. The last 3 slides are clinical diagrams (Nutrition, DHT, Lifestyle as anatomical illustrations) which feel sterile and disconnected from aspirational living.</div>
           
-          <div class="ssr-sug">Add slides showing: (1) young man applying minoxidil in bathroom mirror before work, (2) taking gummy with breakfast before classes, (3) confident student/professional in social situation post-treatment. Show real-life integration, not just product shots.</div>
+          <div class="ssr-sug">Replace anatomical diagrams with lifestyle scenarios: young professional confidently presenting at work, social gathering with friends, dating scene. Show the 'after' emotional state - confidence restored - not just medical mechanisms. Add at least 2 slides showing product integrated into morning routine.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2061,18 +2096,18 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       </div>
       
       <div class="ssr" onclick="toggleSsr(this)"
-        data-sub-key="hierarchy" data-sub-base="7.0"
+        data-sub-key="hierarchy" data-sub-base="6.5"
         data-weight="0.15" data-tab-ref="vis">
         <div class="ssr-top">
           <div class="ssr-name">Visual Hierarchy & Brand</div>
-          <div class="ssr-score attention" id="1-ssr-vis-hierarchy">7.0<span class="dn">/10</span></div>
+          <div class="ssr-score attention" id="1-ssr-vis-hierarchy">6.5<span class="dn">/10</span></div>
         </div>
         <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
-          style="width:70%"></div></div>
+          style="width:65%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">Consistent light blue color palette maintained throughout. Man Matters logo visible on products. Typography is clean and hierarchy generally works - headlines are bold, supporting text is secondary. However, hero image (1) places product centrally but the 'Stage 2' badge and '5-6 month' claim compete for attention. The most important conversion element (results timeline) isn't the dominant visual.</div>
+          <div class="ssr-obs">Consistent soft blue (#B8C5D0) brand palette throughout creates cohesion. Man Matters logo visible on products. However, hero slide leads with 'Hair Regrowth Kit' text rather than emotional hook or transformation promise. Key differentiator 'Ideal for Stage 2' is in a small pill badge, not the primary visual focus. Typography hierarchy is inconsistent - sometimes benefits are bold, sometimes not.</div>
           
-          <div class="ssr-sug">On hero image, make 'Visible results in 5-6 months' the dominant headline at 1.5x current size. Add a visual arrow/timeline graphic to immediately communicate progression. Ensure the 'Stage 2' identifier has a consistent badge treatment across all slides.</div>
+          <div class="ssr-sug">Restructure hero to lead with emotional hook: 'Stop Stage 2 Before It's Too Late' with urgent/empathetic tone. Make 'Stage 2' the visual anchor with distinctive styling. Standardize typography weights: headlines in bold navy, benefits in medium weight, descriptions in regular. Add subtle gradient or texture to break up flat blue monotony.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2087,29 +2122,200 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     
     <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">No clinical statistics or percentage-based proof points visible anywhere in the carousel</span></span>
+      <span class="fi-body"><span class="fi-text">Hero image (slide 1) has zero human presence - pure product shot fails to create emotional connection with anxious first-time treaters</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">Lifestyle slides (10-12) show abstract anatomical illustrations that feel medical/cold rather than aspirational for young consumers</span></span>
+      <span class="fi-body"><span class="fi-text">Key proof points and clinical stats completely missing - no % efficacy claims, no dermatologist endorsements visible</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">Missing doctor/dermatologist endorsement visuals despite 'doctor-guided treatment' being a key claim</span></span>
+      <span class="fi-body"><span class="fi-text">Before/after transformation content buried at slide 9 instead of early in sequence for immediate proof</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">No visualization addressing the 'fear of chemicals/side effects' concern - could show 'alcohol-free' or safety certifications more prominently</span></span>
+      <span class="fi-body"><span class="fi-text">Last 3 slides are cold anatomical diagrams that kill emotional momentum - should be lifestyle aspirational content</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">The hand-holding-gummy slide has truncated text reading 'one gummy everyday 90 day' - appears cut off or poorly laid out</span></span>
+      <span class="fi-body"><span class="fi-text">Frontal recession/temple area transformation not shown despite being primary concern for Stage 2 persona</span></span>
     </div>
     
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">No social proof visible - no user testimonials, ratings, or 'X users trust us' type credibility markers</span></span>
+    </div>
+    
+    
+
+    
+    
+    
+    <div class="sec-lbl" style="margin-top:28px">Section Flow Analysis</div>
+    <div class="sf-wrap">
+
+      
+      <div class="sf-header">
+        <div class="sf-score-badge critical">5.2/10</div>
+        <div class="sf-obs">The page jumps straight into product contents without establishing the S2 persona's core anxiety about visible hair loss or positioning the problem. 'What to Expect' is well-placed to address the 'results take too long' concern, but 'Clinical Study' buried at position 7 undermines trust-building for a persona worried about side effects. The hero/hook and problem-agitation sections are completely absent.</div>
+      </div>
+
+      
+      
+      <div class="sf-section">
+        <div class="sf-lbl">Current Page Order</div>
+        <ol class="sf-order-list">
+          
+          
+          
+          <li class="sf-order-item">
+            What's inside your kit
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            Benefits
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            What to Expect
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            What our men say
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-redundant">
+            Clean Products, Real Results
+            
+            <span class="sf-tag sf-tag-dup">duplicate</span>
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            How to use
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            Clinical Study
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            Healthy Hair? Just a Chew Away
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            Got Questions?
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            Certification & awards
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+        </ol>
+      </div>
+      
+
+      
+      
+      <div class="sf-section">
+        <div class="sf-lbl">❌ Sections to Reorder (4)</div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "Clinical Study"
+            <span class="sf-pos">position 7 → 4</span>
+          </div>
+          <div class="sf-issue-reason">S2 persona fears chemicals and side effects — clinical validation needs to appear before 'How to use' to build trust and reduce anxiety about minoxidil concerns</div>
+        </div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "Certification & awards"
+            <span class="sf-pos">position 10 → 5</span>
+          </div>
+          <div class="sf-issue-reason">Trust signals should follow clinical proof to compound credibility for a skeptical S2 persona worried about product safety</div>
+        </div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "What our men say"
+            <span class="sf-pos">position 4 → 6</span>
+          </div>
+          <div class="sf-issue-reason">Social proof is more effective after mechanism and trust are established — currently appears before the persona understands why the product works</div>
+        </div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "Healthy Hair? Just a Chew Away"
+            <span class="sf-pos">position 8 → 2</span>
+          </div>
+          <div class="sf-issue-reason">This appears to be the hero/value prop statement — should be at the top as the hook, not buried below FAQ</div>
+        </div>
+        
+      </div>
+      
+
+      
+      
+      <div class="sf-section">
+        <div class="sf-lbl">⚠️ Missing Sections (4)</div>
+        
+        <div class="sf-missing">Hero/Hook with core claim</div>
+        
+        <div class="sf-missing">Problem section addressing S2's visible shedding anxiety and confidence crisis</div>
+        
+        <div class="sf-missing">Solution section positioning the kit as the answer</div>
+        
+        <div class="sf-missing">Comparison/Why Us section to handle objections about alternatives</div>
+        
+      </div>
+      
+
+      
+      
+      <div class="sf-suggestion">💡 Add a problem-agitation section immediately after the hero that directly addresses S2's shedding phase anxiety and fear of progression — use language like 'If you're noticing more hair in the drain, you're not imagining it' to make them feel seen before introducing the solution.</div>
+      
+
+    </div>
     
 
   </div>
@@ -2137,7 +2343,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 
     
     <div class="flag-section-lbl" style="margin-top:16px">❌ Critical Findings
-      <span class="fcnt critical">1</span></div>
+      <span class="fcnt critical">2</span></div>
     <div class="ti-list">
       
       <div class="ti critical" data-tab="copy">
@@ -2145,10 +2351,24 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
             onchange="dismissTabFlag(this,'1','copy')">
           <div style="flex:1;min-width:0">
-            <span class="ti-badge">Forbidden Word</span>
+            <span class="ti-badge">Missing Proof Point</span>
             <div class="ti-body">
-              <div class="ti-finding">Forbidden word 'Minoxidil' appears multiple times in copy</div>
-              <div class="ti-detail">Copy contains 'Minoxidil' in clinical study reference: 'As per the study of Minoxidil by Rundegren, J.' and in FAQ: 'Yes, in most cases, Minoxidil can be used to maintain hair after a hair transplant.'</div>
+              <div class="ti-finding">Free doctor consultation benefit completely absent from copy</div>
+              <div class="ti-detail">The approved proof point "Free doctor consultation included" does not appear anywhere in the PDP. This is a key differentiator that should be prominently featured.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+      <div class="ti critical" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Missing Proof Point</span>
+            <div class="ti-body">
+              <div class="ti-finding">Dermatologist-recommended protocol not mentioned</div>
+              <div class="ti-detail">The brief specifies "Dermatologist-recommended protocol" as an approved proof point, but the copy only references "FSSAI Approved" and "GMP Approved" — no dermatologist endorsement language present.</div>
             </div>
           </div>
         </label>
@@ -2167,10 +2387,10 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
             onchange="dismissTabFlag(this,'1','copy')">
           <div style="flex:1;min-width:0">
-            <span class="ti-badge">Missing Proof Point</span>
+            <span class="ti-badge">Missing Hook</span>
             <div class="ti-body">
-              <div class="ti-finding">Free doctor consultation benefit not mentioned anywhere</div>
-              <div class="ti-detail">Brief specifies 'Free doctor consultation included' as approved proof point, but no mention of doctor consultation appears in body copy, benefits, or FAQs.</div>
+              <div class="ti-finding">Headline lacks emotional preservation narrative hook</div>
+              <div class="ti-detail">"Stage 2 Hair Regrowth Kit" is purely descriptive and functional. No language addressing the preservation narrative — missing hooks around protecting what you have, maintaining confidence, or preventing further loss.</div>
             </div>
           </div>
         </label>
@@ -2183,8 +2403,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <div style="flex:1;min-width:0">
             <span class="ti-badge">Missing Proof Point</span>
             <div class="ti-body">
-              <div class="ti-finding">Dermatologist-recommended protocol claim absent from copy</div>
-              <div class="ti-detail">Brief includes 'Dermatologist-recommended protocol' as key proof point. Copy only mentions generic certifications like 'FSSAI Approved' and 'GMP Approved' without dermatologist endorsement.</div>
+              <div class="ti-finding">Stage 3 dermatologist statistic not leveraged</div>
+              <div class="ti-detail">Approved proof point "41% of Stage 3 users previously consulted dermatologists" is absent. This social proof would validate the clinical credibility of the protocol.</div>
             </div>
           </div>
         </label>
@@ -2197,8 +2417,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <div style="flex:1;min-width:0">
             <span class="ti-badge">Ingredient Gap</span>
             <div class="ti-body">
-              <div class="ti-finding">Anti-hairfall Shampoo and Dermaroller missing from kit contents</div>
-              <div class="ti-detail">Brief lists key ingredients including 'Anti-hairfall Shampoo' and 'Dermaroller', but kit contents only show 'Biotin Hair Gummies + Growmax with Procapil'.</div>
+              <div class="ti-finding">Dermaroller missing from kit contents</div>
+              <div class="ti-detail">Brief lists "Dermaroller" as a key ingredient, but "What's inside your kit" only shows "Biotin Hair Gummies" and "Growmax with Procapil" — no dermaroller mentioned.</div>
             </div>
           </div>
         </label>
@@ -2211,8 +2431,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <div style="flex:1;min-width:0">
             <span class="ti-badge">Ingredient Gap</span>
             <div class="ti-body">
-              <div class="ti-finding">Cetosomal formulation technology not highlighted in copy</div>
-              <div class="ti-detail">Brief specifies 'Cetosomal formulation' as key ingredient/technology, but this differentiating feature appears nowhere in body copy or benefits section.</div>
+              <div class="ti-finding">Anti-hairfall Shampoo absent from product listing</div>
+              <div class="ti-detail">Brief specifies "Anti-hairfall Shampoo" as a key ingredient but it does not appear in the kit contents or body copy anywhere on the PDP.</div>
             </div>
           </div>
         </label>
@@ -2223,10 +2443,10 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
             onchange="dismissTabFlag(this,'1','copy')">
           <div style="flex:1;min-width:0">
-            <span class="ti-badge">Missing Proof Point</span>
+            <span class="ti-badge">Ingredient Gap</span>
             <div class="ti-body">
-              <div class="ti-finding">Stage 3 dermatologist statistic not leveraged for credibility</div>
-              <div class="ti-detail">Brief provides '41% of Stage 3 users previously consulted dermatologists' as approved proof point. This trust-building statistic is absent from the Stage 2 product page.</div>
+              <div class="ti-finding">Cetosomal formulation technology not highlighted</div>
+              <div class="ti-detail">"Cetosomal formulation" is listed as a key ingredient/technology in the brief but is completely absent from the copy — a missed opportunity for clinical differentiation.</div>
             </div>
           </div>
         </label>
@@ -2239,8 +2459,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <div style="flex:1;min-width:0">
             <span class="ti-badge">Weak CTA</span>
             <div class="ti-body">
-              <div class="ti-finding">Generic CTAs lack emotional resonance with preservation narrative</div>
-              <div class="ti-detail">CTAs are 'Add To Cart' and 'Buy Now' — standard e-commerce language that doesn't connect to the preservation narrative or address hair loss anxiety.</div>
+              <div class="ti-finding">Generic CTAs lack preservation-focused urgency</div>
+              <div class="ti-detail">"Add To Cart" and "Buy Now" are transactional defaults. For a preservation narrative, CTAs like "Start Protecting Your Hair" or "Begin Your Recovery" would better match the emotional state.</div>
             </div>
           </div>
         </label>
@@ -2253,8 +2473,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <div style="flex:1;min-width:0">
             <span class="ti-badge">Narrative Gap</span>
             <div class="ti-body">
-              <div class="ti-finding">Preservation narrative absent — copy focuses only on regrowth</div>
-              <div class="ti-detail">Configured narrative is 'Preservation' but copy emphasizes growth outcomes: 'Increased hair growth', 'Improved hair health & density'. No language about protecting, maintaining, or preserving existing hair.</div>
+              <div class="ti-finding">Month-by-month milestone tracking undersold</div>
+              <div class="ti-detail">Timeline exists ("After 2 Month Reduced Hair Breakage", "After 3 Month Curbs Hair Fall", etc.) but isn't framed as the approved "Month-by-month milestone tracking" — missing the supportive journey language.</div>
             </div>
           </div>
         </label>
@@ -2271,8 +2491,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       <div class="ti ok">
         <span class="ti-badge">Missing Social Proof</span>
         <div class="ti-body">
-          <div class="ti-finding">Strong statistical proof present but lacks testimonial language</div>
-          <div class="ti-detail">Copy includes '94% Users saw increased hair growth' and '9 out of 10 users saw 50% reduced hairfall'. However, 'What our men say' section has no actual quotes or testimonial content visible.</div>
+          <div class="ti-finding">Strong clinical statistics present in copy</div>
+          <div class="ti-detail">Copy includes "94% Users saw increased hair growth" and "9 out of 10 users saw 50% reduced hairfall" with study citations — good social proof foundation.</div>
         </div>
       </div>
       
@@ -2326,10 +2546,12 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 
         
         <div class="copy-row">
-          <span class="copy-lbl">Body Copy (34 blocks)</span>
+          <span class="copy-lbl">Body Copy (35 blocks)</span>
           <div style="margin-top:6px">
             
-            <div class="body-item">Biotin Hair Gummies + Growmax with Procapil</div>
+            <div class="body-item">Biotin Hair Gummies</div>
+            
+            <div class="body-item">Growmax with Procapil</div>
             
             <div class="body-item">Helps control Hair fall</div>
             
@@ -2339,21 +2561,21 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             
             <div class="body-item">Increases hair volume</div>
             
-            <div class="body-item">After 2 Month: Reduced Hair Breakage</div>
+            <div class="body-item">After 2 Month Reduced Hair Breakage</div>
             
-            <div class="body-item">After 3 Month: Curbs Hair Fall</div>
+            <div class="body-item">After 3 Month Curbs Hair Fall</div>
             
-            <div class="body-item">After 4 Month: Improved hair health</div>
+            <div class="body-item">After 4 Month Improved hair health</div>
             
-            <div class="body-item">After 6 Month: Improved hair health & density</div>
-            
-            <div class="body-item">No Sugar Added</div>
+            <div class="body-item">After 6 Month Improved hair health & density</div>
             
             
             <details style="margin-top:4px">
               <summary style="font-size:11.5px;color:#aaa;cursor:pointer;padding:4px 8px">
-                + 24 more blocks
+                + 25 more blocks
               </summary>
+              
+              <div class="body-item">No Sugar Added</div>
               
               <div class="body-item">No preservative</div>
               
@@ -2419,31 +2641,31 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
   <div class="tab-panel" id="1-reviews">
 
     <div class="score-row" style="grid-template-columns:1fr"
-      data-uid="1" data-tab="rev" data-base="5.2">
+      data-uid="1" data-tab="rev" data-base="5.8">
       <div class="sc total">
         <div class="sc-lbl">Reviews Score</div>
         <div class="sc-val critical" id="1-sc-rev">
-          5.2<span class="dn">/10</span></div>
+          5.8<span class="dn">/10</span></div>
         <div class="bar-t"><div class="bar-f critical"
-          id="1-bar-rev" style="width:52%"></div></div>
+          id="1-bar-rev" style="width:57%"></div></div>
       </div>
     </div>
 
     <div class="ssr-list" style="margin-top:16px">
       
       <div class="ssr" onclick="toggleSsr(this)"
-        data-sub-key="freshness" data-sub-base="8.5"
+        data-sub-key="freshness" data-sub-base="9.0"
         data-weight="0.25" data-tab-ref="rev">
         <div class="ssr-top">
           <div class="ssr-name">Freshness</div>
-          <div class="ssr-score healthy" id="1-ssr-rev-freshness">8.5<span class="dn">/10</span></div>
+          <div class="ssr-score healthy" id="1-ssr-rev-freshness">9.0<span class="dn">/10</span></div>
         </div>
         <div class="bar-t" style="margin-top:6px"><div class="bar-f healthy"
-          style="width:85%"></div></div>
+          style="width:90%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">All 4 reviews are from 2026, with 3 from April 2026 (within last 40 days) and 1 from March 2026. Reviews are consistently recent.</div>
+          <div class="ssr-obs">All 4 reviews are from 2026 with dates ranging from March 12 to April 21, indicating very recent and fresh feedback within the last 6 weeks.</div>
           
-          <div class="ssr-sug">Freshness is strong. Consider adding reviews from the current month to maintain momentum and show continuous customer engagement.</div>
+          <div class="ssr-sug">Freshness is excellent. Continue encouraging recent customers to leave reviews to maintain this momentum.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2461,9 +2683,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
           style="width:30%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">All 4 displayed reviews are 5-star ratings with zero representation of 4-star, 3-star, or lower reviews. This creates an unnaturally perfect distribution that may trigger skepticism.</div>
+          <div class="ssr-obs">All 4 displayed reviews are 5-star ratings with zero representation of 1-4 star reviews. This creates an artificially perfect appearance that may trigger skepticism.</div>
           
-          <div class="ssr-sug">Include 1-2 authentic 4-star reviews that mention realistic expectations or minor friction points. This builds credibility and addresses the persona concern about 'results take too long' proactively.</div>
+          <div class="ssr-sug">Surface a mix of ratings including 3-4 star reviews that show honest experiences. Consider featuring reviews that mention the shedding phase challenge, as this builds credibility while setting realistic expectations.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2481,9 +2703,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
           style="width:75%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">Reviews strongly align with product claims: 'Hairfall is definitely controlled' (stops progression), 'new growth starts' and 'new hairs at temples' (regrows bald patches), '60-70% improvement' (reduces thinning). Timeline mentions like 'week 5-6' for control and 'month 3' for growth set realistic expectations.</div>
+          <div class="ssr-obs">Reviews strongly align with claims: 'HallFall is definitely controlled' and 'Shedding came under control first' support hairfall progression claims. 'new growth starts' and 'clearly new hairs there' validate regrowth claims. However, no reviews mention 'doctor-guided' or 'personalized treatment' aspects.</div>
           
-          <div class="ssr-sug">No reviews mention 'doctor-guided personalized treatment' claim. Consider surfacing reviews that reference doctor consultations or personalized protocol adjustments to validate this key differentiator.</div>
+          <div class="ssr-sug">Prompt reviewers to mention their experience with doctor consultations or personalization. Add a review question about the guided treatment process to generate this missing social proof.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2492,18 +2714,18 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
       </div>
       
       <div class="ssr" onclick="toggleSsr(this)"
-        data-sub-key="negative" data-sub-base="2.5"
+        data-sub-key="negative" data-sub-base="4.0"
         data-weight="0.25" data-tab-ref="rev">
         <div class="ssr-top">
           <div class="ssr-name">Negative Handling</div>
-          <div class="ssr-score critical" id="1-ssr-rev-negative">2.5<span class="dn">/10</span></div>
+          <div class="ssr-score critical" id="1-ssr-rev-negative">4.0<span class="dn">/10</span></div>
         </div>
         <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
-          style="width:25%"></div></div>
+          style="width:40%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">Zero negative or mixed reviews are displayed. Top persona concerns (shedding phase confusion, dosing complexity, minoxidil side effect fears) are completely unaddressed. No brand responses visible to any reviews.</div>
+          <div class="ssr-obs">Reviews implicitly acknowledge challenges like 'Its very slow' and 'Not 100% back but maybe 60-70%' but there are no negative reviews shown, no brand responses visible, and no proactive addressing of the top persona concern about shedding phase confusion.</div>
           
-          <div class="ssr-sug">Surface 1-2 reviews that mention initial shedding phase with education ('shedding is normal first 4 weeks'), or address side effect concerns. Add brand responses to any hesitant reviews explaining proper usage to tackle the '38% dose correctly' concern.</div>
+          <div class="ssr-sug">Display 2-3 star reviews where the brand responds with educational content about shedding phases and proper dosing. Use brand responses to directly address the 38% dosing compliance issue mentioned in persona concerns.</div>
           <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
             <input type="checkbox"> Mark suggestion as resolved / not applicable
           </label>
@@ -2593,22 +2815,22 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     
     <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">100% 5-star distribution in top reviews appears curated and may reduce trust with skeptical health-conscious buyers</span></span>
+      <span class="fi-body"><span class="fi-text">Zero rating diversity - all 5-star reviews damages credibility and fails to address skeptical buyers</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">No reviews address shedding phase education despite 'most are in shedding phase without proper education' being top persona concern</span></span>
+      <span class="fi-body"><span class="fi-text">No reviews address shedding phase education despite this being the #1 persona concern</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">Doctor-guided treatment claim has zero social proof in displayed reviews</span></span>
+      <span class="fi-body"><span class="fi-text">Doctor-guided personalization claim has zero review validation</span></span>
     </div>
     
     <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
       <span class="fi-ico">❌</span>
-      <span class="fi-body"><span class="fi-text">Missing brand response strategy to demonstrate active customer support and address usage confusion</span></span>
+      <span class="fi-body"><span class="fi-text">No visible brand engagement or responses to any reviews</span></span>
     </div>
     
     
