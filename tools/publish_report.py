@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env")
 
 REPO_ROOT    = Path(__file__).parent.parent
-PAGES_URL    = "https://purvagandhi18.github.io/PDP-Monitor/"
+PAGES_BASE   = "https://purvagandhi18.github.io/PDP-Monitor"
 REMOTE       = "origin"
 PAGES_BRANCH = "gh-pages"
 GITHUB_USER  = "Purvagandhi18"
@@ -47,6 +47,52 @@ def _run(cmd: list, cwd=None) -> str:
     if result.returncode != 0:
         raise RuntimeError(f"Command failed: {' '.join(cmd)}\n{result.stderr}")
     return result.stdout.strip()
+
+
+def _rebuild_index(worktree_path: Path) -> None:
+    """Regenerate index.html listing all product reports in the gh-pages branch."""
+    reports = sorted(worktree_path.glob("*_gummies*.html")) + \
+              sorted(worktree_path.glob("*_regrowth*.html")) + \
+              sorted(worktree_path.glob("*_gummies*.html"))
+    # Deduplicate while preserving order
+    seen, unique = set(), []
+    for r in sorted(worktree_path.glob("*.html")):
+        if r.name != "index.html" and r.name not in seen:
+            seen.add(r.name)
+            unique.append(r)
+
+    links = "\n".join(
+        f'<li><a href="{r.name}">'
+        f'{r.stem.replace("_", " ").title()}'
+        f'</a></li>'
+        for r in unique
+    )
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDP Monitor — Reports</title>
+<style>
+  body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#f5f5f3;color:#1a1a1a;max-width:600px;margin:60px auto;padding:0 24px}}
+  h1{{font-size:22px;font-weight:800;margin-bottom:6px}}
+  p{{color:#777;font-size:14px;margin-bottom:32px}}
+  ul{{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}}
+  li a{{display:block;background:#fff;border:1px solid #e5e5e2;border-radius:10px;
+    padding:16px 20px;font-weight:700;font-size:15px;color:#1a1a1a;text-decoration:none}}
+  li a:hover{{border-color:#aaa;background:#fafaf8}}
+</style>
+</head>
+<body>
+<h1>PDP Monitor</h1>
+<p>Click a product to open its full interactive report.</p>
+<ul>{links}</ul>
+</body>
+</html>"""
+
+    (worktree_path / "index.html").write_text(html)
 
 
 def _authenticated_remote() -> str:
@@ -80,16 +126,16 @@ def publish(product_name: str) -> str:
         _run(["git", "worktree", "add", str(worktree_path), f"{REMOTE}/{PAGES_BRANCH}"])
 
         try:
-            # Copy report as index.html
-            shutil.copy(report, worktree_path / "index.html")
+            # Each product gets its own file e.g. shilajit_gummies.html
+            product_file = f"{_product_slug(product_name)}.html"
+            shutil.copy(report, worktree_path / product_file)
 
-            # Also keep a dated copy
-            dated_name = report.name
-            shutil.copy(report, worktree_path / dated_name)
+            # Rebuild index.html listing all products
+            _rebuild_index(worktree_path)
 
-            # Commit and push from worktree
-            _run(["git", "add", "index.html", dated_name], cwd=worktree_path)
-            # Only commit if there are actual changes
+            # Commit and push
+            files_to_add = [product_file, "index.html"]
+            _run(["git", "add"] + files_to_add, cwd=worktree_path)
             status = subprocess.run(
                 ["git", "status", "--porcelain"], capture_output=True, text=True, cwd=worktree_path
             ).stdout.strip()
@@ -99,9 +145,10 @@ def publish(product_name: str) -> str:
             else:
                 print("  No changes — report already published")
 
+            product_url = f"{PAGES_BASE}/{product_file}"
             print(f"✓ Published to GitHub Pages")
-            print(f"  URL: {PAGES_URL}")
-            return PAGES_URL
+            print(f"  URL: {product_url}")
+            return product_url
 
         finally:
             _run(["git", "worktree", "remove", "--force", str(worktree_path)])
