@@ -12,16 +12,22 @@ Returns the live GitHub Pages URL so send_report.py can include it in the email.
 """
 
 import argparse
+import os
 import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
 
-REPO_ROOT   = Path(__file__).parent.parent
-PAGES_URL   = "https://purvagandhi18.github.io/PDP-Monitor/"
-REMOTE      = "origin"
+load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env")
+
+REPO_ROOT    = Path(__file__).parent.parent
+PAGES_URL    = "https://purvagandhi18.github.io/PDP-Monitor/"
+REMOTE       = "origin"
 PAGES_BRANCH = "gh-pages"
+GITHUB_USER  = "Purvagandhi18"
+GITHUB_REPO  = "PDP-Monitor"
 
 
 def _product_slug(name: str) -> str:
@@ -41,6 +47,14 @@ def _run(cmd: list, cwd=None) -> str:
     if result.returncode != 0:
         raise RuntimeError(f"Command failed: {' '.join(cmd)}\n{result.stderr}")
     return result.stdout.strip()
+
+
+def _authenticated_remote() -> str:
+    """Build remote URL with GitHub token for headless push."""
+    token = os.getenv("GITHUB_TOKEN", "")
+    if token:
+        return f"https://{GITHUB_USER}:{token}@github.com/{GITHUB_USER}/{GITHUB_REPO}.git"
+    return f"https://github.com/{GITHUB_USER}/{GITHUB_REPO}.git"
 
 
 def publish(product_name: str) -> str:
@@ -75,8 +89,15 @@ def publish(product_name: str) -> str:
 
             # Commit and push from worktree
             _run(["git", "add", "index.html", dated_name], cwd=worktree_path)
-            _run(["git", "commit", "-m", f"report: {report.name}"], cwd=worktree_path)
-            _run(["git", "push", REMOTE, f"HEAD:{PAGES_BRANCH}"], cwd=worktree_path)
+            # Only commit if there are actual changes
+            status = subprocess.run(
+                ["git", "status", "--porcelain"], capture_output=True, text=True, cwd=worktree_path
+            ).stdout.strip()
+            if status:
+                _run(["git", "commit", "-m", f"report: {report.name}"], cwd=worktree_path)
+                _run(["git", "push", _authenticated_remote(), f"HEAD:{PAGES_BRANCH}"], cwd=worktree_path)
+            else:
+                print("  No changes — report already published")
 
             print(f"✓ Published to GitHub Pages")
             print(f"  URL: {PAGES_URL}")

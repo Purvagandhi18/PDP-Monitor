@@ -112,6 +112,8 @@ def send_report(product_name: str, recipient: str):
     # Publish to GitHub Pages — get live URL
     pages_url = None
     try:
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
         from tools.publish_report import publish
         pages_url = publish(product_name)
         print(f"  GitHub Pages URL: {pages_url}")
