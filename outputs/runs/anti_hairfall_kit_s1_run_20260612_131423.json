@@ -1,0 +1,20 @@
+{
+  "run_id": "anti_hairfall_kit_s1_run_20260612_131423",
+  "run_date": "2026-06-12",
+  "run_ts": "2026-06-12T13:14:23.938847",
+  "product_name": "Anti-Hairfall Kit S1",
+  "pdps": [
+    {
+      "url": "https://manmatters.co/dp/anti-hair-fall-shampoo-300ml/2025034",
+      "overall_score": 5.96,
+      "status": "critical",
+      "scores": {
+        "reviews": 4.2,
+        "persona_narrative": 5.8,
+        "copy_health": 7.0,
+        "visual_design": 6.8,
+        "ad_alignment": 5.0
+      }
+    }
+  ]
+}

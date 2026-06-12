@@ -1,0 +1,20 @@
+{
+  "run_id": "advanced_hair_regrowth_regime_run_20260612_131026",
+  "run_date": "2026-06-12",
+  "run_ts": "2026-06-12T13:10:26.175158",
+  "product_name": "Advanced Hair Regrowth Regime",
+  "pdps": [
+    {
+      "url": "https://manmatters.co/dp/2025113",
+      "overall_score": 6.46,
+      "status": "critical",
+      "scores": {
+        "reviews": 4.2,
+        "persona_narrative": 6.8,
+        "copy_health": 7.5,
+        "visual_design": 7.2,
+        "ad_alignment": 5.0
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import re
 import anthropic
 from analyser.models import VisualDesignScore, SubScore, SectionFlowScore, SectionFlowIssue
 from analyser.claude_client import call_claude_vision, call_claude
@@ -459,12 +460,25 @@ Each URL has a DIFFERENT configured narrative — tailor your analysis to "{conf
     log.info(f"Section flow: analysing {len(section_list)} sections ({source}) for {pdp.url}")
     data = call_claude(client, SECTION_FLOW_SYSTEM, prompt)
 
+    def _as_int(val, default=0) -> int:
+        """Coerce Claude's position value to an int. Handles "3", 3.0, "1-2",
+        "N/A", None — never raises (Claude doesn't always return clean ints)."""
+        if isinstance(val, bool):
+            return default
+        if isinstance(val, (int, float)):
+            return int(val)
+        if isinstance(val, str):
+            m = re.search(r"\d+", val)
+            if m:
+                return int(m.group())
+        return default
+
     out_of_order = [
         SectionFlowIssue(
-            section=item.get("section", ""),
-            current_position=item.get("current_position", 0),
-            recommended_position=item.get("recommended_position", 0),
-            reason=item.get("reason", "")
+            section=str(item.get("section", "")),
+            current_position=_as_int(item.get("current_position")),
+            recommended_position=_as_int(item.get("recommended_position")),
+            reason=str(item.get("reason", ""))
         )
         for item in data.get("out_of_order", [])
         if item.get("section")
