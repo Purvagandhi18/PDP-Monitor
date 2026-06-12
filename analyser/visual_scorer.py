@@ -69,13 +69,13 @@ def score_visual_design(
     image_labels = []  # parallel list of semantic labels for the prompt
 
     if pdp.zeus_sourced and pdp.zeus_images:
-        # Build a curated set: hero (up to 9) + key content sections (up to 8)
+        # Send ALL downloaded content images to Vision, in display order
+        # (hero first, then content). Capped below only by max_vision_images.
         zeus_cfg = config.get("zeus", {})
         max_hero = zeus_cfg.get("max_hero_images", 9)
-        max_other = zeus_cfg.get("max_banner_images", 3) + zeus_cfg.get("max_carousel_images", 4)
 
-        hero_imgs   = [z for z in pdp.zeus_images if z.position == "hero" and z.local_path][:max_hero]
-        content_imgs = [z for z in pdp.zeus_images if z.position != "hero" and z.local_path][:max_other]
+        hero_imgs    = [z for z in pdp.zeus_images if z.position == "hero" and z.local_path][:max_hero]
+        content_imgs = [z for z in pdp.zeus_images if z.position != "hero" and z.local_path]
 
         for z in hero_imgs + content_imgs:
             image_paths.append(z.local_path)
@@ -94,9 +94,13 @@ def score_visual_design(
         log.warning("No screenshots found — falling back to text-only visual analysis")
         return _text_only_fallback(client, pdp, context)
 
-    # Cap at 12 images to keep API cost reasonable
-    image_paths  = image_paths[:12]
-    image_labels = image_labels[:12]
+    # Cap at max_vision_images to bound API cost (default 40 — high enough to
+    # cover a full PDP's content images, since chrome/nav icons are pre-filtered).
+    max_vision = config.get("zeus", {}).get("max_vision_images", 40)
+    if len(image_paths) > max_vision:
+        log.info(f"Capping {len(image_paths)} images → {max_vision} for Vision (raise zeus.max_vision_images to send more)")
+    image_paths  = image_paths[:max_vision]
+    image_labels = image_labels[:max_vision]
     log.info(f"Sending {len(image_paths)} images to Claude Vision "
              f"({'Zeus CDN' if pdp.zeus_sourced else 'Playwright screenshots'})")
 

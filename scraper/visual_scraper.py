@@ -307,6 +307,29 @@ _IMAGE_CDN_DOMAINS = (
 _NON_IMAGE_EXTS = (".js", ".css", ".woff", ".woff2", ".ttf", ".eot",
                    ".map", ".json", ".txt", ".xml")
 
+# Site chrome — header/footer/nav icons that aren't PDP content. Matched against
+# the lowercased URL. These waste Vision slots and aren't part of the PDP story.
+_CHROME_URL_PATTERNS = (
+    "/header/", "/footer/",
+    "manmatters%20logo", "manmatters logo", "_logo_", "logo_",
+    "searchmm", "cartmm", "profille", "profile_",
+    "gooplay", "appsto",                       # app store badges
+    "/misc/fb_", "/misc/insta_", "/misc/twitter_", "/misc/yt_",
+    "linkedin-icon", "x-logo", "facebook", "instagram", "/youtube",
+    "playstore", "appstore", "google-play",
+)
+
+def _is_chrome_image(url: str) -> bool:
+    """True if the URL is site chrome (header/footer/nav/social), not PDP content."""
+    lower = url.lower()
+    if any(p in lower for p in _CHROME_URL_PATTERNS):
+        return True
+    # Tiny transform widths (w-50, w-150) are almost always icons, not content
+    m = re.search(r"[?&]tr=w-(\d+)", lower)
+    if m and int(m.group(1)) <= 150:
+        return True
+    return False
+
 def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
     """
     Open the live PDP page with Playwright, scroll fully to trigger lazy loads,
@@ -357,14 +380,74 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
             page.goto(url, wait_until="domcontentloaded", timeout=35000)
             page.wait_for_timeout(2000)
 
-            # Slow scroll to trigger all lazy-loaded images
+            # Pass 1: slow scroll top→bottom to trigger lazy-loaded images.
+            # Re-reads scrollHeight each step because the page grows as content loads.
+            page.evaluate("""async () => {
+                const delay = ms => new Promise(r => setTimeout(r, ms));
+                let y = 0;
+                for (let i = 0; i < 40; i++) {
+                    window.scrollTo(0, y);
+                    await delay(350);
+                    const total = document.body.scrollHeight;
+                    y += Math.max(300, Math.floor(window.innerHeight * 0.8));
+                    if (y >= total) { window.scrollTo(0, total); await delay(400); break; }
+                }
+            }""")
+            page.wait_for_timeout(1000)
+
+            # Pass 2: expand every accordion / collapsible so its images render.
+            # Many PDP sections (FAQs, benefits, how-it-works) hide images until opened.
+            try:
+                page.evaluate("""async () => {
+                    const delay = ms => new Promise(r => setTimeout(r, ms));
+                    const triggers = document.querySelectorAll(
+                        '[class*="accordion"] [class*="header"], [class*="accordion"] button, '
+                        + '[class*="Accordion"] button, [aria-expanded="false"], '
+                        + '[class*="collapse"] [role="button"], [class*="faq"] [class*="question"], '
+                        + 'details > summary'
+                    );
+                    for (const t of triggers) {
+                        try { t.click(); await delay(120); } catch (e) {}
+                    }
+                }""")
+                page.wait_for_timeout(1200)
+            except Exception as e:
+                log.debug(f"Accordion expand pass failed: {e}")
+
+            # Pass 3: advance every carousel/slider through its slides via next buttons.
+            # Carousels usually keep only the active slide's image in the DOM.
+            try:
+                page.evaluate("""async () => {
+                    const delay = ms => new Promise(r => setTimeout(r, ms));
+                    const nextSelectors = [
+                        '.swiper-button-next', '.slick-next',
+                        'button[aria-label*="next" i]', 'button[aria-label*="Next"]',
+                        '[class*="next-btn"]', '[class*="nextBtn"]',
+                        '[class*="arrow"][class*="right"]', '[data-slide="next"]'
+                    ];
+                    const btns = document.querySelectorAll(nextSelectors.join(','));
+                    for (const btn of btns) {
+                        for (let i = 0; i < 8; i++) {
+                            try {
+                                if (btn.offsetParent === null) break;
+                                btn.click();
+                                await delay(250);
+                            } catch (e) { break; }
+                        }
+                    }
+                }""")
+                page.wait_for_timeout(1200)
+            except Exception as e:
+                log.debug(f"Carousel advance pass failed: {e}")
+
+            # Pass 4: final slow scroll to flush anything revealed by passes 2–3.
             page.evaluate("""async () => {
                 const delay = ms => new Promise(r => setTimeout(r, ms));
                 const total = document.body.scrollHeight;
-                const step  = Math.floor(total / 10);
+                const step  = Math.floor(total / 12);
                 for (let y = 0; y <= total; y += step) {
                     window.scrollTo(0, y);
-                    await delay(300);
+                    await delay(250);
                 }
                 window.scrollTo(0, 0);
             }""")
@@ -373,16 +456,31 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
             # Also collect from DOM in case network intercept missed cached responses
             dom_urls = page.evaluate("""() => {
                 const urls = new Set();
-                document.querySelectorAll('img[src], img[data-src]').forEach(el => {
-                    [el.src, el.dataset.src].filter(Boolean).forEach(u => urls.add(u));
-                    (el.srcset || '').split(',').forEach(part => {
-                        const u = part.trim().split(' ')[0];
-                        if (u) urls.add(u);
-                    });
+                const addSrcset = ss => (ss || '').split(',').forEach(part => {
+                    const u = part.trim().split(' ')[0];
+                    if (u) urls.add(u);
                 });
-                document.querySelectorAll('[style*="background-image"]').forEach(el => {
-                    const m = el.style.backgroundImage.match(/url\\(['"]?([^'"\\)]+)/);
-                    if (m) urls.add(m[1]);
+                // <img> with src + every lazy-load attribute variant
+                document.querySelectorAll('img').forEach(el => {
+                    ['src','data-src','data-lazy-src','data-original','data-srcset']
+                        .forEach(attr => {
+                            const v = el.getAttribute(attr);
+                            if (v) (attr.includes('srcset') ? addSrcset(v) : urls.add(v));
+                        });
+                    addSrcset(el.srcset);
+                });
+                // <picture><source srcset> and bare <source>
+                document.querySelectorAll('source').forEach(el => {
+                    addSrcset(el.getAttribute('srcset'));
+                    const s = el.getAttribute('src'); if (s) urls.add(s);
+                });
+                // CSS background-image on any element
+                document.querySelectorAll('*').forEach(el => {
+                    const bg = getComputedStyle(el).backgroundImage;
+                    if (bg && bg !== 'none') {
+                        const m = bg.match(/url\\(['"]?([^'"\\)]+)/);
+                        if (m) urls.add(m[1]);
+                    }
                 });
                 return [...urls];
             }""") or []
@@ -398,19 +496,27 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
         log.warning(f"Playwright CDN sweep failed for {url}: {e}")
         return []
 
-    # Deduplicate: strip ?tr= transforms to identify same base image
+    # Deduplicate: strip ?tr= transforms to identify same base image.
+    # Also drop site chrome (header/footer/nav/social icons).
     def _base(u: str) -> str:
         return u.split("?")[0]
 
     deduped: List[str] = []
     base_seen: set = set()
+    chrome_dropped = 0
     for u in found_urls:
+        if _is_chrome_image(u):
+            chrome_dropped += 1
+            continue
         b = _base(u)
         if b not in base_seen:
             base_seen.add(b)
             deduped.append(u)
 
-    log.info(f"Playwright CDN sweep: {len(deduped)} unique CDN images from {url}")
+    log.info(
+        f"Playwright CDN sweep: {len(deduped)} content images from {url} "
+        f"({chrome_dropped} chrome/nav icons dropped)"
+    )
 
     images = []
     for i, img_url in enumerate(deduped):

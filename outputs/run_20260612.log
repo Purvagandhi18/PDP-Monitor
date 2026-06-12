@@ -1,3 +1,672 @@
 2026-06-12 12:49:22,696  INFO      kai_client  →  KAI: fetching PDP JSON via MCP (https://stg-pdp-mcp.mosaicwellness.in) for https://manmatters.co/habit/landing/pdp/2024121
 2026-06-12 12:49:22,936  INFO      kai_client  →  KAI: fetched https://manmatters.co/habit/landing/pdp/2024121 — gallery=3 widgets=7 reviews=0
 2026-06-12 12:49:22,936  INFO      kai_client  →  KAI cache built for 2024121-co: gallery=3 widgets=7 sections_raw=0 reviews=0
+2026-06-12 12:50:26,609  INFO      main  →  Running PDP Monitor for 3 product(s)
+2026-06-12 12:50:26,610  INFO      main  →  
+2026-06-12 12:50:26,610  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 12:50:26,610  INFO      main  →    Starting: Shilajit Gummies
+2026-06-12 12:50:26,610  INFO      main  →    URLs: 3
+2026-06-12 12:50:26,610  INFO      main  →    Time: 12:50:26
+2026-06-12 12:50:26,610  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 12:50:26,610  INFO      main  →  [1/5] Ingesting PDFs...
+2026-06-12 12:50:26,635  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-06-12 12:50:26,732  INFO      extractor  →  Ingest cache hit for 'Shilajit Gummies' — skipping Claude extraction
+2026-06-12 12:50:26,734  INFO      main  →        ✓ Persona: Tejas
+2026-06-12 12:50:26,734  INFO      main  →        ✓ Concerns: 3
+2026-06-12 12:50:26,734  INFO      main  →        ✓ Pillars: 3
+2026-06-12 12:50:26,734  INFO      main  →  [2/5] Scraping PDPs...
+2026-06-12 12:50:26,734  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:50:34,499  INFO      text_scraper  →  Structured dump: 215 lines
+2026-06-12 12:50:34,510  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-06-12 12:50:34,510  INFO      text_scraper  →  Found 5 review elements on page
+2026-06-12 12:50:34,586  INFO      text_scraper  →  Scraped 5 reviews
+2026-06-12 12:50:34,623  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 12:50:48,228  INFO      text_scraper  →  Done → headline: ✓ | subheads: 5 | body: 28 blocks | CTAs: 2 | reviews: 5
+2026-06-12 12:50:48,228  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2024503
+2026-06-12 12:50:55,584  INFO      text_scraper  →  Structured dump: 149 lines
+2026-06-12 12:50:55,592  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-06-12 12:50:55,592  INFO      text_scraper  →  Found 5 review elements on page
+2026-06-12 12:50:55,667  INFO      text_scraper  →  Scraped 5 reviews
+2026-06-12 12:50:55,705  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 12:51:05,162  INFO      text_scraper  →  Done → headline: ✓ | subheads: 4 | body: 26 blocks | CTAs: 2 | reviews: 5
+2026-06-12 12:51:05,163  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2025001
+2026-06-12 12:51:34,893  INFO      main  →  Running PDP Monitor for 3 product(s)
+2026-06-12 12:51:34,894  INFO      main  →  
+2026-06-12 12:51:34,894  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 12:51:34,894  INFO      main  →    Starting: Shilajit Gummies
+2026-06-12 12:51:34,894  INFO      main  →    URLs: 3
+2026-06-12 12:51:34,894  INFO      main  →    Time: 12:51:34
+2026-06-12 12:51:34,894  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 12:51:34,894  INFO      main  →  [1/5] Ingesting PDFs...
+2026-06-12 12:51:34,917  INFO      extractor  →  Starting ingestion for: Shilajit Gummies
+2026-06-12 12:51:35,014  INFO      extractor  →  Ingest cache hit for 'Shilajit Gummies' — skipping Claude extraction
+2026-06-12 12:51:35,016  INFO      main  →        ✓ Persona: Tejas
+2026-06-12 12:51:35,016  INFO      main  →        ✓ Concerns: 3
+2026-06-12 12:51:35,016  INFO      main  →        ✓ Pillars: 3
+2026-06-12 12:51:35,016  INFO      main  →  [2/5] Scraping PDPs...
+2026-06-12 12:51:35,016  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:51:42,768  INFO      text_scraper  →  Structured dump: 215 lines
+2026-06-12 12:51:42,780  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-06-12 12:51:42,780  INFO      text_scraper  →  Found 5 review elements on page
+2026-06-12 12:51:42,865  INFO      text_scraper  →  Scraped 5 reviews
+2026-06-12 12:51:42,910  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 12:52:00,107  INFO      text_scraper  →  Done → headline: ✓ | subheads: 6 | body: 35 blocks | CTAs: 2 | reviews: 5
+2026-06-12 12:52:00,108  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2024503
+2026-06-12 12:52:07,382  INFO      text_scraper  →  Structured dump: 149 lines
+2026-06-12 12:52:07,393  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-06-12 12:52:07,393  INFO      text_scraper  →  Found 5 review elements on page
+2026-06-12 12:52:07,472  INFO      text_scraper  →  Scraped 5 reviews
+2026-06-12 12:52:07,519  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 12:52:17,029  INFO      text_scraper  →  Done → headline: ✓ | subheads: 4 | body: 26 blocks | CTAs: 2 | reviews: 5
+2026-06-12 12:52:17,029  INFO      text_scraper  →  Scraping → https://manmatters.com/dp/2025001
+2026-06-12 12:52:24,300  INFO      text_scraper  →  Structured dump: 149 lines
+2026-06-12 12:52:24,307  INFO      text_scraper  →  Review selector matched: .review-body → 5 items
+2026-06-12 12:52:24,307  INFO      text_scraper  →  Found 5 review elements on page
+2026-06-12 12:52:24,388  INFO      text_scraper  →  Scraped 5 reviews
+2026-06-12 12:52:24,422  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 12:52:35,527  INFO      text_scraper  →  Done → headline: ✓ | subheads: 4 | body: 23 blocks | CTAs: 2 | reviews: 5
+2026-06-12 12:52:35,528  INFO      main  →        ✓ Scraped 3 URLs
+2026-06-12 12:52:35,528  INFO      main  →  [3/5] Scraping visuals...
+2026-06-12 12:52:35,540  INFO      zeus_connector  →  Cleared 42 old image(s) for slug 'https___manmatters_com_dp_shilajit_gummies_2024397'
+2026-06-12 12:52:35,542  INFO      zeus_connector  →  Zeus cache stale/missing for 2024397 — syncing via KAI
+2026-06-12 12:52:35,544  INFO      zeus_connector  →  KAI sync skipped for 2024397: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:52:35,544  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:52:35,544  INFO      zeus_connector  →  Zeus: extracting images for page 2024397 (style=sections)
+2026-06-12 12:52:35,545  INFO      zeus_connector  →  Zeus extracted 42 images for 2024397
+2026-06-12 12:52:35,545  INFO      visual_scraper  →  Zeus mode: 42 images found — skipping Playwright
+2026-06-12 12:52:44,523  INFO      zeus_connector  →  Zeus images downloaded: 42/42
+2026-06-12 12:52:44,527  INFO      zeus_connector  →  Zeus cache stale/missing for 2024397 — syncing via KAI
+2026-06-12 12:52:44,528  INFO      zeus_connector  →  KAI sync skipped for 2024397: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:52:44,528  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:52:44,529  INFO      zeus_connector  →  Zeus reviews: 5 for page 2024397 (5/5 with dateCreated)
+2026-06-12 12:52:44,530  INFO      visual_scraper  →  Zeus reviews: 5 loaded (5 with dateCreated) — replaced Playwright reviews
+2026-06-12 12:52:44,530  INFO      visual_scraper  →  Zeus visuals done → 42 total | 8 hero slides | 34 content images
+2026-06-12 12:52:44,531  INFO      main  →        ✓ https://manmatters.com/dp/shilajit-gummies/2024397 → 8 slides, 34 banners
+2026-06-12 12:52:44,539  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2024503'
+2026-06-12 12:52:44,541  INFO      zeus_connector  →  Zeus cache stale/missing for 2024503 — syncing via KAI
+2026-06-12 12:52:44,541  INFO      zeus_connector  →  KAI sync skipped for 2024503: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:52:44,542  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:52:44,542  INFO      zeus_connector  →  Zeus: extracting images for page 2024503 (style=displayOrder)
+2026-06-12 12:52:44,543  INFO      zeus_connector  →  Zeus extracted 26 images for 2024503
+2026-06-12 12:52:44,544  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-06-12 12:52:50,769  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-06-12 12:52:50,772  INFO      zeus_connector  →  Zeus cache stale/missing for 2024503 — syncing via KAI
+2026-06-12 12:52:50,773  INFO      zeus_connector  →  KAI sync skipped for 2024503: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:52:50,774  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:52:50,774  INFO      zeus_connector  →  Zeus reviews: 5 for page 2024503 (5/5 with dateCreated)
+2026-06-12 12:52:50,774  INFO      visual_scraper  →  Zeus reviews: 5 loaded (5 with dateCreated) — replaced Playwright reviews
+2026-06-12 12:52:50,774  INFO      visual_scraper  →  Zeus visuals done → 26 total | 9 hero slides | 17 content images
+2026-06-12 12:52:50,774  INFO      main  →        ✓ https://manmatters.com/dp/2024503 → 9 slides, 17 banners
+2026-06-12 12:52:50,782  INFO      zeus_connector  →  Cleared 26 old image(s) for slug 'https___manmatters_com_dp_2025001'
+2026-06-12 12:52:50,783  INFO      zeus_connector  →  Zeus cache stale/missing for 2025001 — syncing via KAI
+2026-06-12 12:52:50,783  INFO      zeus_connector  →  KAI sync skipped for 2025001: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:52:50,784  INFO      zeus_connector  →  Zeus cache hit: 2025001 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:52:50,784  INFO      zeus_connector  →  Zeus: extracting images for page 2025001 (style=displayOrder)
+2026-06-12 12:52:50,785  INFO      zeus_connector  →  Zeus extracted 26 images for 2025001
+2026-06-12 12:52:50,785  INFO      visual_scraper  →  Zeus mode: 26 images found — skipping Playwright
+2026-06-12 12:52:56,103  INFO      zeus_connector  →  Zeus images downloaded: 26/26
+2026-06-12 12:52:56,104  INFO      zeus_connector  →  Zeus cache stale/missing for 2025001 — syncing via KAI
+2026-06-12 12:52:56,104  INFO      zeus_connector  →  KAI sync skipped for 2025001: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:52:56,105  INFO      zeus_connector  →  Zeus cache hit: 2025001 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:52:56,105  INFO      zeus_connector  →  Zeus reviews: 5 for page 2025001 (5/5 with dateCreated)
+2026-06-12 12:52:56,105  INFO      visual_scraper  →  Zeus reviews: 5 loaded (5 with dateCreated) — replaced Playwright reviews
+2026-06-12 12:52:56,105  INFO      visual_scraper  →  Zeus visuals done → 26 total | 10 hero slides | 16 content images
+2026-06-12 12:52:56,105  INFO      main  →        ✓ https://manmatters.com/dp/2025001 → 10 slides, 16 banners
+2026-06-12 12:52:56,105  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-06-12 12:52:56,105  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Shilajit Gummies
+2026-06-12 12:52:57,966  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-06-12 12:52:57,970  INFO      main  →  [5/5] Analysing...
+2026-06-12 12:52:57,971  INFO      engine  →  ============================================================
+2026-06-12 12:52:57,971  INFO      engine  →  Analysing: https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:52:57,971  INFO      engine  →  ============================================================
+2026-06-12 12:52:57,978  INFO      engine  →  1/5 Reviews...
+2026-06-12 12:52:57,978  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/shilajit-gummies/2024397 (5 reviews)
+2026-06-12 12:52:57,982  INFO      reviews_scorer  →  Review date audit: all 5/5 dates parsed OK
+2026-06-12 12:53:15,620  INFO      engine  →      → 5.8/10
+2026-06-12 12:53:15,620  INFO      engine  →  2/5 Persona × Narrative...
+2026-06-12 12:53:15,621  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:53:15,621  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/shilajit-gummies/2024397:
+  persona_used    = Tejas
+  narrative_used  = Product First
+  pain_points     = ['Work exhaustion draining energy between gym and end of day', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Maintaining dignity and looking like a man who has it together at 40']
+  pillars (total=3, filtered=3): ['Sustained daily energy (solving the 3 PM crash, not gym performance)', 'Clean, transparent formulation (no added sugar, no chemicals, third-party tested)', 'Modern convenience (gummy format vs messy resin, fits any lifestyle)']
+2026-06-12 12:54:01,804  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/shilajit-gummies/2024397 | persona=Tejas | narrative=Product First | overall=5.2
+2026-06-12 12:54:01,807  INFO      engine  →      → 5.2/10
+2026-06-12 12:54:01,807  INFO      engine  →  3/5 Copy Health...
+2026-06-12 12:54:01,807  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:55:20,809  INFO      engine  →      → 6.1/10
+2026-06-12 12:55:20,812  INFO      engine  →  4/5 Visual Design...
+2026-06-12 12:55:20,812  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:55:20,814  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-06-12 12:55:56,397  INFO      zeus_connector  →  Zeus cache hit: 2024397 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:55:56,398  INFO      visual_scorer  →  Section flow: analysing 27 sections (Zeus display order) for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:56:17,172  INFO      visual_scorer  →  Section flow scored 4.2/10 — 7 out-of-order, 3 missing
+2026-06-12 12:56:17,172  INFO      engine  →      → 6.2/10
+2026-06-12 12:56:17,173  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 12:56:17,173  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 12:56:17,173  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 12:56:17,173  INFO      engine  →      → 5.0/10
+2026-06-12 12:56:17,173  INFO      engine  →  OVERALL: 5.7/10 → CRITICAL
+2026-06-12 12:56:17,174  INFO      engine  →  Generating RCA...
+2026-06-12 12:56:17,174  INFO      rca  →  Score 5.7 < 8.0 — generating RCA
+2026-06-12 12:56:43,236  INFO      rca  →  Generated 6 RCA items
+2026-06-12 12:56:43,237  INFO      engine  →  RCA: 6 items
+2026-06-12 12:56:43,238  INFO      engine  →  ============================================================
+2026-06-12 12:56:43,238  INFO      engine  →  Analysing: https://manmatters.com/dp/2024503
+2026-06-12 12:56:43,238  INFO      engine  →  ============================================================
+2026-06-12 12:56:43,254  INFO      engine  →  1/5 Reviews...
+2026-06-12 12:56:43,254  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2024503 (5 reviews)
+2026-06-12 12:56:43,256  INFO      reviews_scorer  →  Review date audit: all 5/5 dates parsed OK
+2026-06-12 12:57:01,400  INFO      engine  →      → 5.8/10
+2026-06-12 12:57:01,401  INFO      engine  →  2/5 Persona × Narrative...
+2026-06-12 12:57:01,401  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2024503
+2026-06-12 12:57:01,401  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2024503:
+  persona_used    = Tejas
+  narrative_used  = Daily Energy
+  pain_points     = ['Work exhaustion draining energy between gym and end of day', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Maintaining dignity and looking like a man who has it together at 40']
+  pillars (total=3, filtered=1): ['Sustained daily energy (solving the 3 PM crash, not gym performance)']
+2026-06-12 12:57:41,864  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/2024503 | persona=Tejas | narrative=Daily Energy | overall=5.2
+2026-06-12 12:57:41,866  INFO      engine  →      → 5.2/10
+2026-06-12 12:57:41,866  INFO      engine  →  3/5 Copy Health...
+2026-06-12 12:57:41,867  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2024503
+2026-06-12 12:58:51,450  INFO      engine  →      → 5.7/10
+2026-06-12 12:58:51,452  INFO      engine  →  4/5 Visual Design...
+2026-06-12 12:58:51,454  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2024503
+2026-06-12 12:58:51,455  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-06-12 12:59:02,050  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-06-12 12:59:02,051  INFO      main  →  
+2026-06-12 12:59:02,051  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 12:59:02,051  INFO      main  →    Starting: Hair Regrowth Kit S3
+2026-06-12 12:59:02,051  INFO      main  →    URLs: 1
+2026-06-12 12:59:02,051  INFO      main  →    Time: 12:59:02
+2026-06-12 12:59:02,051  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 12:59:02,051  INFO      main  →  [1/5] Ingesting PDFs...
+2026-06-12 12:59:02,083  INFO      extractor  →  Starting ingestion for: Hair Regrowth Kit S3
+2026-06-12 12:59:02,178  INFO      pdf_reader  →  Reading → persona.pdf
+2026-06-12 12:59:02,948  INFO      pdf_reader  →  Extracted 19,393 chars from persona.pdf
+2026-06-12 12:59:02,948  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-06-12 12:59:03,364  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-06-12 12:59:03,364  INFO      pdf_reader  →  Reading → product_brief.pdf
+2026-06-12 12:59:04,140  INFO      pdf_reader  →  Extracted 19,393 chars from product_brief.pdf
+2026-06-12 12:59:04,140  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-06-12 12:59:04,908  INFO      pdf_reader  →  Extracted 19,393 chars from narrative.pdf
+2026-06-12 12:59:04,908  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-06-12 12:59:04,908  INFO      extractor  →  Extracting persona profile...
+2026-06-12 12:59:13,676  INFO      extractor  →  Persona extracted → Arjun | Concerns: 3
+2026-06-12 12:59:13,677  INFO      extractor  →  Extracting narrative pillars...
+2026-06-12 12:59:21,218  INFO      extractor  →  Narrative extracted → 3 pillars, 3 claims
+2026-06-12 12:59:21,220  INFO      extractor  →  Extracting brand voice guidelines...
+2026-06-12 12:59:26,146  INFO      extractor  →  Brand voice extracted → tone: ['clinical', 'premium', 'simple', 'confident', 'supportive']
+2026-06-12 12:59:26,146  INFO      extractor  →  Extracting product brief...
+2026-06-12 12:59:26,971  INFO      zeus_connector  →  Zeus cache hit: 2024503 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 12:59:26,972  INFO      visual_scorer  →  Section flow: analysing 27 sections (Zeus display order) for https://manmatters.com/dp/2024503
+2026-06-12 12:59:36,272  INFO      extractor  →  Product brief extracted → Stage 3 Hair Regrowth Kit
+2026-06-12 12:59:36,277  INFO      extractor  →  Ingest cache saved for 'Hair Regrowth Kit S3'  →  hair_regrowth_kit_s3.json
+2026-06-12 12:59:36,277  INFO      extractor  →  Ingestion complete for: Hair Regrowth Kit S3
+2026-06-12 12:59:36,277  INFO      main  →        ✓ Persona: Arjun
+2026-06-12 12:59:36,277  INFO      main  →        ✓ Concerns: 3
+2026-06-12 12:59:36,277  INFO      main  →        ✓ Pillars: 3
+2026-06-12 12:59:36,277  INFO      main  →  [2/5] Scraping PDPs...
+2026-06-12 12:59:36,278  INFO      text_scraper  →  Scraping → https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 12:59:44,036  INFO      text_scraper  →  Structured dump: 198 lines
+2026-06-12 12:59:44,047  INFO      text_scraper  →  Review selector matched: .review-body → 4 items
+2026-06-12 12:59:44,047  INFO      text_scraper  →  Found 4 review elements on page
+2026-06-12 12:59:44,120  INFO      text_scraper  →  Scraped 4 reviews
+2026-06-12 12:59:44,158  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 12:59:44,198  INFO      visual_scorer  →  Section flow scored 4.2/10 — 5 out-of-order, 4 missing
+2026-06-12 12:59:44,200  INFO      engine  →      → 7.2/10
+2026-06-12 12:59:44,200  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 12:59:44,200  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2024503
+2026-06-12 12:59:44,200  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 12:59:44,200  INFO      engine  →      → 5.0/10
+2026-06-12 12:59:44,200  INFO      engine  →  OVERALL: 6.0/10 → CRITICAL
+2026-06-12 12:59:44,201  INFO      engine  →  Generating RCA...
+2026-06-12 12:59:44,201  INFO      rca  →  Score 6.0 < 8.0 — generating RCA
+2026-06-12 12:59:53,142  INFO      text_scraper  →  Done → headline: ✓ | subheads: 11 | body: 39 blocks | CTAs: 2 | reviews: 4
+2026-06-12 12:59:53,143  INFO      main  →        ✓ Scraped 1 URLs
+2026-06-12 12:59:53,143  INFO      main  →  [3/5] Scraping visuals...
+2026-06-12 12:59:53,155  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 12:59:53,157  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:59:53,157  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 12:59:53,157  INFO      zeus_connector  →  Zeus: extracting images for page 2024121-co (style=displayOrder)
+2026-06-12 12:59:53,158  INFO      zeus_connector  →  Zeus extracted 13 images for 2024121-co
+2026-06-12 12:59:53,158  INFO      visual_scraper  →  Zeus mode: 13 images found — skipping Playwright
+2026-06-12 12:59:58,903  INFO      zeus_connector  →  Zeus images downloaded: 13/13
+2026-06-12 12:59:58,907  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 12:59:58,907  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 12:59:58,908  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 12:59:58,908  INFO      zeus_connector  →  Zeus reviews: 0 for page 2024121-co (0/0 with dateCreated)
+2026-06-12 12:59:58,908  WARNING   visual_scraper  →  Zeus reviews unavailable — keeping 4 Playwright-scraped reviews (dates may be missing)
+2026-06-12 12:59:58,908  INFO      visual_scraper  →  Zeus visuals done → 13 total | 3 hero slides | 10 content images
+2026-06-12 12:59:58,908  INFO      main  →        ✓ https://manmatters.co/habit/landing/pdp/2024121 → 3 slides, 10 banners
+2026-06-12 12:59:58,908  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-06-12 12:59:58,909  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Hair Regrowth Kit S3
+2026-06-12 13:00:00,309  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-06-12 13:00:00,313  INFO      main  →  [5/5] Analysing...
+2026-06-12 13:00:00,314  INFO      engine  →  ============================================================
+2026-06-12 13:00:00,314  INFO      engine  →  Analysing: https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:00:00,314  INFO      engine  →  ============================================================
+2026-06-12 13:00:00,322  INFO      engine  →  1/5 Reviews...
+2026-06-12 13:00:00,322  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.co/habit/landing/pdp/2024121 (4 reviews)
+2026-06-12 13:00:00,323  WARNING   reviews_scorer  →  Review date audit: 0/4 reviews have parseable dates. Raw samples: [None, None, None, None]
+2026-06-12 13:00:00,324  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.co/habit/landing/pdp/2024121 — no review dates available, freshness score set to null
+2026-06-12 13:00:12,534  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:00:12,537  INFO      engine  →      → 4.2/10
+2026-06-12 13:00:12,537  INFO      engine  →  2/5 Persona × Narrative...
+2026-06-12 13:00:12,537  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:00:12,537  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.co/habit/landing/pdp/2024121:
+  persona_used    = Arjun
+  narrative_used  = Regrowth / Reversal
+  pain_points     = ['That it is too late and follicles are permanently dead', 'Wasting another 5-6 months on a product that will not work', 'Visible bald patches affecting confidence in professional and social settings']
+  pillars (total=3, filtered=1): ['Reversal is possible: Follicles are dormant, not dead — Stage 3 is not too late']
+2026-06-12 13:00:16,536  INFO      rca  →  Generated 6 RCA items
+2026-06-12 13:00:16,536  INFO      engine  →  RCA: 6 items
+2026-06-12 13:00:16,537  INFO      engine  →  ============================================================
+2026-06-12 13:00:16,537  INFO      engine  →  Analysing: https://manmatters.com/dp/2025001
+2026-06-12 13:00:16,537  INFO      engine  →  ============================================================
+2026-06-12 13:00:16,549  INFO      engine  →  1/5 Reviews...
+2026-06-12 13:00:16,549  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.com/dp/2025001 (5 reviews)
+2026-06-12 13:00:16,550  INFO      reviews_scorer  →  Review date audit: all 5/5 dates parsed OK
+2026-06-12 13:00:33,021  INFO      engine  →      → 5.2/10
+2026-06-12 13:00:33,022  INFO      engine  →  2/5 Persona × Narrative...
+2026-06-12 13:00:33,022  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.com/dp/2025001
+2026-06-12 13:00:33,022  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.com/dp/2025001:
+  persona_used    = Tejas
+  narrative_used  = Summer
+  pain_points     = ['Work exhaustion draining energy between gym and end of day', 'Visible aging signs like hair loss, white hairs, and declining energy', 'Maintaining dignity and looking like a man who has it together at 40']
+  pillars (total=3, filtered=3): ['Sustained daily energy (solving the 3 PM crash, not gym performance)', 'Clean, transparent formulation (no added sugar, no chemicals, third-party tested)', 'Modern convenience (gummy format vs messy resin, fits any lifestyle)']
+2026-06-12 13:00:46,937  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.co/habit/landing/pdp/2024121 | persona=Arjun | narrative=Regrowth / Reversal | overall=5.8
+2026-06-12 13:00:46,939  INFO      engine  →      → 5.8/10
+2026-06-12 13:00:46,939  INFO      engine  →  3/5 Copy Health...
+2026-06-12 13:00:46,939  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:01:16,424  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.com/dp/2025001 | persona=Tejas | narrative=Summer | overall=4.2
+2026-06-12 13:01:16,425  INFO      engine  →      → 4.2/10
+2026-06-12 13:01:16,425  INFO      engine  →  3/5 Copy Health...
+2026-06-12 13:01:16,425  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.com/dp/2025001
+2026-06-12 13:02:06,740  INFO      engine  →      → 6.7/10
+2026-06-12 13:02:06,741  INFO      engine  →  4/5 Visual Design...
+2026-06-12 13:02:06,742  INFO      visual_scorer  →  Scoring visual design for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:02:06,742  INFO      visual_scorer  →  Sending 10 images to Claude Vision (Zeus CDN)
+2026-06-12 13:02:30,773  INFO      engine  →      → 5.4/10
+2026-06-12 13:02:30,774  INFO      engine  →  4/5 Visual Design...
+2026-06-12 13:02:30,774  INFO      visual_scorer  →  Scoring visual design for https://manmatters.com/dp/2025001
+2026-06-12 13:02:30,774  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-06-12 13:02:39,183  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:02:39,185  INFO      visual_scorer  →  Section flow: analysing 6 sections (Zeus display order) for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:02:52,489  INFO      visual_scorer  →  Section flow scored 3.5/10 — 4 out-of-order, 5 missing
+2026-06-12 13:02:52,491  INFO      engine  →      → 4.2/10
+2026-06-12 13:02:52,491  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 13:02:52,491  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:02:52,492  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 13:02:52,492  INFO      engine  →      → 5.0/10
+2026-06-12 13:02:52,493  INFO      engine  →  OVERALL: 5.1/10 → CRITICAL
+2026-06-12 13:02:52,494  INFO      engine  →  Generating RCA...
+2026-06-12 13:02:52,495  INFO      rca  →  Score 5.1 < 8.0 — generating RCA
+2026-06-12 13:03:09,300  INFO      zeus_connector  →  Zeus cache hit: 2025001 (fetched 2026-05-31T00:00:00Z)
+2026-06-12 13:03:09,301  INFO      visual_scorer  →  Section flow: analysing 27 sections (Zeus display order) for https://manmatters.com/dp/2025001
+2026-06-12 13:03:19,209  INFO      rca  →  Generated 6 RCA items
+2026-06-12 13:03:19,212  INFO      engine  →  RCA: 6 items
+2026-06-12 13:03:19,215  INFO      storage_tool  →  Run snapshot saved → outputs/runs/hair_regrowth_kit_s3_run_20260612_073319.json
+2026-06-12 13:03:19,218  INFO      storage_tool  →  No previous run found before current run
+2026-06-12 13:03:19,218  INFO      regression_agent  →  No previous run — skipping regression detection
+2026-06-12 13:03:19,219  INFO      main  →        https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:03:19,219  INFO      main  →          Reviews:      4.2
+2026-06-12 13:03:19,219  INFO      main  →          P×N:          5.8
+2026-06-12 13:03:19,219  INFO      main  →          Copy Health:  6.7
+2026-06-12 13:03:19,219  INFO      main  →          Visual:       4.2
+2026-06-12 13:03:19,219  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 13:03:19,220  INFO      main  →          ── OVERALL:   5.1 (first run) [CRITICAL]
+2026-06-12 13:03:19,220  INFO      main  →          ── RCA:       6 items
+2026-06-12 13:03:19,337  INFO      report_builder  →  Report saved → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:03:19,337  INFO      main  →  
+2026-06-12 13:03:19,337  INFO      main  →    ✅ Report saved → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:03:19,337  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:03:19,337  INFO      main  →  
+2026-06-12 13:03:19,337  INFO      main  →  Done. 1/1 reports generated.
+2026-06-12 13:03:19,337  INFO      main  →    → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:03:29,140  INFO      visual_scorer  →  Section flow scored 3.5/10 — 5 out-of-order, 3 missing
+2026-06-12 13:03:29,141  INFO      engine  →      → 7.2/10
+2026-06-12 13:03:29,141  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 13:03:29,142  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.com/dp/2025001
+2026-06-12 13:03:29,142  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 13:03:29,142  INFO      engine  →      → 5.0/10
+2026-06-12 13:03:29,142  INFO      engine  →  OVERALL: 5.5/10 → CRITICAL
+2026-06-12 13:03:29,142  INFO      engine  →  Generating RCA...
+2026-06-12 13:03:29,143  INFO      rca  →  Score 5.5 < 8.0 — generating RCA
+2026-06-12 13:04:08,125  INFO      rca  →  Generated 6 RCA items
+2026-06-12 13:04:08,130  INFO      engine  →  RCA: 6 items
+2026-06-12 13:04:08,156  INFO      storage_tool  →  Run snapshot saved → outputs/runs/shilajit_gummies_run_20260612_073408.json
+2026-06-12 13:04:08,198  INFO      storage_tool  →  Loading previous run → shilajit_gummies_run_20260611_085001.json
+2026-06-12 13:04:08,204  INFO      regression_agent  →  Comparing against previous run from 2026-06-11
+2026-06-12 13:04:08,210  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/shilajit-gummies/2024397  5.8 → 5.7 (-0.12)
+2026-06-12 13:04:08,210  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/2024503  6.0 → 6.0 (+0.00)
+2026-06-12 13:04:08,210  INFO      regression_agent  →    ↔  STABLE: https://manmatters.com/dp/2025001  5.6 → 5.5 (-0.09)
+2026-06-12 13:04:08,211  INFO      main  →        https://manmatters.com/dp/shilajit-gummies/2024397
+2026-06-12 13:04:08,214  INFO      main  →          Reviews:      5.8
+2026-06-12 13:04:08,214  INFO      main  →          P×N:          5.2
+2026-06-12 13:04:08,214  INFO      main  →          Copy Health:  6.1
+2026-06-12 13:04:08,214  INFO      main  →          Visual:       6.2
+2026-06-12 13:04:08,214  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 13:04:08,215  INFO      main  →          ── OVERALL:   5.7 (-0.1) [CRITICAL]
+2026-06-12 13:04:08,215  INFO      main  →          ── RCA:       6 items
+2026-06-12 13:04:08,215  INFO      main  →        https://manmatters.com/dp/2024503
+2026-06-12 13:04:08,215  INFO      main  →          Reviews:      5.8
+2026-06-12 13:04:08,215  INFO      main  →          P×N:          5.2
+2026-06-12 13:04:08,215  INFO      main  →          Copy Health:  5.7
+2026-06-12 13:04:08,215  INFO      main  →          Visual:       7.2
+2026-06-12 13:04:08,215  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 13:04:08,215  INFO      main  →          ── OVERALL:   6.0 (+0.0) [CRITICAL]
+2026-06-12 13:04:08,215  INFO      main  →          ── RCA:       6 items
+2026-06-12 13:04:08,215  INFO      main  →        https://manmatters.com/dp/2025001
+2026-06-12 13:04:08,215  INFO      main  →          Reviews:      5.2
+2026-06-12 13:04:08,215  INFO      main  →          P×N:          4.2
+2026-06-12 13:04:08,215  INFO      main  →          Copy Health:  5.4
+2026-06-12 13:04:08,215  INFO      main  →          Visual:       7.2
+2026-06-12 13:04:08,215  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 13:04:08,215  INFO      main  →          ── OVERALL:   5.5 (-0.1) [CRITICAL]
+2026-06-12 13:04:08,215  INFO      main  →          ── RCA:       6 items
+2026-06-12 13:04:08,432  INFO      report_builder  →  Report saved → outputs/reports/shilajit_gummies_20260612.html
+2026-06-12 13:04:08,432  INFO      main  →  
+2026-06-12 13:04:08,432  INFO      main  →    ✅ Report saved → outputs/reports/shilajit_gummies_20260612.html
+2026-06-12 13:04:08,433  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:04:08,433  INFO      main  →  
+2026-06-12 13:04:08,433  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:04:08,433  INFO      main  →    Starting: Hair Regrowth Kit S2
+2026-06-12 13:04:08,433  INFO      main  →    URLs: 1
+2026-06-12 13:04:08,433  INFO      main  →    Time: 13:04:08
+2026-06-12 13:04:08,433  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:04:08,433  INFO      main  →  [1/5] Ingesting PDFs...
+2026-06-12 13:04:08,440  INFO      extractor  →  Starting ingestion for: Hair Regrowth Kit S2
+2026-06-12 13:04:08,556  INFO      extractor  →  Ingest cache hit for 'Hair Regrowth Kit S2' — skipping Claude extraction
+2026-06-12 13:04:08,559  INFO      main  →        ✓ Persona: Stage 2 Hair Loss Patient
+2026-06-12 13:04:08,559  INFO      main  →        ✓ Concerns: 3
+2026-06-12 13:04:08,559  INFO      main  →        ✓ Pillars: 3
+2026-06-12 13:04:08,559  INFO      main  →  [2/5] Scraping PDPs...
+2026-06-12 13:04:08,560  INFO      text_scraper  →  Scraping → https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:04:16,834  INFO      text_scraper  →  Structured dump: 184 lines
+2026-06-12 13:04:16,844  INFO      text_scraper  →  Review selector matched: .review-body → 4 items
+2026-06-12 13:04:16,844  INFO      text_scraper  →  Found 4 review elements on page
+2026-06-12 13:04:16,912  INFO      text_scraper  →  Scraped 4 reviews
+2026-06-12 13:04:16,964  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 13:04:25,468  INFO      text_scraper  →  Done → headline: ✓ | subheads: 10 | body: 35 blocks | CTAs: 2 | reviews: 4
+2026-06-12 13:04:25,468  INFO      main  →        ✓ Scraped 1 URLs
+2026-06-12 13:04:25,468  INFO      main  →  [3/5] Scraping visuals...
+2026-06-12 13:04:25,496  INFO      zeus_connector  →  Cleared 135 old image(s) for slug 'https___manmatters_co_habit_landing_pdp_141464'
+2026-06-12 13:04:25,498  INFO      zeus_connector  →  Zeus cache stale/missing for 141464-co — syncing via KAI
+2026-06-12 13:04:25,498  INFO      zeus_connector  →  KAI sync skipped for 141464-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 13:04:25,498  INFO      zeus_connector  →  Zeus cache hit: 141464-co (fetched 2026-06-09T00:00:00Z)
+2026-06-12 13:04:25,499  INFO      zeus_connector  →  Zeus: extracting images for page 141464-co (style=sections)
+2026-06-12 13:04:25,502  INFO      zeus_connector  →  Zeus extracted 135 images for 141464-co
+2026-06-12 13:04:25,502  INFO      visual_scraper  →  Zeus mode: 135 images found — skipping Playwright
+2026-06-12 13:05:06,819  INFO      zeus_connector  →  Zeus images downloaded: 135/135
+2026-06-12 13:05:06,825  INFO      zeus_connector  →  Zeus cache stale/missing for 141464-co — syncing via KAI
+2026-06-12 13:05:06,825  INFO      zeus_connector  →  KAI sync skipped for 141464-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 13:05:06,826  INFO      zeus_connector  →  Zeus cache hit: 141464-co (fetched 2026-06-09T00:00:00Z)
+2026-06-12 13:05:06,827  INFO      zeus_connector  →  Zeus reviews: 4 for page 141464-co (4/4 with dateCreated)
+2026-06-12 13:05:06,827  INFO      visual_scraper  →  Zeus reviews: 4 loaded (4 with dateCreated) — replaced Playwright reviews
+2026-06-12 13:05:06,827  INFO      visual_scraper  →  Zeus visuals done → 135 total | 11 hero slides | 124 content images
+2026-06-12 13:05:06,828  INFO      main  →        ✓ https://manmatters.co/habit/landing/pdp/141464 → 11 slides, 124 banners
+2026-06-12 13:05:06,828  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-06-12 13:05:06,828  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Hair Regrowth Kit S2
+2026-06-12 13:05:08,051  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-06-12 13:05:08,056  INFO      main  →  [5/5] Analysing...
+2026-06-12 13:05:08,056  INFO      engine  →  ============================================================
+2026-06-12 13:05:08,056  INFO      engine  →  Analysing: https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:05:08,056  INFO      engine  →  ============================================================
+2026-06-12 13:05:08,064  INFO      engine  →  1/5 Reviews...
+2026-06-12 13:05:08,064  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.co/habit/landing/pdp/141464 (4 reviews)
+2026-06-12 13:05:08,065  INFO      reviews_scorer  →  Review date audit: all 4/4 dates parsed OK
+2026-06-12 13:05:27,467  INFO      engine  →      → 5.2/10
+2026-06-12 13:05:27,468  INFO      engine  →  2/5 Persona × Narrative...
+2026-06-12 13:05:27,468  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:05:27,469  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.co/habit/landing/pdp/141464:
+  persona_used    = S2 ICP
+  narrative_used  = Preservation
+  pain_points     = ['Results take too long - most are in shedding phase without proper education', 'Confusion about proper usage - only 38% dose correctly', 'Fear of chemicals and side effects from minoxidil']
+  pillars (total=3, filtered=1): ['Stage-specific solutions: preservation for S2, reversal for S3']
+2026-06-12 13:06:07,362  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.co/habit/landing/pdp/141464 | persona=S2 ICP | narrative=Preservation | overall=5.2
+2026-06-12 13:06:07,364  INFO      engine  →      → 5.2/10
+2026-06-12 13:06:07,364  INFO      engine  →  3/5 Copy Health...
+2026-06-12 13:06:07,365  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:07:14,622  INFO      engine  →      → 5.5/10
+2026-06-12 13:07:14,624  INFO      engine  →  4/5 Visual Design...
+2026-06-12 13:07:14,624  INFO      visual_scorer  →  Scoring visual design for https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:07:14,625  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-06-12 13:07:48,736  INFO      zeus_connector  →  Zeus cache hit: 141464-co (fetched 2026-06-09T00:00:00Z)
+2026-06-12 13:07:48,737  INFO      visual_scorer  →  Section flow: analysing 40 sections (Zeus display order) for https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:08:05,762  INFO      visual_scorer  →  Section flow scored 3.2/10 — 6 out-of-order, 3 missing
+2026-06-12 13:08:05,764  INFO      engine  →      → 6.2/10
+2026-06-12 13:08:05,764  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 13:08:05,764  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:08:05,765  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 13:08:05,765  INFO      engine  →      → 5.0/10
+2026-06-12 13:08:05,765  INFO      engine  →  OVERALL: 5.5/10 → CRITICAL
+2026-06-12 13:08:05,765  INFO      engine  →  Generating RCA...
+2026-06-12 13:08:05,765  INFO      rca  →  Score 5.5 < 8.0 — generating RCA
+2026-06-12 13:08:34,810  INFO      rca  →  Generated 6 RCA items
+2026-06-12 13:08:34,812  INFO      engine  →  RCA: 6 items
+2026-06-12 13:08:34,815  INFO      storage_tool  →  Run snapshot saved → outputs/runs/hair_regrowth_kit_s2_run_20260612_073834.json
+2026-06-12 13:08:34,816  INFO      storage_tool  →  Loading previous run → hair_regrowth_kit_s2_run_20260609_122944.json
+2026-06-12 13:08:34,817  INFO      regression_agent  →  Comparing against previous run from 2026-06-09
+2026-06-12 13:08:34,817  INFO      regression_agent  →    ↔  STABLE: https://manmatters.co/habit/landing/pdp/141464  5.7 → 5.5 (-0.13)
+2026-06-12 13:08:34,817  INFO      main  →        https://manmatters.co/habit/landing/pdp/141464
+2026-06-12 13:08:34,817  INFO      main  →          Reviews:      5.2
+2026-06-12 13:08:34,817  INFO      main  →          P×N:          5.2
+2026-06-12 13:08:34,817  INFO      main  →          Copy Health:  5.5
+2026-06-12 13:08:34,817  INFO      main  →          Visual:       6.2
+2026-06-12 13:08:34,817  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 13:08:34,817  INFO      main  →          ── OVERALL:   5.5 (-0.1) [CRITICAL]
+2026-06-12 13:08:34,817  INFO      main  →          ── RCA:       6 items
+2026-06-12 13:08:34,893  INFO      report_builder  →  Report saved → outputs/reports/hair_regrowth_kit_s2_20260612.html
+2026-06-12 13:08:34,893  INFO      main  →  
+2026-06-12 13:08:34,893  INFO      main  →    ✅ Report saved → outputs/reports/hair_regrowth_kit_s2_20260612.html
+2026-06-12 13:08:34,893  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:08:34,893  INFO      main  →  
+2026-06-12 13:08:34,893  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:08:34,893  INFO      main  →    Starting: Hair Regrowth Kit S3
+2026-06-12 13:08:34,893  INFO      main  →    URLs: 1
+2026-06-12 13:08:34,893  INFO      main  →    Time: 13:08:34
+2026-06-12 13:08:34,893  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:08:34,893  INFO      main  →  [1/5] Ingesting PDFs...
+2026-06-12 13:08:34,898  INFO      extractor  →  Starting ingestion for: Hair Regrowth Kit S3
+2026-06-12 13:08:34,993  INFO      extractor  →  Ingest cache hit for 'Hair Regrowth Kit S3' — skipping Claude extraction
+2026-06-12 13:08:34,994  INFO      main  →        ✓ Persona: Arjun
+2026-06-12 13:08:34,994  INFO      main  →        ✓ Concerns: 3
+2026-06-12 13:08:34,994  INFO      main  →        ✓ Pillars: 3
+2026-06-12 13:08:34,994  INFO      main  →  [2/5] Scraping PDPs...
+2026-06-12 13:08:34,994  INFO      text_scraper  →  Scraping → https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:08:42,891  INFO      text_scraper  →  Structured dump: 198 lines
+2026-06-12 13:08:42,898  INFO      text_scraper  →  Review selector matched: .review-body → 4 items
+2026-06-12 13:08:42,898  INFO      text_scraper  →  Found 4 review elements on page
+2026-06-12 13:08:42,953  INFO      text_scraper  →  Scraped 4 reviews
+2026-06-12 13:08:42,984  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 13:08:52,683  INFO      text_scraper  →  Done → headline: ✓ | subheads: 11 | body: 39 blocks | CTAs: 2 | reviews: 4
+2026-06-12 13:08:52,683  INFO      main  →        ✓ Scraped 1 URLs
+2026-06-12 13:08:52,683  INFO      main  →  [3/5] Scraping visuals...
+2026-06-12 13:08:52,694  INFO      zeus_connector  →  Cleared 13 old image(s) for slug 'https___manmatters_co_habit_landing_pdp_2024121'
+2026-06-12 13:08:52,694  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 13:08:52,695  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 13:08:52,695  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:08:52,695  INFO      zeus_connector  →  Zeus: extracting images for page 2024121-co (style=displayOrder)
+2026-06-12 13:08:52,695  INFO      zeus_connector  →  Zeus extracted 13 images for 2024121-co
+2026-06-12 13:08:52,695  INFO      visual_scraper  →  Zeus mode: 13 images found — skipping Playwright
+2026-06-12 13:08:54,711  INFO      zeus_connector  →  Zeus images downloaded: 13/13
+2026-06-12 13:08:54,714  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 13:08:54,714  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 13:08:54,714  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:08:54,714  INFO      zeus_connector  →  Zeus reviews: 0 for page 2024121-co (0/0 with dateCreated)
+2026-06-12 13:08:54,715  WARNING   visual_scraper  →  Zeus reviews unavailable — keeping 4 Playwright-scraped reviews (dates may be missing)
+2026-06-12 13:08:54,715  INFO      visual_scraper  →  Zeus visuals done → 13 total | 3 hero slides | 10 content images
+2026-06-12 13:08:54,715  INFO      main  →        ✓ https://manmatters.co/habit/landing/pdp/2024121 → 3 slides, 10 banners
+2026-06-12 13:08:54,715  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-06-12 13:08:54,715  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Hair Regrowth Kit S3
+2026-06-12 13:08:55,992  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-06-12 13:08:55,996  INFO      main  →  [5/5] Analysing...
+2026-06-12 13:08:55,997  INFO      engine  →  ============================================================
+2026-06-12 13:08:55,997  INFO      engine  →  Analysing: https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:08:55,997  INFO      engine  →  ============================================================
+2026-06-12 13:08:56,004  INFO      engine  →  1/5 Reviews...
+2026-06-12 13:08:56,005  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.co/habit/landing/pdp/2024121 (4 reviews)
+2026-06-12 13:08:56,005  WARNING   reviews_scorer  →  Review date audit: 0/4 reviews have parseable dates. Raw samples: [None, None, None, None]
+2026-06-12 13:08:56,005  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.co/habit/landing/pdp/2024121 — no review dates available, freshness score set to null
+2026-06-12 13:09:13,732  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:09:13,733  INFO      engine  →      → 4.2/10
+2026-06-12 13:09:13,733  INFO      engine  →  2/5 Persona × Narrative...
+2026-06-12 13:09:13,733  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:09:13,733  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.co/habit/landing/pdp/2024121:
+  persona_used    = Arjun
+  narrative_used  = Regrowth / Reversal
+  pain_points     = ['That it is too late and follicles are permanently dead', 'Wasting another 5-6 months on a product that will not work', 'Visible bald patches affecting confidence in professional and social settings']
+  pillars (total=3, filtered=1): ['Reversal is possible: Follicles are dormant, not dead — Stage 3 is not too late']
+2026-06-12 13:09:49,451  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.co/habit/landing/pdp/2024121 | persona=Arjun | narrative=Regrowth / Reversal | overall=5.2
+2026-06-12 13:09:49,453  INFO      engine  →      → 5.2/10
+2026-06-12 13:09:49,453  INFO      engine  →  3/5 Copy Health...
+2026-06-12 13:09:49,453  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:11:03,195  INFO      engine  →      → 6.7/10
+2026-06-12 13:11:03,197  INFO      engine  →  4/5 Visual Design...
+2026-06-12 13:11:03,197  INFO      visual_scorer  →  Scoring visual design for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:11:03,197  INFO      visual_scorer  →  Sending 10 images to Claude Vision (Zeus CDN)
+2026-06-12 13:11:33,091  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:11:33,091  INFO      visual_scorer  →  Section flow: analysing 6 sections (Zeus display order) for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:11:49,276  INFO      visual_scorer  →  Section flow scored 3.5/10 — 4 out-of-order, 6 missing
+2026-06-12 13:11:49,277  INFO      engine  →      → 4.2/10
+2026-06-12 13:11:49,277  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 13:11:49,277  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:11:49,277  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 13:11:49,277  INFO      engine  →      → 5.0/10
+2026-06-12 13:11:49,278  INFO      engine  →  OVERALL: 5.0/10 → CRITICAL
+2026-06-12 13:11:49,279  INFO      engine  →  Generating RCA...
+2026-06-12 13:11:49,279  INFO      rca  →  Score 5.0 < 8.0 — generating RCA
+2026-06-12 13:12:14,970  INFO      rca  →  Generated 6 RCA items
+2026-06-12 13:12:14,971  INFO      engine  →  RCA: 6 items
+2026-06-12 13:12:14,973  INFO      storage_tool  →  Run snapshot saved → outputs/runs/hair_regrowth_kit_s3_run_20260612_074214.json
+2026-06-12 13:12:14,974  INFO      storage_tool  →  Loading previous run → hair_regrowth_kit_s3_run_20260612_073319.json
+2026-06-12 13:12:14,975  INFO      regression_agent  →  Comparing against previous run from 2026-06-12
+2026-06-12 13:12:14,975  INFO      regression_agent  →    ↔  STABLE: https://manmatters.co/habit/landing/pdp/2024121  5.1 → 5.0 (-0.17)
+2026-06-12 13:12:14,975  INFO      main  →        https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:12:14,975  INFO      main  →          Reviews:      4.2
+2026-06-12 13:12:14,975  INFO      main  →          P×N:          5.2
+2026-06-12 13:12:14,975  INFO      main  →          Copy Health:  6.7
+2026-06-12 13:12:14,975  INFO      main  →          Visual:       4.2
+2026-06-12 13:12:14,975  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 13:12:14,975  INFO      main  →          ── OVERALL:   5.0 (-0.2) [CRITICAL]
+2026-06-12 13:12:14,975  INFO      main  →          ── RCA:       6 items
+2026-06-12 13:12:15,055  INFO      report_builder  →  Report saved → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:12:15,055  INFO      main  →  
+2026-06-12 13:12:15,055  INFO      main  →    ✅ Report saved → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:12:15,055  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:12:15,055  INFO      main  →  
+2026-06-12 13:12:15,055  INFO      main  →  Done. 3/3 reports generated.
+2026-06-12 13:12:15,055  INFO      main  →    → outputs/reports/shilajit_gummies_20260612.html
+2026-06-12 13:12:15,055  INFO      main  →    → outputs/reports/hair_regrowth_kit_s2_20260612.html
+2026-06-12 13:12:15,055  INFO      main  →    → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:18:47,040  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 13:18:47,040  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 13:18:47,041  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:18:47,041  INFO      zeus_connector  →  Zeus: extracting images for page 2024121-co (style=displayOrder)
+2026-06-12 13:18:47,041  INFO      zeus_connector  →  Zeus extracted 13 images for 2024121-co
+2026-06-12 13:20:18,872  INFO      visual_scraper  →  Playwright CDN sweep: 129 unique CDN images from https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:20:57,715  INFO      visual_scraper  →  Playwright CDN sweep: 73 unique CDN images from https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:28:19,262  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-06-12 13:28:19,263  INFO      main  →  
+2026-06-12 13:28:19,264  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:28:19,264  INFO      main  →    Starting: Hair Regrowth Kit S3
+2026-06-12 13:28:19,264  INFO      main  →    URLs: 1
+2026-06-12 13:28:19,264  INFO      main  →    Time: 13:28:19
+2026-06-12 13:28:19,264  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:28:19,264  INFO      main  →  [1/5] Ingesting PDFs...
+2026-06-12 13:28:19,294  INFO      extractor  →  Starting ingestion for: Hair Regrowth Kit S3
+2026-06-12 13:28:19,389  INFO      extractor  →  Ingest cache hit for 'Hair Regrowth Kit S3' — skipping Claude extraction
+2026-06-12 13:28:19,390  INFO      main  →        ✓ Persona: Arjun
+2026-06-12 13:28:19,390  INFO      main  →        ✓ Concerns: 3
+2026-06-12 13:28:19,390  INFO      main  →        ✓ Pillars: 3
+2026-06-12 13:28:19,390  INFO      main  →  [2/5] Scraping PDPs...
+2026-06-12 13:28:19,390  INFO      text_scraper  →  Scraping → https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:28:27,171  INFO      text_scraper  →  Structured dump: 198 lines
+2026-06-12 13:28:27,179  INFO      text_scraper  →  Review selector matched: .review-body → 4 items
+2026-06-12 13:28:27,179  INFO      text_scraper  →  Found 4 review elements on page
+2026-06-12 13:28:27,242  INFO      text_scraper  →  Scraped 4 reviews
+2026-06-12 13:28:27,292  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 13:28:36,108  INFO      text_scraper  →  Done → headline: ✓ | subheads: 11 | body: 39 blocks | CTAs: 2 | reviews: 4
+2026-06-12 13:28:36,109  INFO      main  →        ✓ Scraped 1 URLs
+2026-06-12 13:28:36,109  INFO      main  →  [3/5] Scraping visuals...
+2026-06-12 13:28:36,115  INFO      zeus_connector  →  Cleared 13 old image(s) for slug 'https___manmatters_co_habit_landing_pdp_2024121'
+2026-06-12 13:28:36,115  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 13:28:36,117  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 13:28:36,117  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:28:36,117  INFO      zeus_connector  →  Zeus: extracting images for page 2024121-co (style=displayOrder)
+2026-06-12 13:28:36,117  INFO      zeus_connector  →  Zeus extracted 13 images for 2024121-co
+2026-06-12 13:28:38,386  INFO      zeus_connector  →  Zeus images downloaded: 13/13
+2026-06-12 13:28:38,389  INFO      visual_scraper  →  Zeus: 13 images
+2026-06-12 13:28:46,726  INFO      visual_scraper  →  Playwright CDN sweep: 73 unique CDN images from https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:28:46,727  INFO      visual_scraper  →  Playwright CDN sweep added 73 images not in Zeus cache
+2026-06-12 13:29:15,250  INFO      zeus_connector  →  Zeus images downloaded: 73/73
+2026-06-12 13:29:15,266  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 13:29:15,267  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 13:29:15,267  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:29:15,267  INFO      zeus_connector  →  Zeus reviews: 0 for page 2024121-co (0/0 with dateCreated)
+2026-06-12 13:29:15,268  WARNING   visual_scraper  →  Zeus reviews unavailable — keeping 4 Playwright reviews
+2026-06-12 13:29:15,268  INFO      visual_scraper  →  Visuals done → 86 total (13 Zeus + 73 live-only) | 6 hero | 80 content
+2026-06-12 13:29:15,268  INFO      main  →        ✓ https://manmatters.co/habit/landing/pdp/2024121 → 6 slides, 80 banners
+2026-06-12 13:29:15,268  INFO      main  →  [4/5] Pulling Umbrella Sheet...
+2026-06-12 13:29:15,268  INFO      sheets_connector  →  Connecting to Umbrella Sheet → Hair Regrowth Kit S3
+2026-06-12 13:29:16,621  WARNING   main  →        Sheets pull failed:  — continuing without ad data
+2026-06-12 13:29:16,627  INFO      main  →  [5/5] Analysing...
+2026-06-12 13:29:16,627  INFO      engine  →  ============================================================
+2026-06-12 13:29:16,627  INFO      engine  →  Analysing: https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:29:16,627  INFO      engine  →  ============================================================
+2026-06-12 13:29:16,637  INFO      engine  →  1/5 Reviews...
+2026-06-12 13:29:16,637  INFO      reviews_scorer  →  Scoring reviews for https://manmatters.co/habit/landing/pdp/2024121 (4 reviews)
+2026-06-12 13:29:16,637  WARNING   reviews_scorer  →  Review date audit: 0/4 reviews have parseable dates. Raw samples: [None, None, None, None]
+2026-06-12 13:29:16,638  WARNING   reviews_scorer  →  score_reviews: returning score_status=incomplete_data for https://manmatters.co/habit/landing/pdp/2024121 — no review dates available, freshness score set to null
+2026-06-12 13:29:33,618  WARNING   reviews_scorer  →  score_reviews: freshness forced to 0 (incomplete_data) for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:29:33,620  INFO      engine  →      → 4.2/10
+2026-06-12 13:29:33,620  INFO      engine  →  2/5 Persona × Narrative...
+2026-06-12 13:29:33,620  INFO      persona_narrative_scorer  →  Scoring persona × narrative for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:29:33,621  INFO      persona_narrative_scorer  →  P×N context resolved for https://manmatters.co/habit/landing/pdp/2024121:
+  persona_used    = Arjun
+  narrative_used  = Regrowth / Reversal
+  pain_points     = ['That it is too late and follicles are permanently dead', 'Wasting another 5-6 months on a product that will not work', 'Visible bald patches affecting confidence in professional and social settings']
+  pillars (total=3, filtered=1): ['Reversal is possible: Follicles are dormant, not dead — Stage 3 is not too late']
+2026-06-12 13:30:07,922  INFO      persona_narrative_scorer  →  P×N scored: https://manmatters.co/habit/landing/pdp/2024121 | persona=Arjun | narrative=Regrowth / Reversal | overall=6.2
+2026-06-12 13:30:07,923  INFO      engine  →      → 6.2/10
+2026-06-12 13:30:07,924  INFO      engine  →  3/5 Copy Health...
+2026-06-12 13:30:07,924  INFO      copy_health_scorer  →  Scoring copy health for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:31:28,502  INFO      engine  →      → 6.7/10
+2026-06-12 13:31:28,503  INFO      engine  →  4/5 Visual Design...
+2026-06-12 13:31:28,504  INFO      visual_scorer  →  Scoring visual design for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:31:28,504  INFO      visual_scorer  →  Sending 12 images to Claude Vision (Zeus CDN)
+2026-06-12 13:32:06,387  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 13:32:06,390  INFO      visual_scorer  →  Section flow: analysing 6 sections (Zeus display order) for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:32:20,735  INFO      visual_scorer  →  Section flow scored 3.5/10 — 4 out-of-order, 4 missing
+2026-06-12 13:32:20,741  INFO      engine  →      → 4.2/10
+2026-06-12 13:32:20,741  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 13:32:20,742  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:32:20,743  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 13:32:20,743  INFO      engine  →      → 5.0/10
+2026-06-12 13:32:20,744  INFO      engine  →  OVERALL: 5.2/10 → CRITICAL
+2026-06-12 13:32:20,745  INFO      engine  →  Generating RCA...
+2026-06-12 13:32:20,745  INFO      rca  →  Score 5.2 < 8.0 — generating RCA
+2026-06-12 13:32:49,774  INFO      rca  →  Generated 6 RCA items
+2026-06-12 13:32:49,777  INFO      engine  →  RCA: 6 items
+2026-06-12 13:32:49,781  INFO      storage_tool  →  Run snapshot saved → outputs/runs/hair_regrowth_kit_s3_run_20260612_080249.json
+2026-06-12 13:32:49,785  INFO      storage_tool  →  Loading previous run → hair_regrowth_kit_s3_run_20260612_074214.json
+2026-06-12 13:32:49,785  INFO      regression_agent  →  Comparing against previous run from 2026-06-12
+2026-06-12 13:32:49,786  INFO      regression_agent  →    ↔  STABLE: https://manmatters.co/habit/landing/pdp/2024121  5.0 → 5.2 (+0.29)
+2026-06-12 13:32:49,786  INFO      main  →        https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 13:32:49,786  INFO      main  →          Reviews:      4.2
+2026-06-12 13:32:49,786  INFO      main  →          P×N:          6.2
+2026-06-12 13:32:49,786  INFO      main  →          Copy Health:  6.7
+2026-06-12 13:32:49,786  INFO      main  →          Visual:       4.2
+2026-06-12 13:32:49,786  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 13:32:49,786  INFO      main  →          ── OVERALL:   5.2 (+0.3) [CRITICAL]
+2026-06-12 13:32:49,786  INFO      main  →          ── RCA:       6 items
+2026-06-12 13:32:49,950  INFO      report_builder  →  Report saved → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:32:49,950  INFO      main  →  
+2026-06-12 13:32:49,950  INFO      main  →    ✅ Report saved → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 13:32:49,950  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 13:32:49,950  INFO      main  →  
+2026-06-12 13:32:49,950  INFO      main  →  Done. 1/1 reports generated.
+2026-06-12 13:32:49,950  INFO      main  →    → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 14:13:49,897  INFO      visual_scraper  →  Playwright CDN sweep: 73 unique CDN images from https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 14:15:59,002  INFO      visual_scraper  →  Playwright CDN sweep: 61 content images from https://manmatters.co/habit/landing/pdp/2024121 (12 chrome/nav icons dropped)
