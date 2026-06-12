@@ -293,74 +293,219 @@ def _scrape_banners(page: Page, url_slug: str) -> List[Banner]:
     return banners_data
 
 
+# ── Playwright CDN image sweep ─────────────────────────────────────────────────
+
+# Image CDN domains — only include media/image CDNs, never static-asset CDNs
+_IMAGE_CDN_DOMAINS = (
+    "i.mscwlns.co",       # ManMatters image CDN
+    "cloudfront.net",
+    "imgix.net",
+    "cloudinary.com",
+    "imagekit.io",
+)
+# Extensions that are definitely NOT images (JS, fonts, CSS, etc.)
+_NON_IMAGE_EXTS = (".js", ".css", ".woff", ".woff2", ".ttf", ".eot",
+                   ".map", ".json", ".txt", ".xml")
+
+def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
+    """
+    Open the live PDP page with Playwright, scroll fully to trigger lazy loads,
+    and collect every CDN image URL found in <img> src / srcset / CSS backgrounds.
+
+    Returns ZeusImage objects (no local_path — caller downloads them).
+    This always reflects the REAL live page, regardless of Zeus/staging cache quality.
+    """
+    found_urls: List[str] = []
+    seen: set = set()
+
+    def _is_cdn_image(s: str) -> bool:
+        if not isinstance(s, str) or not s.startswith("http"):
+            return False
+        lower = s.lower()
+        # Skip videos
+        if any(v in lower for v in (".mp4", ".webm", ".mov", "video.")):
+            return False
+        # Skip non-image assets (JS, fonts, CSS)
+        path = lower.split("?")[0]
+        if any(path.endswith(ext) for ext in _NON_IMAGE_EXTS):
+            return False
+        # Must be an image CDN domain
+        return any(cdn in lower for cdn in _IMAGE_CDN_DOMAINS)
+
+    try:
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(headless=True)
+            ctx = browser.new_context(
+                viewport={"width": W, "height": H},
+                user_agent=(
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/124.0.0.0 Safari/537.36"
+                ),
+            )
+            page = ctx.new_page()
+
+            # Intercept network — catch every CDN image request (incl. lazy loads)
+            def _on_request(req):
+                u = req.url
+                if _is_cdn_image(u) and u not in seen:
+                    seen.add(u)
+                    found_urls.append(u)
+
+            page.on("request", _on_request)
+
+            page.goto(url, wait_until="domcontentloaded", timeout=35000)
+            page.wait_for_timeout(2000)
+
+            # Slow scroll to trigger all lazy-loaded images
+            page.evaluate("""async () => {
+                const delay = ms => new Promise(r => setTimeout(r, ms));
+                const total = document.body.scrollHeight;
+                const step  = Math.floor(total / 10);
+                for (let y = 0; y <= total; y += step) {
+                    window.scrollTo(0, y);
+                    await delay(300);
+                }
+                window.scrollTo(0, 0);
+            }""")
+            page.wait_for_timeout(1500)
+
+            # Also collect from DOM in case network intercept missed cached responses
+            dom_urls = page.evaluate("""() => {
+                const urls = new Set();
+                document.querySelectorAll('img[src], img[data-src]').forEach(el => {
+                    [el.src, el.dataset.src].filter(Boolean).forEach(u => urls.add(u));
+                    (el.srcset || '').split(',').forEach(part => {
+                        const u = part.trim().split(' ')[0];
+                        if (u) urls.add(u);
+                    });
+                });
+                document.querySelectorAll('[style*="background-image"]').forEach(el => {
+                    const m = el.style.backgroundImage.match(/url\\(['"]?([^'"\\)]+)/);
+                    if (m) urls.add(m[1]);
+                });
+                return [...urls];
+            }""") or []
+
+            browser.close()
+
+        for u in dom_urls:
+            if _is_cdn_image(u) and u not in seen:
+                seen.add(u)
+                found_urls.append(u)
+
+    except Exception as e:
+        log.warning(f"Playwright CDN sweep failed for {url}: {e}")
+        return []
+
+    # Deduplicate: strip ?tr= transforms to identify same base image
+    def _base(u: str) -> str:
+        return u.split("?")[0]
+
+    deduped: List[str] = []
+    base_seen: set = set()
+    for u in found_urls:
+        b = _base(u)
+        if b not in base_seen:
+            base_seen.add(b)
+            deduped.append(u)
+
+    log.info(f"Playwright CDN sweep: {len(deduped)} unique CDN images from {url}")
+
+    images = []
+    for i, img_url in enumerate(deduped):
+        # Hero images tend to appear early in network order
+        position = "hero" if i < 3 else "content"
+        images.append(ZeusImage(
+            url=img_url,
+            position=position,
+            widget_id=f"playwright_cdn_{i}",
+            widget_type="CDN_SWEEP",
+            index=i,
+            label=f"live_page_{i+1}",
+        ))
+
+    return images
+
+
 # ── Main ────────────────────────────────────────────────────────────────────────
 
 def enrich_with_visuals(pdp_data: PDPTextData) -> PDPTextData:
     """
     Enriches PDPTextData with visual assets.
 
-    Zeus mode (preferred): fetches CDN images directly from the Zeus cache —
-    no Playwright needed, full resolution, properly labelled.
+    Always runs both:
+      1. Zeus CDN images (labelled, positioned, from cache)
+      2. Playwright CDN sweep (all live page CDN images, catches staging cache mismatches)
 
-    Playwright fallback: opens the page in headless Chrome and screenshots
-    carousel slides + banners when Zeus data is unavailable.
+    Zeus images take priority; Playwright sweep fills any gaps. This ensures we
+    always score the REAL live page visuals even when Zeus has staging/wrong data.
     """
     url = pdp_data.url
     url_slug = _slug(url)
 
-    # ── Zeus-first path ────────────────────────────────────────────────────────
+    # ── Step 1: Zeus images ────────────────────────────────────────────────────
     zeus_images = get_zeus_images(url)
     if zeus_images:
-        log.info(f"Zeus mode: {len(zeus_images)} images found — skipping Playwright")
         zeus_images = download_zeus_images(zeus_images, url_slug)
+        log.info(f"Zeus: {len(zeus_images)} images")
 
-        pdp_data.zeus_images  = zeus_images
+    # ── Step 2: Playwright CDN sweep — always runs ─────────────────────────────
+    # Gets every CDN image from the LIVE page regardless of Zeus cache quality.
+    # Critical when staging Zeus cache has wrong-product data.
+    live_images = _playwright_cdn_sweep(url, url_slug)
+
+    # Merge: Zeus images first (labelled/positioned), then live-only additions
+    zeus_urls = {z.url.split("?")[0] for z in zeus_images}
+    extra_live = [
+        img for img in live_images
+        if img.url.split("?")[0] not in zeus_urls
+    ]
+
+    if extra_live:
+        log.info(f"Playwright CDN sweep added {len(extra_live)} images not in Zeus cache")
+        extra_live = download_zeus_images(extra_live, url_slug)
+
+    all_images = zeus_images + extra_live
+
+    if all_images:
+        pdp_data.zeus_images  = all_images
         pdp_data.zeus_sourced = True
 
-        # Also populate carousels/banners from Zeus data so downstream
-        # scorers that read those fields get something useful
-        hero = [z for z in zeus_images if z.position == "hero"]
-        other = [z for z in zeus_images if z.position != "hero"]
+        hero  = [z for z in all_images if z.position == "hero"]
+        other = [z for z in all_images if z.position != "hero"]
 
         pdp_data.carousels = [
-            CarouselSlide(
-                index=z.index + 1,
-                copy=z.label,
-                screenshot_path=z.local_path,
-            )
+            CarouselSlide(index=z.index + 1, copy=z.label,
+                          screenshot_path=z.local_path)
             for z in hero
         ]
         pdp_data.banners = [
-            Banner(
-                location=z.position,
-                copy=z.label,
-                screenshot_path=z.local_path,
-            )
-            for z in other
-            if z.local_path  # only include successfully downloaded images
+            Banner(location=z.position, copy=z.label,
+                   screenshot_path=z.local_path)
+            for z in other if z.local_path
         ]
 
-        # Always load reviews from Zeus — Zeus has real dateCreated values.
-        # Playwright-scraped reviews have no reliable dates so we always replace them.
         zeus_reviews = get_zeus_reviews(url)
         if zeus_reviews:
             pdp_data.reviews = zeus_reviews
             dates_present = sum(1 for r in zeus_reviews if r.date)
-            log.info(f"Zeus reviews: {len(zeus_reviews)} loaded ({dates_present} with dateCreated) — replaced Playwright reviews")
+            log.info(f"Zeus reviews: {len(zeus_reviews)} ({dates_present} with date)")
         elif pdp_data.reviews:
-            log.warning(f"Zeus reviews unavailable — keeping {len(pdp_data.reviews)} Playwright-scraped reviews (dates may be missing)")
+            log.warning(f"Zeus reviews unavailable — keeping {len(pdp_data.reviews)} Playwright reviews")
         else:
             log.warning(f"No reviews from Zeus or Playwright for {url}")
 
         log.info(
-            f"Zeus visuals done → {len(pdp_data.zeus_images)} total | "
-            f"{len(pdp_data.carousels)} hero slides | "
-            f"{len(pdp_data.banners)} content images"
+            f"Visuals done → {len(all_images)} total "
+            f"({len(zeus_images)} Zeus + {len(extra_live)} live-only) | "
+            f"{len(pdp_data.carousels)} hero | {len(pdp_data.banners)} content"
         )
         return pdp_data
 
-    # ── Playwright fallback ────────────────────────────────────────────────────
-    log.info(f"Playwright fallback → {url}")
+    # ── Playwright screenshot fallback (no CDN images at all) ──────────────────
+    # Only reached when both Zeus cache and live page CDN sweep found nothing.
+    log.info(f"No CDN images found — screenshot fallback → {url}")
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True)
