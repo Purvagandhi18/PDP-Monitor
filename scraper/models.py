@@ -62,6 +62,11 @@ class PDPTextData(BaseModel):
     zeus_images: List[ZeusImage] = []
     zeus_sourced: bool = False         # True when visuals came from Zeus, not Playwright
 
+    # Live page section order (from __NEXT_DATA__ widgets) — the real top-to-bottom
+    # section sequence on the page, used by section-flow analysis. More reliable
+    # than the Zeus cache when staging data is stale/wrong-product.
+    live_section_order: List[str] = []
+
     # Raw HTML (optional, for debugging)
     raw_html: Optional[str] = None
 

@@ -375,6 +375,110 @@ def _extract_next_data_reviews(page: Page) -> List[Review]:
     return reviews
 
 
+# Widget types that are nav/pricing/utility, not narrative sections — skipped
+# from the section-flow sequence.
+_SECTION_SKIP_TYPES = {
+    "product-summary", "product-switch", "check-delivery-info",
+    "sticky-cta-button", "bread-crumbs", "product-discount-tag-desktop",
+    "product-discount-tag", "recently-viewed", "frequently-bought-together",
+}
+
+# Readable labels for widget types that lack a header.title
+_SECTION_TYPE_LABELS = {
+    "image-carousel": "Hero Carousel",
+    "kit-breakdown": "What's Inside the Kit",
+    "testimonials": "Customer Reviews",
+    "ratings-and-reviews": "Ratings & Reviews",
+    "comparison-table": "Comparison (Why Us)",
+    "icon-grid": "Trust Badges",
+    "image-grid": "Gallery",
+    "faqs": "FAQ",
+    "reels-slider": "Reels / Social Proof",
+    "science-backed-slider": "Science Backed",
+    "expert-cards": "Expert Cards",
+}
+
+
+def _extract_next_data_sections(page: Page) -> List[str]:
+    """
+    Extract the real top-to-bottom section order from the page's __NEXT_DATA__
+    widgets list (RCL .co pages). Returns human-readable section names in page
+    order, skipping nav/pricing/utility widgets. [] if unavailable.
+
+    This is the authoritative section sequence — far more reliable than the
+    Zeus cache, which on staging can be stale or for the wrong product.
+    """
+    import json
+    try:
+        txt = page.evaluate(
+            "() => { const el = document.getElementById('__NEXT_DATA__');"
+            " return el ? el.textContent : ''; }"
+        )
+    except Exception:
+        return []
+    if not txt:
+        return []
+    try:
+        data = json.loads(txt)
+    except Exception:
+        return []
+
+    # Find the widgets list — the longest list of dicts that look like widgets
+    best = []
+
+    def _walk(o):
+        nonlocal best
+        if isinstance(o, dict):
+            w = o.get("widgets")
+            if isinstance(w, list) and w and isinstance(w[0], dict):
+                if len(w) > len(best):
+                    best = w
+            for v in o.values():
+                _walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                _walk(v)
+
+    _walk(data)
+    if not best:
+        return []
+
+    sections = []
+    for w in best:
+        if not isinstance(w, dict):
+            continue
+        wtype = (w.get("type") or w.get("widgetType") or w.get("id") or "").strip()
+        # Normalise trailing -1/-2 suffixes for the skip/label lookup
+        base_type = re.sub(r"-\d+$", "", wtype)
+        if base_type in _SECTION_SKIP_TYPES:
+            continue
+        header = w.get("header") if isinstance(w.get("header"), dict) else {}
+        title = (header.get("title") or "").strip()
+        label = title or _SECTION_TYPE_LABELS.get(base_type) or \
+            base_type.replace("-", " ").replace("_", " ").title()
+        # Safety net — skip utility widgets whose type string didn't match the
+        # skip set but whose label clearly marks them as nav/pricing/footer.
+        low = label.lower()
+        if any(k in low for k in (
+            "product summary", "product switch", "sticky cta",
+            "footer", "breadcrumb", "delivery info", "discount tag",
+        )):
+            continue
+        if label:
+            sections.append(label)
+
+    # Deduplicate consecutive/repeat labels while preserving order
+    seen, unique = set(), []
+    for s in sections:
+        if s not in seen:
+            seen.add(s)
+            unique.append(s)
+
+    if unique:
+        log.info(f"__NEXT_DATA__ sections: {len(unique)} in page order")
+    return unique
+
+
 def _scrape_reviews(page: Page) -> List[Review]:
     """
     Scrape reviews. Tries the embedded __NEXT_DATA__ JSON first (structured,
@@ -513,6 +617,9 @@ def scrape_text(url: str) -> PDPTextData:
             # Reviews (CSS-based with fallback)
             reviews = _scrape_reviews(page)
 
+            # Real section order from __NEXT_DATA__ (for section-flow analysis)
+            live_sections = _extract_next_data_sections(page)
+
         except PWTimeout:
             log.error(f"Timeout loading {url}")
             raise
@@ -542,7 +649,8 @@ def scrape_text(url: str) -> PDPTextData:
         cta_texts=cta_texts,
         full_page_text=full_text,
         reviews=reviews,
-        reviews_count_scraped=len(reviews)
+        reviews_count_scraped=len(reviews),
+        live_section_order=live_sections,
     )
 
     log.info(

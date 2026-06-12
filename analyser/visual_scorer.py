@@ -415,11 +415,23 @@ def score_section_flow(
     narrative arc for the configured persona and narrative.
     Returns a SectionFlowScore with reorder recommendations.
     """
-    # Primary: Zeus display/section order (reliable, widget-level granularity)
-    # Fallback: Playwright-scraped H2/H3 subheads (only 3-5 on ManMatters pages)
+    # Section order source priority:
+    #   1. Live page __NEXT_DATA__ widget order (authoritative, real titles) —
+    #      reliable even when the Zeus cache is stale/wrong-product.
+    #   2. Zeus display/section order (widget-level, but staging can be wrong).
+    #   3. Playwright-scraped H2/H3 subheads (only 3-5 on ManMatters pages).
+    live_order = getattr(pdp, "live_section_order", []) or []
     zeus_order = _get_zeus_section_order(pdp.url)
-    section_list = zeus_order if len(zeus_order) >= 5 else pdp.subheads
-    source = "Zeus display order" if zeus_order and len(zeus_order) >= 5 else "Playwright H2 headings"
+
+    if len(live_order) >= 5:
+        section_list = live_order
+        source = "live page (__NEXT_DATA__)"
+    elif len(zeus_order) >= 5:
+        section_list = zeus_order
+        source = "Zeus display order"
+    else:
+        section_list = pdp.subheads
+        source = "Playwright H2 headings"
 
     if not section_list:
         log.warning(f"No section order found for {pdp.url} — skipping section flow analysis")
