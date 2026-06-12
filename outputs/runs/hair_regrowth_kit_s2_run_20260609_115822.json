@@ -1,0 +1,20 @@
+{
+  "run_id": "hair_regrowth_kit_s2_run_20260609_115822",
+  "run_date": "2026-06-09",
+  "run_ts": "2026-06-09T11:58:22.273740",
+  "product_name": "Hair Regrowth Kit S2",
+  "pdps": [
+    {
+      "url": "https://manmatters.co/habit/landing/pdp/141464",
+      "overall_score": 5.57,
+      "status": "critical",
+      "scores": {
+        "reviews": 5.2,
+        "persona_narrative": 5.2,
+        "copy_health": 5.8,
+        "visual_design": 6.2,
+        "ad_alignment": 5.0
+      }
+    }
+  ]
+}

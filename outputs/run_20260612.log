@@ -1,0 +1,3 @@
+2026-06-12 12:49:22,696  INFO      kai_client  →  KAI: fetching PDP JSON via MCP (https://stg-pdp-mcp.mosaicwellness.in) for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 12:49:22,936  INFO      kai_client  →  KAI: fetched https://manmatters.co/habit/landing/pdp/2024121 — gallery=3 widgets=7 reviews=0
+2026-06-12 12:49:22,936  INFO      kai_client  →  KAI cache built for 2024121-co: gallery=3 widgets=7 sections_raw=0 reviews=0

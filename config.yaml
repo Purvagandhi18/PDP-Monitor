@@ -46,6 +46,24 @@ products:
       product_brief:    "inputs/pdfs/hair_regrowth_s2/product_brief.pdf"
       narrative:        "inputs/pdfs/hair_regrowth_s2/narrative.pdf"
 
+  # ── Hair Regrowth Kit — Stage 3 ──────────────────────────────────────────
+  - name: "Hair Regrowth Kit S3"
+    personas:
+      - "Arjun"   # 22-34yr working professional, crown + bald patches, brand-burned researcher
+    narratives:
+      - "Regrowth / Reversal"       # Bald patch reversal — follicles dormant not dead
+      - "It's Not Too Late"         # Address "too late" belief head-on, follicle biology
+      - "The Right Protocol"        # Why oils/shampoos failed, why dual-action works
+    urls:
+      - url: "https://manmatters.co/habit/landing/pdp/2024121"
+        narrative: "Regrowth / Reversal"
+        persona: "Arjun"
+    pdfs:
+      persona:          "inputs/pdfs/hair_regrowth_s3/persona.pdf"
+      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+      product_brief:    "inputs/pdfs/hair_regrowth_s3/product_brief.pdf"
+      narrative:        "inputs/pdfs/hair_regrowth_s3/narrative.pdf"
+
   # ── ADD A NEW PRODUCT BELOW ───────────────────────────────────────────────
   # Copy this block and fill in the fields. Each product gets its own:
   #   - inputs/pdfs/{product_folder}/ with persona.pdf, product_brief.docx, narrative.pdf
