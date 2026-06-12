@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Hair Regrowth Regime — PDP Report 12 June 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:#f5f5f3;color:#1a1a1a;font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
+
+/* ── Layout ─────────────────────────────────────── */
+.page{max-width:1000px;margin:0 auto;padding:36px 24px 80px}
+
+/* ── Report header ──────────────────────────────── */
+.rh{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:20px;border-bottom:2px solid #1a1a1a;margin-bottom:28px}
+.rh h1{font-size:20px;font-weight:800;letter-spacing:0}
+.rh p{font-size:13px;color:#777;margin-top:3px}
+.rh-right{text-align:right;font-size:12px;color:#aaa;line-height:1.8}
+
+/* ── Status colours ─────────────────────────────── */
+.healthy  {color:#1a7a4a}
+.attention{color:#c17d00}
+.critical {color:#c0392b}
+.bg-healthy  {background:#e6f4ed;color:#1a7a4a}
+.bg-attention{background:#fef3e2;color:#c17d00}
+.bg-critical {background:#fdecea;color:#c0392b}
+
+/* ── Overall hero ───────────────────────────────── */
+.hero-bar{background:#fff;border:1px solid #e5e5e2;border-radius:14px;padding:22px 28px;
+  display:flex;align-items:center;gap:20px;margin-bottom:24px}
+.big-score{font-size:48px;font-weight:800;line-height:1;letter-spacing:-1px}
+.hero-meta .lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#aaa}
+.hero-meta .name{font-size:17px;font-weight:700;margin-top:2px}
+.badge{padding:5px 16px;border-radius:99px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+
+/* ── URL switcher ───────────────────────────────── */
+.url-switcher{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.url-pill{padding:7px 16px;border-radius:99px;font-size:12px;font-weight:600;
+  border:1.5px solid #e5e5e2;background:#fff;cursor:pointer;color:#888;
+  transition:all .15s;white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis}
+.url-pill:hover{border-color:#888;color:#1a1a1a}
+.url-pill.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.up-score{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:800}
+
+/* ── Card ───────────────────────────────────────── */
+.card{background:#fff;border:1px solid #e5e5e2;border-radius:14px;margin-bottom:16px;overflow:hidden}
+.pdp-block{display:none}.pdp-block.active{display:block}
+
+/* ── Card header row (URL + score) ─────────────── */
+.card-hdr{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid #e5e5e2;background:#fff;gap:12px}
+.card-url{font-size:12.5px;font-weight:700;color:#1a1a1a;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;text-decoration:none}
+.card-url:hover{text-decoration:underline;color:#1a1a1a}
+.card-hdr-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.card-score{font-size:20px;font-weight:800;line-height:1}
+
+/* ── Hygiene sub-tabs ───────────────────────────── */
+.h-sub-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px}
+.h-sub{padding:6px 14px;border-radius:99px;font-size:12px;font-weight:700;
+  border:1.5px solid #e5e5e2;background:#fafaf8;cursor:pointer;color:#888;
+  display:flex;align-items:center;gap:6px;transition:all .15s}
+.h-sub:hover{border-color:#aaa;color:#444}
+.h-sub.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.h-sub.active .fi-src{background:rgba(255,255,255,.15);color:#fff}
+.h-panel{display:none}.h-panel.active{display:block}
+
+/* ── Tab nav ────────────────────────────────────── */
+.tab-nav{display:flex;border-bottom:1px solid #e5e5e2;overflow-x:auto;background:#fafaf8}
+.tab-btn{padding:13px 18px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;
+  white-space:nowrap;color:#999;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;
+  display:flex;align-items:center;gap:7px}
+.tab-btn:hover{color:#1a1a1a}
+.tab-btn.active{color:#1a1a1a;border-bottom-color:#1a1a1a}
+.ts{font-size:11px;font-weight:800;padding:2px 7px;border-radius:99px;line-height:1.5}
+.tab-panel{display:none;padding:24px}.tab-panel.active{display:block}
+
+/* ── Score boxes row ────────────────────────────── */
+.score-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.sc{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;padding:14px 16px}
+.sc.total{border:2px solid #d1d5db;background:#fff}
+.sc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:#aaa;margin-bottom:5px}
+.sc-val{font-size:26px;font-weight:800;line-height:1}
+.sc-val .dn{font-size:13px;font-weight:400;color:#bbb}
+.bar-t{height:4px;border-radius:4px;background:#ebebeb;margin-top:8px}
+.bar-f{height:4px;border-radius:4px}
+.bar-f.healthy{background:#1a7a4a}.bar-f.attention{background:#c17d00}.bar-f.critical{background:#c0392b}
+
+/* ── Summary score grid ─────────────────────────── */
+.sum-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:22px}
+.sum-cell{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;padding:14px 10px;text-align:center}
+.sum-cell.dark{background:#1a1a1a;border-color:#1a1a1a}
+.sum-cell-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#aaa;margin-bottom:6px}
+.sum-cell.dark .sum-cell-lbl{color:#888}
+.sum-cell-val{font-size:22px;font-weight:800}
+.sum-cell.dark .sum-cell-val{color:#fff}
+
+/* ── Flag items (hygiene unified) ───────────────── */
+.flag-section-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#aaa;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+.flag-section-lbl:first-child{margin-top:0}
+.fcnt{padding:2px 7px;border-radius:99px;font-size:10px;font-weight:700}
+.fcnt.critical{background:#fdecea;color:#c0392b}
+.fcnt.attention{background:#fef3e2;color:#c17d00}
+.fcnt.healthy{background:#e6f4ed;color:#1a7a4a}
+
+.fi{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;
+  margin-bottom:6px;transition:opacity .25s}
+.fi.fi-flagged{background:#fff5f5;border:1px solid #fecaca}
+.fi.fi-warning{background:#fffbeb;border:1px solid #fde68a}
+.fi.fi-ok{background:#eef8f3;border:1px solid #bbf7d0}
+.fi.dismissed{opacity:.3}
+.fi label{display:flex;align-items:flex-start;gap:10px;flex:1;cursor:pointer}
+.fi-cb{width:16px;height:16px;border-radius:4px;cursor:pointer;flex-shrink:0;margin-top:2px;accent-color:#1a7a4a}
+.fi-ico{font-size:13px;flex-shrink:0;margin-top:2px}
+.fi-body{flex:1}
+.fi-text{font-size:13px;font-weight:700;color:#1a1a1a;line-height:1.4}
+.fi-reason{font-size:12px;color:#666;margin-top:3px;line-height:1.5}
+.fi-src{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;
+  border-radius:99px;margin-top:5px;text-transform:uppercase;letter-spacing:.5px}
+.fi-src.claims{background:#ede9fe;color:#5b21b6}
+.fi-src.brand{background:#dbeafe;color:#1e40af}
+.fi-src.spell{background:#fce7f3;color:#9d174d}
+
+/* ── Subscore expandable rows ───────────────────── */
+.ssr-list{display:flex;flex-direction:column;gap:8px}
+.ssr{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;
+  padding:14px 16px;cursor:pointer;transition:border-color .15s}
+.ssr:hover{border-color:#ccc}
+.ssr-top{display:flex;justify-content:space-between;align-items:center}
+.ssr-name{font-size:13px;font-weight:700}
+.ssr-score{font-size:18px;font-weight:800}
+.ssr-score .dn{font-size:11px;font-weight:400;color:#bbb}
+.ssr-detail{display:none;margin-top:12px;padding-top:12px;border-top:1px solid #ebebeb}
+.ssr.open .ssr-detail{display:block}
+.ssr-obs{font-size:13px;color:#555;margin-bottom:8px;line-height:1.6}
+.ssr-sug{font-size:13px;font-weight:600;color:#1a1a1a;background:#fef8e7;
+  border-radius:6px;padding:8px 12px;display:flex;gap:8px;align-items:flex-start}
+.ssr-sug::before{content:"💡";flex-shrink:0}
+.ssr-dismiss{display:flex;align-items:center;gap:6px;margin-top:8px;
+  font-size:11.5px;color:#888;cursor:pointer}
+.ssr-dismiss input{accent-color:#1a7a4a}
+.ssr-dismiss.resolved{color:#1a7a4a;font-weight:600}
+
+/* ── Narrative banner ───────────────────────────── */
+.nar-banner{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:10px;
+  padding:16px 20px;margin-bottom:20px;display:flex;gap:28px;flex-wrap:wrap}
+.nb-item strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;color:#818cf8;margin-bottom:3px}
+.nb-item span{font-size:14px;font-weight:700;color:#e0e7ff}
+
+/* ── Persona matrix table ───────────────────────── */
+.pm-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.pm-table th{text-align:left;padding:9px 12px;background:#fafaf8;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#888;
+  border-bottom:2px solid #e5e5e2}
+.pm-table td{padding:10px 12px;border-bottom:1px solid #f0f0ee;vertical-align:top}
+.pm-table tr:last-child td{border-bottom:none}
+.pm-persona{font-weight:700;font-size:13px;white-space:nowrap}
+.pm-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.pm-list li{font-size:12.5px;line-height:1.5;padding-left:16px;position:relative}
+.pm-right li::before{content:"✓";position:absolute;left:0;color:#1a7a4a;font-weight:700}
+.pm-miss li::before{content:"✗";position:absolute;left:0;color:#c0392b;font-weight:700}
+
+/* ── Collapsible scraped data blocks ────────────── */
+.scraped-block{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;margin-top:16px}
+.scraped-block summary{
+  padding:13px 16px;font-size:12px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.8px;color:#888;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;
+  user-select:none}
+.scraped-block summary::after{content:"▾";font-size:12px;color:#bbb;transition:transform .2s}
+.scraped-block[open] summary::after{content:"▴"}
+.scraped-body{padding:0 16px 16px}
+
+/* ── Copy rows inside scraped blocks ────────────── */
+.copy-row{padding:8px 0;border-bottom:1px solid #f0f0ee;font-size:13px}
+.copy-row:last-child{border-bottom:none}
+.copy-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
+  color:#aaa;display:block;margin-bottom:3px}
+.copy-hero{font-size:17px;font-weight:800;color:#1a1a1a;line-height:1.4}
+.chip-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{background:#f0f0ee;border-radius:99px;padding:4px 12px;font-size:12px;color:#444;font-weight:500}
+.chip.cta{background:#1a1a1a;color:#fff;font-weight:700}
+.body-item{font-size:12.5px;color:#555;padding:6px 10px;background:#f5f5f3;
+  border-radius:5px;border-left:3px solid #e5e5e2;margin-bottom:5px;line-height:1.6}
+
+/* ── Text layer insights ────────────────────────── */
+.ti-list{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.ti{padding:10px 14px;border-radius:8px;display:flex;gap:10px;align-items:flex-start}
+.ti.critical{background:#fff5f5;border:1px solid #fecaca}
+.ti.warning {background:#fffbeb;border:1px solid #fde68a}
+.ti.ok      {background:#eef8f3;border:1px solid #bbf7d0}
+.ti-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;
+  white-space:nowrap;flex-shrink:0;margin-top:2px}
+.ti.critical .ti-badge{background:#fdecea;color:#c0392b}
+.ti.warning  .ti-badge{background:#fef3e2;color:#c17d00}
+.ti.ok       .ti-badge{background:#e6f4ed;color:#1a7a4a}
+.ti-body{flex:1}
+.ti-finding{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:3px}
+.ti-detail{font-size:12px;color:#666;line-height:1.6}
+.ti-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:#aaa;margin-bottom:3px}
+.ti.dismissed{opacity:.3}
+
+/* ── Image grid ─────────────────────────────────── */
+.img-sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
+  color:#aaa;margin:14px 0 6px;padding-top:14px;border-top:1px solid #f0f0ee}
+.img-sec:first-child .img-sec-lbl{border-top:none;padding-top:0;margin-top:0}
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.img-card{border-radius:8px;overflow:hidden;border:1px solid #e5e5e2;background:#fafaf8}
+.img-card img{width:100%;display:block;object-fit:cover;max-height:130px}
+.img-lbl{padding:5px 8px;font-size:10.5px;font-weight:500;color:#777;border-top:1px solid #f0f0ee}
+
+/* ── Review grid ────────────────────────────────── */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-top:12px}
+.rv-card{background:#fafaf8;border:1px solid #e5e5e2;border-radius:10px;padding:14px;
+  display:flex;flex-direction:column;gap:5px}
+.rv-head{display:flex;justify-content:space-between;align-items:center}
+.rv-stars{font-size:13px;font-weight:700;color:#c17d00}
+.rv-date{font-size:11px;color:#aaa}
+.rv-author{font-size:12px;font-weight:700;color:#444}
+.rv-title{font-size:13px;font-weight:700;color:#1a1a1a}
+.rv-text{font-size:12.5px;color:#555;line-height:1.6}
+.rv-img{width:100%;border-radius:6px;margin-top:6px;object-fit:cover;max-height:120px}
+
+/* ── RCA ────────────────────────────────────────── */
+.rca-wrap{margin-top:20px}
+.rca-hdr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#c17d00;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.rca-hdr::before{content:"⚡"}
+.rca-item{background:#fffbf0;border:1px solid #f0d080;border-radius:10px;
+  padding:14px 16px;margin-bottom:8px}
+.rca-item:last-child{margin-bottom:0}
+.rca-culprit{font-size:14px;font-weight:800;margin-bottom:4px;display:flex;
+  align-items:center;gap:8px;flex-wrap:wrap}
+.rca-evidence{font-size:12.5px;color:#666;margin-bottom:8px;font-style:italic;line-height:1.6}
+.rca-fix{font-size:13px;font-weight:600;color:#1a1a1a;background:#fff;
+  border-radius:6px;padding:9px 12px;border-left:3px solid #c17d00;line-height:1.6}
+
+/* ── Section label ──────────────────────────────── */
+.sec-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#ccc;margin:22px 0 10px;padding-top:18px;border-top:1px solid #f0f0ee}
+.sec-lbl:first-child{border-top:none;margin-top:0;padding-top:0}
+
+/* ── Ok message ─────────────────────────────────── */
+.ok-msg{background:#eef8f3;border:1px solid #a7f3d0;border-radius:8px;padding:12px 14px;
+  font-size:13px;color:#1a7a4a;font-weight:600}
+.ok-msg::before{content:"✓  "}
+
+/* ── Section Flow ───────────────────────────────── */
+.sf-wrap{background:#fafaf8;border:1px solid #e5e5e2;border-radius:12px;padding:20px;margin-top:10px}
+.sf-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.sf-score-badge{font-size:20px;font-weight:800;padding:6px 14px;border-radius:8px;white-space:nowrap;flex-shrink:0}
+.sf-score-badge.healthy{background:#e6f4ed;color:#1a7a4a}
+.sf-score-badge.attention{background:#fef3e2;color:#c17d00}
+.sf-score-badge.critical{background:#fdecea;color:#c0392b}
+.sf-obs{font-size:13px;color:#555;line-height:1.6;padding-top:4px}
+.sf-section{margin-bottom:16px}
+.sf-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#aaa;margin-bottom:8px}
+.sf-order-list{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:5px}
+.sf-order-item{font-size:13px;color:#444;line-height:1.5;display:flex;align-items:center;gap:8px}
+.sf-order-item.sf-ooo{color:#c17d00;font-weight:600}
+.sf-order-item.sf-redundant{color:#888;text-decoration:line-through}
+.sf-tag{font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px}
+.sf-tag-move{background:#fef3e2;color:#c17d00}
+.sf-tag-dup{background:#f0f0ee;color:#888}
+.sf-issue{background:#fff;border:1px solid #e5e5e2;border-radius:8px;padding:12px 14px;margin-bottom:8px}
+.sf-issue-title{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sf-pos{font-size:11px;font-weight:700;background:#fef3e2;color:#c17d00;padding:2px 8px;border-radius:99px}
+.sf-issue-reason{font-size:12px;color:#666;line-height:1.6}
+.sf-missing{background:#fff8ec;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;font-size:13px;color:#92400e;margin-bottom:6px}
+.sf-suggestion{background:#fef8e7;border-radius:8px;padding:12px 14px;font-size:13px;font-weight:600;color:#1a1a1a;line-height:1.6;margin-top:4px}
+
+/* ── Delta / regression badges ──────────────────── */
+.delta{font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.delta.up  {background:#e6f4ed;color:#1a7a4a}
+.delta.down{background:#fdecea;color:#c0392b}
+.delta.flat{background:#f0f0ee;color:#888}
+.delta.first{background:#f0f0ee;color:#aaa;font-weight:600}
+
+/* ── Regression banner ───────────────────────────── */
+.reg-banner{background:#fdecea;border:1px solid #fca5a5;border-radius:10px;
+  padding:14px 18px;margin-bottom:20px;display:flex;align-items:flex-start;gap:12px}
+.reg-banner-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.reg-banner-body{flex:1}
+.reg-banner-title{font-size:13px;font-weight:800;color:#c0392b;margin-bottom:6px}
+.reg-item{font-size:12.5px;color:#7f1d1d;margin-bottom:5px;line-height:1.5}
+.reg-item strong{font-weight:700}
+.reg-item .reg-delta{font-weight:700;color:#c0392b}
+.reg-cause{font-size:11.5px;color:#991b1b;margin-left:12px;margin-top:2px;font-style:italic}
+
+@media(max-width:640px){
+  .score-row,.sum-grid{grid-template-columns:repeat(2,1fr)}
+  .big-score{font-size:44px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+
+<div class="rh">
+  <div>
+    <h1>Advanced Hair Regrowth Regime — PDP Audit</h1>
+    <p>Daily health check across content, visuals, narrative and reviews</p>
+  </div>
+  <div class="rh-right">12 June 2026<br>1 URL</div>
+</div>
+
+
+<div class="hero-bar">
+  <div class="big-score attention" id="product-avg-score">6.5</div>
+  <div class="hero-meta">
+    <div class="lbl">Product Health Score</div>
+    <div class="name">Advanced Hair Regrowth Regime</div>
+  </div>
+  <div class="badge bg-attention" id="product-avg-badge" style="margin-left:auto">ATTENTION</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pdp-block active" id="pdp-1"
+  data-ad-base="5.0"
+  data-reviews-base="4.2"
+  data-pn-base="6.8"
+  data-copy-base="7.5"
+  data-vis-base="7.2">
+<div class="card">
+
+  
+  <div class="card-hdr">
+    <a class="card-url" href="https://manmatters.co/dp/2025113" target="_blank">https://manmatters.co/dp/2025113</a>
+    <div class="card-hdr-right">
+      
+        
+          <span class="delta flat">-0.1</span>
+        
+      
+      <span class="card-score critical" id="1-pdp-score">6.46</span>
+      <span class="badge bg-critical" id="1-pdp-badge">CRITICAL</span>
+    </div>
+  </div>
+
+  <div class="tab-nav" id="tnav-1">
+    <button class="tab-btn active" onclick="switchTab('1','summary',this)">Summary</button>
+    <button class="tab-btn" onclick="switchTab('1','hygiene',this)">
+      Hygiene Check <span class="ts attention" id="1-tab-hygiene-score">7.5</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('1','narrative',this)">
+      Narrative × Persona <span class="ts attention" id="1-tab-pn-score">6.8</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('1','visual',this)">
+      Visual Layer <span class="ts attention" id="1-tab-vis-score">7.2</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('1','copy',this)">
+      Text Layer <span class="ts attention" id="1-tab-copy-score">7.5</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('1','reviews',this)">
+      Reviews &amp; Ratings <span class="ts critical" id="1-tab-rev-score">4.2</span>
+    </button>
+  </div>
+
+  
+  <div class="tab-panel active" id="1-summary">
+    <div class="sum-grid">
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Hygiene</div>
+        <div class="sum-cell-val attention" id="1-sum-hygiene">7.5</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Narrative</div>
+        <div class="sum-cell-val attention" id="1-sum-pn">6.8</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Visual</div>
+        <div class="sum-cell-val attention" id="1-sum-visual">7.2</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-cell-lbl">Reviews</div>
+        <div class="sum-cell-val critical" id="1-sum-reviews">4.2</div>
+      </div>
+      <div class="sum-cell dark">
+        <div class="sum-cell-lbl">Overall</div>
+        <div class="sum-cell-val" id="1-sum-overall">6.46</div>
+      </div>
+    </div>
+
+    
+    <div class="rca-wrap">
+      <div class="rca-hdr">Root Cause Analysis — 6 issues</div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Reviews → Negative Handling
+          <span class="badge bg-critical" style="font-size:11px">1.5</span>
+        </div>
+        <div class="rca-evidence">Zero negative reviews are displayed, making it impossible to assess how the brand handles criticism.</div>
+        <div class="rca-fix">Surface 2-3 three-star reviews mentioning common concerns (initial shedding, timeline expectations) paired with visible brand responses demonstrating: (1) acknowledgment of the concern, (2) specific guidance provided, (3) follow-up offer. Example response format: 'Hi [Name], shedding in weeks 2-4 is actually a positive sign—here's why... Our dermatologist team is available at [contact] if you'd like personalized guidance.'</div>
+      </div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Persona × Narrative → Carousel Flow
+          <span class="badge bg-critical" style="font-size:11px">4.0</span>
+        </div>
+        <div class="rca-evidence">Carousel slides are labeled generically (live_1 through live_5) with no discernible narrative arc. The configured narrative requires: validation of past effort → identification of absorption gap → science-backed amplification → proof.</div>
+        <div class="rca-fix">Restructure carousel with specific frames: Slide 1: 'You've been consistent. Here's what your treatment is missing.' (validates 6-15 months effort) Slide 2: Visual showing alcohol-based Minoxidil sitting on scalp surface with '12% absorption' callout Slide 3: CETOSOMAL® penetration diagram showing 2-3x deeper delivery with mechanism explanation Slide 4: '92.7% success rate from 10L+ men who made the switch' with before/after thumbnails Slide 5: 'Add to your protocol—don't replace it' (addresses fear of starting over)</div>
+      </div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Visual Design → Lifestyle Shots
+          <span class="badge bg-critical" style="font-size:11px">4.0</span>
+        </div>
+        <div class="rca-evidence">No images show the persona in their aspirational context. The stressed professional image (slide 29) shows the problem state but there's no corresponding 'after' lifestyle image. Doctor consultation images (slides 2, 13, 25-26) are clinical rather than aspirational.</div>
+        <div class="rca-fix">Add three specific lifestyle shots: (1) Professional man aged 30-40 confidently leading a meeting or presenting—hair visible, body language open (2) Casual evening scene: social gathering where subject is relaxed, not self-conscious (3) Morning routine shot: clean bathroom, product on counter, subject applying with ease—communicates 'this fits into your life without disruption.' All should feel premium Indian professional context, not Western stock imagery.</div>
+      </div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Persona × Narrative → Hero / Banner
+          <span class="badge bg-critical" style="font-size:11px">5.5</span>
+        </div>
+        <div class="rca-evidence">The headline 'Advanced Hair Regrowth Regime' is generic and doesn't address the Treatment Optimizer's #1 concern: 'Current Minoxidil treatment isn't delivering expected results despite consistent use.'</div>
+        <div class="rca-fix">Replace headline with: 'Your Minoxidil Isn't Failing—It's Just Not Reaching Deep Enough.' Subhead: 'CETOSOMAL® delivers 44% more Minoxidil 2-3x deeper than alcohol-based solutions. Upgrade your protocol without starting over.' This immediately validates effort, names the gap, and promises enhancement rather than replacement.</div>
+      </div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Persona × Narrative → CTA Language
+          <span class="badge bg-critical" style="font-size:11px">5.0</span>
+        </div>
+        <div class="rca-evidence">'Add to Cart' and 'Buy Now' are transactional defaults that don't match the emotional state the narrative should create.</div>
+        <div class="rca-fix">Primary CTA: 'Upgrade Your Protocol' (reinforces addition, not replacement). Secondary CTA below: 'Talk to Our Dermatologists First—Free' (addresses the objection 'My doctor didn't mention this' and reduces protocol-change anxiety). Mobile sticky CTA: 'Close the Gap in Your Treatment' for scroll-depth engagement.</div>
+      </div>
+      
+      <div class="rca-item">
+        <div class="rca-culprit">
+          Ad Alignment → ATC Drop-off Addressed
+          <span class="badge bg-critical" style="font-size:11px">5.0</span>
+        </div>
+        <div class="rca-evidence">No ad data available from Umbrella Sheet</div>
+        <div class="rca-fix">Restore Google Sheets connection to Umbrella Sheet. Once connected, audit top 5 ad creatives by spend for: (1) specific claims made, (2) imagery used, (3) audience targeted. Ensure hero section mirrors the highest-performing ad's promise within first viewport. Add tracking to measure ad-to-PDP message-match correlation with ATC rate.</div>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="tab-panel" id="1-hygiene">
+
+    <div class="score-row"
+      data-uid="1"
+      data-claims-base="7.0"
+      data-brand-base="7.0"
+      data-spell-base="8.5"
+      data-overall-base="7.5">
+      <div class="sc">
+        <div class="sc-lbl">Claims</div>
+        <div class="sc-val attention" id="1-sc-claims">
+          7.0<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f attention"
+          id="1-bar-claims" style="width:70%"></div></div>
+      </div>
+      <div class="sc">
+        <div class="sc-lbl">Brand Guidelines</div>
+        <div class="sc-val attention" id="1-sc-brand">
+          7.0<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f attention"
+          id="1-bar-brand" style="width:70%"></div></div>
+      </div>
+      <div class="sc">
+        <div class="sc-lbl">Spell & Grammar</div>
+        <div class="sc-val healthy" id="1-sc-spell">
+          8.5<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f healthy"
+          id="1-bar-spell" style="width:85%"></div></div>
+      </div>
+      <div class="sc total">
+        <div class="sc-lbl">Overall Hygiene</div>
+        <div class="sc-val attention" id="1-sc-overall">
+          7.5<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f attention"
+          id="1-bar-overall" style="width:75%"></div></div>
+      </div>
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+
+    <div class="h-sub-nav">
+      <button class="h-sub active" onclick="switchHygieneSub('1','claims',this)">
+        Claims
+        <span class="fi-src claims">6 issues</span>
+        <span class="fi-src" style="background:#e6f4ed;color:#1a7a4a">12 ok</span>
+      </button>
+      <button class="h-sub" onclick="switchHygieneSub('1','brand',this)">
+        Brand Guidelines
+        <span class="fi-src brand">5 issues</span>
+      </button>
+      <button class="h-sub" onclick="switchHygieneSub('1','spell',this)">
+        Spell Check
+        <span class="fi-src spell">3 errors</span>
+      </button>
+    </div>
+
+    
+    <div id="1-hygiene-claims" class="h-panel active">
+      
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">3</span></div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"No Side Effects"</span>
+          <span class="fi-reason">Absolute claim with no backing in brief. Brief only approves 'Alcohol-free formula eliminates scalp dryness, redness, and itching' - this is specific to those side effects, not a blanket 'no side effects' claim. All medications carry potential side effects.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"92.7% of users see results by month 5–6."</span>
+          <span class="fi-reason">Brief approves '93% of men saw reduced hairfall in 5-6 months' - the PDP states '92.7%' which is a different, more specific number not found in the approved brief.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"The Advanced Protocol may show results 4–6 weeks faster than our Essential formula."</span>
+          <span class="fi-reason">No comparison to 'Essential formula' or '4-6 weeks faster' claim appears anywhere in the approved brief.</span>
+        </span></label>
+      </div>
+      
+      
+      
+      <div class="flag-section-lbl">⚠️ Warnings <span class="fcnt attention">3</span></div>
+      
+      <div class="fi fi-warning" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">⚠️</span>
+        <span class="fi-body">
+          <span class="fi-text">"Backed by Experts"</span>
+          <span class="fi-reason">Brief states 'Dermatologist recommended' specifically. 'Backed by Experts' is broader and less specific than the approved claim.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-warning" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">⚠️</span>
+        <span class="fi-body">
+          <span class="fi-text">"The patented CETOSOMAL® technology helps in 3x deeper penetration for improved effectiveness."</span>
+          <span class="fi-reason">Brief states '2-3x deeper penetration' - PDP says '3x' which is the upper bound. Should read '2-3x' to match approved claim exactly.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-warning" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">⚠️</span>
+        <span class="fi-body">
+          <span class="fi-text">"Our topical Finasteride formulation is specifically designed for localized delivery, resulting in significantly lower systemic absorption compared to oral Finasteride pills."</span>
+          <span class="fi-reason">While brief mentions topical Finasteride combination, the specific claim about 'significantly lower systemic absorption compared to oral Finasteride pills' and 'fraction of systemic exposure' is not explicitly approved in the brief.</span>
+        </span></label>
+      </div>
+      
+      
+      
+      <div class="flag-section-lbl">✅ Verified <span class="fcnt healthy">12</span></div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"FDA-approved"</span>
+          <span class="fi-reason">Brief explicitly states 'FDA-approved molecules (Minoxidil and Finasteride)' as an approved proof point.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"10L+ Saw Results"</span>
+          <span class="fi-reason">Brief approves 'Trusted by over 10 lakh men across India' as a proof point.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"No Irritation or Dryness"</span>
+          <span class="fi-reason">Brief approves 'Alcohol-free formula eliminates scalp dryness, redness, and itching' as a primary benefit.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Combines topical, nutritional and mechanical support for visible regrowth over 5–6 months."</span>
+          <span class="fi-reason">Brief approves 'Triple-action protocol addressing topical, internal, and mechanical layers' and '93% of men saw reduced hairfall in 5-6 months of consistent use'.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Alcohol-free, moisturising and hydrating formulation designed for daily use on Indian scalps."</span>
+          <span class="fi-reason">Brief approves 'Alcohol-free formulation with hydrating agents' and 'Designed specifically for Indian male physiology'.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Our formula adds topical Finasteride to block DHT — Minoxidil alone only stimulates growth without addressing the root cause."</span>
+          <span class="fi-reason">Brief approves 'Blocks DHT - the #1 hormonal cause of male pattern hair loss' and 'Combines Minoxidil 5% + Finasteride 0.1% in single topical application'.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"CETOSOMAL® technology delivers 2–3x better penetration than standard aqueous formulas."</span>
+          <span class="fi-reason">Brief approves '2-3x deeper penetration with patented CETOSOMAL® technology'. Comparison to 'standard aqueous formulas' aligns with brief's 'vs alcohol-based solutions'.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Our formula is alcohol-free, preventing the scalp dryness common with other products, especially important in Indian conditions."</span>
+          <span class="fi-reason">Brief approves 'Alcohol-free formula eliminates scalp dryness, redness, and itching' and 'Designed specifically for Indian male physiology'.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Initial shedding (usually in weeks 2–6) is actually a positive sign that the treatment is working."</span>
+          <span class="fi-reason">This is educational/explanatory content about Minoxidil mechanism, not a product claim requiring brief approval.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"44% more active Minoxidil delivered to the hair follicle vs alcohol-based solutions"</span>
+          <span class="fi-reason">Brief explicitly approves '44% more active Minoxidil delivered to hair follicles compared to alcohol-based solutions'.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Doctor consultation included with every order"</span>
+          <span class="fi-reason">Brief explicitly lists 'Doctor consultation included with every order' as an approved proof point.</span>
+        </span>
+      </div>
+      
+      <div class="fi fi-ok">
+        <span class="fi-ico">✅</span>
+        <span class="fi-body">
+          <span class="fi-text">"Real, visible results in 5–6 months."</span>
+          <span class="fi-reason">Brief approves '93% of men saw reduced hairfall in 5-6 months of consistent use' supporting the 5-6 month timeline.</span>
+        </span>
+      </div>
+      
+      
+      
+    </div>
+
+    
+    <div id="1-hygiene-brand" class="h-panel">
+      
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">5</span></div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Overcomplicated communication: 'Three major differences: (1) Our formula adds topical Finasteride to block DHT — Minoxidil alone only stimulates growth without addressing the root cause. (2) CETOSOMAL® technology delivers 2–3x better penetration than standard aqueous formulas. (3) Our formula is alcohol-free, preventing the scalp dryness common with other products, especially important in Indian conditions.' — This paragraph is dense and violates the 'Don't overcomplicate communications' guideline; should be broken into cleaner, scannable points.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Tone inconsistency: 'Talking about personal health is hard. Often embarrassing. We get that. So we took 'matters' into our own hands' — The casual, colloquial tone with the wordplay on 'matters' conflicts with the clinical, premium positioning. This section uses a different voice than the rest of the copy.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Redundant phrasing creating inconsistency: 'We get that' appears in both the 'We Get You' section and the 'Extended Care' section, making copy feel repetitive rather than clean and organized.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Missing power word opportunity: 'Backed by Experts' should be 'Expert Approved' or 'Clinically Approved' to align with the designated power words list.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="brand">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','brand')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Missing power word: The headline 'Advanced Hair Regrowth Regime' lacks any of the designated power words (confident, premium, clinical, natural, real, results, expert approved, clinically approved) — consider 'Clinically Advanced Hair Regrowth Regime' or 'Advanced Hair Regrowth Regime for Real Results'.</span>
+        </span></label>
+      </div>
+      
+      
+    </div>
+
+    
+    <div id="1-hygiene-spell" class="h-panel">
+      
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">3</span></div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="spell">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">derma roll on → derma roller</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="spell">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">10L+ Saw Results → 10L+ Users Saw Results</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="spell">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','spell')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">Month 1–2: Shedding phase Month 3–4: Stabilization → Month 1–2: Shedding phase; Month 3–4: Stabilization</span>
+        </span></label>
+      </div>
+      
+      
+    </div>
+
+  </div>
+
+  
+  <div class="tab-panel" id="1-narrative">
+
+    <div class="nar-banner">
+      <div class="nb-item">
+        <strong>Configured Narrative</strong>
+        <span>The Upgrade</span>
+      </div>
+      <div class="nb-item">
+        <strong>Target Persona</strong>
+        <span>The Treatment Optimizer</span>
+      </div>
+      <div class="nb-item">
+        <strong>Source</strong>
+        <span>Configured in config.yaml</span>
+      </div>
+    </div>
+
+    
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="1" data-tab="pn" data-base="6.8">
+      <div class="sc total">
+        <div class="sc-lbl">Narrative Execution Score</div>
+        <div class="sc-val attention" id="1-sc-pn">
+          6.8<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f attention"
+          id="1-bar-pn" style="width:68%"></div></div>
+      </div>
+    </div>
+
+    <div class="ssr-list" style="margin-top:16px">
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="hero" data-sub-base="5.5"
+        data-weight="0.2" data-tab-ref="pn">
+        <div class="ssr-top">
+          <div class="ssr-name">Hero / Banner</div>
+          <div class="ssr-score critical" id="1-ssr-pn-hero">5.5<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:55%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">The headline 'Advanced Hair Regrowth Regime' is generic and doesn't address the Treatment Optimizer's #1 concern: 'Current Minoxidil treatment isn't delivering expected results despite consistent use.' It doesn't validate their past effort or acknowledge the absorption gap. The subhead 'Advanced Regime for Better Results' hints at upgrade but fails to connect with someone who's already invested 6-15 months in treatment.</div>
+          
+          <div class="ssr-sug">Rewrite headline to: 'Your Minoxidil Isn't Failing—It's Just Not Reaching Deep Enough' with subhead: 'CETOSOMAL® technology delivers 44% more Minoxidil 2-3x deeper than your current alcohol-based solution. Finally close the absorption gap in your protocol.'</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="carousel" data-sub-base="4.0"
+        data-weight="0.25" data-tab-ref="pn">
+        <div class="ssr-top">
+          <div class="ssr-name">Carousel Flow</div>
+          <div class="ssr-score critical" id="1-ssr-pn-carousel">4.0<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:40%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Carousel slides are labeled generically (live_1 through live_5) with no discernible narrative arc visible in the data. The configured narrative requires: validation of past effort → identification of absorption gap → science-backed amplification → proof. Without slide content details, the flow cannot demonstrate the hook → problem → solution → proof structure that would resonate with someone questioning 'What's the delivery mechanism?' and 'Results aren't where I expected.'</div>
+          
+          <div class="ssr-sug">Restructure carousel: Slide 1: 'You've done everything right. Here's what's been missing.' (validation) Slide 2: 'Standard Minoxidil sits on surface—only 12% absorbs' (gap identification) Slide 3: 'CETOSOMAL® penetrates 2-3x deeper—here's the mechanism' (solution with science) Slide 4: '92.7% success rate from 10L+ men who made the switch' (proof) Slide 5: 'Amplify your protocol, don't restart it' (reassurance)</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="banner" data-sub-base="7.2"
+        data-weight="0.15" data-tab-ref="pn">
+        <div class="ssr-top">
+          <div class="ssr-name">Banner Alignment</div>
+          <div class="ssr-score attention" id="1-ssr-pn-banner">7.2<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
+          style="width:72%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Several banners reinforce the narrative well: 'Deeper Absorption, Better Results' and 'CETOSOMAL® technology delivers 2–3x better penetration than standard aqueous formulas' directly address the absorption gap. 'Comfortable for Long-Term Use' and 'No Irritation or Dryness' address the adherence concern. However, 'We Get You' and 'Talking about personal health is hard' feel generic and don't serve the Treatment Optimizer who wants clinical precision, not emotional coddling.</div>
+          
+          <div class="ssr-sug">Replace emotional banners with mechanism-focused content: 'Your doctor prescribed Minoxidil for the molecule—we engineered how it reaches your follicle. CETOSOMAL® isn't marketing, it's patented lipid delivery that closes the penetration gap your current solution leaves open.'</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="arc" data-sub-base="6.5"
+        data-weight="0.25" data-tab-ref="pn">
+        <div class="ssr-top">
+          <div class="ssr-name">Page Narrative Arc</div>
+          <div class="ssr-score attention" id="1-ssr-pn-arc">6.5<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
+          style="width:65%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">The page attempts a coherent story but front-loads generic benefit claims ('FDA-approved No Side Effects 10L+ Saw Results') before establishing why the Treatment Optimizer's current protocol is underperforming. The 'Three major differences' section is buried but excellent—it directly addresses 'Minoxidil is Minoxidil—why pay more?' The timeline section (Month 1-2, 3-4, 5-6) validates existing knowledge but doesn't position this as an amplifier of past progress. The emotional arc should be: validation → gap → solution → proof, but reads as: claims → features → proof → emotional fluff.</div>
+          
+          <div class="ssr-sug">Reorder page: Lead with validation ('You've been consistent. Here's why results stalled.'), immediately follow with the Three major differences section, then timeline showing how this compounds existing progress ('Your 6 months weren't wasted—they primed your follicles. Now give them what they need to finish the job.'), close with 92.7% stat.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="cta" data-sub-base="5.0"
+        data-weight="0.15" data-tab-ref="pn">
+        <div class="ssr-top">
+          <div class="ssr-name">CTA Language</div>
+          <div class="ssr-score critical" id="1-ssr-pn-cta">5.0<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:50%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">'Add to Cart' and 'Buy Now' are transactional defaults that don't match the emotional state the narrative should create. The Treatment Optimizer should feel: 'I finally found the missing piece in my protocol.' The CTAs should reflect completion/optimization, not impulse purchase. They're hesitant about changing protocol—the CTA should reduce friction, not ignore it.</div>
+          
+          <div class="ssr-sug">Rewrite primary CTA to: 'Upgrade Your Protocol' or 'Close the Gap in Your Treatment'. Add secondary reassurance CTA: 'Talk to Our Doctors First' to address the objection 'My doctor didn't mention this.'</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','pn')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+    </div>
+
+    
+    
+    <div class="sec-lbl">Persona Matrix — what's working vs what's missing</div>
+    <table class="pm-table">
+      <thead>
+        <tr>
+          <th style="width:120px">Persona</th>
+          <th>Doing Right ✓</th>
+          <th>Missing ✗</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><span class="pm-persona">The Treatment Optimizer</span></td>
+          <td>
+            <ul class="pm-list pm-right">
+              <li>'Three major differences' section directly addresses 'Minoxidil is Minoxidil' objection with specific comparisons to standard formulas</li><li>'CETOSOMAL® technology delivers 2–3x better penetration than standard aqueous formulas' provides the mechanism comparison they seek</li><li>'Our topical Finasteride formulation is specifically designed for localized delivery, resulting in significantly lower systemic absorption' addresses side effect concerns</li><li>'92.7% of users see results by month 5–6' and '10L+ Saw Results' provide the proof points this analytical persona demands</li><li>'Alcohol-free, preventing the scalp dryness common with other products' directly addresses adherence/irritation pain point</li><li>'The Advanced Protocol may show results 4–6 weeks faster than our Essential formula' speaks to optimization mindset</li><li>Detailed timeline (Month 1-2, 3-4, 5-6) validates their understanding and shows they're dealing with a sophisticated audience</li>
+              
+            </ul>
+          </td>
+          <td>
+            <ul class="pm-list pm-miss">
+              <li>No validation of past treatment effort—needs opening like 'You've been consistent for months. Here's the variable you couldn't control: absorption depth.'</li><li>The specific '44% more Minoxidil' claim from narrative pillars is completely absent—this is the hardest number and would satisfy their analytical nature</li><li>CETOSOMAL® mechanism explanation is superficial—needs to explain lipid encapsulation, why it bypasses the stratum corneum, and reference the patent or study</li><li>No explicit positioning as protocol amplifier vs. restart—copy should state 'Your previous months primed your follicles. CETOSOMAL® delivers the dosing they've been missing.'</li><li>Missing doctor/dermatologist endorsement specifics to counter 'My doctor didn't mention this' objection—needs named expert quotes or clinical study citations</li><li>No comparison chart showing their current alcohol-based solution vs. this formula across absorption, irritation, and adherence metrics</li><li>Language cue 'I need to know what's wrong and fix it' is unserved—page doesn't diagnose the specific failure point (surface absorption) clearly enough upfront</li><li>No mention of how this integrates with their existing oral Finasteride or other protocol elements—Treatment Optimizer wants to know how pieces fit together</li>
+              
+            </ul>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+    <div class="sec-lbl">Flagged Issues</div>
+    
+    <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">CETOSOMAL® mechanism is named but not explained with enough depth—'patented' and '2-3x deeper penetration' are stated but the actual lipid encapsulation science isn't unpacked, leaving the objection 'CETOSOMAL sounds like a marketing term' unanswered</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">The '44% more Minoxidil' claim from the narrative pillars is MISSING entirely from PDP copy—this is the most concrete, defensible number and it's absent</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">No direct acknowledgment that this compounds existing treatment investment—copy says 'visible regrowth over 5–6 months' which sounds like starting over, contradicting 'I'm not starting over' language cue</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="pn" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Medical endorsement objection unaddressed—'Designed by doctors' is passive; needs explicit 'dermatologist-approved protocol switch' or clinical study citation to counter 'My doctor didn't mention this'</span></span>
+    </div>
+    
+    
+
+  </div>
+
+  
+  <div class="tab-panel" id="1-visual">
+
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="1" data-tab="vis" data-base="7.2">
+      <div class="sc total">
+        <div class="sc-lbl">Overall Visual Score</div>
+        <div class="sc-val attention" id="1-sc-vis">
+          7.2<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f attention"
+          id="1-bar-vis" style="width:72%"></div></div>
+      </div>
+    </div>
+
+    
+    
+    <details class="scraped-block" open>
+      <summary>Images from Zeus CMS (37 total)
+        <span style="font-size:10px;color:#1a7a4a;font-weight:700;margin-left:8px">● Zeus CDN</span>
+      </summary>
+      <div class="scraped-body">
+        
+        
+        
+        
+        <div class="img-sec">
+          <div class="img-sec-lbl">hero (5)</div>
+          <div class="img-grid">
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025113/image%20%2848%29_fyxv48.png?tr=w-1080,c-at_max" alt="live_1" loading="lazy">
+              <div class="img-lbl">live_1</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025113/image%20%2842%29%20%281%29_hhagvp.png?tr=w-1080,c-at_max" alt="live_2" loading="lazy">
+              <div class="img-lbl">live_2</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/3%20%2826%29_9vzxg1.jpg?tr=w-1080,c-at_max" alt="live_3" loading="lazy">
+              <div class="img-lbl">live_3</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/4%20%2827%29_4wajf1.jpg?tr=w-1080,c-at_max" alt="live_4" loading="lazy">
+              <div class="img-lbl">live_4</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/ChatGPT%20Image%20Jun%2012%2C%202026%2C%2002_16_09%20PM_2lv5dx.png?tr=w-1080,c-at_max" alt="live_5" loading="lazy">
+              <div class="img-lbl">live_5</div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+        
+        
+        <div class="img-sec">
+          <div class="img-sec-lbl">content (32)</div>
+          <div class="img-grid">
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/4%20%2818%29_lesm1e.jpg?tr=w-1080,c-at_max" alt="live_6" loading="lazy">
+              <div class="img-lbl">live_6</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025113/Better%20absorption%20%3D%20Better%20results_10z8kz.png?tr=w-1080,c-at_max" alt="live_7" loading="lazy">
+              <div class="img-lbl">live_7</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025113/Better%20absorption%20%3D%20Better%20results%20%281%29_br6djl.png?tr=w-1080,c-at_max" alt="live_8" loading="lazy">
+              <div class="img-lbl">live_8</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/image%20%2826%29_5n5tgw.png?tr=w-1080,c-at_max" alt="live_9" loading="lazy">
+              <div class="img-lbl">live_9</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/9-a%20%281%29_ad18ny.jpg?tr=w-1080,c-at_max" alt="live_10" loading="lazy">
+              <div class="img-lbl">live_10</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/8-%20advance%20s3__je630h.jpg?tr=w-1080,c-at_max" alt="live_11" loading="lazy">
+              <div class="img-lbl">live_11</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/2%20%2857%29_ibsmej.jpg?tr=w-1080,c-at_max" alt="live_12" loading="lazy">
+              <div class="img-lbl">live_12</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/10%20%284%29_i4w033.jpg?tr=w-1080,c-at_max" alt="live_13" loading="lazy">
+              <div class="img-lbl">live_13</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/1%20%2869%29_8o56yf.jpg?tr=w-800,c-at_max" alt="Testimonial1" loading="lazy">
+              <div class="img-lbl">Testimonial1</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/2%20%2865%29_5n535a.jpg?tr=w-800,c-at_max" alt="Testimonial2" loading="lazy">
+              <div class="img-lbl">Testimonial2</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/3%20%2866%29_5ind1v.jpg?tr=w-800,c-at_max" alt="Testimonial3" loading="lazy">
+              <div class="img-lbl">Testimonial3</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/4%20%2858%29_mckchi.jpg?tr=w-800,c-at_max" alt="Testimonial4" loading="lazy">
+              <div class="img-lbl">Testimonial4</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/5%20%2848%29_6bhemn.jpg?tr=w-800,c-at_max" alt="Testimonial5" loading="lazy">
+              <div class="img-lbl">Testimonial5</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/6%20%2829%29_mcockt.jpg?tr=w-800,c-at_max" alt="Testimonial6" loading="lazy">
+              <div class="img-lbl">Testimonial6</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/7%20%2822%29_kh0ffn.jpg?tr=w-800,c-at_max" alt="Testimonial7" loading="lazy">
+              <div class="img-lbl">Testimonial7</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/8%20%2818%29_54w3v9.jpg?tr=w-800,c-at_max" alt="Testimonial8" loading="lazy">
+              <div class="img-lbl">Testimonial8</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/9%20%2810%29_4yvddu.jpg?tr=w-800,c-at_max" alt="Testimonial9" loading="lazy">
+              <div class="img-lbl">Testimonial9</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/10%20%287%29_83gfsq.jpg?tr=w-800,c-at_max" alt="Testimonial10" loading="lazy">
+              <div class="img-lbl">Testimonial10</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025113/3%20%283%29_6jjc2g.png?tr=w-800,c-at_max" alt="Step1" loading="lazy">
+              <div class="img-lbl">Step1</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025113/4%20%282%29_ips4y5.png?tr=w-800,c-at_max" alt="Step2" loading="lazy">
+              <div class="img-lbl">Step2</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025113/5%20%285%29_6ku37y.png?tr=w-800,c-at_max" alt="step3" loading="lazy">
+              <div class="img-lbl">step3</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/1%20%2861%29_7zbdhu.jpg?tr=w-800,c-at_max" alt="img1" loading="lazy">
+              <div class="img-lbl">img1</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/2%20%2856%29_dg5qmo.jpg?tr=w-800,c-at_max" alt="img2" loading="lazy">
+              <div class="img-lbl">img2</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/4%20%2849%29_ebgngp.jpg?tr=w-800,c-at_max" alt="img3" loading="lazy">
+              <div class="img-lbl">img3</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/5%20%2837%29_l13plm.jpg?tr=w-800,c-at_max" alt="img4" loading="lazy">
+              <div class="img-lbl">img4</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/3%20%2853%29_cvzut9.jpg?tr=w-800,c-at_max" alt="img5" loading="lazy">
+              <div class="img-lbl">img5</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/Results-timeline_01%20%281%29_jfciiy.jpg?tr=w-800,c-at_max" alt="Step1" loading="lazy">
+              <div class="img-lbl">Step1</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/Results-timeline_02%20%281%29_bkxyo3.jpg?tr=w-800,c-at_max" alt="Step2" loading="lazy">
+              <div class="img-lbl">Step2</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/pdp_rcl/2025093/Results-timeline_03%20%282%29_6vpg1a.jpg?tr=w-800,c-at_max" alt="step3" loading="lazy">
+              <div class="img-lbl">step3</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/Doctor-led-approach_01_4dkllg.jpg?tr=w-800,c-at_max" alt="Step1" loading="lazy">
+              <div class="img-lbl">Step1</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/Doctor-led-approach_02_hciywm.jpg?tr=w-800,c-at_max" alt="Step2" loading="lazy">
+              <div class="img-lbl">Step2</div>
+            </div>
+            
+            <div class="img-card">
+              <img src="https://i.mscwlns.co/media/misc/others/Doctor-led-approach_03_4x5xsa.jpg?tr=w-800,c-at_max" alt="step3" loading="lazy">
+              <div class="img-lbl">step3</div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+      </div>
+    </details>
+    
+
+    
+    <div class="sec-lbl">Visual Scores — click to expand</div>
+    <div class="ssr-list">
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="human" data-sub-base="6.5"
+        data-weight="0.2" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">Human Presence</div>
+          <div class="ssr-score attention" id="1-ssr-vis-human">6.5<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
+          style="width:65%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Human figures are present throughout but limited to back-of-head scalp shots and clinical examination scenarios. The doctor figure in lab coat appears in slides 2, 13, and examination images. The 'How to use' slide (12) shows a young male face with gummy, but most human imagery is depersonalized scalp views. No aspirational lifestyle imagery showing a confident, professional man post-treatment matching the persona's age (late 20s-30s working professional).</div>
+          
+          <div class="ssr-sug">Add a hero or closing slide showing a confident, well-groomed professional man (matching persona age 28-35) in a work or social context—subtle confidence cue rather than explicit before/after. Include a testimonial slide with face visible showing emotional transformation, not just scalp.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="proof" data-sub-base="8.0"
+        data-weight="0.2" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">Proof Prominence</div>
+          <div class="ssr-score healthy" id="1-ssr-vis-proof">8.0<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f healthy"
+          style="width:80%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Clinical proof is prominently displayed: '44% more minoxidil delivered' appears in large blue text on slides 4, 7, and 8. The bar chart (slide 8) clearly visualizes the absorption difference. '3x deeper absorption' and CETOSOMAL® technology badges are visible. FDA-approved and 'Clinically tested' badges appear on slide 13. However, the '93% success rate' claim from the brief is not prominently visualized anywhere in the carousel.</div>
+          
+          <div class="ssr-sug">Create a dedicated proof slide with the 93% success statistic in large, bold typography with supporting context (e.g., '93% of men saw reduced hairfall in 5-6 months'). Add a visual badge or call-out for '10L+ men trust us' as social proof.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="ingredient" data-sub-base="7.5"
+        data-weight="0.15" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">Ingredient Imagery</div>
+          <div class="ssr-score attention" id="1-ssr-vis-ingredient">7.5<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
+          style="width:75%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Key ingredients are visualized: Minoxidil spray bottle is prominently shown across multiple slides (4, 5, 6, 13). Biotin gummies are shown as premium-looking red supplements (slide 10) with ingredient callouts (Biotin, Zinc, Vitamins A, C & E). The dermaroller with micro-needles is displayed cleanly (slide 9). The CETOSOMAL® technology illustration (slide 7) shows follicle penetration mechanism effectively. However, Finasteride (0.1%) as a key differentiator is only mentioned in small text on product label.</div>
+          
+          <div class="ssr-sug">Elevate Finasteride visibility with a dedicated callout showing it blocks DHT at the root—this is a key differentiator for the 'Treatment Optimizer' who tried regular minoxidil. Add a 'dual-action formula' badge combining both actives prominently.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="before" data-sub-base="8.5"
+        data-weight="0.15" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">Before / After</div>
+          <div class="ssr-score healthy" id="1-ssr-vis-before">8.5<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f healthy"
+          style="width:85%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Before/after imagery is well-executed. Hero slide 1 shows clear side-by-side comparison with labeled 'Before' and 'After' tags. The timeline progression (slide 3) shows Month 1-2, 3-4, and 5-6+ stages with dotted overlay markers on scalp photos making regrowth trajectory clear. Testimonial slides (14-23) each contain individual before/after photos with verified purchase badges, order IDs, and dates adding authenticity. Transformation is believable and not over-promised.</div>
+          
+          <div class="ssr-sug">Consider adding one testimonial with slightly more dramatic transformation specifically highlighting someone who 'switched from regular minoxidil' to directly mirror the persona's journey. Ensure lighting consistency in before/after pairs.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="lifestyle" data-sub-base="4.0"
+        data-weight="0.15" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">Lifestyle Shots</div>
+          <div class="ssr-score critical" id="1-ssr-vis-lifestyle">4.0<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:40%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Lifestyle imagery is notably absent. No images show the persona in their aspirational context—confident at work, in social settings, or engaging in activities. The stressed professional image (slide 29) shows the problem state but there's no corresponding 'after' lifestyle image showing regained confidence. Doctor consultation images (slides 2, 13, 25-26) are clinical rather than aspirational. The product is positioned as clinical treatment but lacks emotional resolution visuals.</div>
+          
+          <div class="ssr-sug">Add 2-3 lifestyle shots: (1) Professional man confidently presenting in meeting or networking event, (2) Casual social scenario showing natural hair confidence, (3) Morning routine shot showing simple product integration. These should feel premium and aspirational, not stock-photo generic.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="hierarchy" data-sub-base="7.8"
+        data-weight="0.15" data-tab-ref="vis">
+        <div class="ssr-top">
+          <div class="ssr-name">Visual Hierarchy & Brand</div>
+          <div class="ssr-score attention" id="1-ssr-vis-hierarchy">7.8<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
+          style="width:78%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Visual hierarchy is generally strong with consistent blue/white brand palette throughout. Headlines in bold navy ('Advanced Hair Regrowth Regime', 'What's in the kit?') draw immediate attention. The '44%' statistic is appropriately large. Brand logo 'man matters' appears consistently on product packaging. However, some slides are text-heavy (slides 31-37 timeline/process slides) with smaller typography that may not scan well on mobile. The testimonial cards are well-structured with clear information hierarchy.</div>
+          
+          <div class="ssr-sug">Increase text size on process/timeline slides (32-37) for mobile readability. Add a consistent brand accent element (e.g., blue checkmark or badge) across all slides to reinforce visual identity. Consider reducing testimonial count or creating a carousel-within-carousel to avoid visual fatigue.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','vis')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <div class="sec-lbl">Flagged Issues</div>
+    
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Missing aspirational lifestyle imagery showing confident post-treatment man in professional/social context—critical gap for 'Treatment Optimizer' persona seeking validation</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">93% success rate claim from brief is not prominently visualized despite being a key conversion driver</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Finasteride as DHT-blocker differentiator is under-emphasized visually compared to Minoxidil</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Excessive number of testimonial slides (10) may cause scroll fatigue; consider consolidation or highlight reel approach</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Process/timeline slides (32-37) have small text that may not render well on mobile devices</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="vis" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">No emotional resolution imagery—shows problem state (stressed man) but not confident outcome state</span></span>
+    </div>
+    
+    
+
+    
+    
+    
+    <div class="sec-lbl" style="margin-top:28px">Section Flow Analysis</div>
+    <div class="sf-wrap">
+
+      
+      <div class="sf-header">
+        <div class="sf-score-badge critical">4.2/10</div>
+        <div class="sf-obs">The page opens with social proof ('Real stories of over 10 lakh Indian men') before establishing the problem or solution—this front-loads validation before the Treatment Optimizer understands WHY their current approach is failing. The critical 'absorption gap' narrative that validates their past Minoxidil effort is completely absent, and there's no mechanism/science section explaining how this solution amplifies existing progress rather than starting over.</div>
+      </div>
+
+      
+      
+      <div class="sf-section">
+        <div class="sf-lbl">Current Page Order</div>
+        <ol class="sf-order-list">
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            Real stories of over 10 lakh Indian men who trust us
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            What Your Plan includes
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            Hair loss in men has multiple causes. We specialise in addressing them effectively
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            Real, visible results in 5–6 months. Here's how your journey will unfold.
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            Designed by doctors. Made for Indian men.
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            Ratings & Reviews
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item">
+            Got Questions ?
+            
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-ooo">
+            Why choose Man Matters?
+            <span class="sf-tag sf-tag-move">↕ move</span>
+            
+          </li>
+          
+          
+          
+          <li class="sf-order-item sf-redundant">
+            Accordion Header
+            
+            <span class="sf-tag sf-tag-dup">duplicate</span>
+          </li>
+          
+        </ol>
+      </div>
+      
+
+      
+      
+      <div class="sf-section">
+        <div class="sf-lbl">❌ Sections to Reorder (4)</div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "Real stories of over 10 lakh Indian men who trust us"
+            <span class="sf-pos">position 1 → 6</span>
+          </div>
+          <div class="sf-issue-reason">Social proof should come AFTER explaining the absorption problem and solution mechanism—the Treatment Optimizer needs to first feel validated that their Minoxidil struggle is real, then see how others overcame the same gap</div>
+        </div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "What Your Plan includes"
+            <span class="sf-pos">position 2 → 5</span>
+          </div>
+          <div class="sf-issue-reason">Jumping to plan contents before establishing the 'why switch' narrative skips the critical validation of their past effort and the science that justifies upgrading</div>
+        </div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "Hair loss in men has multiple causes. We specialise in addressing them effectively"
+            <span class="sf-pos">position 3 → 2</span>
+          </div>
+          <div class="sf-issue-reason">This should function as the Problem section but needs to come earlier and specifically address the absorption/penetration issue for users already on treatment</div>
+        </div>
+        
+        <div class="sf-issue">
+          <div class="sf-issue-title">
+            "Why choose Man Matters?"
+            <span class="sf-pos">position 8 → 9</span>
+          </div>
+          <div class="sf-issue-reason">Comparison/differentiation should come after social proof and before FAQ to handle final objections—current position buries the 'why upgrade to us' argument</div>
+        </div>
+        
+      </div>
+      
+
+      
+      
+      <div class="sf-section">
+        <div class="sf-lbl">⚠️ Missing Sections (6)</div>
+        
+        <div class="sf-missing">Problem/Pain Point section addressing why current Minoxidil isn't working (absorption gap)</div>
+        
+        <div class="sf-missing">How It Works / Mechanism section explaining enhanced delivery technology</div>
+        
+        <div class="sf-missing">Ingredients / What's Inside section proving formulation superiority over alcohol-based alternatives</div>
+        
+        <div class="sf-missing">Comparison section showing upgrade path from standard Minoxidil to this solution</div>
+        
+        <div class="sf-missing">Clinical / Certifications section with 93% success rate data</div>
+        
+        <div class="sf-missing">Final CTA section to close the conversion</div>
+        
+      </div>
+      
+
+      
+      
+      <div class="sf-suggestion">💡 Add a dedicated 'Why Your Current Minoxidil Isn't Working' problem section immediately after the hero that validates the Treatment Optimizer's frustration with standard formulations and introduces the absorption gap—this is the critical narrative hook that makes '10 lakh men' proof meaningful instead of generic.</div>
+      
+
+    </div>
+    
+
+  </div>
+
+  
+  <div class="tab-panel" id="1-copy">
+
+    
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="1" data-tab="copy" data-base="7.5">
+      <div class="sc total">
+        <div class="sc-lbl">Copy Insight Score</div>
+        <div class="sc-val attention" id="1-sc-copy">
+          7.5<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f attention"
+          id="1-bar-copy" style="width:75%"></div></div>
+      </div>
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+    <div class="flag-section-lbl" style="margin-top:16px">❌ Critical Findings
+      <span class="fcnt critical">1</span></div>
+    <div class="ti-list">
+      
+      <div class="ti critical" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Forbidden Word</span>
+            <div class="ti-body">
+              <div class="ti-finding">Forbidden word 'performance' found in body copy</div>
+              <div class="ti-detail">Body copy states: 'Hair, skin, weight, sleep, performance and much more.' The word 'performance' is on the NEVER MENTION list.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="flag-section-lbl">⚠️ Warnings
+      <span class="fcnt attention">6</span></div>
+    <div class="ti-list">
+      
+      <div class="ti warning" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Missing Hook</span>
+            <div class="ti-body">
+              <div class="ti-finding">Configured narrative 'The Upgrade' not reflected in headline</div>
+              <div class="ti-detail">Headline reads 'Advanced Hair Regrowth Regime' — no upgrade-focused language or positioning. The narrative hook should frame this as an elevation from current state, not just an 'advanced' product.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+      <div class="ti warning" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Missing Social Proof</span>
+            <div class="ti-body">
+              <div class="ti-finding">Key proof point '93% success rate' inconsistently stated</div>
+              <div class="ti-detail">Brief states '93% success rate' but body copy uses '92.7% of users see results by month 5–6' — the approved claim is '93%' which is more impactful and should be used consistently.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+      <div class="ti warning" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Ingredient Gap</span>
+            <div class="ti-body">
+              <div class="ti-finding">Multiple key ingredients from brief absent in copy</div>
+              <div class="ti-detail">Brief lists Biotin, Zinc, Vitamin A, Vitamin C, Vitamin E, and 540 Titanium Alloy Micro-Needles (0.5mm Dermaroller) as key ingredients. Body copy only mentions Minoxidil, Finasteride, and CETOSOMAL® — the vitamin complex and dermaroller are not featured.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+      <div class="ti warning" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Missing Proof Point</span>
+            <div class="ti-body">
+              <div class="ti-finding">44% more Minoxidil delivery claim not present</div>
+              <div class="ti-detail">Approved proof point states '44% more Minoxidil delivered to follicles vs alcohol-based solutions' but this specific statistic is absent from copy. Only general '2-3x better penetration' is mentioned.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+      <div class="ti warning" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Weak CTA</span>
+            <div class="ti-body">
+              <div class="ti-finding">CTAs are generic and don't match upgrade narrative</div>
+              <div class="ti-detail">CTAs are 'Add to Cart' and 'Buy Now' — standard e-commerce language that doesn't connect to the persona's emotional state or 'The Upgrade' narrative positioning.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+      <div class="ti warning" data-tab="copy">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;flex:1;min-width:0">
+          <input type="checkbox" class="fi-cb" style="margin-top:3px;flex-shrink:0"
+            onchange="dismissTabFlag(this,'1','copy')">
+          <div style="flex:1;min-width:0">
+            <span class="ti-badge">Narrative Gap</span>
+            <div class="ti-body">
+              <div class="ti-finding">Body copy cuts off mid-sentence, incomplete messaging</div>
+              <div class="ti-detail">Final body copy reads: 'Wellness is an actively pursued goal of being in a s' — sentence is truncated, creating an unprofessional gap in the narrative.</div>
+            </div>
+          </div>
+        </label>
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="flag-section-lbl">✅ Strengths
+      <span class="fcnt healthy">2</span></div>
+    <div class="ti-list">
+      
+      <div class="ti ok">
+        <span class="ti-badge">Tone Mismatch</span>
+        <div class="ti-body">
+          <div class="ti-finding">Clinical and confident tone maintained throughout</div>
+          <div class="ti-detail">Copy uses language like 'FDA-approved molecules', 'patented CETOSOMAL® technology', 'Studies show topical application achieves comparable DHT reduction' — aligns with clinical, confident, premium brand voice.</div>
+        </div>
+      </div>
+      
+      <div class="ti ok">
+        <span class="ti-badge">Missing Social Proof</span>
+        <div class="ti-body">
+          <div class="ti-finding">Strong social proof elements present in benefits section</div>
+          <div class="ti-detail">Copy includes '10L+ Saw Results', 'Backed by Experts', 'Trusted by over 10 lakh men' aligns with approved proof point. Quantified claims are present.</div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+    
+
+    
+    
+    <details class="scraped-block" style="margin-top:20px">
+      <summary>All scraped copy — headline · subheads · CTAs · body</summary>
+      <div class="scraped-body">
+
+        
+        <div class="copy-row">
+          <span class="copy-lbl">Headline</span>
+          <div class="copy-hero">Advanced Hair Regrowth Regime</div>
+        </div>
+        
+
+        
+        <div class="copy-row">
+          <span class="copy-lbl">Meta Title</span>Hair Fall Treatment for Men | Man Matters
+        </div>
+        
+
+        
+        <div class="copy-row">
+          <span class="copy-lbl">Meta Description</span>Reduce hair fall and support regrowth with a treatment kit powered by Minoxidil, biotin, and derma roll on for lasting scalp health.
+        </div>
+        
+
+        
+        <div class="copy-row">
+          <span class="copy-lbl">CTAs</span>
+          <div class="chip-wrap">
+            <span class="chip cta">Add to Cart</span><span class="chip cta">Buy Now</span>
+          </div>
+        </div>
+        
+
+        
+        <div class="copy-row">
+          <span class="copy-lbl">Subheads (11)</span>
+          <div class="chip-wrap">
+            <span class="chip">Benefits</span><span class="chip">What Your Plan includes</span><span class="chip">Hair loss in men has multiple causes. We specialise in addressing them effectively</span><span class="chip">Real, visible results in 5–6 months. Here's how your journey will unfold.</span><span class="chip">Designed by doctors. Made for Indian men.</span><span class="chip">Deeper Absorption, Better Results</span><span class="chip">Comfortable for Long-Term Use</span><span class="chip">Why choose Man Matters?</span><span class="chip">We Get You</span><span class="chip">Expert Backed Solutions</span><span class="chip">Extended Care & Follow-Ups</span>
+          </div>
+        </div>
+        
+
+        
+        <div class="copy-row">
+          <span class="copy-lbl">Body Copy (17 blocks)</span>
+          <div style="margin-top:6px">
+            
+            <div class="body-item">Advanced Regime for Better Results</div>
+            
+            <div class="body-item">FDA-approved</div>
+            
+            <div class="body-item">No Side Effects</div>
+            
+            <div class="body-item">10L+ Saw Results</div>
+            
+            <div class="body-item">Backed by Experts</div>
+            
+            <div class="body-item">No Irritation or Dryness</div>
+            
+            <div class="body-item">Combines topical, nutritional and mechanical support for visible regrowth over 5–6 months.</div>
+            
+            <div class="body-item">The patented CETOSOMAL® technology helps in 3x deeper penetration for improved effectiveness.</div>
+            
+            <div class="body-item">Alcohol-free, moisturising and hydrating formulation designed for daily use on Indian scalps.</div>
+            
+            <div class="body-item">Three major differences: (1) Our formula adds topical Finasteride to block DHT — Minoxidil alone only stimulates growth without addressing the root cause. (2) CETOSOMAL® technology delivers 2–3x better penetration than standard aqueous formulas. (3) Our formula is alcohol-free, preventing the scalp dryness common with other products, especially important in Indian conditions.</div>
+            
+            
+            <details style="margin-top:4px">
+              <summary style="font-size:11.5px;color:#aaa;cursor:pointer;padding:4px 8px">
+                + 7 more blocks
+              </summary>
+              
+              <div class="body-item">Our topical Finasteride formulation is specifically designed for localized delivery, resulting in significantly lower systemic absorption compared to oral Finasteride pills. Studies show topical application achieves comparable DHT reduction at the scalp with a fraction of the systemic exposure.</div>
+              
+              <div class="body-item">Initial shedding (usually in weeks 2–6) is actually a positive sign that the treatment is working. Minoxidil pushes follicles from the resting phase into the growth phase. The old, weak, miniaturized hairs fall out to make room for new, stronger hair growth. This is temporary and subsides within 4–8 weeks.</div>
+              
+              <div class="body-item">Hair growth takes time, expect 5–6 months of consistent use to see visible results. Month 1–2: Shedding phase Month 3–4: Stabilization and early regrowth Month 5–6: Visible improvement 92.7% of users see results by month 5–6. The Advanced Protocol may show results 4–6 weeks faster than our Essential formula.</div>
+              
+              <div class="body-item">With topical application, hair growth is localized to where you apply it. Some users report mild facial hair growth if solution runs down from the scalp - wipe the area after application to avoid run-off.</div>
+              
+              <div class="body-item">Talking about personal health is hard. Often embarrassing. We get that. So we took 'matters' into our own hands; and created a place for all matters of man. Hair, skin, weight, sleep, performance and much more. We get you, and we get what matters to you.</div>
+              
+              <div class="body-item">With so many unreliable sources and searches, it's hard to decide whom to trust. Our solutions are trusted by experts, and are backed by science. We believe that wellness has a science behind it and we want to make it more accessible.</div>
+              
+              <div class="body-item">Wellness is an actively pursued goal of being in a state of good health. We believe that compliance and discipline matter if you want to move towards wellbeing, and we get that it's not easy. We are here to handhold you and help you on this journey.</div>
+              
+            </details>
+            
+          </div>
+        </div>
+        
+
+      </div>
+    </details>
+    
+
+  </div>
+
+  
+  <div class="tab-panel" id="1-reviews">
+
+    <div class="score-row" style="grid-template-columns:1fr"
+      data-uid="1" data-tab="rev" data-base="4.2">
+      <div class="sc total">
+        <div class="sc-lbl">Reviews Score</div>
+        <div class="sc-val critical" id="1-sc-rev">
+          4.2<span class="dn">/10</span></div>
+        <div class="bar-t"><div class="bar-f critical"
+          id="1-bar-rev" style="width:42%"></div></div>
+      </div>
+    </div>
+
+    <div class="ssr-list" style="margin-top:16px">
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="freshness" data-sub-base="6.0"
+        data-weight="0.25" data-tab-ref="rev">
+        <div class="ssr-top">
+          <div class="ssr-name">Freshness</div>
+          <div class="ssr-score critical" id="1-ssr-rev-freshness">6.0<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:60%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">All 4 reviews are from mid-March 2026, approximately 88-94 days ago. While within a 3-month window, they cluster tightly in a single week (March 10-16), with no reviews from April, May, or early June 2026. This gap of nearly 3 months without new reviews is concerning.</div>
+          
+          <div class="ssr-sug">Implement a review solicitation campaign to generate fresh testimonials. The lack of reviews from the past 88 days suggests either declining sales or a broken review collection process.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="rating" data-sub-base="2.0"
+        data-weight="0.25" data-tab-ref="rev">
+        <div class="ssr-top">
+          <div class="ssr-name">Rating Distribution</div>
+          <div class="ssr-score critical" id="1-ssr-rev-rating">2.0<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:20%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">All 4 displayed reviews are 5.0 stars with zero negative or even moderate reviews shown. This 100% perfect rating distribution appears artificially curated and damages credibility.</div>
+          
+          <div class="ssr-sug">Display authentic rating distribution including 3-4 star reviews. Consider showing a verified rating histogram. Shoppers trust 4.2-4.7 averages more than perfect 5.0 scores.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="theme" data-sub-base="7.5"
+        data-weight="0.25" data-tab-ref="rev">
+        <div class="ssr-top">
+          <div class="ssr-name">Theme Alignment</div>
+          <div class="ssr-score attention" id="1-ssr-rev-theme">7.5<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
+          style="width:75%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Reviews partially align with product claims. Review [1] mentions 'baby hairs by month 3' supporting the 93% reduced hairfall claim. Review [3] references 'minoxidil that im already using' and gummies fixing 'hair strength,' touching on the triple-action protocol. However, NO reviews mention the key differentiators: CETOSOMAL® technology, deeper penetration, DHT blocking, or alcohol-free benefits addressing scalp irritation.</div>
+          
+          <div class="ssr-sug">Prompt reviewers with specific questions about scalp comfort vs. previous treatments, perceived absorption quality, and irritation reduction to surface testimonials matching the persona's top concerns about penetration and alcohol-free formulation.</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+      <div class="ssr" onclick="toggleSsr(this)"
+        data-sub-key="negative" data-sub-base="1.5"
+        data-weight="0.25" data-tab-ref="rev">
+        <div class="ssr-top">
+          <div class="ssr-name">Negative Handling</div>
+          <div class="ssr-score critical" id="1-ssr-rev-negative">1.5<span class="dn">/10</span></div>
+        </div>
+        <div class="bar-t" style="margin-top:6px"><div class="bar-f critical"
+          style="width:15%"></div></div>
+        <div class="ssr-detail">
+          <div class="ssr-obs">Zero negative reviews are displayed, making it impossible to assess how the brand handles criticism. This creates a significant trust gap—shoppers actively seek negative reviews to understand worst-case scenarios and brand responsiveness.</div>
+          
+          <div class="ssr-sug">Surface 1-2 lower-rated reviews with brand responses demonstrating customer support quality. Address common objections proactively (timeline expectations, usage instructions, compatibility concerns).</div>
+          <label class="ssr-dismiss" onclick="dismissSsrSug(event,this,'1','rev')">
+            <input type="checkbox"> Mark suggestion as resolved / not applicable
+          </label>
+          
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <details class="scraped-block" style="margin-top:16px" open>
+      <summary>Customer Reviews from Zeus (4)</summary>
+      <div class="scraped-body">
+        <div class="review-grid">
+          
+          <div class="rv-card">
+            <div class="rv-head">
+              <div class="rv-stars">★ 5.0</div>
+              <div class="rv-date">2026-03-16</div>
+            </div>
+            <div class="rv-author">Sumit</div>
+            <div class="rv-title">I see hair growth in 4 months</div>
+            <div class="rv-text">I wasn't sure if this kit would work for me, but after getting some guidance, I followed the right treatment for my hair. I've been using the Man Matters Advanced Hair Regrowth regime for over 7 months now, and the results are amazing. By month 3, I started noticing small baby hairs on my scalp. I'm extremely happy with the results!</div>
+            
+            <img class="rv-img" src="https://i.mscwlns.co/media/misc/pdp_rcl/2861144/Review%201_stage%203_Diet_kxt8vo.png?tr=w-600" alt="review image" loading="lazy">
+            
+          </div>
+          
+          <div class="rv-card">
+            <div class="rv-head">
+              <div class="rv-stars">★ 5.0</div>
+              <div class="rv-date">2026-03-15</div>
+            </div>
+            <div class="rv-author">Talat</div>
+            <div class="rv-title">My confidence is back! thankyou man matters</div>
+            <div class="rv-text">I struggled with hair thinning for over a year and tried countless serums and oils, but had almost given up. Then I found Man Matters. I'm currently in month 3, using the dermaroller, gummies, and Minoxifin advance, and my receded hairline is starting to fill in. I'm really loving the results.</div>
+            
+            <img class="rv-img" src="https://i.mscwlns.co/media/misc/pdp_rcl/2861144/Review%201_stage%203_Diet1_haclk5.png?tr=w-600" alt="review image" loading="lazy">
+            
+          </div>
+          
+          <div class="rv-card">
+            <div class="rv-head">
+              <div class="rv-stars">★ 5.0</div>
+              <div class="rv-date">2026-03-13</div>
+            </div>
+            <div class="rv-author">Vikrant</div>
+            <div class="rv-title">my hair volume is coming back</div>
+            <div class="rv-text">i have been trying to fix my hair thinning problem for past 2 years, tried many serums and oils in the market but nothing worked. apart from minoxidil that im already using, started taking the gummies which fixed my hair strength first and my overall kit started showing more visible results.</div>
+            
+            <img class="rv-img" src="https://i.mscwlns.co/media/misc/pdp_rcl/2861144/Review%201_stage%203_Diet2_4re06z.png?tr=w-600" alt="review image" loading="lazy">
+            
+          </div>
+          
+          <div class="rv-card">
+            <div class="rv-head">
+              <div class="rv-stars">★ 5.0</div>
+              <div class="rv-date">2026-03-10</div>
+            </div>
+            <div class="rv-author">Aditya</div>
+            <div class="rv-title">5 month update</div>
+            <div class="rv-text">this is my 5th month update I can see a lot of baby hair on my crown area and hair line. so happy with the results</div>
+            
+            <img class="rv-img" src="https://i.mscwlns.co/media/misc/pdp_rcl/2861144/Review%201_stage%203_Diet3_10bk7e.png?tr=w-600" alt="review image" loading="lazy">
+            
+          </div>
+          
+        </div>
+      </div>
+    </details>
+    
+
+    
+    <div class="sec-lbl">Flagged Issues</div>
+    
+    <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Suspiciously uniform 5-star ratings across all visible reviews suggests cherry-picking or suppression of negative feedback</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">3-month review gap (no reviews since March 16) indicates potential product/fulfillment issues or broken review funnel</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Core value propositions (CETOSOMAL®, alcohol-free, DHT blocking, deeper penetration) have zero social proof in displayed reviews</span></span>
+    </div>
+    
+    <div class="fi fi-flagged" data-tab="rev" style="margin-bottom:6px">
+      <span class="fi-ico">❌</span>
+      <span class="fi-body"><span class="fi-text">Reviews [1] and [2] are truncated, hiding potentially valuable detail about the user experience</span></span>
+    </div>
+    
+    
+
+  </div>
+
+</div>
+</div>
+
+
+</div>
+<script>
+/* ═══════════════════════════════════════════════════
+   SHARED HELPERS
+═══════════════════════════════════════════════════ */
+function cls(v) { return v >= 8 ? 'healthy' : v >= 6.5 ? 'attention' : 'critical'; }
+function fmt(v) { return (+v).toFixed(1); }
+function pct(v) { return Math.round(v * 10) + '%'; }
+function setScore(id, v) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var base = el.className.replace(/\s*(healthy|attention|critical)\s*/g,' ').trim();
+  el.className = base + ' ' + cls(v);
+  el.innerHTML = fmt(v) + '<span class="dn">/10</span>';
+}
+function setBar(id, v) {
+  var el = document.getElementById(id);
+  if (el) { el.className = 'bar-f ' + cls(v); el.style.width = pct(v); }
+}
+function getNum(id) {
+  var el = document.getElementById(id);
+  return el ? (parseFloat(el.textContent) || 0) : null;
+}
+
+/* ═══════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════ */
+function switchUrl(idx, btn) {
+  document.querySelectorAll('.url-pill').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.pdp-block').forEach(function(b){b.classList.remove('active')});
+  if (btn) btn.classList.add('active');
+  var block = document.getElementById('pdp-' + idx);
+  if (block) block.classList.add('active');
+}
+function switchTab(uid, tab, btn) {
+  var nav = document.getElementById('tnav-' + uid);
+  if (nav) nav.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  if (btn) btn.classList.add('active');
+  var block = document.getElementById('pdp-' + uid);
+  if (block) block.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+  var panel = document.getElementById(uid + '-' + tab);
+  if (panel) panel.classList.add('active');
+}
+function toggleSsr(row) { row.classList.toggle('open'); }
+
+/* ── Hygiene sub-tab switcher ── */
+function switchHygieneSub(uid, sub, btn) {
+  var pdpBlock = document.getElementById('pdp-' + uid);
+  if (!pdpBlock) return;
+  pdpBlock.querySelectorAll('.h-sub').forEach(function(b){b.classList.remove('active')});
+  if (btn) btn.classList.add('active');
+  ['claims','brand','spell'].forEach(function(s) {
+    var p = document.getElementById(uid + '-hygiene-' + s);
+    if (p) p.style.display = (s === sub) ? 'block' : 'none';
+  });
+}
+
+/* ═══════════════════════════════════════════════════
+   HYGIENE — flag dismiss → recalc claims/brand/spell → overall → propagate
+═══════════════════════════════════════════════════ */
+function dismissFlag(cb, uid, cat) {
+  cb.closest('.fi').classList.toggle('dismissed', cb.checked);
+  recalcHygiene(uid);
+}
+function recalcHygiene(uid) {
+  var row = document.querySelector('.score-row[data-uid="' + uid + '"]');
+  if (!row) return;
+  var base = {
+    claims: parseFloat(row.getAttribute('data-claims-base')),
+    brand:  parseFloat(row.getAttribute('data-brand-base')),
+    spell:  parseFloat(row.getAttribute('data-spell-base'))
+  };
+  var pdp = document.getElementById('pdp-' + uid);
+  var scores = {};
+  ['claims','brand','spell'].forEach(function(cat) {
+    var all  = pdp.querySelectorAll('.fi[data-cat="' + cat + '"]');
+    var gone = pdp.querySelectorAll('.fi[data-cat="' + cat + '"].dismissed').length;
+    scores[cat] = all.length ? Math.min(10, base[cat] + gone*(10-base[cat])/all.length) : base[cat];
+    setScore(uid+'-sc-'+cat,  scores[cat]);
+    setBar(  uid+'-bar-'+cat, scores[cat]);
+  });
+  var overall = Math.round((scores.claims*0.4 + scores.brand*0.3 + scores.spell*0.3)*10)/10;
+  setScore(uid+'-sc-overall',  overall);
+  setBar(  uid+'-bar-overall', overall);
+  updateTabBadge(uid, 'hygiene', overall);
+  updateSummaryCell(uid, 'hygiene', overall);
+  recalcPDPOverall(uid);
+}
+
+/* ═══════════════════════════════════════════════════
+   SSR SUGGESTION DISMISS → sub-score → tab overall → PDP overall
+   Narrative, Visual, Reviews ssr rows
+═══════════════════════════════════════════════════ */
+function dismissSsrSug(evt, label, uid, tab) {
+  evt.stopPropagation();
+  var cb  = label.querySelector('input');
+  var det = label.closest('.ssr-detail');
+  var sug = det ? det.querySelector('.ssr-sug') : null;
+  if (cb.checked) {
+    if (sug) { sug.style.opacity='0.35'; sug.style.textDecoration='line-through'; }
+    label.classList.add('resolved');
+    label.lastChild.textContent = ' Marked as resolved — untick to restore';
+  } else {
+    if (sug) { sug.style.opacity='1'; sug.style.textDecoration='none'; }
+    label.classList.remove('resolved');
+    label.lastChild.textContent = ' Mark suggestion as resolved / not applicable';
+  }
+  /* bump the specific sub-score by 1.5 (hard cap 10) */
+  var ssr  = label.closest('.ssr');
+  var base = parseFloat(ssr.getAttribute('data-sub-base') || '0');
+  var newSub = cb.checked ? 10 : base;  // resolved = this dimension is fixed → 10
+  ssr.setAttribute('data-current-sub', newSub);
+  var ssrScEl = ssr.querySelector('.ssr-score');
+  if (ssrScEl) {
+    ssrScEl.className = 'ssr-score ' + cls(newSub);
+    ssrScEl.innerHTML = fmt(newSub) + '<span class="dn">/10</span>';
+  }
+  recalcTabFromSsrs(uid, tab);
+}
+
+/* Recalculate tab overall from its ssr weighted sub-scores + flag bonus */
+function recalcTabFromSsrs(uid, tab) {
+  var panelMap = {pn:'narrative', vis:'visual', rev:'reviews'};
+  var panel = document.getElementById(uid + '-' + (panelMap[tab] || tab));
+  if (!panel) return;
+  var weighted = 0;
+  panel.querySelectorAll('.ssr[data-weight]').forEach(function(s) {
+    var w  = parseFloat(s.getAttribute('data-weight') || '0');
+    var sc = parseFloat(s.getAttribute('data-current-sub') || s.getAttribute('data-sub-base') || '0');
+    weighted += sc * w;
+  });
+  /* flag-dismissal bonus (up to +1.0 on top) */
+  var pdp  = document.getElementById('pdp-' + uid);
+  var allF = pdp ? pdp.querySelectorAll('.fi[data-tab="'+tab+'"]') : [];
+  var disF = pdp ? pdp.querySelectorAll('.fi[data-tab="'+tab+'"].dismissed') : [];
+  var flagBonus = allF.length ? (disF.length / allF.length) * 1.0 : 0;
+  var s = Math.min(10, weighted + flagBonus);
+  setScore(uid+'-sc-'+tab,  s);
+  setBar(  uid+'-bar-'+tab, s);
+  updateTabBadge(uid, tab, s);
+  updateSummaryCell(uid, tab, s);
+  recalcPDPOverall(uid);
+}
+
+/* Flag dismiss for pn / vis / rev / copy tabs */
+function dismissTabFlag(cb, uid, tab) {
+  var container = cb.closest('.fi') || cb.closest('.ti');
+  if (container) container.classList.toggle('dismissed', cb.checked);
+  var panelMap = {pn:'narrative', vis:'visual', rev:'reviews'};
+  var pname = panelMap[tab];
+  var hasSSR = pname && document.getElementById(uid+'-'+pname) &&
+               document.getElementById(uid+'-'+pname).querySelector('.ssr[data-weight]');
+  if (hasSSR) {
+    recalcTabFromSsrs(uid, tab);
+  } else {
+    /* copy tab: simple bump on base score */
+    var pdp = document.getElementById('pdp-' + uid);
+    var scoreRow = pdp ? pdp.querySelector('.score-row[data-tab="'+tab+'"]') : null;
+    if (!scoreRow) return;
+    var base  = parseFloat(scoreRow.getAttribute('data-base'));
+    var isSel = '.ti[data-tab="copy"]';
+    var all  = pdp.querySelectorAll(isSel);
+    var gone = pdp.querySelectorAll(isSel+'.dismissed').length;
+    var s = all.length ? Math.min(10, base + gone*(10-base)/all.length) : base;
+    setScore(uid+'-sc-copy',  s);
+    setBar(  uid+'-bar-copy', s);
+    updateTabBadge(uid, 'copy', s);
+    recalcPDPOverall(uid);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   PDP OVERALL — weighted: rev×0.15 + pn×0.30 + copy×0.15 + vis×0.30 + ad×0.10
+═══════════════════════════════════════════════════ */
+function recalcPDPOverall(uid) {
+  var pdp = document.getElementById('pdp-' + uid);
+  if (!pdp) return;
+  function live(scId, attr) {
+    var v = getNum(scId);
+    return v !== null ? v : parseFloat(pdp.getAttribute(attr) || '0');
+  }
+  var rev  = live(uid+'-sc-rev',     'data-reviews-base');
+  var pn   = live(uid+'-sc-pn',      'data-pn-base');
+  var copy = live(uid+'-sc-overall', 'data-copy-base');
+  var vis  = live(uid+'-sc-vis',     'data-vis-base');
+  var ad   = parseFloat(pdp.getAttribute('data-ad-base') || '0');
+  var overall = Math.round((rev*0.15 + pn*0.30 + copy*0.15 + vis*0.30 + ad*0.10) * 100) / 100;
+  /* card header */
+  var pdpScEl = document.getElementById(uid+'-pdp-score');
+  var pdpBgEl = document.getElementById(uid+'-pdp-badge');
+  if (pdpScEl) { pdpScEl.className = 'card-score '+cls(overall); pdpScEl.textContent = overall.toFixed(2); }
+  if (pdpBgEl) { pdpBgEl.className = 'badge bg-'+cls(overall);   pdpBgEl.textContent = cls(overall).toUpperCase(); }
+  /* URL pill score */
+  var pillSc = document.getElementById(uid+'-pill-score');
+  if (pillSc) { pillSc.className = 'up-score bg-'+cls(overall); pillSc.textContent = fmt(overall); }
+  /* summary overall cell */
+  var sumOv = document.getElementById(uid+'-sum-overall');
+  if (sumOv) { sumOv.textContent = overall.toFixed(2); }
+  recalcProductOverall();
+}
+
+/* ═══════════════════════════════════════════════════
+   PRODUCT OVERALL — average of all PDP overall scores
+═══════════════════════════════════════════════════ */
+function recalcProductOverall() {
+  var total = 0, count = 0;
+  document.querySelectorAll('.pdp-block').forEach(function(b) {
+    var uid = b.id.replace('pdp-','');
+    var el  = document.getElementById(uid+'-pdp-score');
+    if (el) { total += parseFloat(el.textContent) || 0; count++; }
+  });
+  if (!count) return;
+  var avg = total / count;
+  var heroSc = document.getElementById('product-avg-score');
+  var heroBg = document.getElementById('product-avg-badge');
+  if (heroSc) { heroSc.className = 'big-score '+cls(avg); heroSc.textContent = fmt(avg); }
+  if (heroBg) { heroBg.className = 'badge bg-'+cls(avg);  heroBg.textContent = cls(avg).toUpperCase(); }
+}
+
+/* ═══════════════════════════════════════════════════
+   HELPERS — update tab badge + summary cell
+═══════════════════════════════════════════════════ */
+function updateTabBadge(uid, tab, score) {
+  var map = {hygiene:'hygiene', pn:'pn', vis:'vis', rev:'rev', copy:'copy'};
+  var el  = document.getElementById(uid+'-tab-'+(map[tab]||tab)+'-score');
+  if (el) { el.className = 'ts '+cls(score); el.textContent = fmt(score); }
+}
+function updateSummaryCell(uid, tab, score) {
+  var cellMap = {hygiene:'hygiene', pn:'pn', vis:'visual', rev:'reviews'};
+  var cid = cellMap[tab];
+  if (!cid) return;
+  var el = document.getElementById(uid+'-sum-'+cid);
+  if (el) { el.className = 'sum-cell-val '+cls(score); el.textContent = fmt(score); }
+}
+</script>
+</body>
+</html>
