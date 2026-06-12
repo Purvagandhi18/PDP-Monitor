@@ -35,11 +35,17 @@ def _product_slug(name: str) -> str:
 
 
 def _latest_report(product_name: str) -> Path:
-    slug = _product_slug(product_name)
-    reports = sorted((REPO_ROOT / "outputs" / "reports").glob(f"{slug}_*.html"))
-    if not reports:
+    reports_dir = REPO_ROOT / "outputs" / "reports"
+    # The report builder names files with name.lower().replace(' ','_'), which
+    # KEEPS hyphens (e.g. "anti-hairfall_kit_s1"). _product_slug converts those
+    # to underscores. Try both conventions so neither mismatches.
+    builder_slug = product_name.lower().replace(" ", "_")
+    candidates = []
+    for slug in {builder_slug, _product_slug(product_name)}:
+        candidates += list(reports_dir.glob(f"{slug}_*.html"))
+    if not candidates:
         raise FileNotFoundError(f"No report found for '{product_name}'")
-    return reports[-1]
+    return sorted(candidates)[-1]
 
 
 def _run(cmd: list, cwd=None) -> str:
