@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-PDP Monitor — V1
+PDP Monitor — V2
 Usage:
-  python main.py --run-now          # run once immediately
-  python main.py --schedule         # run daily at 8am
-  python main.py --run-now --product "Shilajit Gummies"  # specific product
+  python main.py --run-now                                  # interactive product picker
+  python main.py --run-now --product "Shilajit Gummies"     # specific product directly
+  python main.py --run-now --product "Hair Regrowth Kit S3" # specific product directly
+  python main.py --schedule                                  # run daily at 8am (all products)
+  python main.py --schedule --time 09:00
 """
 
 import argparse
@@ -161,16 +163,43 @@ def run_product(product_cfg: dict):
     return report_path
 
 
-def run_all(product_filter: str = None):
-    """Run pipeline for all products (or one specific product)."""
-    products = config["products"]
+def _pick_products(product_filter: str = None) -> list:
+    """Return the list of product configs to run, prompting if not specified."""
+    all_products = config["products"]
 
     if product_filter:
-        products = [p for p in products if p["name"].lower() == product_filter.lower()]
-        if not products:
+        matched = [p for p in all_products if p["name"].lower() == product_filter.lower()]
+        if not matched:
             log.error(f"Product '{product_filter}' not found in config.yaml")
-            log.error(f"Available: {[p['name'] for p in config['products']]}")
+            log.error(f"Available: {[p['name'] for p in all_products]}")
             sys.exit(1)
+        return matched
+
+    # Interactive picker
+    print("\nWhich product(s) do you want to run?")
+    print("  0  All products")
+    for i, p in enumerate(all_products, 1):
+        print(f"  {i}  {p['name']}")
+    print()
+
+    while True:
+        try:
+            choice = input("Enter number (0 to run all): ").strip()
+            idx = int(choice)
+        except (ValueError, EOFError):
+            print("  Please enter a number.")
+            continue
+
+        if idx == 0:
+            return all_products
+        if 1 <= idx <= len(all_products):
+            return [all_products[idx - 1]]
+        print(f"  Enter a number between 0 and {len(all_products)}.")
+
+
+def run_all(product_filter: str = None):
+    """Run pipeline for all products (or one specific product)."""
+    products = _pick_products(product_filter)
 
     log.info(f"Running PDP Monitor for {len(products)} product(s)")
     report_paths = []
