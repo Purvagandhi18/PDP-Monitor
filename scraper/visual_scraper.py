@@ -368,12 +368,20 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
             )
             page = ctx.new_page()
 
-            # Intercept network — catch every CDN image request (incl. lazy loads)
+            # Intercept network — catch every CDN image request (incl. lazy loads).
+            # ctx_y holds the page-Y of whatever carousel we're currently clicking
+            # through, so slides that load via network (and leave the DOM when the
+            # carousel advances) still get a correct vertical position for ordering.
+            ctx_y = {"y": None}
+            net_y = {}   # base url -> page Y captured at load time
+
             def _on_request(req):
                 u = req.url
                 if _is_cdn_image(u) and u not in seen:
                     seen.add(u)
                     found_urls.append(u)
+                    if ctx_y["y"] is not None:
+                        net_y.setdefault(u.split("?")[0], ctx_y["y"])
 
             page.on("request", _on_request)
 
@@ -414,53 +422,59 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
             except Exception as e:
                 log.debug(f"Accordion expand pass failed: {e}")
 
-            # Pass 3: advance every carousel/slider through its slides via next
-            # buttons AND pagination bullets. Carousels keep only the active
-            # slide's image in the DOM, so each slide must be triggered to load.
+            # Pass 3: advance every carousel/slider through its slides. Driven from
+            # Python so each carousel's slides are tagged (via ctx_y) with the
+            # carousel's page-Y — otherwise slides that load then leave the DOM
+            # would have no position and sink to the bottom of the ordered list.
+            _NEXT_SEL = (
+                ".swiper-button-next, .slick-next, "
+                ".carousel-mobile-nav.right, [class*='carousel-mobile-nav'][class*='right'], "
+                "button[aria-label*='next' i], [class*='next-btn'], [class*='nextBtn'], "
+                "[class*='arrow'][class*='right'], [class*='next'], [data-slide='next']"
+            )
+            try:
+                page.evaluate("window.scrollTo(0, 0)")
+                page.wait_for_timeout(400)
+                next_btns = page.query_selector_all(_NEXT_SEL)
+                for btn in next_btns:
+                    try:
+                        # Absolute page-Y of this carousel (scroll-independent)
+                        y = btn.evaluate(
+                            "el => Math.round(el.getBoundingClientRect().top + window.scrollY)"
+                        )
+                        ctx_y["y"] = y if isinstance(y, (int, float)) else None
+                        btn.scroll_into_view_if_needed(timeout=2000)
+                        page.wait_for_timeout(250)
+                        for _ in range(15):  # cover long carousels (10-slide hero)
+                            if not btn.is_visible():
+                                break
+                            try:
+                                btn.click(timeout=1000)
+                                page.wait_for_timeout(320)
+                            except Exception:
+                                break
+                    except Exception:
+                        continue
+                    finally:
+                        ctx_y["y"] = None
+            except Exception as e:
+                log.debug(f"Carousel advance pass failed: {e}")
+
+            # Pagination bullets (kept in JS — usually reload already-seen slides)
             try:
                 page.evaluate("""async () => {
                     const delay = ms => new Promise(r => setTimeout(r, ms));
-                    // Scroll each carousel into view before clicking — custom
-                    // carousels (e.g. the hero) only respond to clicks while visible.
-                    window.scrollTo(0, 0);
-                    await delay(500);
-                    // Next-arrow buttons (incl. ManMatters' custom .carousel-mobile-nav.right)
-                    const nextSelectors = [
-                        '.swiper-button-next', '.slick-next',
-                        '.carousel-mobile-nav.right', '[class*="carousel-mobile-nav"][class*="right"]',
-                        'button[aria-label*="next" i]',
-                        '[class*="next-btn"]', '[class*="nextBtn"]',
-                        '[class*="arrow"][class*="right"]', '[class*="next"]',
-                        '[data-slide="next"]'
-                    ];
-                    const btns = document.querySelectorAll(nextSelectors.join(','));
-                    for (const btn of btns) {
-                        try { btn.scrollIntoView({block: 'center'}); await delay(300); } catch (e) {}
-                        // Click up to 15 times to cover long carousels (e.g. 10-slide hero)
-                        for (let i = 0; i < 15; i++) {
-                            try {
-                                if (btn.offsetParent === null) break;
-                                btn.click();
-                                await delay(350);
-                            } catch (e) { break; }
-                        }
-                    }
-                    // Pagination bullets/dots — click each to force its slide to load
                     const bullets = document.querySelectorAll(
                         '.swiper-pagination-bullet, [class*="bullet"], [class*="dot"], '
                         + '[class*="pagination"] > *, [class*="indicator"] > *'
                     );
                     for (const dot of bullets) {
-                        try {
-                            if (dot.offsetParent === null) continue;
-                            dot.click();
-                            await delay(300);
-                        } catch (e) {}
+                        try { if (dot.offsetParent) { dot.click(); await delay(250); } } catch (e) {}
                     }
                 }""")
-                page.wait_for_timeout(1500)
+                page.wait_for_timeout(1000)
             except Exception as e:
-                log.debug(f"Carousel advance pass failed: {e}")
+                log.debug(f"Bullet pass failed: {e}")
 
             # Pass 4: final slow scroll to flush anything revealed by passes 2–3.
             page.evaluate("""async () => {
@@ -530,19 +544,18 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
     def _base(u: str) -> str:
         return u.split("?")[0]
 
-    # Build an ordered, deduped list of content images in page display order.
-    # Priority for ordering: DOM vertical position (y, then x). Network-only
-    # images (caught by intercept but not in the DOM scan) are appended after,
-    # in load order, since they have no position.
+    # Build a single list of content images, each with a page-Y position, then
+    # sort top-to-bottom. Position sources, in priority order:
+    #   1. DOM bounding-box Y (images present at final measurement)
+    #   2. ctx_y carousel tag (slides that loaded then left the DOM when the
+    #      carousel advanced — e.g. hero slides 2..10)
+    #   3. unknown -> 1e9 (sorts to the very end)
     chrome_dropped = 0
-    base_to_pos = {}        # base url -> (y, x) from DOM
-    base_to_alt = {}        # base url -> alt text
-    dom_bases_ordered = []  # DOM bases in (y, x) order
-
-    # Sort DOM items by vertical then horizontal position
-    dom_items_sorted = sorted(dom_items, key=lambda it: (it.get("y", 1e9), it.get("x", 0)))
+    items = []          # (y, x, base, url, alt)
     seen_bases = set()
-    for it in dom_items_sorted:
+
+    # DOM images first — they carry true positions + alt labels
+    for it in dom_items:
         u = it.get("url", "")
         if not _is_cdn_image(u):
             continue
@@ -553,37 +566,41 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
         if b in seen_bases:
             continue
         seen_bases.add(b)
-        base_to_pos[b] = (it.get("y", 1e9), it.get("x", 0))
-        if it.get("alt"):
-            base_to_alt[b] = it["alt"]
-        dom_bases_ordered.append((b, u))
+        items.append((it.get("y", 1e9), it.get("x", 0), b, u, it.get("alt", "")))
 
-    # Network-only images (in found_urls but never seen in DOM) — append at end
-    network_only = []
+    # Network images not in the final DOM — use the carousel Y tag if we have one
+    positioned_by_ctx = 0
+    network_unknown = 0
     for u in found_urls:
         if _is_chrome_image(u):
             continue
         b = _base(u)
-        if b not in seen_bases:
-            seen_bases.add(b)
-            network_only.append((b, u))
+        if b in seen_bases:
+            continue
+        seen_bases.add(b)
+        y = net_y.get(b)
+        if y is not None:
+            positioned_by_ctx += 1
+        else:
+            y = 1e9
+            network_unknown += 1
+        items.append((y, 0, b, u, ""))
 
-    ordered = dom_bases_ordered + network_only
+    # Sort everything top-to-bottom (page display order)
+    items.sort(key=lambda t: (t[0], t[1]))
 
     log.info(
-        f"Playwright CDN sweep: {len(ordered)} content images from {url} "
-        f"({len(dom_bases_ordered)} positioned + {len(network_only)} network-only, "
+        f"Playwright CDN sweep: {len(items)} content images from {url} "
+        f"({positioned_by_ctx} carousel-tagged, {network_unknown} unpositioned, "
         f"{chrome_dropped} chrome/nav icons dropped)"
     )
 
-    # Hero region = top of page (above ~900px). The hero carousel's stacked
-    # slides all sit near y≈0, so they group together correctly.
+    # Hero region = top of page (above ~900px). The hero carousel's slides all
+    # share the carousel's Y, so they group together at the top correctly.
     HERO_Y_THRESHOLD = 900
     images = []
-    for i, (b, img_url) in enumerate(ordered):
-        y = base_to_pos.get(b, (1e9, 0))[0]
+    for i, (y, x, b, img_url, alt) in enumerate(items):
         position = "hero" if y < HERO_Y_THRESHOLD else "content"
-        alt = base_to_alt.get(b, "")
         label = alt[:60] if alt else f"live_{i+1}"
         images.append(ZeusImage(
             url=img_url,
