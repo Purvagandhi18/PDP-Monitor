@@ -1,0 +1,421 @@
+{
+  "page_id": "1605-co",
+  "brand": "MM",
+  "page_url": "https://manmatters.co/habit/landing/pdp/1605",
+  "fetched_at": "2026-06-12T12:33:17.893488Z",
+  "style": "displayOrder",
+  "image_gallery": [
+    {
+      "original": "https://i.mscwlns.co/media/misc/others/1%20%281%29_bywp36.png?tr=w-600",
+      "videoLink": "",
+      "thumbnail": "https://i.mscwlns.co/media/misc/others/3%20%281%29_jtfbxm.png?tr=w-600",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/others/2%20%282%29_c4lr0u.png?tr=w-600",
+      "videoLink": "",
+      "thumbnail": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    },
+    {
+      "original": "https://i.mscwlns.co/media/misc/others/3%20%281%29_jtfbxm.png?tr=w-600",
+      "videoLink": "",
+      "thumbnail": "",
+      "cta": {
+        "label": "",
+        "link": "",
+        "newTab": false,
+        "action": ""
+      }
+    }
+  ],
+  "display_order": {
+    "default": [
+      "pdp-hero-carousel-with-thumbnail",
+      "product-summary",
+      "product-description",
+      "check-delivery-info",
+      "sticky-cta-button",
+      "benefits",
+      "how-to-use",
+      "science-backed-slider",
+      "expert-cards",
+      "reels-slider",
+      "faqs",
+      "INFO_LIST_WITH_ICONS"
+    ],
+    "desktop_top_left": [
+      "bread-crumbs",
+      "pdp-hero-carousel-with-thumbnail"
+    ],
+    "desktop_top_right": [
+      "product-discount-tag-desktop",
+      "product-summary",
+      "product-description",
+      "check-delivery-info",
+      "sticky-cta-button"
+    ],
+    "desktop_bottom": [
+      "benefits",
+      "expert-cards",
+      "faqs",
+      "reels-slider",
+      "how-to-use",
+      "science-backed-slider"
+    ]
+  },
+  "widgets": {
+    "benefits": {
+      "id": "benefits",
+      "type": "ACCORDION",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "COMPACT"
+        },
+        "isSupportedOnlyForMobile": false
+      },
+      "widgetData": {
+        "iconVariant": "chevron",
+        "titleFontWeight": "bold",
+        "isInitiallyOpen": false,
+        "list": [
+          {
+            "title": "Boosts Metabolic Energy",
+            "content": "Helps convert calories into energy, not fat Improves metabolism and workout recovery",
+            "image": "https://i.mscwlns.co/media/misc/others/fitness%20%281%29_cxapss.png?tr=w-600"
+          },
+          {
+            "title": "Crushes Cravings Daily",
+            "content": "Reduces cravings & fatigue Supports consistent, long-term fat loss",
+            "image": "https://i.mscwlns.co/media/misc/others/Improved%20Nutrition_kovy5e.png?tr=w-600"
+          },
+          {
+            "title": "Sustains Fat Loss",
+            "content": "Prevents nutrient deficiencies during dieting",
+            "image": "https://i.mscwlns.co/media/misc/others/Weight%20loss_arsi1h.png?tr=w-600"
+          }
+        ]
+      }
+    },
+    "expert-cards": {
+      "type": "MEDIA_SLIDER",
+      "layout": {
+        "type": "CONTAINED",
+        "verticalSpacing": {
+          "top": "NONE",
+          "bottom": "COMPACT"
+        },
+        "background": "#FFFFFF"
+      },
+      "header": {
+        "title": "Get Coach Support",
+        "subtitle": "",
+        "subtileType": "PRIMARY",
+        "textAlign": "left",
+        "label": "",
+        "desktopTextAlign": "left"
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "aspectRatio": 2.3692,
+          "slidesToShow": 1,
+          "slidesToShowDesktop": 3,
+          "showPeek": true,
+          "showDots": false
+        },
+        "showBorder": false,
+        "items": [
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/5-a_9pscxh.png?tr=w-600",
+              "altText": "Kshitij Budhiraja",
+              "loading": "lazy"
+            },
+            "cta": {
+              "actions": [
+                {
+                  "actionName": "SPA_LINK",
+                  "params": {
+                    "link": "/mcd/2865",
+                    "source": "Expert Cards",
+                    "Expert Name": "Kshitij Budhiraja"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/5-a-1_66dhhz.png?tr=w-600",
+              "altText": "Arya Shrivastava",
+              "loading": "lazy"
+            },
+            "cta": {
+              "actions": [
+                {
+                  "actionName": "SPA_LINK",
+                  "params": {
+                    "link": "/mcd/2852",
+                    "source": "Expert Cards",
+                    "Expert Name": "Arya Shrivastava"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/5-a-2_cy5v2r.png?tr=w-600",
+              "altText": "Neha Suryavanshi",
+              "loading": "lazy"
+            },
+            "cta": {
+              "actions": [
+                {
+                  "actionName": "SPA_LINK",
+                  "params": {
+                    "link": "/mcd/2794",
+                    "source": "Expert Cards",
+                    "Expert Name": "Neha Suryavanshi"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/5-a-3_ifyi62.png?tr=w-600",
+              "altText": "Moyiza Mulla",
+              "loading": "lazy"
+            },
+            "cta": {
+              "actions": [
+                {
+                  "actionName": "SPA_LINK",
+                  "params": {
+                    "link": "/mcd/1820",
+                    "source": "Expert Cards",
+                    "Expert Name": "Moyiza Mulla"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "faqs": {
+      "type": "ACCORDION",
+      "id": "faqs",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "NONE",
+          "bottom": "NONE"
+        }
+      },
+      "header": {
+        "subtitle": "FAQs"
+      },
+      "widgetData": {
+        "list": [
+          {
+            "title": "Will this work without exercise?",
+            "content": "It supports weight loss, but combining it with movement delivers better results."
+          },
+          {
+            "title": "Is this safe for daily use?",
+            "content": "Yes. Designed for long-term daily consumption."
+          },
+          {
+            "title": "When will I see results?",
+            "content": "Most users notice changes in energy and appetite in 2\u20133 weeks. Visible fat loss follows with consistency."
+          },
+          {
+            "title": "Can beginners use this?",
+            "content": "Absolutely. This pack is beginner-friendly."
+          }
+        ],
+        "iconVariant": "chevron",
+        "titleFontWeight": "bold"
+      }
+    },
+    "reels-slider": {
+      "type": "REELS_SLIDER",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "NONE"
+        },
+        "desktopFullWidth": true
+      },
+      "header": {
+        "title": "Real Results, Real People",
+        "subtileType": "",
+        "label": "",
+        "desktopTextAlign": "center"
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "slidesToShow": 2,
+          "slidesToShowDesktop": 4,
+          "aspectRatio": 0.56,
+          "peekVariant": "MEDIUM"
+        },
+        "variant": "3D",
+        "items": [
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/694fb5c6b122cbf1766d6cdf/main.mp4"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/696a1529828f3379e53f3bd7/main.mp4"
+            }
+          },
+          {
+            "media": {
+              "mediaType": "video",
+              "source": "https://video.gumlet.io/6453a8cc56ecc7951d7ae765/694fbac2f1ad267a0678d633/main.mp4"
+            }
+          }
+        ]
+      }
+    },
+    "science-backed-slider": {
+      "type": "MEDIA_LABELED_SLIDER",
+      "id": "science-backed-slider",
+      "layout": {
+        "type": "FLUID",
+        "verticalSpacing": {
+          "top": "COMPACT",
+          "bottom": "COMPACT"
+        },
+        "isSupportedOnlyForMobile": true
+      },
+      "header": {
+        "title": "Backed and Certified by Science",
+        "textAlign": "left",
+        "desktopTextAlign": "left"
+      },
+      "widgetData": {
+        "sliderConfig": {
+          "slidesToShow": 2,
+          "aspectRatio": 1
+        },
+        "items": [
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/ChatGPT%20Image%20Feb%2011%2C%202026%2C%2009_46_49%20PM%202%20%282%29_ihddpy.png?tr=w-600",
+              "altText": "FSSAI Approved Icon",
+              "loading": "lazy"
+            },
+            "label": "FSSAI Approved"
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/ChatGPT%20Image%20Feb%2011%2C%202026%2C%2009_46_49%20PM%201%20%281%29_2y5313.png?tr=w-600",
+              "altText": "FSSAI Approved Icon",
+              "loading": "lazy"
+            },
+            "label": "ISO Approved"
+          },
+          {
+            "media": {
+              "mediaType": "image",
+              "source": "https://i.mscwlns.co/media/misc/others/ChatGPT%20Image%20Feb%2011%2C%202026%2C%2009_46_49%20PM%203%20%281%29_gue8mz.png?tr=w-600",
+              "altText": "GMP Approved Icon",
+              "loading": "lazy"
+            },
+            "label": "GMP Approved"
+          }
+        ]
+      }
+    },
+    "sticky-cta-button": {
+      "id": "sticky-cta-button",
+      "type": "CALL_TO_ACTION",
+      "layout": {
+        "backgroundColor": "white"
+      },
+      "widgetData": {
+        "isStickyFooter": true,
+        "items": [
+          {
+            "label": "Get Started",
+            "variant": "PRIMARY",
+            "size": "LARGE",
+            "fullWidth": true,
+            "actions": [
+              {
+                "actionName": "LINK",
+                "params": {
+                  "link": "https://api.whatsapp.com/send/?phone=917208094062",
+                  "source": "Consult Plan",
+                  "item": "3-month Performance Plan"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "source": "sticky-cta-button"
+      }
+    },
+    "how-to-use": {
+      "type": "INFO_LIST_WITH_ICONS",
+      "id": "how-to-use",
+      "header": {
+        "title": "How to Use"
+      },
+      "layout": {
+        "type": "CONTAINED",
+        "verticalSpacing": {
+          "top": "NONE",
+          "bottom": "NONE"
+        },
+        "backgroundColor": "#eaf8f8"
+      },
+      "widgetData": {
+        "showSerialNumber": false,
+        "list": [
+          {
+            "image": {
+              "url": ""
+            },
+            "title": "",
+            "description": "Daily Usage:<br/>Protein: 1 serving post-workout or as a meal replacement<br/>Multivitamin: 1 tablet with breakfast<br/>Magnesium: 1 tablet post-dinner or before bed<br/>y Recommended Duration:<br/>Minimum 3 months, best results at 6 months"
+          }
+        ]
+      }
+    }
+  },
+  "sections_order": [],
+  "sections_images": {},
+  "sections_raw": {},
+  "reviews": {
+    "topReviews": []
+  }
+}

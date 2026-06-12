@@ -134,10 +134,14 @@ def _page_id_from_url(url: str) -> Optional[str]:
     Includes a domain suffix when the same page ID exists on multiple domains
     (e.g. manmatters.com vs manmatters.co → 141464 vs 141464-co).
     """
-    m = re.search(r"/(\d{6,})(?:[/?]|$)", url)
-    if not m:
+    # Match the trailing numeric path segment (the PDP id). Product ids range
+    # from 4 digits (e.g. 1605) to 7 (e.g. 2024397), so accept 4+. The (?:[/?]|$)
+    # anchor ensures we match a whole path segment, not digits embedded in a slug
+    # like "...-300ml/2025034" (the "300" there isn't followed by a delimiter).
+    matches = re.findall(r"/(\d{4,})(?:[/?]|$)", url)
+    if not matches:
         return None
-    page_id = m.group(1)
+    page_id = matches[-1]  # last numeric segment is the PDP id
     # Append domain suffix for non-.com domains to avoid cache collisions
     if "manmatters.co/" in url or url.rstrip("/").endswith("manmatters.co"):
         return f"{page_id}-co"

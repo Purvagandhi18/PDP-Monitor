@@ -101,6 +101,24 @@ products:
       product_brief:    "inputs/pdfs/anti_hairfall_s1/product_brief.pdf"
       narrative:        "inputs/pdfs/anti_hairfall_s1/narrative.pdf"
 
+  # ── Hair Gummies ─────────────────────────────────────────────────────────
+  - name: "Hair Gummies"
+    personas:
+      - "Early-Stage Hairfall 18-26"   # college/first-job, nutrition gap, tried nuskas/oils/shampoos
+    narratives:
+      - "Problem-Solution"   # hairfall → wrong fixes → nutrition gap truth → gummies
+      - "Myth-Busting"       # bust every nuska/oil/shampoo → internal nutrition fix
+      - "Nutrition"          # 18-26 Indian diets lack hair nutrients → gummies bridge the gap
+    urls:
+      - url: "https://manmatters.co/habit/landing/pdp/1605"
+        narrative: "Problem-Solution"
+        persona: "Early-Stage Hairfall 18-26"
+    pdfs:
+      persona:          "inputs/pdfs/hair_gummies_amj/persona.pdf"
+      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+      product_brief:    "inputs/pdfs/hair_gummies_amj/product_brief.pdf"
+      narrative:        "inputs/pdfs/hair_gummies_amj/narrative.pdf"
+
   # ── ADD A NEW PRODUCT BELOW ───────────────────────────────────────────────
   # Copy this block and fill in the fields. Each product gets its own:
   #   - inputs/pdfs/{product_folder}/ with persona.pdf, product_brief.docx, narrative.pdf
