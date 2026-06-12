@@ -560,6 +560,18 @@ def enrich_with_visuals(pdp_data: PDPTextData) -> PDPTextData:
     # Gets every CDN image from the LIVE page regardless of Zeus cache quality.
     # Critical when staging Zeus cache has wrong-product data.
     live_images = _playwright_cdn_sweep(url, url_slug)
+    live_bases = {img.url.split("?")[0] for img in live_images}
+
+    # Drop Zeus images that don't actually appear on the live page. Staging Zeus
+    # caches sometimes return a different product's images (wrong-product data);
+    # if a Zeus image isn't present in the live sweep, it's stale/wrong — discard.
+    # Only applies the filter when the live sweep succeeded (non-empty).
+    if live_bases and zeus_images:
+        kept = [z for z in zeus_images if z.url.split("?")[0] in live_bases]
+        dropped = len(zeus_images) - len(kept)
+        if dropped:
+            log.info(f"Dropped {dropped} Zeus images not present on live page (stale/wrong-product staging data)")
+        zeus_images = kept
 
     # Merge: Zeus images first (labelled/positioned), then live-only additions
     zeus_urls = {z.url.split("?")[0] for z in zeus_images}
