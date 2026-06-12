@@ -68,6 +68,15 @@ SYSTEM = """You are a CRO analyst auditing product reviews on a health/wellness 
 Evaluate the reviews against the product context provided.
 Return ONLY valid JSON — no explanation, no markdown.
 
+CRITICAL — judging freshness:
+- The prompt gives you TODAY'S DATE. Judge every review date relative to THAT
+  date, not your own assumptions about what year it is.
+- Each review includes its computed age in days. A positive age means the review
+  is in the PAST (valid). Only an age that is NEGATIVE is a future date.
+- Do NOT call a review "future-dated" or "fabricated" just because its year looks
+  high to you (e.g. 2026). Trust the provided age-in-days; it is computed from
+  today's date. Reviews from the last 1-3 months are FRESH and score high.
+
 Schema:
 {
   "overall": <float 0-10>,
@@ -138,10 +147,22 @@ def score_reviews(
             f"no review dates available, freshness score set to null"
         )
 
-    # Format reviews for Claude — include parsed date status for transparency
+    # Format reviews for Claude — include parsed date + computed age in days so
+    # Claude judges freshness against the real current date, not its own guess.
+    now = datetime.utcnow()
+
+    def _age_label(r: Review) -> str:
+        d = _parse_date(r.date)
+        if not d:
+            return "age: unknown (unparseable date)"
+        days = (now - d).days
+        if days < 0:
+            return f"age: {-days} days in the FUTURE (invalid)"
+        return f"age: {days} days ago"
+
     reviews_text = "\n".join([
         f"[{i+1}] Rating: {r.rating or 'N/A'} | "
-        f"Date: {r.date or 'MISSING'} (parsed: {'yes' if _parse_date(r.date) else 'no'}) | "
+        f"Date: {r.date or 'MISSING'} | {_age_label(r)} | "
         f"{r.text[:300]}"
         for i, r in enumerate(pdp.reviews[:50])
     ])
@@ -149,6 +170,10 @@ def score_reviews(
     prompt = f"""PRODUCT: {context.product_name}
 PRODUCT CLAIMS: {', '.join(context.product_brief.primary_benefits)}
 PERSONA TOP CONCERNS: {', '.join(context.persona.top_concerns)}
+
+TODAY'S DATE: {now.strftime('%d %B %Y')} ({now.strftime('%Y-%m-%d')})
+Judge review freshness relative to TODAY'S DATE above. Each review's age in days
+is pre-computed for you — trust it. Recent reviews (last 1-3 months) are fresh.
 
 TOP {len(pdp.reviews)} REVIEWS:
 {reviews_text}

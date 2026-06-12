@@ -1446,3 +1446,86 @@
 2026-06-12 18:03:17,893  INFO      kai_client  →  KAI cache built for 1605-co: gallery=3 widgets=7 sections_raw=0 reviews=0
 2026-06-12 18:03:17,894  INFO      zeus_connector  →  Zeus cache saved: 1605-co
 2026-06-12 18:03:17,894  INFO      zeus_connector  →  KAI sync complete for 1605-co (staging=True)
+2026-06-12 18:04:04,432  INFO      engine  →      → 7.0/10
+2026-06-12 18:04:04,434  INFO      engine  →  4/5 Visual Design...
+2026-06-12 18:04:04,435  INFO      visual_scorer  →  Scoring visual design for https://manmatters.co/dp/anti-hair-fall-shampoo-300ml/2025034
+2026-06-12 18:04:04,435  INFO      visual_scorer  →  Sending 8 images to Claude Vision (Zeus CDN)
+2026-06-12 18:04:42,234  INFO      zeus_connector  →  Zeus cache hit: 2025034-co (fetched 2026-06-12T12:25:27.236306Z)
+2026-06-12 18:04:42,235  INFO      visual_scorer  →  Section flow: analysing 8 sections (live page (__NEXT_DATA__)) for https://manmatters.co/dp/anti-hair-fall-shampoo-300ml/2025034
+2026-06-12 18:04:57,549  INFO      visual_scorer  →  Section flow scored 3.5/10 — 4 out-of-order, 7 missing
+2026-06-12 18:04:57,551  INFO      engine  →      → 6.8/10
+2026-06-12 18:04:57,551  INFO      engine  →  5/5 Ad Alignment...
+2026-06-12 18:04:57,551  INFO      ad_alignment_scorer  →  Scoring ad alignment for https://manmatters.co/dp/anti-hair-fall-shampoo-300ml/2025034
+2026-06-12 18:04:57,552  WARNING   ad_alignment_scorer  →  No ad data from sheets — returning low score
+2026-06-12 18:04:57,552  INFO      engine  →      → 5.0/10
+2026-06-12 18:04:57,552  INFO      engine  →  OVERALL: 6.1/10 → CRITICAL
+2026-06-12 18:04:57,552  INFO      engine  →  Generating RCA...
+2026-06-12 18:04:57,552  INFO      rca  →  Score 6.1 < 8.0 — generating RCA
+2026-06-12 18:05:34,004  INFO      rca  →  Generated 6 RCA items
+2026-06-12 18:05:34,006  INFO      engine  →  RCA: 6 items
+2026-06-12 18:05:34,009  INFO      storage_tool  →  Run snapshot saved → outputs/runs/anti_hairfall_kit_s1_run_20260612_123534.json
+2026-06-12 18:05:34,011  INFO      storage_tool  →  No previous run found before current run
+2026-06-12 18:05:34,011  INFO      regression_agent  →  No previous run — skipping regression detection
+2026-06-12 18:05:34,011  INFO      main  →        https://manmatters.co/dp/anti-hair-fall-shampoo-300ml/2025034
+2026-06-12 18:05:34,011  INFO      main  →          Reviews:      4.2
+2026-06-12 18:05:34,011  INFO      main  →          P×N:          6.2
+2026-06-12 18:05:34,011  INFO      main  →          Copy Health:  7.0
+2026-06-12 18:05:34,011  INFO      main  →          Visual:       6.8
+2026-06-12 18:05:34,011  INFO      main  →          Ad Alignment: 5.0
+2026-06-12 18:05:34,012  INFO      main  →          ── OVERALL:   6.1 (first run) [CRITICAL]
+2026-06-12 18:05:34,012  INFO      main  →          ── RCA:       6 items
+2026-06-12 18:05:34,090  INFO      report_builder  →  Report saved → outputs/reports/anti-hairfall_kit_s1_20260612.html
+2026-06-12 18:05:34,090  INFO      main  →  
+2026-06-12 18:05:34,091  INFO      main  →    ✅ Report saved → outputs/reports/anti-hairfall_kit_s1_20260612.html
+2026-06-12 18:05:34,091  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 18:05:34,091  INFO      main  →  
+2026-06-12 18:05:34,091  INFO      main  →  Done. 1/1 reports generated.
+2026-06-12 18:05:34,091  INFO      main  →    → outputs/reports/anti-hairfall_kit_s1_20260612.html
+2026-06-12 18:08:50,245  INFO      main  →  Running PDP Monitor for 1 product(s)
+2026-06-12 18:08:50,246  INFO      main  →  
+2026-06-12 18:08:50,246  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 18:08:50,246  INFO      main  →    Starting: Hair Gummies
+2026-06-12 18:08:50,246  INFO      main  →    URLs: 1
+2026-06-12 18:08:50,246  INFO      main  →    Time: 18:08:50
+2026-06-12 18:08:50,246  INFO      main  →  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-12 18:08:50,246  INFO      main  →  [1/5] Ingesting PDFs...
+2026-06-12 18:08:50,269  INFO      extractor  →  Starting ingestion for: Hair Gummies
+2026-06-12 18:08:50,365  INFO      extractor  →  Ingest cache invalid for 'Hair Gummies' — PDFs changed, re-ingesting
+2026-06-12 18:08:50,365  INFO      pdf_reader  →  Reading → persona.pdf
+2026-06-12 18:08:52,437  INFO      pdf_reader  →  Extracted 24,543 chars from persona.pdf
+2026-06-12 18:08:52,437  INFO      pdf_reader  →  Reading → brand_guidelines.pdf
+2026-06-12 18:08:52,902  INFO      pdf_reader  →  Extracted 4,433 chars from brand_guidelines.pdf
+2026-06-12 18:08:52,902  INFO      pdf_reader  →  Reading → product_brief.pdf
+2026-06-12 18:08:54,981  INFO      pdf_reader  →  Extracted 24,543 chars from product_brief.pdf
+2026-06-12 18:08:54,981  INFO      pdf_reader  →  Reading → narrative.pdf
+2026-06-12 18:08:57,045  INFO      pdf_reader  →  Extracted 24,543 chars from narrative.pdf
+2026-06-12 18:08:57,045  INFO      pdf_reader  →  Loaded: ['persona', 'brand_guidelines', 'product_brief', 'narrative']
+2026-06-12 18:08:57,045  INFO      extractor  →  Extracting persona profile...
+2026-06-12 18:09:06,327  INFO      extractor  →  Persona extracted → Young Indian Male with Early-Stage Hairfall | Concerns: 3
+2026-06-12 18:09:06,327  INFO      extractor  →  Extracting narrative pillars...
+2026-06-12 18:09:14,369  INFO      extractor  →  Narrative extracted → 3 pillars, 4 claims
+2026-06-12 18:09:14,370  INFO      extractor  →  Extracting brand voice guidelines...
+2026-06-12 18:09:19,539  INFO      extractor  →  Brand voice extracted → tone: ['clinical', 'confident', 'premium', 'simple', 'consistent']
+2026-06-12 18:09:19,540  INFO      extractor  →  Extracting product brief...
+2026-06-12 18:09:26,656  INFO      extractor  →  Product brief extracted → Man Matters Hair Gummies
+2026-06-12 18:09:26,660  INFO      extractor  →  Ingest cache saved for 'Hair Gummies'  →  hair_gummies.json
+2026-06-12 18:09:26,661  INFO      extractor  →  Ingestion complete for: Hair Gummies
+2026-06-12 18:09:26,661  INFO      main  →        ✓ Persona: Young Indian Male with Early-Stage Hairfall
+2026-06-12 18:09:26,662  INFO      main  →        ✓ Concerns: 3
+2026-06-12 18:09:26,662  INFO      main  →        ✓ Pillars: 3
+2026-06-12 18:09:26,662  INFO      main  →  [2/5] Scraping PDPs...
+2026-06-12 18:09:26,662  INFO      text_scraper  →  Scraping → https://manmatters.co/habit/landing/pdp/1605
+2026-06-12 18:09:33,584  INFO      text_scraper  →  Structured dump: 146 lines
+2026-06-12 18:09:33,589  INFO      text_scraper  →  __NEXT_DATA__ reviews: 4 extracted (4 with dateCreated)
+2026-06-12 18:09:33,592  INFO      text_scraper  →  __NEXT_DATA__ sections: 12 in page order
+2026-06-12 18:09:33,620  INFO      text_scraper  →  Sending element dump to Claude for extraction...
+2026-06-12 18:09:39,870  INFO      text_scraper  →  Done → headline: ✓ | subheads: 7 | body: 25 blocks | CTAs: 2 | reviews: 4
+2026-06-12 18:09:39,871  INFO      main  →        ✓ Scraped 1 URLs
+2026-06-12 18:09:39,871  INFO      main  →  [3/5] Scraping visuals...
+2026-06-12 18:09:39,888  INFO      zeus_connector  →  Zeus cache stale/missing for 1605-co — syncing via KAI
+2026-06-12 18:09:39,891  INFO      zeus_connector  →  KAI sync skipped for 1605-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 18:09:39,891  INFO      zeus_connector  →  Zeus cache hit: 1605-co (fetched 2026-06-12T12:33:17.893488Z)
+2026-06-12 18:09:39,891  INFO      zeus_connector  →  Zeus: extracting images for page 1605-co (style=displayOrder)
+2026-06-12 18:09:39,892  INFO      zeus_connector  →  Zeus extracted 13 images for 1605-co
+2026-06-12 18:09:41,846  INFO      zeus_connector  →  Zeus images downloaded: 13/13
+2026-06-12 18:09:41,850  INFO      visual_scraper  →  Zeus: 13 images
