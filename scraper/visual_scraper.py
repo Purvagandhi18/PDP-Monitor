@@ -414,29 +414,51 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
             except Exception as e:
                 log.debug(f"Accordion expand pass failed: {e}")
 
-            # Pass 3: advance every carousel/slider through its slides via next buttons.
-            # Carousels usually keep only the active slide's image in the DOM.
+            # Pass 3: advance every carousel/slider through its slides via next
+            # buttons AND pagination bullets. Carousels keep only the active
+            # slide's image in the DOM, so each slide must be triggered to load.
             try:
                 page.evaluate("""async () => {
                     const delay = ms => new Promise(r => setTimeout(r, ms));
+                    // Scroll each carousel into view before clicking — custom
+                    // carousels (e.g. the hero) only respond to clicks while visible.
+                    window.scrollTo(0, 0);
+                    await delay(500);
+                    // Next-arrow buttons (incl. ManMatters' custom .carousel-mobile-nav.right)
                     const nextSelectors = [
                         '.swiper-button-next', '.slick-next',
-                        'button[aria-label*="next" i]', 'button[aria-label*="Next"]',
+                        '.carousel-mobile-nav.right', '[class*="carousel-mobile-nav"][class*="right"]',
+                        'button[aria-label*="next" i]',
                         '[class*="next-btn"]', '[class*="nextBtn"]',
-                        '[class*="arrow"][class*="right"]', '[data-slide="next"]'
+                        '[class*="arrow"][class*="right"]', '[class*="next"]',
+                        '[data-slide="next"]'
                     ];
                     const btns = document.querySelectorAll(nextSelectors.join(','));
                     for (const btn of btns) {
-                        for (let i = 0; i < 8; i++) {
+                        try { btn.scrollIntoView({block: 'center'}); await delay(300); } catch (e) {}
+                        // Click up to 15 times to cover long carousels (e.g. 10-slide hero)
+                        for (let i = 0; i < 15; i++) {
                             try {
                                 if (btn.offsetParent === null) break;
                                 btn.click();
-                                await delay(250);
+                                await delay(350);
                             } catch (e) { break; }
                         }
                     }
+                    // Pagination bullets/dots — click each to force its slide to load
+                    const bullets = document.querySelectorAll(
+                        '.swiper-pagination-bullet, [class*="bullet"], [class*="dot"], '
+                        + '[class*="pagination"] > *, [class*="indicator"] > *'
+                    );
+                    for (const dot of bullets) {
+                        try {
+                            if (dot.offsetParent === null) continue;
+                            dot.click();
+                            await delay(300);
+                        } catch (e) {}
+                    }
                 }""")
-                page.wait_for_timeout(1200)
+                page.wait_for_timeout(1500)
             except Exception as e:
                 log.debug(f"Carousel advance pass failed: {e}")
 

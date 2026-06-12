@@ -159,7 +159,7 @@ zeus:
   max_carousel_images: 4  # per carousel widget
   # Total images sent to Claude Vision per PDP (hero + all content, chrome pre-filtered).
   # Raise to analyse more visuals per page; lower to cut API cost.
-  max_vision_images: 60
+  max_vision_images: 75
 
 report:
   output_dir: "outputs/reports"

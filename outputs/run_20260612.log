@@ -791,3 +791,5 @@
 2026-06-12 16:49:18,949  INFO      main  →  
 2026-06-12 16:49:18,949  INFO      main  →  Done. 1/1 reports generated.
 2026-06-12 16:49:18,949  INFO      main  →    → outputs/reports/hair_regrowth_kit_s3_20260612.html
+2026-06-12 16:52:34,802  INFO      visual_scraper  →  Playwright CDN sweep: 61 content images from https://manmatters.co/habit/landing/pdp/2024121 (12 chrome/nav icons dropped)
+2026-06-12 16:54:07,209  INFO      visual_scraper  →  Playwright CDN sweep: 69 content images from https://manmatters.co/habit/landing/pdp/2024121 (12 chrome/nav icons dropped)
