@@ -626,15 +626,28 @@ def enrich_with_visuals(pdp_data: PDPTextData) -> PDPTextData:
             for z in other if z.local_path
         ]
 
+        # Reviews: prefer the source that actually has dates. Zeus (KAI) is
+        # canonical when populated, but staging caches are sometimes empty or
+        # dateless for newer product IDs — in that case the live-page reviews
+        # (scraped from __NEXT_DATA__, which carry dateCreated) are better.
         zeus_reviews = get_zeus_reviews(url)
-        if zeus_reviews:
+        pw_reviews   = pdp_data.reviews or []
+        zeus_dated   = sum(1 for r in zeus_reviews if r.date)
+        pw_dated     = sum(1 for r in pw_reviews if r.date)
+
+        if zeus_dated:
             pdp_data.reviews = zeus_reviews
-            dates_present = sum(1 for r in zeus_reviews if r.date)
-            log.info(f"Zeus reviews: {len(zeus_reviews)} ({dates_present} with date)")
-        elif pdp_data.reviews:
-            log.warning(f"Zeus reviews unavailable — keeping {len(pdp_data.reviews)} Playwright reviews")
+            log.info(f"Reviews: using {len(zeus_reviews)} Zeus ({zeus_dated} dated)")
+        elif pw_dated:
+            pdp_data.reviews = pw_reviews
+            log.info(f"Reviews: Zeus empty/dateless — using {len(pw_reviews)} live-page reviews ({pw_dated} dated)")
+        elif zeus_reviews:
+            pdp_data.reviews = zeus_reviews
+            log.info(f"Reviews: using {len(zeus_reviews)} Zeus (no dates available)")
+        elif pw_reviews:
+            log.warning(f"Reviews: using {len(pw_reviews)} live-page reviews (no dates available)")
         else:
-            log.warning(f"No reviews from Zeus or Playwright for {url}")
+            log.warning(f"No reviews from Zeus or live page for {url}")
 
         log.info(
             f"Visuals done → {len(all_images)} total "

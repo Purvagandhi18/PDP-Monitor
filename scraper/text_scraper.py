@@ -28,27 +28,33 @@ REVIEWS_LIMIT = config["scraper"]["reviews_limit"]
 # ── Review selectors — tried in priority order ─────────────────────────────────
 # Add site-specific selectors at the top; generic fallbacks at the bottom.
 REVIEW_ITEM_SELECTORS = [
-    ".review-body",                  # ManMatters
-    "[class*='review-item']",
+    "[class*='review_card_item']",   # ManMatters RCL (.co habit/landing pages)
+    "[class*='review-item']",        # ManMatters (.com pages)
     "[class*='reviewItem']",
     "[class*='review-card']",
+    "[class*='review_card']",
     "[class*='ReviewCard']",
     "[data-testid*='review']",
+    ".review-body",
     "[class*='review']:not(button):not(a)",
 ]
 
 REVIEW_TEXT_SELECTORS = [
-    ".review-body",
+    "[class*='review_card_details_description']",  # RCL
     "[class*='review-body']",
+    ".review-body",
     "[class*='review-text']",
     "[class*='reviewBody']",
     "[class*='reviewText']",
+    "[class*='review_card_details_title']",        # RCL title (fallback if no body)
     "p",
 ]
 
 REVIEW_RATING_SELECTORS = [
     ".ratings-stars",
     ".overall-rating",
+    "[class*='review_card'] [class*='rating']",
+    "[class*='review_card'] [class*='star']",
     "[class*='rating']",
     "[class*='stars']",
     "[aria-label*='star']",
@@ -59,6 +65,7 @@ REVIEW_DATE_SELECTORS = [
     "time",
     "[class*='review-date']",
     "[class*='reviewDate']",
+    "[class*='review_card'] [class*='date']",
     "[class*='date']",
 ]
 
@@ -292,18 +299,107 @@ def _get_review_text(el) -> Optional[str]:
     return el.inner_text().strip() or None
 
 
+def _extract_next_data_reviews(page: Page) -> List[Review]:
+    """
+    Extract reviews from the Next.js __NEXT_DATA__ blob embedded in RCL pages
+    (manmatters.co/habit/landing/pdp/...). This is far more reliable than DOM
+    scraping: it returns structured reviews WITH dateCreated, rating, author,
+    title and body — exactly what the freshness scorer needs.
+
+    Returns [] if the page has no __NEXT_DATA__ or no topReviews inside it.
+    """
+    import json
+    try:
+        txt = page.evaluate(
+            "() => { const el = document.getElementById('__NEXT_DATA__');"
+            " return el ? el.textContent : ''; }"
+        )
+    except Exception:
+        return []
+    if not txt:
+        return []
+
+    try:
+        data = json.loads(txt)
+    except Exception:
+        return []
+
+    # Recursively collect every topReviews array anywhere in the blob
+    found: List[dict] = []
+
+    def _walk(o):
+        if isinstance(o, dict):
+            tr = o.get("topReviews")
+            if isinstance(tr, list):
+                found.extend(r for r in tr if isinstance(r, dict))
+            for v in o.values():
+                _walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                _walk(v)
+
+    _walk(data)
+    if not found:
+        return []
+
+    reviews: List[Review] = []
+    seen = set()
+    for r in found:
+        body = (r.get("body") or r.get("text") or "").strip()
+        title = (r.get("title") or "").strip()
+        key = (title, body[:50])
+        if key in seen:
+            continue
+        seen.add(key)
+        # Pull first review image if present
+        imgs = r.get("images") or []
+        img_url = None
+        if imgs and isinstance(imgs[0], dict):
+            img_url = imgs[0].get("image") or imgs[0].get("url")
+        rating = None
+        try:
+            rating = float(r.get("rating")) if r.get("rating") not in (None, "") else None
+        except (ValueError, TypeError):
+            pass
+        reviews.append(Review(
+            text=(body or title)[:1000],
+            title=title,
+            rating=rating,
+            date=(r.get("dateCreated") or "").strip() or None,
+            author=(r.get("author") or "").strip(),
+            image_url=img_url,
+        ))
+
+    dates = sum(1 for r in reviews if r.date)
+    log.info(f"__NEXT_DATA__ reviews: {len(reviews)} extracted ({dates} with dateCreated)")
+    return reviews
+
+
 def _scrape_reviews(page: Page) -> List[Review]:
-    """Scrape reviews using multi-selector strategy."""
-    # Try to surface more reviews
-    for _ in range(3):
+    """
+    Scrape reviews. Tries the embedded __NEXT_DATA__ JSON first (structured,
+    dated, reliable on RCL .co pages), then falls back to DOM CSS scraping.
+    """
+    # Primary: structured reviews from __NEXT_DATA__ (has real dates)
+    nd_reviews = _extract_next_data_reviews(page)
+    if nd_reviews:
+        return nd_reviews
+
+    # Fallback: DOM CSS scraping
+    # Try to surface more reviews — click "view all" / "load more" buttons.
+    # Includes the RCL .co template's "view-all-reviews-button".
+    for _ in range(4):
         try:
             load_more = page.query_selector(
+                "[class*='view-all-reviews'], [class*='viewAllReviews'], "
+                "button:has-text('View all'), button:has-text('View All'), "
                 "button:has-text('Load more'), button:has-text('Show more'), "
-                "[data-load-more]"
+                "button:has-text('See all'), [data-load-more]"
             )
             if load_more and load_more.is_visible():
+                load_more.scroll_into_view_if_needed()
                 load_more.click()
-                page.wait_for_timeout(1200)
+                page.wait_for_timeout(1500)
             else:
                 break
         except Exception:

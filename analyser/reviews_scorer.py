@@ -20,6 +20,9 @@ _DATE_FORMATS = [
     "%B %d, %Y",      # May 10, 2026
     "%b %d, %Y",      # May 10, 2026 (short)
     "%Y/%m/%d",       # 2026/05/10
+    "%d/%m/%y",       # 06/01/26  (RCL __NEXT_DATA__, day-first)
+    "%m/%d/%y",       # 01/06/26  (fallback, month-first)
+    "%d-%m-%y",       # 06-01-26
 ]
 
 
