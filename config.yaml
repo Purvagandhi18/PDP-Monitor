@@ -82,6 +82,25 @@ products:
       product_brief:    "inputs/pdfs/advanced_hair_regrowth/product_brief.pdf"
       narrative:        "inputs/pdfs/advanced_hair_regrowth/narrative.pdf"
 
+  # ── Stage 1 Anti-Hairfall Kit ────────────────────────────────────────────
+  # NOTE: brief is for the S1 Kit (gummies + serum); the URL points to the
+  # anti-hairfall shampoo page — confirm the URL maps to the Kit PDP.
+  - name: "Anti-Hairfall Kit S1"
+    personas:
+      - "Early-Stage Hairfall"   # noticed hairfall/thinning early, tried nuskas/oils/shampoos, "waiting trap"
+    narratives:
+      - "Problem-Solution"   # noticed hairfall → wrong fixes → DHT+nutrition truth → S1 Kit
+      - "Myth-Busting"       # bust every ghar ka nuska/oil/shampoo → science wins
+    urls:
+      - url: "https://manmatters.co/dp/anti-hair-fall-shampoo-300ml/2025034"
+        narrative: "Problem-Solution"
+        persona: "Early-Stage Hairfall"
+    pdfs:
+      persona:          "inputs/pdfs/anti_hairfall_s1/persona.pdf"
+      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+      product_brief:    "inputs/pdfs/anti_hairfall_s1/product_brief.pdf"
+      narrative:        "inputs/pdfs/anti_hairfall_s1/narrative.pdf"
+
   # ── ADD A NEW PRODUCT BELOW ───────────────────────────────────────────────
   # Copy this block and fill in the fields. Each product gets its own:
   #   - inputs/pdfs/{product_folder}/ with persona.pdf, product_brief.docx, narrative.pdf
