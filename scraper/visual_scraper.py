@@ -475,82 +475,123 @@ def _playwright_cdn_sweep(url: str, url_slug: str) -> List[ZeusImage]:
             }""")
             page.wait_for_timeout(1500)
 
-            # Also collect from DOM in case network intercept missed cached responses
-            dom_urls = page.evaluate("""() => {
-                const urls = new Set();
-                const addSrcset = ss => (ss || '').split(',').forEach(part => {
+            # Collect from DOM WITH each image's vertical position, so the final
+            # list can be ordered top-to-bottom (true page display order).
+            # Returns [{url, y, x, alt}] for every img/source/background image.
+            dom_items = page.evaluate("""() => {
+                const items = [];
+                const push = (url, el, alt) => {
+                    if (!url) return;
+                    let y = 1e9, x = 0;
+                    try {
+                        const r = el.getBoundingClientRect();
+                        y = Math.round(r.top + window.scrollY);
+                        x = Math.round(r.left + window.scrollX);
+                    } catch (e) {}
+                    items.push({url, y, x, alt: alt || ''});
+                };
+                const pushSrcset = (ss, el, alt) => (ss || '').split(',').forEach(part => {
                     const u = part.trim().split(' ')[0];
-                    if (u) urls.add(u);
+                    if (u) push(u, el, alt);
                 });
                 // <img> with src + every lazy-load attribute variant
                 document.querySelectorAll('img').forEach(el => {
-                    ['src','data-src','data-lazy-src','data-original','data-srcset']
-                        .forEach(attr => {
-                            const v = el.getAttribute(attr);
-                            if (v) (attr.includes('srcset') ? addSrcset(v) : urls.add(v));
-                        });
-                    addSrcset(el.srcset);
+                    const alt = el.getAttribute('alt') || '';
+                    ['src','data-src','data-lazy-src','data-original'].forEach(attr => {
+                        const v = el.getAttribute(attr);
+                        if (v) push(v, el, alt);
+                    });
+                    pushSrcset(el.getAttribute('data-srcset'), el, alt);
+                    pushSrcset(el.srcset, el, alt);
                 });
                 // <picture><source srcset> and bare <source>
                 document.querySelectorAll('source').forEach(el => {
-                    addSrcset(el.getAttribute('srcset'));
-                    const s = el.getAttribute('src'); if (s) urls.add(s);
+                    const parentImg = el.closest('picture')?.querySelector('img');
+                    pushSrcset(el.getAttribute('srcset'), parentImg || el, '');
+                    const s = el.getAttribute('src'); if (s) push(s, parentImg || el, '');
                 });
                 // CSS background-image on any element
                 document.querySelectorAll('*').forEach(el => {
                     const bg = getComputedStyle(el).backgroundImage;
                     if (bg && bg !== 'none') {
                         const m = bg.match(/url\\(['"]?([^'"\\)]+)/);
-                        if (m) urls.add(m[1]);
+                        if (m) push(m[1], el, '');
                     }
                 });
-                return [...urls];
+                return items;
             }""") or []
 
             browser.close()
-
-        for u in dom_urls:
-            if _is_cdn_image(u) and u not in seen:
-                seen.add(u)
-                found_urls.append(u)
 
     except Exception as e:
         log.warning(f"Playwright CDN sweep failed for {url}: {e}")
         return []
 
-    # Deduplicate: strip ?tr= transforms to identify same base image.
-    # Also drop site chrome (header/footer/nav/social icons).
     def _base(u: str) -> str:
         return u.split("?")[0]
 
-    deduped: List[str] = []
-    base_seen: set = set()
+    # Build an ordered, deduped list of content images in page display order.
+    # Priority for ordering: DOM vertical position (y, then x). Network-only
+    # images (caught by intercept but not in the DOM scan) are appended after,
+    # in load order, since they have no position.
     chrome_dropped = 0
-    for u in found_urls:
+    base_to_pos = {}        # base url -> (y, x) from DOM
+    base_to_alt = {}        # base url -> alt text
+    dom_bases_ordered = []  # DOM bases in (y, x) order
+
+    # Sort DOM items by vertical then horizontal position
+    dom_items_sorted = sorted(dom_items, key=lambda it: (it.get("y", 1e9), it.get("x", 0)))
+    seen_bases = set()
+    for it in dom_items_sorted:
+        u = it.get("url", "")
+        if not _is_cdn_image(u):
+            continue
         if _is_chrome_image(u):
             chrome_dropped += 1
             continue
         b = _base(u)
-        if b not in base_seen:
-            base_seen.add(b)
-            deduped.append(u)
+        if b in seen_bases:
+            continue
+        seen_bases.add(b)
+        base_to_pos[b] = (it.get("y", 1e9), it.get("x", 0))
+        if it.get("alt"):
+            base_to_alt[b] = it["alt"]
+        dom_bases_ordered.append((b, u))
+
+    # Network-only images (in found_urls but never seen in DOM) — append at end
+    network_only = []
+    for u in found_urls:
+        if _is_chrome_image(u):
+            continue
+        b = _base(u)
+        if b not in seen_bases:
+            seen_bases.add(b)
+            network_only.append((b, u))
+
+    ordered = dom_bases_ordered + network_only
 
     log.info(
-        f"Playwright CDN sweep: {len(deduped)} content images from {url} "
-        f"({chrome_dropped} chrome/nav icons dropped)"
+        f"Playwright CDN sweep: {len(ordered)} content images from {url} "
+        f"({len(dom_bases_ordered)} positioned + {len(network_only)} network-only, "
+        f"{chrome_dropped} chrome/nav icons dropped)"
     )
 
+    # Hero region = top of page (above ~900px). The hero carousel's stacked
+    # slides all sit near y≈0, so they group together correctly.
+    HERO_Y_THRESHOLD = 900
     images = []
-    for i, img_url in enumerate(deduped):
-        # Hero images tend to appear early in network order
-        position = "hero" if i < 3 else "content"
+    for i, (b, img_url) in enumerate(ordered):
+        y = base_to_pos.get(b, (1e9, 0))[0]
+        position = "hero" if y < HERO_Y_THRESHOLD else "content"
+        alt = base_to_alt.get(b, "")
+        label = alt[:60] if alt else f"live_{i+1}"
         images.append(ZeusImage(
             url=img_url,
             position=position,
             widget_id=f"playwright_cdn_{i}",
             widget_type="CDN_SWEEP",
             index=i,
-            label=f"live_page_{i+1}",
+            label=label,
         ))
 
     return images
@@ -584,16 +625,33 @@ def enrich_with_visuals(pdp_data: PDPTextData) -> PDPTextData:
     live_images = _playwright_cdn_sweep(url, url_slug)
     live_bases = {img.url.split("?")[0] for img in live_images}
 
-    # Drop Zeus images that don't actually appear on the live page. Staging Zeus
-    # caches sometimes return a different product's images (wrong-product data);
-    # if a Zeus image isn't present in the live sweep, it's stale/wrong — discard.
-    # Only applies the filter when the live sweep succeeded (non-empty).
+    # Decide whether the Zeus cache is for the RIGHT product, using overlap with
+    # the live page. Staging caches sometimes return a DIFFERENT product's images
+    # (e.g. S3/2024121 returned weight-management images) — those have ~zero
+    # overlap with the live page. A correct cache (e.g. S2) overlaps meaningfully,
+    # even if the sweep didn't re-find every single image.
+    #
+    #   overlap ratio < 10%  → wrong-product cache → drop ALL Zeus, use live only
+    #   overlap ratio ≥ 10%  → correct cache → KEEP ALL Zeus (preserves display
+    #                          order + labels), then append live-only extras
+    #
+    # This avoids discarding legitimate Zeus images the sweep merely missed.
     if live_bases and zeus_images:
-        kept = [z for z in zeus_images if z.url.split("?")[0] in live_bases]
-        dropped = len(zeus_images) - len(kept)
-        if dropped:
-            log.info(f"Dropped {dropped} Zeus images not present on live page (stale/wrong-product staging data)")
-        zeus_images = kept
+        zeus_bases = {z.url.split("?")[0] for z in zeus_images}
+        overlap = len(zeus_bases & live_bases)
+        ratio = overlap / len(zeus_bases) if zeus_bases else 0
+        if ratio < 0.10:
+            log.info(
+                f"Zeus cache looks wrong-product (only {overlap}/{len(zeus_bases)} "
+                f"images = {ratio:.0%} overlap with live page) — dropping all Zeus, "
+                f"using live sweep ({len(live_images)} images)"
+            )
+            zeus_images = []
+        else:
+            log.info(
+                f"Zeus cache matches live page ({overlap}/{len(zeus_bases)} = "
+                f"{ratio:.0%} overlap) — keeping all {len(zeus_images)} Zeus images"
+            )
 
     # Merge: Zeus images first (labelled/positioned), then live-only additions
     zeus_urls = {z.url.split("?")[0] for z in zeus_images}

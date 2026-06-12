@@ -949,3 +949,55 @@
 2026-06-12 17:07:52,414  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
 2026-06-12 17:07:52,414  INFO      zeus_connector  →  Zeus reviews: 0 for page 2024121-co (0/0 with dateCreated)
 2026-06-12 17:08:01,310  INFO      text_scraper  →  __NEXT_DATA__ reviews: 4 extracted (4 with dateCreated)
+2026-06-12 17:15:37,697  INFO      visual_scraper  →  Playwright CDN sweep: 69 content images from https://manmatters.co/habit/landing/pdp/2024121 (63 positioned + 6 network-only, 21 chrome/nav icons dropped)
+2026-06-12 17:15:59,823  INFO      zeus_connector  →  Zeus cache stale/missing for 141464-co — syncing via KAI
+2026-06-12 17:15:59,825  INFO      zeus_connector  →  KAI sync skipped for 141464-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 17:15:59,825  INFO      zeus_connector  →  Zeus cache hit: 141464-co (fetched 2026-06-09T00:00:00Z)
+2026-06-12 17:15:59,825  INFO      zeus_connector  →  Zeus: extracting images for page 141464-co (style=sections)
+2026-06-12 17:15:59,826  INFO      zeus_connector  →  Zeus extracted 135 images for 141464-co
+2026-06-12 17:16:46,257  INFO      zeus_connector  →  Zeus images downloaded: 135/135
+2026-06-12 17:16:46,261  INFO      visual_scraper  →  Zeus: 135 images
+2026-06-12 17:17:13,420  INFO      visual_scraper  →  Playwright CDN sweep: 67 content images from https://manmatters.co/habit/landing/pdp/141464 (59 positioned + 8 network-only, 21 chrome/nav icons dropped)
+2026-06-12 17:17:13,421  INFO      visual_scraper  →  Dropped 106 Zeus images not present on live page (stale/wrong-product staging data)
+2026-06-12 17:17:13,421  INFO      visual_scraper  →  Playwright CDN sweep added 38 images not in Zeus cache
+2026-06-12 17:17:32,136  INFO      zeus_connector  →  Zeus images downloaded: 38/38
+2026-06-12 17:17:32,143  INFO      zeus_connector  →  Zeus cache stale/missing for 141464-co — syncing via KAI
+2026-06-12 17:17:32,143  INFO      zeus_connector  →  KAI sync skipped for 141464-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 17:17:32,144  INFO      zeus_connector  →  Zeus cache hit: 141464-co (fetched 2026-06-09T00:00:00Z)
+2026-06-12 17:17:32,144  INFO      zeus_connector  →  Zeus reviews: 4 for page 141464-co (4/4 with dateCreated)
+2026-06-12 17:17:32,144  INFO      visual_scraper  →  Reviews: using 4 Zeus (4 dated)
+2026-06-12 17:17:32,144  INFO      visual_scraper  →  Visuals done → 67 total (29 Zeus + 38 live-only) | 3 hero | 64 content
+2026-06-12 17:18:28,590  INFO      zeus_connector  →  Zeus cache stale/missing for 141464-co — syncing via KAI
+2026-06-12 17:18:28,592  INFO      zeus_connector  →  KAI sync skipped for 141464-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 17:18:28,592  INFO      zeus_connector  →  Zeus cache hit: 141464-co (fetched 2026-06-09T00:00:00Z)
+2026-06-12 17:18:28,592  INFO      zeus_connector  →  Zeus: extracting images for page 141464-co (style=sections)
+2026-06-12 17:18:28,593  INFO      zeus_connector  →  Zeus extracted 135 images for 141464-co
+2026-06-12 17:19:28,478  INFO      zeus_connector  →  Zeus images downloaded: 135/135
+2026-06-12 17:19:28,482  INFO      visual_scraper  →  Zeus: 135 images
+2026-06-12 17:19:56,070  INFO      visual_scraper  →  Playwright CDN sweep: 67 content images from https://manmatters.co/habit/landing/pdp/141464 (59 positioned + 8 network-only, 21 chrome/nav icons dropped)
+2026-06-12 17:19:56,071  INFO      visual_scraper  →  Zeus cache matches live page (29/132 = 22% overlap) — keeping all 135 Zeus images
+2026-06-12 17:19:56,071  INFO      visual_scraper  →  Playwright CDN sweep added 38 images not in Zeus cache
+2026-06-12 17:20:09,117  INFO      zeus_connector  →  Zeus images downloaded: 38/38
+2026-06-12 17:20:09,122  INFO      zeus_connector  →  Zeus cache stale/missing for 141464-co — syncing via KAI
+2026-06-12 17:20:09,122  INFO      zeus_connector  →  KAI sync skipped for 141464-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 17:20:09,123  INFO      zeus_connector  →  Zeus cache hit: 141464-co (fetched 2026-06-09T00:00:00Z)
+2026-06-12 17:20:09,123  INFO      zeus_connector  →  Zeus reviews: 4 for page 141464-co (4/4 with dateCreated)
+2026-06-12 17:20:09,123  INFO      visual_scraper  →  Reviews: using 4 Zeus (4 dated)
+2026-06-12 17:20:09,124  INFO      visual_scraper  →  Visuals done → 173 total (135 Zeus + 38 live-only) | 14 hero | 159 content
+2026-06-12 17:20:09,124  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 17:20:09,124  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 17:20:09,125  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 17:20:09,125  INFO      zeus_connector  →  Zeus: extracting images for page 2024121-co (style=displayOrder)
+2026-06-12 17:20:09,126  INFO      zeus_connector  →  Zeus extracted 13 images for 2024121-co
+2026-06-12 17:20:13,180  INFO      zeus_connector  →  Zeus images downloaded: 13/13
+2026-06-12 17:20:13,183  INFO      visual_scraper  →  Zeus: 13 images
+2026-06-12 17:20:40,401  INFO      visual_scraper  →  Playwright CDN sweep: 69 content images from https://manmatters.co/habit/landing/pdp/2024121 (63 positioned + 6 network-only, 21 chrome/nav icons dropped)
+2026-06-12 17:20:40,404  INFO      visual_scraper  →  Zeus cache looks wrong-product (only 0/13 images = 0% overlap with live page) — dropping all Zeus, using live sweep (69 images)
+2026-06-12 17:20:40,404  INFO      visual_scraper  →  Playwright CDN sweep added 69 images not in Zeus cache
+2026-06-12 17:21:02,377  INFO      zeus_connector  →  Zeus images downloaded: 69/69
+2026-06-12 17:21:02,383  INFO      zeus_connector  →  Zeus cache stale/missing for 2024121-co — syncing via KAI
+2026-06-12 17:21:02,383  INFO      zeus_connector  →  KAI sync skipped for 2024121-co: staging MCP + cache already exists. Set MOSAIC_MCP_URL to production endpoint to enable live sync.
+2026-06-12 17:21:02,384  INFO      zeus_connector  →  Zeus cache hit: 2024121-co (fetched 2026-06-12T07:19:22.936628Z)
+2026-06-12 17:21:02,384  INFO      zeus_connector  →  Zeus reviews: 0 for page 2024121-co (0/0 with dateCreated)
+2026-06-12 17:21:02,384  WARNING   visual_scraper  →  No reviews from Zeus or live page for https://manmatters.co/habit/landing/pdp/2024121
+2026-06-12 17:21:02,384  INFO      visual_scraper  →  Visuals done → 69 total (0 Zeus + 69 live-only) | 5 hero | 64 content
