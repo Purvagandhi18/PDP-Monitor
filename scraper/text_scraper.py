@@ -462,6 +462,8 @@ def _extract_next_data_sections(page: Page) -> List[str]:
         if any(k in low for k in (
             "product summary", "product switch", "sticky cta",
             "footer", "breadcrumb", "delivery info", "discount tag",
+            "frequently bought", "recently viewed", "you may also",
+            "similar product", "cross sell", "upsell",
         )):
             continue
         if label:
