@@ -64,6 +64,24 @@ products:
       product_brief:    "inputs/pdfs/hair_regrowth_s3/product_brief.pdf"
       narrative:        "inputs/pdfs/hair_regrowth_s3/narrative.pdf"
 
+  # ── Advanced Hair Regrowth Regime ────────────────────────────────────────
+  - name: "Advanced Hair Regrowth Regime"
+    personas:
+      - "The Treatment Optimizer"   # 24-35, science-led, already 6-15mo on Minoxidil
+    narratives:
+      - "The Upgrade"             # You've been doing it right — now make it reach
+      - "The Absorption Gap"      # Most of what you apply is wasted (CETOSOMAL 44%/2-3x)
+      - "Triple-Action Compound"  # Topical + Internal + Mechanical (dermaroller)
+    urls:
+      - url: "https://manmatters.co/dp/2025113"
+        narrative: "The Upgrade"
+        persona: "The Treatment Optimizer"
+    pdfs:
+      persona:          "inputs/pdfs/advanced_hair_regrowth/persona.pdf"
+      brand_guidelines: "inputs/pdfs/brand_guidelines.pdf"
+      product_brief:    "inputs/pdfs/advanced_hair_regrowth/product_brief.pdf"
+      narrative:        "inputs/pdfs/advanced_hair_regrowth/narrative.pdf"
+
   # ── ADD A NEW PRODUCT BELOW ───────────────────────────────────────────────
   # Copy this block and fill in the fields. Each product gets its own:
   #   - inputs/pdfs/{product_folder}/ with persona.pdf, product_brief.docx, narrative.pdf
