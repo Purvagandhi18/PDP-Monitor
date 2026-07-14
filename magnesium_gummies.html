@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Magnesium Gummies — PDP Report 13 July 2026</title>
+<title>Magnesium Gummies — PDP Report 14 July 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -307,7 +307,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     <h1>Magnesium Gummies — PDP Audit</h1>
     <p>Daily health check across content, visuals, narrative and reviews</p>
   </div>
-  <div class="rh-right">13 July 2026<br>1 URL</div>
+  <div class="rh-right">14 July 2026<br>1 URL</div>
 </div>
 
 
@@ -448,8 +448,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     <div class="h-sub-nav">
       <button class="h-sub active" onclick="switchHygieneSub('1','claims',this)">
         Claims
-        <span class="fi-src claims">1 issue</span>
-        <span class="fi-src" style="background:#e6f4ed;color:#1a7a4a">18 ok</span>
+        <span class="fi-src claims">2 issues</span>
+        <span class="fi-src" style="background:#e6f4ed;color:#1a7a4a">17 ok</span>
       </button>
       <button class="h-sub" onclick="switchHygieneSub('1','brand',this)">
         Brand Guidelines
@@ -464,21 +464,30 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
     
     <div id="1-hygiene-claims" class="h-panel active">
       
-      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">1</span></div>
+      <div class="flag-section-lbl" style="margin-top:0">❌ Flagged <span class="fcnt critical">2</span></div>
       
       <div class="fi fi-flagged" data-uid="1" data-cat="claims">
         <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
         <span class="fi-ico">❌</span>
         <span class="fi-body">
           <span class="fi-text">"No Added Sugar"</span>
-          <span class="fi-reason">The PDP product shot displays a '0 Added Sugar' badge on the pouch, and the NI table card lists 'Added sugars: 0'. This is a prohibited claim.</span>
+          <span class="fi-reason">The prohibited claim 'No Added Sugar' appears as a '0 Added Sugar' badge on the product pack shot image and is mentioned in the FAQ section.</span>
+        </span></label>
+      </div>
+      
+      <div class="fi fi-flagged" data-uid="1" data-cat="claims">
+        <label><input type="checkbox" class="fi-cb" onchange="dismissFlag(this,'1','claims')">
+        <span class="fi-ico">❌</span>
+        <span class="fi-body">
+          <span class="fi-text">"Correct Elemental Magnesium dosage as per the latest label"</span>
+          <span class="fi-reason">The PDP correctly shows 160 mg per serving (2 gummies) which matches the label. However, the PDP text states 80 mg per gummy which is consistent. The dosage information appears correct when considering serving size of 2 gummies = 160 mg.</span>
         </span></label>
       </div>
       
       
       
       
-      <div class="flag-section-lbl">✅ Verified <span class="fcnt healthy">18</span></div>
+      <div class="flag-section-lbl">✅ Verified <span class="fcnt healthy">17</span></div>
       
       <div class="fi fi-ok">
         <span class="fi-ico">✅</span>
@@ -500,7 +509,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Healthy"</span>
-          <span class="fi-reason">The standalone word 'Healthy' as a claim does not appear on the PDP. References to 'health' appear in context (e.g., 'Heart health', 'Bone Health', 'Nerve Health', 'Gut Health') but not as the prohibited standalone claim 'Healthy'.</span>
+          <span class="fi-reason">The standalone word 'Healthy' as a product claim does not appear in the PDP. Terms like 'Bone Health', 'Nerve Health', 'Heart health', 'Gut Health' are used in context with specific benefits, not as standalone prohibited claims.</span>
         </span>
       </div>
       
@@ -524,7 +533,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"verify against latest approved label"</span>
-          <span class="fi-reason">The label shows manufacturer as 'Advama Pvt. Ltd., Plot NO. 51 (A) & 51 (B), IP Chandanvelly, Manchanpolly Village, Shabad Mandal, Telangana 501503.' The PDP matches this exactly.</span>
+          <span class="fi-reason">The manufacturer information on the PDP matches the label which shows 'Manufactured by: Advama Pvt. Ltd., Sy. No. 51A – 51/5 +49B, Manchanpally, Shabad, Ranga Reddy Dist, Telangana 501503'. Address format differs slightly but refers to same manufacturer and location.</span>
         </span>
       </div>
       
@@ -532,7 +541,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Elemental Magnesium: verify against latest label"</span>
-          <span class="fi-reason">The label NI table shows Elemental Magnesium as 160 mg per serving. The PDP NI table image shows 160 mg per serving. The PDP text states 80 mg per gummy (2 gummies = 160 mg). Values match.</span>
+          <span class="fi-reason">The Elemental Magnesium value of 160 mg per serving matches between the PDP NI table image and the approved label.</span>
         </span>
       </div>
       
@@ -540,15 +549,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"NI table must be present on PDP"</span>
-          <span class="fi-reason">A complete NI table is present in the 'Clean & Effective formulation' image on the PDP.</span>
-        </span>
-      </div>
-      
-      <div class="fi fi-ok">
-        <span class="fi-ico">✅</span>
-        <span class="fi-body">
-          <span class="fi-text">"Correct Elemental Magnesium dosage as per the latest label"</span>
-          <span class="fi-reason">The label shows 160 mg Elemental Magnesium per serving (2 gummies). The PDP displays 160 mg per serving in the NI table image and in the hero image text. This matches the label.</span>
+          <span class="fi-reason">A complete NI table is present in the 'Clean & Effective formulation' image card on the PDP.</span>
         </span>
       </div>
       
@@ -556,7 +557,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Update usage instructions to match the latest label"</span>
-          <span class="fi-reason">The label states 'Recommended Dosage: Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests.' The PDP usage instructions match this recommendation.</span>
+          <span class="fi-reason">The label shows 'Recommended Dosage: Eat 2 gummies daily after a heavy meal, or as your healthcare professional suggests. Do not exceed the recommended daily dosage.' PDP usage instructions align with the label.</span>
         </span>
       </div>
       
@@ -564,7 +565,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Panax Ginseng Extract must NOT be listed in ingredients"</span>
-          <span class="fi-reason">Panax Ginseng Extract does NOT appear in the PDP ingredient list. The requirement that it must NOT be listed is satisfied.</span>
+          <span class="fi-reason">Panax Ginseng Extract is NOT listed in the PDP ingredients, which is correct per the requirement.</span>
         </span>
       </div>
       
@@ -572,7 +573,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Maize Starch must be listed in ingredients"</span>
-          <span class="fi-reason">Maize starch is listed in the PDP Full list of ingredients section.</span>
+          <span class="fi-reason">Maize starch is listed in the PDP ingredients as required.</span>
         </span>
       </div>
       
@@ -580,7 +581,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Guar Gum must be listed in ingredients"</span>
-          <span class="fi-reason">Guar Gum (spelled as 'Guor gum') is listed in the PDP ingredients. Minor spelling variation but ingredient is present.</span>
+          <span class="fi-reason">Guar Gum is listed in the PDP ingredients (spelled as 'Guor gum' which is a minor spelling variation).</span>
         </span>
       </div>
       
@@ -588,7 +589,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Zinc must be listed in ingredients"</span>
-          <span class="fi-reason">Zinc (Zinc Citrate) is listed in the PDP Full list of ingredients section.</span>
+          <span class="fi-reason">Zinc is listed in the PDP ingredients as required.</span>
         </span>
       </div>
       
@@ -596,7 +597,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Vitamin D3 must be listed in ingredients"</span>
-          <span class="fi-reason">Vitamin D3 is listed in the PDP Full list of ingredients section.</span>
+          <span class="fi-reason">Vitamin D3 is listed in the PDP ingredients as required.</span>
         </span>
       </div>
       
@@ -604,7 +605,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Vitamin B6 must be listed in ingredients"</span>
-          <span class="fi-reason">Vitamin B6 (Pyridoxine HCl) is listed in the PDP Full list of ingredients section.</span>
+          <span class="fi-reason">Vitamin B6 is listed in the PDP ingredients as required.</span>
         </span>
       </div>
       
@@ -612,7 +613,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Mannitol must be listed in ingredients"</span>
-          <span class="fi-reason">Mannitol is listed within the MagnaSorb™ blend in the PDP Full list of ingredients section.</span>
+          <span class="fi-reason">Mannitol is listed in the PDP ingredients as part of the MagnaSorb™ – Magnesium Blend.</span>
         </span>
       </div>
       
@@ -620,7 +621,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <span class="fi-ico">✅</span>
         <span class="fi-body">
           <span class="fi-text">"Plant-Based Cellulose must be listed in ingredients"</span>
-          <span class="fi-reason">Plant Based Cellulose is listed within the MagnaSorb™ blend in the PDP Full list of ingredients section.</span>
+          <span class="fi-reason">Plant Based Cellulose is listed in the PDP ingredients as part of the MagnaSorb™ – Magnesium Blend.</span>
         </span>
       </div>
       
@@ -1091,28 +1092,26 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 
         
         <div class="copy-row">
-          <span class="copy-lbl">Body Copy (10 blocks)</span>
+          <span class="copy-lbl">Body Copy (9 blocks)</span>
           <div style="margin-top:6px">
             
             <div class="body-item">Five Magnesium Complex with Zinc, Vitamin D3 and B6</div>
             
-            <div class="body-item">Chicory Root Inulin (Prebiotic), MagnaSorb™ – Magnesium Blend (Liposomal Magnesium, Magnesium Glycinate, Magnesium Malate, Magnesium Taurate, Magnesium Citrate, Plant Based Cellulose, Mannitol), Gelling Agent (Pectin), Acidity Regulator (Citric Acid), Zinc (Zinc Citrate), Vitamin D3 (Cholecalciferol – Vitashine D3™), Vitamin B6 (Pyridoxine HCl), Mixed Berry Flavour, Black carrot extract, Maize starch, Binding Agent (Guor gum). CONTAINS PERMITTED NATURAL AND NATURE-IDENTICAL FLAVOUR(S)</div>
+            <div class="body-item">Chicory Root Inulin (Prebiotic), MagnaSorb™ – Magnesium Blend (Liposomal Magnesium, Magnesium Glycinate, Magnesium Malate, Magnesium Taurate, Magnesium Citrate, Plant Based Cellulose, Mannitol), Gelling Agent (Pectin), Acidity Regulator (Citric Acid), Zinc (Zinc Citrate), Vitamin D3 (Cholecalciferol – Vitashine D3™), Vitamin B6 (Pyridoxine HCl), Mixed Berry Flavour, Black carrot extract, Maize starch, Binding Agent (Guor gum)</div>
             
-            <div class="body-item">Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests.</div>
+            <div class="body-item">Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests</div>
             
-            <div class="body-item">Take Two Gummies post meal, 1-2 hours before bed.</div>
+            <div class="body-item">Take Two Gummies post meal, 1-2 hours before bed</div>
             
-            <div class="body-item">Its normal to be curious, we will answer your doubts comprehensively here, for everything else we are just a Whatsapp message away.</div>
-            
-            <div class="body-item">Yes, we recommend using these gummies every day. Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests.</div>
+            <div class="body-item">Yes, we recommend using these gummies every day. Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests</div>
             
             <div class="body-item">Yes, Magnesium Glycinate is known to help reduce stress and anxiety by balancing neurotransmitter levels and lowering stress hormones</div>
             
-            <div class="body-item">Magnesium Glycinate is generally well-tolerated. However, taking excessive amounts may lead to mild gastrointestinal discomfort. Always stick to the recommended dosage.</div>
+            <div class="body-item">Magnesium Glycinate is generally well-tolerated. However, taking excessive amounts may lead to mild gastrointestinal discomfort. Always stick to the recommended dosage</div>
             
             <div class="body-item">Check the specific product label for allergen information, but most Magnesium Glycinate products are formulated to be free from common allergens like gluten, dairy, or soy</div>
             
-            <div class="body-item">Man Matters Magnesium Gummies do not contain added sugar or sugar coating. It is not a sugar candy but a nutritionally packed gummy.</div>
+            <div class="body-item">Man Matters Magnesium Gummies do not contain added sugar or sugar coating. It is not a sugar candy but a nutritionally packed gummy</div>
             
             
           </div>
@@ -1307,7 +1306,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f attention"
           style="width:75%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">NI table is present on both packaging and PDP, but there are discrepancies in some nutrient values and %RDA figures between the two.</div>
+          <div class="ssr-obs">NI table is present on both packaging and PDP, with most values matching but some minor discrepancies in decimal precision and %RDA values.</div>
           <div class="ssr-sug">Ensure NI table matches latest packaging and is visible on PDP.</div>
         </div>
       </div>
@@ -1320,7 +1319,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f healthy"
           style="width:90%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">The actual product packaging (Man Matters Magnesium Gummies pouch) is clearly visible on the PDP, showing the front of the package with brand name, product details, and even sample gummies displayed alongside.</div>
+          <div class="ssr-obs">The product pack shot is clearly visible showing the Man Matters Magnesium Gummies pouch packaging with brand logo, product name, key benefits, and quantity information, along with actual gummy pieces displayed beside it.</div>
           <div class="ssr-sug">Ensure the actual product pack shot is prominently displayed.</div>
         </div>
       </div>
@@ -1333,7 +1332,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
         <div class="bar-t" style="margin-top:6px"><div class="bar-f healthy"
           style="width:95%"></div></div>
         <div class="ssr-detail">
-          <div class="ssr-obs">The PDP front panel visuals match the latest official packaging artwork with all key elements correctly displayed including brand logo, product name, claims, 0 Added Sugar badge, and product details.</div>
+          <div class="ssr-obs">The PDP front panel visuals match the latest official packaging artwork with all key elements including brand logo, product name, tagline, benefit claims, '0 Added Sugar' badge, '5-in-1 Mg Complex', '2 Gummies per serving', 'NUTRACEUTICAL', '60 gummies', and 'Mixed Berry Flavour' correctly displayed.</div>
           <div class="ssr-sug">Update PDP images to reflect the latest approved packaging version.</div>
         </div>
       </div>
@@ -1386,8 +1385,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">prohibited</td>
             <td style="padding:9px 14px;color:#c0392b;font-weight:700;font-size:12px">🔴 VIOLATED</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"Product pack image shows '0 Added Sugar' badge; NI table image shows 'Added sugars: 0'"</em><br>
-              The PDP product shot displays a '0 Added Sugar' badge on the pouch, and the NI table card lists 'Added sugars: 0'. This is a prohibited claim.
+              <em style="color:#888">"Product packaging image shows '0 Added Sugar' badge; FAQ states 'Man Matters Magnesium Gummies do not contain added sugar'"</em><br>
+              The prohibited claim 'No Added Sugar' appears as a '0 Added Sugar' badge on the product pack shot image and is mentioned in the FAQ section.
             </td>
           </tr>
           
@@ -1399,7 +1398,7 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#c17d00;font-weight:700;font-size:12px">⚠️ ABSENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
               
-              The standalone word 'Healthy' as a claim does not appear on the PDP. References to 'health' appear in context (e.g., 'Heart health', 'Bone Health', 'Nerve Health', 'Gut Health') but not as the prohibited standalone claim 'Healthy'.
+              The standalone word 'Healthy' as a product claim does not appear in the PDP. Terms like 'Bone Health', 'Nerve Health', 'Heart health', 'Gut Health' are used in context with specific benefits, not as standalone prohibited claims.
             </td>
           </tr>
           
@@ -1434,8 +1433,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">manufacturer</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP Additional Information: 'Manufactured By: Advama Pvt. Ltd., Plot NO. 51 (A) & 51 (B), IP Chandanvelly, Manchanpolly Village, Shabad Mandal, Telangana 501503.'"</em><br>
-              The label shows manufacturer as 'Advama Pvt. Ltd., Plot NO. 51 (A) & 51 (B), IP Chandanvelly, Manchanpolly Village, Shabad Mandal, Telangana 501503.' The PDP matches this exactly.
+              <em style="color:#888">"PDP: 'Manufactured By: Advama Pvt. Ltd., Plot NO. 51 (A) & 51 (B), IP Chandanvelly, Manchanpolly Village, Shabad Mandal, Telangana 501503.'"</em><br>
+              The manufacturer information on the PDP matches the label which shows 'Manufactured by: Advama Pvt. Ltd., Sy. No. 51A – 51/5 +49B, Manchanpally, Shabad, Ranga Reddy Dist, Telangana 501503'. Address format differs slightly but refers to same manufacturer and location.
             </td>
           </tr>
           
@@ -1446,8 +1445,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">ni_value</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP NI table image shows 'Elemental Magnesium (Magnasorb) (mg): 160'; PDP text states 'Each gummy = 80 mg elemental Magnesium' (160 mg for 2 gummies per serving)"</em><br>
-              The label NI table shows Elemental Magnesium as 160 mg per serving. The PDP NI table image shows 160 mg per serving. The PDP text states 80 mg per gummy (2 gummies = 160 mg). Values match.
+              <em style="color:#888">"PDP NI table image shows 'Elemental Magnesium (Magnasorb) (mg): 160' per serving; Label shows 'Elemental Magnesium: 160 mg'"</em><br>
+              The Elemental Magnesium value of 160 mg per serving matches between the PDP NI table image and the approved label.
             </td>
           </tr>
           
@@ -1458,20 +1457,20 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP image 'Clean & Effective formulation' shows full Nutrition Information table with Energy, Protein, Carbohydrate, Total sugars, Added sugars, Dietary Fiber, Total Fat, Elemental Magnesium, Zinc, Vitamin D3, Vitamin B6"</em><br>
-              A complete NI table is present in the 'Clean & Effective formulation' image on the PDP.
+              <em style="color:#888">"Clean & Effective formulation image card showing full Nutrition Information table with Energy, Protein, Carbohydrate, Total sugars, Added sugars, Dietary Fiber, Total Fat, Elemental Magnesium, Zinc, Vitamin D3, Vitamin B6"</em><br>
+              A complete NI table is present in the 'Clean & Effective formulation' image card on the PDP.
             </td>
           </tr>
           
           
           
-          <tr style="border-bottom:1px solid #eee;">
+          <tr style="border-bottom:1px solid #eee;background:#fdecea">
             <td style="padding:9px 14px;font-weight:500">Correct Elemental Magnesium dosage as per the latest label</td>
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
-            <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
+            <td style="padding:9px 14px;color:#c0392b;font-weight:700;font-size:12px">❌ MISMATCH</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP NI table shows 160 mg per serving; PDP text states '160 mg Elemental Magnesium per serving'"</em><br>
-              The label shows 160 mg Elemental Magnesium per serving (2 gummies). The PDP displays 160 mg per serving in the NI table image and in the hero image text. This matches the label.
+              <em style="color:#888">"PDP text states 'Each gummy = 80 mg elemental Magnesium'; PDP image shows '160 mg Elemental Magnesium per serving'; Label shows '160 mg per 2 gummies (serving)'"</em><br>
+              The PDP correctly shows 160 mg per serving (2 gummies) which matches the label. However, the PDP text states 80 mg per gummy which is consistent. The dosage information appears correct when considering serving size of 2 gummies = 160 mg.
             </td>
           </tr>
           
@@ -1482,8 +1481,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP: 'Recommended Usage: Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests.' and 'Take Two Gummies post meal, 1-2 hours before bed.'"</em><br>
-              The label states 'Recommended Dosage: Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests.' The PDP usage instructions match this recommendation.
+              <em style="color:#888">"PDP: 'Eat 2 gummies daily after a heavy meal or as your healthcare professional suggests' and 'Take Two Gummies post meal, 1-2 hours before bed'"</em><br>
+              The label shows 'Recommended Dosage: Eat 2 gummies daily after a heavy meal, or as your healthcare professional suggests. Do not exceed the recommended daily dosage.' PDP usage instructions align with the label.
             </td>
           </tr>
           
@@ -1494,8 +1493,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              
-              Panax Ginseng Extract does NOT appear in the PDP ingredient list. The requirement that it must NOT be listed is satisfied.
+              <em style="color:#888">"PDP ingredient list: 'Chicory Root Inulin (Prebiotic), MagnaSorb™ – Magnesium Blend (Liposomal Magnesium, Magnesium Glycinate, Magnesium Malate, Magnesium Taurate, Magnesium Citrate, Plant Based Cellulose, Mannitol), Gelling Agent (Pectin), Acidity Regulator (Citric Acid), Zinc (Zinc Citrate), Vitamin D3 (Cholecalciferol – Vitashine D3™), Vitamin B6 (Pyridoxine HCl), Mixed Berry Flavour, Black carrot extract, Maize starch, Binding Agent (Guor gum)'"</em><br>
+              Panax Ginseng Extract is NOT listed in the PDP ingredients, which is correct per the requirement.
             </td>
           </tr>
           
@@ -1506,8 +1505,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP ingredient list: 'Maize starch'"</em><br>
-              Maize starch is listed in the PDP Full list of ingredients section.
+              <em style="color:#888">"PDP ingredient list includes 'Maize starch'"</em><br>
+              Maize starch is listed in the PDP ingredients as required.
             </td>
           </tr>
           
@@ -1518,8 +1517,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP ingredient list: 'Binding Agent (Guor gum)'"</em><br>
-              Guar Gum (spelled as 'Guor gum') is listed in the PDP ingredients. Minor spelling variation but ingredient is present.
+              <em style="color:#888">"PDP ingredient list includes 'Binding Agent (Guor gum)'"</em><br>
+              Guar Gum is listed in the PDP ingredients (spelled as 'Guor gum' which is a minor spelling variation).
             </td>
           </tr>
           
@@ -1530,8 +1529,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP ingredient list: 'Zinc (Zinc Citrate)'"</em><br>
-              Zinc (Zinc Citrate) is listed in the PDP Full list of ingredients section.
+              <em style="color:#888">"PDP ingredient list includes 'Zinc (Zinc Citrate)'"</em><br>
+              Zinc is listed in the PDP ingredients as required.
             </td>
           </tr>
           
@@ -1542,8 +1541,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP ingredient list: 'Vitamin D3 (Cholecalciferol – Vitashine D3™)'"</em><br>
-              Vitamin D3 is listed in the PDP Full list of ingredients section.
+              <em style="color:#888">"PDP ingredient list includes 'Vitamin D3 (Cholecalciferol – Vitashine D3™)'"</em><br>
+              Vitamin D3 is listed in the PDP ingredients as required.
             </td>
           </tr>
           
@@ -1554,8 +1553,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP ingredient list: 'Vitamin B6 (Pyridoxine HCl)'"</em><br>
-              Vitamin B6 (Pyridoxine HCl) is listed in the PDP Full list of ingredients section.
+              <em style="color:#888">"PDP ingredient list includes 'Vitamin B6 (Pyridoxine HCl)'"</em><br>
+              Vitamin B6 is listed in the PDP ingredients as required.
             </td>
           </tr>
           
@@ -1566,8 +1565,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP ingredient list: 'MagnaSorb™ – Magnesium Blend (Liposomal Magnesium, Magnesium Glycinate, Magnesium Malate, Magnesium Taurate, Magnesium Citrate, Plant Based Cellulose, Mannitol)'"</em><br>
-              Mannitol is listed within the MagnaSorb™ blend in the PDP Full list of ingredients section.
+              <em style="color:#888">"PDP ingredient list includes 'Mannitol' within the MagnaSorb™ blend"</em><br>
+              Mannitol is listed in the PDP ingredients as part of the MagnaSorb™ – Magnesium Blend.
             </td>
           </tr>
           
@@ -1578,8 +1577,8 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
             <td style="padding:9px 14px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.5px">required</td>
             <td style="padding:9px 14px;color:#1a7a4a;font-weight:700;font-size:12px">✅ PRESENT</td>
             <td style="padding:9px 14px;color:#666;font-size:12px">
-              <em style="color:#888">"PDP ingredient list: 'MagnaSorb™ – Magnesium Blend (Liposomal Magnesium, Magnesium Glycinate, Magnesium Malate, Magnesium Taurate, Magnesium Citrate, Plant Based Cellulose, Mannitol)'"</em><br>
-              Plant Based Cellulose is listed within the MagnaSorb™ blend in the PDP Full list of ingredients section.
+              <em style="color:#888">"PDP ingredient list includes 'Plant Based Cellulose' within the MagnaSorb™ blend"</em><br>
+              Plant Based Cellulose is listed in the PDP ingredients as part of the MagnaSorb™ – Magnesium Blend.
             </td>
           </tr>
           
@@ -1691,10 +1690,6 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                 
                   
                 
-                  
-                
-                  
-                
                 
                 
                   
@@ -1765,37 +1760,15 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                     
                   
                 
-                  
-                    
+                
                   
                 
                   
-                    
-                  
                 
-                
-                  
-                    
                   
                 
                   
-                    
-                  
                 
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
                   
                 
                   
@@ -1816,143 +1789,17 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                     
                   
                 
+                  
+                    
+                  
                 
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Energy (kcal)</td>
-                  <td style="padding:6px 10px">51.78</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Protein (g)</td>
-                  <td style="padding:6px 10px">0.16</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Carbohydrate (g)</td>
-                  <td style="padding:6px 10px">12.75</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Total sugars (g)</td>
-                  <td style="padding:6px 10px">?</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Added sugars (g)</td>
-                  <td style="padding:6px 10px">0.00</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Dietary Fibre (g)</td>
-                  <td style="padding:6px 10px">8.81</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
                 
                 
                 
                 
                 <tr style="border-bottom:1px solid #eee;">
-                  <td style="padding:6px 10px;font-weight:500">Total Fat (g)</td>
-                  <td style="padding:6px 10px">0.10</td>
-                  <td style="padding:6px 10px;">
-                    0.1</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Trans Fat (g)</td>
-                  <td style="padding:6px 10px">0</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Sodium (mg) (g)</td>
-                  <td style="padding:6px 10px">0.68</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Elemental Magnesium (mg)</td>
-                  <td style="padding:6px 10px">160</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Zinc (as Zinc Citrate) (mg)</td>
-                  <td style="padding:6px 10px">5.70</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Vitamin D3 (as Cholecalciferol) (mcg)</td>
-                  <td style="padding:6px 10px">12.00</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
-                  <td style="padding:6px 10px;font-weight:500">Vitamin B6 (as Pyridoxine HCl) (mg)</td>
-                  <td style="padding:6px 10px">1.52</td>
-                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
-                    ✗ missing</td>
-                </tr>
-                
-                
-                
-                
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
                   <td style="padding:6px 10px;font-weight:500">Energy</td>
-                  <td style="padding:6px 10px">—</td>
+                  <td style="padding:6px 10px">44.34 kcal</td>
                   <td style="padding:6px 10px;">
                     44.34</td>
                 </tr>
@@ -1960,9 +1807,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                 
                 
                 
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                <tr style="border-bottom:1px solid #eee;">
                   <td style="padding:6px 10px;font-weight:500">Protein</td>
-                  <td style="padding:6px 10px">—</td>
+                  <td style="padding:6px 10px">0.16 g</td>
                   <td style="padding:6px 10px;">
                     0.16</td>
                 </tr>
@@ -1970,9 +1817,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                 
                 
                 
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                <tr style="border-bottom:1px solid #eee;">
                   <td style="padding:6px 10px;font-weight:500">Carbohydrate</td>
-                  <td style="padding:6px 10px">—</td>
+                  <td style="padding:6px 10px">10.7 g</td>
                   <td style="padding:6px 10px;">
                     10.7</td>
                 </tr>
@@ -1980,9 +1827,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                 
                 
                 
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                <tr style="border-bottom:1px solid #eee;">
                   <td style="padding:6px 10px;font-weight:500">Total sugars</td>
-                  <td style="padding:6px 10px">—</td>
+                  <td style="padding:6px 10px">1.23 g</td>
                   <td style="padding:6px 10px;">
                     1.23</td>
                 </tr>
@@ -1990,9 +1837,9 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                 
                 
                 
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                <tr style="border-bottom:1px solid #eee;">
                   <td style="padding:6px 10px;font-weight:500">Added sugars</td>
-                  <td style="padding:6px 10px">—</td>
+                  <td style="padding:6px 10px">0 g</td>
                   <td style="padding:6px 10px;">
                     0</td>
                 </tr>
@@ -2000,11 +1847,71 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
                 
                 
                 
-                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                <tr style="border-bottom:1px solid #eee;">
                   <td style="padding:6px 10px;font-weight:500">Dietary Fiber</td>
-                  <td style="padding:6px 10px">—</td>
+                  <td style="padding:6px 10px">8.76 g</td>
                   <td style="padding:6px 10px;">
                     8.76</td>
+                </tr>
+                
+                
+                
+                
+                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                  <td style="padding:6px 10px;font-weight:500">Total Fat</td>
+                  <td style="padding:6px 10px">0.1 g</td>
+                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
+                    ✗ missing</td>
+                </tr>
+                
+                
+                
+                
+                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                  <td style="padding:6px 10px;font-weight:500">Elemental Magnesium (Magnasorb)</td>
+                  <td style="padding:6px 10px">160 mg</td>
+                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
+                    ✗ missing</td>
+                </tr>
+                
+                
+                
+                
+                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                  <td style="padding:6px 10px;font-weight:500">Zinc (Zinc Citrate)</td>
+                  <td style="padding:6px 10px">5.70 mg</td>
+                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
+                    ✗ missing</td>
+                </tr>
+                
+                
+                
+                
+                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                  <td style="padding:6px 10px;font-weight:500">Vitamin D3 (Cholecalciferol - Vitashine D3)</td>
+                  <td style="padding:6px 10px">12 mcg</td>
+                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
+                    ✗ missing</td>
+                </tr>
+                
+                
+                
+                
+                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                  <td style="padding:6px 10px;font-weight:500">Vitamin B6 (Pyridoxine HCl)</td>
+                  <td style="padding:6px 10px">1.52 mg</td>
+                  <td style="padding:6px 10px;color:#c0392b;font-weight:600">
+                    ✗ missing</td>
+                </tr>
+                
+                
+                
+                
+                <tr style="border-bottom:1px solid #eee;background:#fff8f0">
+                  <td style="padding:6px 10px;font-weight:500">Total Fat (g)</td>
+                  <td style="padding:6px 10px">—</td>
+                  <td style="padding:6px 10px;">
+                    0.1</td>
                 </tr>
                 
                 
@@ -2057,26 +1964,11 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
             
             
-            <div style="background:#fff5f5;border-radius:6px;padding:10px">
-              <div style="font-size:11px;font-weight:700;color:#c0392b;margin-bottom:4px">Missing from PDP</div>
-              
-              <div style="font-size:12px;color:#555;padding:2px 0">Trans Fat (g): packaging shows 0, not listed on PDP</div>
-              
-              <div style="font-size:12px;color:#555;padding:2px 0">Sodium (mg): packaging shows 0.68, not listed on PDP</div>
-              
-              <div style="font-size:12px;color:#555;padding:2px 0">Energy: packaging says 51.78 kcal, PDP says 44.34</div>
-              
-              <div style="font-size:12px;color:#555;padding:2px 0">Carbohydrate: packaging says 12.75g, PDP says 10.7g</div>
-              
-              <div style="font-size:12px;color:#555;padding:2px 0">Dietary Fiber: packaging says 8.81g, PDP says 8.76g</div>
-              
-            </div>
-            
             
             <div style="background:#fff8e1;border-radius:6px;padding:10px">
               <div style="font-size:11px;font-weight:700;color:#b85c00;margin-bottom:4px">Extra on PDP</div>
               
-              <div style="font-size:12px;color:#555;padding:2px 0">Total sugars value 1.23 shown on PDP but not clearly readable on packaging</div>
+              <div style="font-size:12px;color:#555;padding:2px 0">PDP IMAGE 9 claims Zinc is 80% RDA per serving, but NI table in PDP IMAGE 8 shows Zinc %RDA as 33.50%</div>
               
             </div>
             
@@ -2346,4 +2238,4 @@ function updateSummaryCell(uid, tab, score) {
 </script>
 </body>
 </html>
-<!-- generated: 2026-07-13T08:19:57 -->
+<!-- generated: 2026-07-14T11:23:16 -->
